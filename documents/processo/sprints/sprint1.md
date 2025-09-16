@@ -12,82 +12,55 @@
 
 <p align="center">
   | <a href ="#desafio"> Desafio</a>  |
-  <a href ="#solucao"> Solução</a>  |   
-  <a href ="#backlog"> Backlog do Produto</a>  |
+  <a href ="#us"> User Stories</a>  |   
   <a href ="#dor">DoR</a>  |
   <a href ="#dod">DoD</a>  |
-  <a href ="#sprint"> Cronograma de Sprints</a>  |
-  <a href ="#tecnologias">Tecnologias</a> | | 
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status do Projeto: Em andamento  ⚙️
->
-<!-- > Relatório de Testes: [PDF](docs/cliente/relatorio_avaliacoes.pdf) 📊
->
-> Pasta de Documentação: [Link](docs/cliente) 📄
-> 
-> Video do Projeto:  [Youtube](https://youtu.be/IndOPnzHyrQ) 📽️ -->
+> Status da Sprint: Em andamento ⚙️
 
 ## 🏅 Desafio <a id="desafio"></a>
 
 O desafio consiste em desenvolver uma plataforma de treinamento online sobre o framework ágil Scrum para uma organização. O objetivo é criar uma experiência de aprendizado interativa para profissionais em treinamento, onde eles possam acessar conteúdos organizados em módulos, realizar exercícios com feedback imediato e analisar casos práticos. A plataforma visa aprimorar a compreensão teórica e prática dos usuários sobre o desenvolvimento de software ágil
 
-## 🏅 Solução <a id="solucao"></a>
-
-A plataforma permite que pessoas em treinamento, nas mais diversas ocupações dentro da organização, acessem e aprendam conceitos teóricos e práticos do framework ágil Scrum, possibilitando "padronização" dos processos dentro da organização.
-
-## 📋 Backlog do Produto <a id="backlog"></a>
+## 📋 User Stories <a id="us"></a>
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
 |  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ⚙️   |
 |  7   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ⚙️   |
-|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento acompanhe o progresso do curso para indicar minha posição atual.    |            |       |   ⚙️   |
-|  4   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo específico as ferramentas utilizadas no dia a dia para compreender a rotina no decorrer do desenvolvimento de software.    |            |       |   ⚙️   |
-|  5   |    Média    | Como gerente, quero que a pessoa em treinamento responda a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.    |            |       |   ⚙️   |
-|  6   |    Média    | Como gerente, quero que a pessoa em treinamento analise exemplos práticos da implementação da metodologia para mostrar como funciona na prática.   |            |       |   ⚙️   |
-|  8   |    Baixa    | Como gerente, quero que a pessoa em treinamento acesse o meu perfil do curso para consultar dados significativos, como, por exemplo, o avanço do curso.   |            |       |   ⚙️   |
-|  9   |    Baixa    | Como um profissional em treinamento, quero responder a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.    |            |       |   ⚙️   |
-|  10   |    Baixa    | Como um profissional em treinamento, quero responder a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.   |            |       |   ⚙️   |
-|  11   |    Baixa    | Como gerente, quero que a pessoa em treinamento receba uma certificação referente ao curso finalizado para ter uma confirmação oficial sobre o curso que foi feito.   |            |       |   ⚙️   |
 
 
 
 ## 🏅 DoR - Definition of Ready <a id="dor"></a>
 
-* User Stories com **Critérios de Aceitação**
-* Subtarefas divididas **a partir das US**
-* Clareza na descrição das **User Stories**
+|             Critério             | Descrição                                                                                         |
+| :------------------------------: | ------------------------------------------------------------------------------------------------- |
+|       Clareza na Descrição       | A User Story está escrita no formato “Como [persona], quero [ação] para que [objetivo]”           |
+|       Critérios de Aceitação        | A história possui critérios objetivos que indicam o que é necessário para considerá-la concluída. |
+|       Cenários de Testes      | A história tem pelo menos 1 cenário de teste estruturado (Dado, Quando, Então).                   |
+|           Independente           | A história pode ser implementada sem depender de outra tarefa da mesma Sprint.                    |
+|       Escopo Técnico Validado         | Está claro se a história envolve frontend, backend ou ambos.      |
+|       Integração com Histórias        | A funcionalidade se conecta logicamente com Sprints anteriores        |
+|       Estimável       | A história foi pontuada no Planning Poker ou tem uma estimativa clara.        |
+|       Documentos de Apoio         | Há arquivos, links, instruções adicionais quando necessário.      |
+|       Validação com PO        | A história foi discutida com o PO e validada com o time técnico.      |
+
+
 
 ## 🏅 DoD - Definition of Done <a id="dod"></a>
 
-* Manual de Usuário
-* Manual da Aplicação
-* Documentação da API (Application Programming Interface)
-* Código completo
-* Vídeos de cada etapa de entrega
+|                 Critério                 | Descrição                                                                            |
+| :--------------------------------------: | ------------------------------------------------------------------------------------ |
+|     Critérios de Aceitação atendidos     | Todos os critérios definidos na US foram implementados e validados com sucesso.                 |
+|        Integração com o Sistema Existente         | Não há quebra do fluxo existente; funcionalidades se integram ao sistema principal.     |
+|             Código revisado              | A funcionalidade passou por revisão de código entre pares.                            |
+|       Funcionalidade Integrada        | Foi testada junto com o fluxo completo da aplicação.      |
+|       Documentação Atualizada        | Anotações técnicas foram documentadas.     |
+|       PO Validou Funcionalmente       | O PO testou e aprovou a funcionalidade.       |
 
----
-## 📅 Cronograma de Sprints <a id="sprint"></a>
 
-| Sprint          |    Período    | Documentação                                     |
-| --------------- | :-----------: | ------------------------------------------------ |
-| 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |
-| 🔖 **SPRINT 2** | 06/10 - 26/10 |  |
-| 🔖 **SPRINT 3** | 03/11 - 23/11 |  |
-
-## 💻 Tecnologias <a id="tecnologias"></a>
-
-<h4 align="center">
- <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
- <a href="https://flask.palletsprojects.com/en/stable"><img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/></a>
- <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">
- <a href="https://www.atlassian.com/software/jira"><img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white"/></a>
- <a href="https://miro.com/"><img src="https://img.shields.io/badge/Miro-1A1A1A?style=for-the-badge&logo=miro&logoColor=white"/></a>
- <a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></a>
- <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
-</h4>
 
 ## 🎓 Equipe <a id="equipe"></a>
 
