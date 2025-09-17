@@ -3,8 +3,6 @@
 
 # 404: Team Not Found
 
-# Documentação - Sprint 1
-
 <p align="center">
       <img src="" alt="logo do Time 404" width="200">
       <h2 align="center"> 404: Team Not Found </h2>
@@ -17,7 +15,7 @@
   <a href ="#dor">DoR</a>  |
   <a href ="#dod">DoD</a>  |
   <a href ="#sprint"> Cronograma de Sprints</a>  |
-  <a href ="#tecnologias">Tecnologias</a> | | 
+  <a href ="#tecnologias">Tecnologias</a> |
   <a href ="#equipe"> Equipe</a> |
 </p>
 
