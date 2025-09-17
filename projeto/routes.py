@@ -8,3 +8,7 @@ def homepage():
 @app.route('/conteudo')
 def conteudo():
     return render_template('conteudo.html') 
+
+@app.route('/modulo1')
+def modulo1():
+    return render_template('modulo1.html') 
