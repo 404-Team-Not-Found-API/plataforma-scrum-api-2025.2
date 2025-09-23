@@ -59,6 +59,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
   - ✅ Documentação técnica inicial
 - **Valor Agregado**: Plataforma funcional com conteúdo introdutório acessível
 - **Documentação Detalhada**: [Sprint 1 Docs](./documents/processo/sprints/sprint1.md)
+<br>
 
 #### 🎯 Sprint 2 (06/10 - 26/10) - Expansão de Funcionalidades
 - **Status**: Planejada
@@ -70,6 +71,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
   - ✅ Exemplos práticos de implementação
 - **Valor Agregado Esperado**: Interatividade e engajamento aumentados
 - **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/sprint2.md)
+<br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
 - **Status**: Planejada
@@ -81,14 +83,15 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
   - ✅ Documentação final e manuais
 - **Valor Agregado Esperado**: Produto completo e certificado
 - **Documentação Detalhada**: [Sprint 3 Docs](./documents/processo/sprints/sprint3.md)
+<br>
 
 ## 📅 Cronograma de Sprints <a id="sprint"></a>
 
 |     Sprint       |    Período    |     Documentação      |   Vídeo do Incremento 
-| --------------- | :-----------: | ------------------------------------------------ |
-| 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) | [Youtube] ()
-| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints) | [Youtube] ()
-| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints) | [Youtube] ()
+| --------------- | :-----------: | ------------------------------------------------ | ------------ |
+| 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1]()  |
+| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/) | [Incremento 2]()  |
+| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/) | [Incremento 3]()  |
 
 ## 💻 Tecnologias <a id="tecnologias"></a>
 
@@ -259,17 +262,17 @@ vercel --prod
 
 ## 📄 Documentação <a id='documentacao'></a>
 
-> Pasta de documentação  [Pasta](/documents/)
+> Pasta de documentação: [Pasta](/documents/)
 >
-> Checklist de DoR e DoD [Checklist](/documents/processo/dor_e_dod.md)
+> Checklist de DoR e DoD: [Checklist](/documents/processo/dor_e_dod.md)
 >
-> DoR e DoD por Sprint [DoR e DoD](/documents/processo/sprints/)
+> DoR e DoD por Sprint: [DoR e DoD](/documents/processo/sprints/)
 >
-> Estratégia de Branch [Branch](/documents/processo/estrategia-de-branches.md)
+> Estratégia de Branch: [Branch](/documents/processo/estrategia-de-branches.md)
 >
-> Manual de Usuário [Manual](/documents/cliente/)
+> Manual de Usuário: [Manual](/documents/cliente/)
 >
-> Manual de instalação [Checklist](/documents/cliente/)
+> Manual de instalação: [Checklist](/documents/cliente/)
 
 ## 🎓 Equipe <a id="equipe"></a>
 
