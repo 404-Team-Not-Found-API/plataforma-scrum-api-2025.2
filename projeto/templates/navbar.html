@@ -1,0 +1,62 @@
+
+<style>
+  .navbar {
+    display: flex;       
+    align-items: center;   
+    justify-content: space-between; 
+    padding: 0.5rem 1rem; 
+  }
+  .navbar-brand img {
+    max-height: 80px; 
+    width: auto;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .navbar-brand img {
+      max-height: 80px;
+    }
+    .navbar-buttons .btn {
+    font-size: 1.2rem; 
+    padding: 0.8rem 1.5rem; 
+    border-radius: 12px; 
+  }
+  }
+  .navbar-buttons {
+    display: flex;
+    gap: 0.2rem; 
+  }
+  .navbar-buttons .btn {
+    font-size: 1.2rem; 
+    background-color: #6DD5B6;
+    color: #051E30;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold; 
+    text-decoration: none;
+
+  }
+  .navbar-buttons a.btn:hover {
+    background-color: #051E30 ; 
+    color: #fff ;          
+}
+  @media (max-width: 420px) {
+    .navbar-brand img {
+      max-height: 45px;
+    }
+     .navbar-buttons .btn {
+      font-size: 0.5rem; 
+      padding: 0.8rem 1.5rem;
+      border-radius: 15px;
+    }
+  }
+  
+</style>
+
+<nav class="navbar bg-body-tertiary">
+    <a class="navbar-brand"><img src="imagens/404.png" alt="Logo" class="img-fluid"></a>
+      <div class="navbar-buttons">
+      <a href="home.html" class="btn btn-outline-success me-2">Home</a>
+      <a href="conteudo.html" class="btn btn-outline-success" >Comece agora</a>
+    </div>
+</nav>          
