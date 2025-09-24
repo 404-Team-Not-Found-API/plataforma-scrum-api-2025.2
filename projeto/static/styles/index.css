@@ -1,0 +1,28 @@
+.body{
+  margin: 0;
+}
+.container{
+  display: grid;
+  grid-template-areas:
+    "navbar"
+    "secao1 "
+    "secao2 "
+    "footer ";
+  grid-template-columns: 1fr;
+  gap: 0px;
+  padding: 0px;
+  background-color: antiquewhite;
+  min-height: 100vh;
+}
+.container>#navbar{
+  grid-area: header;
+}
+.container>.secao1 {
+  grid-area: secao1;
+}
+.container>.secao2 {
+  grid-area: secao2;
+}
+.container>.footer {
+  grid-area: footer;
+}
