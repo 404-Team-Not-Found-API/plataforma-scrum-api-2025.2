@@ -1,58 +1,72 @@
 
 <style>
-  .navbar {
-    display: flex;       
-    align-items: center;   
-    justify-content: space-between; 
-    padding: 0.5rem 1rem; 
-  }
-  .navbar-brand img {
-    max-height: 80px; 
-    width: auto;
-    display: block;
-  }
+.navbar {
+  display: flex;       
+  align-items: center;   
+  justify-content: space-between; 
+  padding: 0.5rem 1rem; 
+}
 
-  @media (min-width: 768px) {
-    .navbar-brand img {
-      max-height: 80px;
-    }
-    .navbar-buttons .btn {
+.navbar-brand img {
+  max-height: 80px; 
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand img {
+    max-height: 80px;
+  }
+  .navbar-buttons .btn {
     font-size: 1.2rem; 
     padding: 0.8rem 1.5rem; 
     border-radius: 12px; 
   }
-  }
-  .navbar-buttons {
-    display: flex;
-    gap: 0.2rem; 
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 0.2rem; 
+}
+
+@media (max-width: 420px) {
+  .navbar {
+    padding: 0.3rem 0.5rem;   
+    gap: 0.5rem;             
   }
 
-  @media (max-width: 420px) {
-    .navbar-brand img {
-      max-height: 45px;
-    }
-     .navbar-buttons .btn {
-      font-size: 0.5rem; 
-      padding: 0.8rem 1.5rem;
-      border-radius: 15px;
-    }
+  .navbar-brand img {
+    max-height: 40px;       
   }
-  
-  .nav-button {
-    background-color: #6DD5B6(180, 45%, 60%);
-    color: hsl(215, 30%, 15%);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+
+  .navbar-buttons {
+    gap: 0;                 
+  }
+
+  .navbar-buttons .btn,
+  .scrum-button {
+    font-size: 0.6rem; 
+    padding: 0.4rem 0.8rem;   
+    border-radius: 8px;
+  }
+}
+
+.nav-button {
+  background-color: hsl(180, 45%, 60%);
+  color: hsl(215, 30%, 15%);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-    background-color: hsl(180, 45%, 55%);
-    transform: translateY(-1px);
+  background-color: hsl(180, 45%, 55%);
+  transform: translateY(-1px);
 }
+
 </style>
 
 <nav class="navbar bg-body-tertiary">

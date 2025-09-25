@@ -75,7 +75,6 @@ body {
     width: 24rem;
 }
 
-/* Features Section */
 .features-section {
     background-color:#0F5F96;
     padding: 4rem 0;
@@ -108,7 +107,6 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para ícones personalizados */
 .icon-placeholder {
     font-size: 2rem;
     width: 2rem;
@@ -118,7 +116,6 @@ body {
     justify-content: center;
 }
 
-/* Para SVGs ou outros ícones que você adicionar */
 .feature-icon svg,
 .feature-icon img,
 .feature-icon i {
@@ -134,7 +131,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Scrum Section */
 #scrum-section {
     background: linear-gradient(180deg, #0F5F96 0%, #051E30 100%);
     padding: 4rem 0;
@@ -223,7 +219,6 @@ body {
     width: 20rem;
 }
 
-/* Footer */
 .footer {
     background-color: #051E30;
     padding: 2rem 0;
@@ -235,7 +230,6 @@ body {
     font-size: 0.875rem;
 }
 
-/* Mobile First - Base styles */
 @media (max-width: 767px) {
     .container {
         padding: 0 1rem;
@@ -321,7 +315,6 @@ body {
     }
 }
 
-/* Tablet */
 @media (min-width: 768px) {
     .features-container {
         flex-direction: row;
@@ -333,7 +326,6 @@ body {
     }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr 1fr;
@@ -388,4 +380,102 @@ body {
         width: 24rem;
         margin-top: 0;
     }
+} 
+
+@media (max-width: 480px) {
+    .container, 
+    .nav-container {
+        padding: 0 0.25rem; /* menos espaço lateral */
+    }
+
+    /* Navbar */
+    .navbar-brand img {
+        max-height: 40px; /* logo menor */
+    }
+
+    .navbar button {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 1.1rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .hero-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+        max-width: 95%;
+        margin: 0 auto 0.8rem;
+        text-align: center;
+    }
+
+    .hero-button {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .illustration {
+        max-width: 10rem;
+        width: 100%;
+        margin: 1rem auto 0;
+    }
+
+    /* Features */
+    .features-container {
+        gap: 1rem;
+    }
+
+    .feature-item {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .feature-title {
+        font-size: 0.85rem;
+    }
+
+    /* Scrum */
+    .scrum-title {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .scrum-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+        max-width: 95%;
+        margin: 0 auto 0.8rem;
+        text-align: center;
+    }
+
+    .scrum-button {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .diagram {
+        max-width: 10rem;
+        width: 100%;
+        margin: 1rem auto 0;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 0.65rem;
+        max-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
+
