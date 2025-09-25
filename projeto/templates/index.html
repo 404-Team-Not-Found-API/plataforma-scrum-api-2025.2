@@ -1,38 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>404 - Curso de Scrum</title>
+    <meta name="description" content="Aprenda Scrum e metodologias ágeis. Desenvolvimento rápido, trabalho colaborativo e resultados eficientes.">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../static/styles/index.css">
-
-
 </head>
 <body>
-    <div class="container">
+
     <header>
         <div id="navbar"></div>
     </header>
 
- <div class="secao1">
-    <h1>A agilidade na palma da sua mão</h1>
-    <a href="secao2" class="button">Saiba mais</a>
-</div>
-  <div class="secao2">
-    <h3>Mais</h3>
-  </div>
-  <div class="footer">
-    <h4>Footer</h4>
-</div>
-    </div>
- 
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1 class="hero-title">A agilidade na palma da sua mão</h1>
+                        <p class="hero-description">
+                            Seja bem-vindo ao nosso curso sobre o Scrum! Preparado para conhecer o desenvolvimento ágil? 
+                            Vamos juntos descobrir como o Scrum pode transformar a maneira como você trabalha!
+                        </p>
+                        <button onclick="location.href='#scrum-section'" class="hero-button" >Saiba mais →</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="../static/assets/scrum1.png" alt="Scrum methodology illustration" class="illustration">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="features-container">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <!-- Adicione seu próprio ícone aqui -->
+                            <div class="icon-placeholder">⚡</div>
+                        </div>
+                        <h3 class="feature-title">Agilidade</h3>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            
+                            <!-- Adicione seu próprio ícone aqui -->
+                            <div class="icon-placeholder">👥</div>
+                        </div>
+                        <h3 class="feature-title">Coletividade</h3>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <!-- Adicione seu próprio ícone aqui -->
+                            <div class="icon-placeholder">📈</div>
+                        </div>
+                        <h3 class="feature-title">Eficiência</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scrum Section -->
+        <section id="scrum-section">
+            <div class="container">
+                <div class="scrum-grid">
+                    <div class="scrum-content">
+                        <h2 class="scrum-title">O Scrum é uma das metodologias mais populares do mundo ágil!</h2>
+                        <p class="scrum-description">
+                            É uma estrutura poderosa e leve, ideal para gerenciar o desenvolvimento 
+                            de qualquer produto complexo.
+                        </p>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 6 9 17l-5-5"/>
+                                    </svg>
+                                </div>
+                                <span class="benefit-text">Coletividade</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 6 9 17l-5-5"/>
+                                    </svg>
+                                </div>
+                                <span class="benefit-text">Flexibilidade</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 6 9 17l-5-5"/>
+                                    </svg>
+                                </div>
+                                <span class="benefit-text">Entrega de Valor</span>
+                            </div>
+                        </div>
+                        
+                        <button onclick="window.location.href='modulo1.html'" class="scrum-button">Saiba mais →</button>
+                    </div>
+                    
+                    <div class="scrum-image">
+                        <img src="../static/assets/scrum2.png" alt="Scrum methodology circular diagram" class="diagram">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
+        </div>
+    </footer>
+
     <script>
         fetch("navbar.html")
         .then(res => res.text())
         .then(data => {document.getElementById("navbar").innerHTML = data;})
     </script>
-   
 </body>
 </html>

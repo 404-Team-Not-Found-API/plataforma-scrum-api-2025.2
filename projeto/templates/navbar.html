@@ -26,20 +26,7 @@
     display: flex;
     gap: 0.2rem; 
   }
-  .navbar-buttons .btn {
-    font-size: 1.2rem; 
-    background-color: #6DD5B6;
-    color: #051E30;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold; 
-    text-decoration: none;
 
-  }
-  .navbar-buttons a.btn:hover {
-    background-color: #051E30 ; 
-    color: #fff ;          
-}
   @media (max-width: 420px) {
     .navbar-brand img {
       max-height: 45px;
@@ -51,11 +38,26 @@
     }
   }
   
+  .nav-button {
+    background-color: #6DD5B6(180, 45%, 60%);
+    color: hsl(215, 30%, 15%);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: hsl(180, 45%, 55%);
+    transform: translateY(-1px);
+}
 </style>
 
 <nav class="navbar bg-body-tertiary">
     <a class="navbar-brand"><img src="../static/assets/404.png" alt="Logo" class="img-fluid"></a>
       <div class="navbar-buttons">
-      <a href="modulo1.html" class="btn btn-outline-success" >Comece agora</a>
+      <button onclick="window.location.href='modulo1.html'" class="scrum-button">Comece agora</button>
     </div>
 </nav>          
