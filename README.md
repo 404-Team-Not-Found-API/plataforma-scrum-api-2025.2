@@ -16,7 +16,7 @@
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status do Projeto: Em andamento  ⚙️
+> Status do Projeto: Em andamento  🔄
 >
 <!-- > Relatório de Testes: [PDF](docs/cliente/relatorio_avaliacoes.pdf) 📊
 >
@@ -25,27 +25,39 @@
 ## 🏅 Desafio <a id="desafio"></a>
 
 O desafio consiste em desenvolver uma plataforma de treinamento online sobre o framework ágil Scrum para uma organização. O objetivo é criar uma experiência de aprendizado interativa para profissionais em treinamento, onde eles possam acessar conteúdos organizados em módulos, realizar exercícios com feedback imediato e analisar casos práticos. A plataforma visa aprimorar a compreensão teórica e prática dos usuários sobre o desenvolvimento de software ágil
+<br><br>
 
 ## 🏅 Solução <a id="solucao"></a>
 
 A plataforma permite que pessoas em treinamento, nas mais diversas ocupações dentro da organização, acessem e aprendam conceitos teóricos e práticos do framework ágil Scrum, possibilitando "padronização" dos processos dentro da organização.
+<br><br>
 
 ## 📋 Backlog do Produto <a id="backlog"></a>
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ⚙️   |
-|  7   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ⚙️   |
-|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento acompanhe o progresso do curso para indicar minha posição atual.    |            |   2    |   ⚙️   |
-|  4   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo específico as ferramentas utilizadas no dia a dia para compreender a rotina no decorrer do desenvolvimento de software.    |            |    2   |   ⚙️   |
-|  5   |    Média    | Como gerente, quero que a pessoa em treinamento responda a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.    |            |   2    |   ⚙️   |
-|  6   |    Média    | Como gerente, quero que a pessoa em treinamento analise exemplos práticos da implementação da metodologia para mostrar como funciona na prática.   |            |   2    |   ⚙️   |
-|  8   |    Baixa    | Como gerente, quero que a pessoa em treinamento acesse o meu perfil do curso para consultar dados significativos, como, por exemplo, o avanço do curso.   |            |    3   |   ⚙️   |
-|  9   |    Baixa    | Como um profissional em treinamento, quero responder a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.    |            |    3   |   ⚙️   |
-|  10   |    Baixa    | Como um profissional em treinamento, quero responder a um questionário ao final de cada módulo e receber feedback instantâneo sobre meus erros, para que eu possa validar e reforçar meu aprendizado.   |            |   3    |   ⚙️   |
-|  11   |    Baixa    | Como gerente, quero que a pessoa em treinamento receba uma certificação referente ao curso finalizado para ter uma confirmação oficial sobre o curso que foi feito.   |            |   3    |   ⚙️   |
+|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   🔄   |
+|  7   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   🔄   |
+|  2   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |            |   2    |   ⚙️   |
+|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |            |   2    |   ⚙️   |
+|  4   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
+|  5   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |            |   2    |   ⚙️   |
+|  6   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |            |   2    |   ⚙️   |
+|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
+|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |            |    2   |   ⚙️   |
+|  10   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
+|  11   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais para que o aluno possa baixar e usar em seus próprios projetos.   |            |   2    |   ⚙️   |
+|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
+|  13   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
+|  14   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
+|  17   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
+|  18   |    Baixa    | Como gerente, quero  que a pessoa em treinamento acompanhe o progresso do curso para indicar sua posição atual.   |            |   3    |   ⚙️   |
+|  19  |    Média    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
 
 ---
+<br><br>
 
 ## 📈 Evolução do Projeto <a id='evolucao'></a>
 
@@ -63,35 +75,37 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 #### 🎯 Sprint 2 (06/10 - 26/10) - Expansão de Funcionalidades
 - **Status**: Planejada
-- **Objetivo Principal**: Expandir o conteúdo e melhorar a experiência do usuário
+- **Objetivo Principal**: Expandir o conteúdo através de módulos, implementar os exercícios de fixação. 
 - **Principais Entregas Planejadas**:
-  - ✅ Sistema de acompanhamento de progresso
-  - ✅ Módulo de ferramentas Scrum
-  - ✅ Questionários interativos com feedback
+  - ✅ Módulos (1-4);
+  - ✅ Questionários interativos de cada módulo com feedback;
   - ✅ Exemplos práticos de implementação
-- **Valor Agregado Esperado**: Interatividade e engajamento aumentados
-- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/sprint2.md)
+  - ✅ Modelos dos principais documentos do Scrum.
+- **Valor Agregado Esperado**: Aumento de engajamento e retenção de conhecimento. 
+- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/.gitkeep)
 <br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
 - **Status**: Planejada
-- **Objetivo Principal**: Concluir o produto e implementar recursos avançados
+- **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades avançadas para aprimorar a experiência do usuário.
 - **Principais Entregas Planejadas**:
-  - ✅ Sistema de perfis de usuário
-  - ✅ Módulo de certificação
+  - ✅ Módulo Final - Primeira Sprint de Treinamento;
+  - ✅ Sistema de acompanhamento de progresso;
+  - ✅ Sugestão de papéis que se alinham ao perfil da pessoa em treinamento;
   - ✅ Melhorias na interface e experiência
   - ✅ Documentação final e manuais
-- **Valor Agregado Esperado**: Produto completo e certificado
-- **Documentação Detalhada**: [Sprint 3 Docs](./documents/processo/sprints/sprint3.md)
-<br>
+- **Valor Agregado Esperado**: Um produto finalizado, com recursos que personalizam a experiência de aprendizado, oferecem um caminho claro de desenvolvimento de carreira e garantem uma alta usabilidade.
+- **Documentação Detalhada**: [Sprint 3 Docs](./documents/processo/sprints/.gitkeep)
+<br><br><br>
 
 ## 📅 Cronograma de Sprints <a id="sprint"></a>
 
 |     Sprint       |    Período    |     Documentação      |   Vídeo do Incremento 
 | --------------- | :-----------: | ------------------------------------------------ | ------------ |
 | 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1]()  |
-| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/) | [Incremento 2]()  |
-| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/) | [Incremento 3]()  |
+| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 2]()  |
+| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 3]()  |
+<br><br>
 
 ## 💻 Tecnologias <a id="tecnologias"></a>
 
@@ -104,6 +118,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
  <a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></a>
  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
 </h4>
+<br><br>
 
 ## 📁 Estrutura do Projeto <a id='estrutura'></a>
 
@@ -156,6 +171,7 @@ Diagrama de estrutura das pastas: <br>
 ├───requirements.txt    # Dependências Python
 └───.gitignore          # Arquivos ignorados pelo Git
 ```
+<br><br>
 
 ## ⚡ Como executar <a id='execucao'></a>
 
@@ -166,6 +182,7 @@ Diagrama de estrutura das pastas: <br>
 - [Python](https://www.python.org/downloads/) (versão 3.8 ou superior)
 - [pip](https://pip.pypa.io/en/stable/installation/) (gerenciador de pacotes do Python)
 - [Git](https://git-scm.com/downloads) (para clonar o repositório)
+<br><br>
 
 **1.** Clone o repositório do projeto:
 
@@ -209,7 +226,6 @@ python main.py
 Abra o navegador e digite: `http://localhost:5000`
 
 ---
-
 ### Como Acessar a Aplicação na Web (Vercel)
 
 ⭐️ **Deploy Automático**
@@ -219,7 +235,7 @@ Este projeto está configurado para deploy automático no Vercel. Para acessar a
 **1.** Acesse a URL de produção:
 
 ```
-https://plataforma-404-team-not-found.vercel.app
+Em Desenvolvimento
 ```
 
 **2.** Para fazer deploy de uma nova versão:
@@ -235,6 +251,7 @@ vercel --prod
 **3.** O deploy será realizado automaticamente e a aplicação estará disponível na URL acima.
 
 ---
+<br>
 
 ### 🔧 Comandos Úteis para Desenvolvimento
 
@@ -259,6 +276,7 @@ vercel --prod
   python --version
   pip --version
   ```
+<br><br>
 
 ## 📄 Documentação <a id='documentacao'></a>
 
@@ -274,6 +292,9 @@ vercel --prod
 >
 > Manual de instalação: [Checklist](/documents/cliente/)
 
+<br><br>
+
+
 ## 🎓 Equipe <a id="equipe"></a>
 
 <div align="center">
@@ -288,13 +309,13 @@ vercel --prod
       <td>Maria Cecília</td>
       <td>Product Owner</td>
       <td><a href="https://github.com/cissamrs"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/mceciliamoraes?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>João Vitor Dias</td>
       <td>Scrum Master</td>
       <td><a href="https://github.com/DiasJoao002"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-dias-24b0a324a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz0TYBZ8nSsKbcADjdLhKjg%3D%3D"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>André Alves</td>
@@ -306,7 +327,7 @@ vercel --prod
       <td>Kamille Fernandes</td>
       <td>Developer</td>
       <td><a href="https://github.com/KamilleFernandes"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/kamille-f-da-silva-122a10284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Vinícius Henrique</td>
@@ -324,7 +345,7 @@ vercel --prod
       <td>Willian Umehara</td>
       <td>Developer</td>
       <td><a href="https://github.com/willianhiroume"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/willian-umehara-ba1521188?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
   </table>
 </div>
