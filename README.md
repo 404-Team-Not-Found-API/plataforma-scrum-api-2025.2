@@ -105,8 +105,8 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 | 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1]()  |
 | 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 2]()  |
 | 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 3]()  |
-<br><br>
 
+<br><br>
 ## 💻 Tecnologias <a id="tecnologias"></a>
 
 <h4 align="center">
@@ -122,7 +122,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 ## 📁 Estrutura do Projeto <a id='estrutura'></a>
 
-Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
+Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
 - **documents/**: contém todos os documentos do projeto, como especificações, processos e documentação técnica;
 
@@ -206,7 +206,7 @@ python -m venv .venv
 
 - **Linux/macOS:**
   ```bash
-  source venv/bin/activate
+  source .venv/bin/activate
   ```
 
 **4.** Instale as dependências do projeto:
