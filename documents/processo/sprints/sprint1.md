@@ -1,12 +1,7 @@
-
-# API 1º Semestre ADS
-
-# 404: Team Not Found
-
 # Documentação - Sprint 1
 
 <p align="center">
-      <img src="" alt="logo do Time 404" width="200">
+      <img src="/projeto/static/assets/logo.png" alt="Logo do Time 404" width="200">
       <h2 align="center"> 404: Team Not Found </h2>
 </p>
 
