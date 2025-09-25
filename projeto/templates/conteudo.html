@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <p>pagina de conteudos</p>  
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Conteúdo Page{% endblock %}
+
+{% block content %}
+    <h1>Conteúdo</h1>
+    <p>Página de conteúdos</p>
+    <a href="{{ url_for('modulo1') }}" class="button">Go to Módulo 1</a>
+{% endblock %}
