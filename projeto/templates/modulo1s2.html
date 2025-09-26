@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo 1 - Seção 2</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <title>Módulo 1- Seção 2</title>
+  <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -144,15 +144,15 @@
         <h1 class="text-2x1 font-bold mb-3">Conteúdo Complementar</h1>
         <p class="font-semibold">SCRUM: VALORES E PRINCÍPIOS</p>
         <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
-        <a href="./Módulo 1 - Seção 2.pdf" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">
-          Baixar arquivo
+        <a href="../static/assets/Módulo 1 - Seção 2.pdf" target="_blank">
+          <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
         </a>
       </div>
 
       <!-- Navegação -->
       <div class="flex justify-between mt-8">
         <a href="./modulo1.html" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
-        <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
+        <a href="{{ url_for('concluir', modulo_id=modulo_id) }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
       </div>
 
     </section>
