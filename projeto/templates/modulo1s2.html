@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 - Seção 2</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    .footer {
+    background-color: #051E30;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+</style>
+
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+
+ <header>
+        <div id="navbar"></div>
+
+<script>
+  fetch("navbarModulos.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+
+      // Recarrega os eventos do menu depois de inserir
+      const menuBtn = document.querySelector('.menu-btn');
+      const dropdown = document.getElementById('menuDropdown');
+
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+    });
+</script>
+</header>
+
+  <!-- Conteúdo principal -->
+  <main class="flex-1 px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
+
+    <!-- Conteúdo -->
+    <section class="flex-1 space-y-8">
+
+      <!-- Título -->
+      <div>
+        <h1 class="text-4xl font-extrabold mb-3">Scrum: Valores e Princípios</h1><br>
+        <h2 class="text-2xl font-semibold mb-3">Módulo 1 - Seção 2</h2><br>
+        <h2 class="text-2xl font-bold mb-3">O que é Scrum?</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Trata-se de um framework para desenvolver e manter produtos complexos. Além de ser utilizado no campo do desenvolvimento, pode ser aplicado em outras áreas, devido à sua natureza interativa e incremental.
+          Para simplificar, a ideia central do Scrum é que um grupo reduzido de indivíduos pode lidar e solucionar problemas complexos e adaptáveis de maneira criativa.
+          <br>
+           É uma metodologia de conteúdo leve, com normas, cerimônias, papéis e obrigações de fácil compreensão, mas extremamente desafiadora para dominar e implementar completamente. Importante enfatizar que uma das suas  características é a eficácia relativa das práticas de gestão e desenvolvimento de produtos, e ao longo do processo, serão implementadas melhorias.
+           <br>
+           Existem dois tipos de estruturas de trabalho.<br>
+           1)Verticais, que são especialistas, são criados com base na experiência em um contexto específico. Eles buscam resolver problemas em uma área de aplicação determinada.<br>
+           2)Horizontais são utilizados na solução de desafios em qualquer área.
+
+        </p>
+        <!--Pilares-->
+      </div>
+      <div class="border-t pt-6">        
+        <h2 class="text-2xl font-bold mb-3">Os Pilares fundamentais</h2>
+        <h2 class="text-gray-700 font-bold mb-3">Para execução do Scrum devemos considerar três pilares fundamentais:</h2>
+        <p class="text-gray-700 leading-relaxed">
+          A <b>transparência</b> assegura que todas as variáveis que afetam o resultado sejam de conhecimento de todos os responsáveis pelo resultado.<br>
+          A <b>inspeção</b> dos processos deve ser feita com regularidade para identificar possíveis variações. Através dessa ação, podemos alterar o processo para aprimorá-lo ainda mais.<br>
+          Em relação à <b>adaptação</b>, o processo pode ser modificado e ajustado de forma ágil para os desvios futuros serem reduzidos ao mínimo.<br>
+          Nesta situação, existem quatro ocasiões em que essa avaliação e ajuste podem acontecer:<br>
+          Planejamento da Sprint, reunião diária, revisão da Sprint e retrospectiva da Sprint, que abordaremos mais adiante.
+
+        </p>
+      </div>
+      <!--Valores-->
+      <div class="border-t pt-6">        
+        <h2 class="text-2xl font-bold mb-3">Valores do Scrum</h2>
+        <h2 class="text-gray-700 font-bold mb-3">Os pilares do Scrum serão reforçados através dos seguintes valores:</h2>
+        <p class="text-gray-700 leading-relaxed">
+          <b>Coragem:</b> é necessário ter coragem para agir corretamente e lidar com questões complexas. É necessário coragem para um time ágil praticar a transparência em suas comunicações, estratégias e solução de problemas.<br>
+          <b>Foco:</b> precisa ser uma constante durante todo o trabalho da sprint e nos objetivos.<br>
+          <b>Comprometimento:</b> todos devem comprometer-se, tanto individualmente quanto coletivamente, para atingir os objetivos propostos.<br>
+          <b>Respeito:</b> respeito recíproco através da escuta ativa, empatia e colaboração para o aprimoramento e aprendizado de todos.<br>
+          <b>Abertura:</b> significa estar pronto para executar os trabalhos necessários, enfrentar desafios e adaptarse às mudanças que surgirem, de forma flexível e adaptável.
+        </p>
+      </div>
+
+      <!--Time Scrum-->
+      <div class="border-t pt-6">        
+        <h2 class="text-2xl font-bold mb-3">Time do Scrum</h2>
+        <h2 class="text-gray-700 font-bold mb-3">É importante lembrar que no Scrum só existem três funções</h2>
+        <p class="text-gray-700 leading-relaxed">
+          O <b>Product Owner</b> é a figura responsável por redigir, divulgar e disponibilizar informações referentes aos clientes, partes interessadas e sua própria equipe. Através dessas informações, ele elabora uma perspectiva do que será desenvolvido pela equipe.<br>
+          O <b>Scrum Master</b> é o indivíduo responsável por auxiliar a equipe a aumentar sua produtividade, desempenhando o papel de treinador ou técnico do grupo de desenvolvimento. Irá orientar a equipe na direção mais assertiva.<br>
+          Por último, a <b>Equipe de Desenvolvimento</b> é quem faz e cria um sistema que será entregue ao cliente. Eles são conhecidos por serem práticos e colocarem a mão na massa. A equipe deve ser diversificada e versátil, recomendando-se que os membros variem entre três e nove participantes.
+        </p>
+      </div>
+      <!--Eventos-->
+      <div class="border-t pt-6">        
+        <h2 class="text-2xl font-bold mb-3">Os Eventos</h2>
+        <h2 class="text-gray-700 font-bold mb-3">Os eventos possibilitam estabelecer uma rotina e reduzir a necessidade de reuniões, sendo que cada evento representa uma oportunidade para inspecionar ou adapta</h2>
+        <p class="text-gray-700 leading-relaxed">
+          1.<b>Sprint</b> consiste em uma interação que se configura como um evento de duração predeterminada, devendo ter um prazo máximo de um mês e contar com um objetivo claro a ser alcançado. Em síntese, são pequenos projetos com duração de um mês.<br>
+          2.O <b>planejamento da sprint</b> consiste na interação durante a qual a equipe define as tarefas a serem realizadas e os métodos a serem empregados.<br>
+          3.<b>Scrum diário:</b> nesta ocasião, a equipe reúne-se diariamente para uma reunião com duração máxima de 15 minutos, denominada "daily meeting".<br>
+          4.<b>Revisão da Sprint</b>, também denominada Sprint Review, refere-se à apresentação da Sprint, na qual se realiza a avaliação do Product Owner junto ao cliente, acerca de todos os itens finalizados pela equipe.<br>
+          5.<b>Retrospectiva da Sprint:</b> a equipe analisa como decorreu a última sprint, levando em conta as pessoas envolvidas, as interações entre elas e os recursos empregados. Em última análise, o grupo deve ter identificado ações de aprimoramento que serão implementadas na próxima sprint.
+        </p>
+      </div>
+      <!--Os Artefatos-->
+      <div class="border-t pt-6">        
+        <h2 class="text-2xl font-bold mb-3">Os Artefatos</h2>
+        <h2 class="text-gray-700 font-bold mb-3">O <b>backlog</b> é a peça central do Scrum, contendo os requisitos do produto a ser entregue e o entendimento necessário para cumprir esses requisitos.</h2>       
+        <p class="text-gray-700 leading-relaxed">
+          Em outras palavras, é uma lista de qualidades, tarefas, tecnologias e melhorias que fazem parte do produto que será entregue.<br>
+          O <b>backlog</b> é separado em três:<br> <b>Backlog do produto:</b> refere-se a todas as atividades que serão executadas na elaboração do projeto. Incremento: refere-se ao resultado da Sprint, que deve estar em estado utilizável, representa um passo em direção ao produto final e deve atender à Definição de Pronto (Definition of Done).<br>
+          <b>Backlog da sprint:</b> refere-se exclusivamente à seção que é considerada apta para execução durante o sprint. Adicionalmente, existem artefatos não oficiais, tais como as User Stories, o Quadro de tarefas e o Burndown, que serão detalhados posteriormente.<br>
+          <br>
+          Visando facilitar sua compreensão e memorização, apresentamos o <b>“3-5-3 do Scrum”:</b><br>
+          As <b>03 funções</b> são: <b>Product Owner, Scrum Master e Equipe de desenvolvimento.</b><br>
+          Os <b>05 eventos:</b> planejamento da sprint, sprint, scrum diário, revisão da sprint e retrospectiva da sprint.<br>
+          E por fim, os <b>03 artefatos: backlog do produto, backlog da sprint e incremento do produto.</b>
+        </p>
+      </div>
+
+      <!-- Conteúdo complementar -->
+      <div class="border-t pt-6">
+        <h1 class="text-2x1 font-bold mb-3">Conteúdo Complementar</h1>
+        <p class="font-semibold">SCRUM: VALORES E PRINCÍPIOS</p>
+        <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
+        <a href="./Módulo 1 - Seção 2.pdf" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">
+          Baixar arquivo
+        </a>
+      </div>
+
+      <!-- Navegação -->
+      <div class="flex justify-between mt-8">
+        <a href="./modulo1.html" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
+        <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
+      </div>
+
+    </section>
+  </main>
+
+   <!-- Rodapé -->
+  <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
+</html>

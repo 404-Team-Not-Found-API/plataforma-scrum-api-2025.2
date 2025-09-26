@@ -3,24 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Módulo 1 - Seção 1</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+    .footer {
+    background-color: #051E30;
+    padding: 2rem 0;
+    text-align: center;
+}
 
+.footer-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+</style>
 </head>
-<body>
+
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
     <header>
         <div id="navbar"></div>
-    </header>
- 
-    <h1>Página do módulo 1</h1>
- 
-    <script>
-        fetch("navbarModulos.html")
-        .then(res => res.text())
-        .then(data => {document.getElementById("navbar").innerHTML = data;})
-    </script>
-   
+
+<script>
+  fetch("navbarModulos.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+
+      // Recarrega os eventos do menu depois de inserir
+      const menuBtn = document.querySelector('.menu-btn');
+      const dropdown = document.getElementById('menuDropdown');
+
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+    });
+</script>
+</header>
+  <main class="flex-1 px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
+
+    <!-- Conteúdo -->
+    <section class="flex-1 space-y-8">
+
+      <!-- Título -->
+      <div>
+        <h1 class="text-3xl font-extrabold mb-3">Valores e Princípios: Manifesto Ágil</h1>
+        <h2 class="text-xl font-semibold mb-3">Módulo 1 - Seção 1</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Nada melhor do que aprender sobre o surgimento do “Manifesto Ágil” e seus princípios do que com uma história ilustrada, não é mesmo? Se após a leitura da história você ainda quiser um documento contendo todo o conteúdo desse módulo no formato padrão, fique tranquilo, é só baixar o PDF anexado ao final da página.
+        </p>
+      </div>
+
+      <!-- Viewer de arquivo -->
+       <iframe src="../static/assets/Uma história ilustrada sobre o manifesto ágil.pdf" width="100%" height="600" title="Uma história ilustrada sobre o manifesto ágil"></iframe>
+
+      <!-- Conteúdo complementar -->
+      <div class="border-t pt-6">
+        <h3 class="text-lg font-bold mb-2">Conteúdo Complementar</h3>
+        <p class="font-semibold">VALORES E PRINCÍPIOS DO MANIFESTO ÁGIL</p>
+        <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
+        <a href="../static/assets/Módulo 1 - Seção 1.pdf" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">
+          Baixar arquivo
+        </a>
+      </div>
+
+      <!-- Navegação -->
+      <div class="flex justify-end mt-8" >
+        <a href="modulo1s2.html" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+        <div class="container">
+            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+
 </body>
 </html>

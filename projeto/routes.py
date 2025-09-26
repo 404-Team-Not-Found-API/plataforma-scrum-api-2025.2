@@ -12,3 +12,7 @@ def conteudo():
 @app.route('/conteudo/modulo1')
 def modulo1():
     return render_template('modulo1.html') 
+
+@app.route('/conteudo/modulo1/modulo1s2')
+def modulo1():
+    return render_template('modulo1s2.html') 
