@@ -1,5 +1,5 @@
 <p align="center">
-      <img src="/api/src/static/assets/404.png" alt="Logo do Time 404" width="200">
+      <img src="/api/static/assets/404.png" alt="Logo do Time 404" width="200">
       <h2 align="center"> 404: Team Not Found </h2>
 </p>
 
