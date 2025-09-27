@@ -1,0 +1,481 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: hsl(215, 30%, 15%);
+    background-color: hsl(240, 25%, 98%);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+
+.hero-section {
+    background-color: #fff(240, 25%, 98%);
+    padding: 4rem 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #051E30(215, 85%, 25%);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    color: #051E30(215, 15%, 50%);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 32rem;
+    font-weight: bold;
+}
+
+.hero-button {
+    background-color: hsl(180, 45%, 60%);
+    color: hsl(215, 30%, 15%);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: hsl(180, 45%, 55%);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.illustration {
+    max-width: 100%;
+    height: auto;
+    width: 24rem;
+}
+
+.features-section {
+    background-color:#0F5F96;
+    padding: 4rem 0;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+}
+
+.feature-item {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.feature-icon {
+    margin: 0 auto 1rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.icon-placeholder {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon svg,
+.feature-icon img,
+.feature-icon i {
+    width: 2rem;
+    height: 2rem;
+    color: hsl(215, 85%, 25%);
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+#scrum-section {
+    background: linear-gradient(180deg, #0F5F96 0%, #051E30 100%);
+    padding: 4rem 0;
+}
+
+.scrum-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.scrum-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.scrum-description {
+    font-size: 1.125rem;
+    color: #fff;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.benefits-list {
+    margin-bottom: 2rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefit-icon svg {
+    width: 1rem;
+    height: 1rem;
+    color: hsl(215, 30%, 15%);
+}
+
+.benefit-text {
+    color: #fff;
+    font-weight: 500;
+}
+
+.scrum-button {
+    background-color: hsl(180, 45%, 60%);
+    color: hsl(215, 30%, 15%);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scrum-button:hover {
+    background-color: hsl(180, 45%, 55%);
+    transform: translateY(-2px);
+}
+
+.scrum-image {
+    display: flex;
+    justify-content: center;
+}
+
+.diagram {
+    max-width: 100%;
+    height: auto;
+    width: 20rem;
+}
+
+.footer {
+    background-color: #051E30;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        text-align: center;
+        margin: 0 auto 1.5rem;
+    }
+    
+    .hero-button {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+    }
+    
+    .illustration {
+        width: 18rem;
+        margin-top: 2rem;
+    }
+    
+    .features-section {
+        padding: 3rem 0;
+    }
+    
+    .features-container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    
+    .feature-item {
+        max-width: 300px;
+    }
+    
+    .scrum-section {
+        padding: 3rem 0;
+    }
+    
+    .scrum-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .scrum-description {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .benefits-list {
+        margin-bottom: 1.5rem;
+    }
+    
+    .scrum-button {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+    }
+    
+    .diagram {
+        width: 16rem;
+        margin-top: 2rem;
+    }
+    
+    .footer {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .features-container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .feature-item {
+        flex: 0 1 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .hero-title {
+        font-size: 3.75rem;
+        text-align: left;
+    }
+    
+    .hero-description {
+        text-align: left;
+        margin: 0 0 2rem 0;
+    }
+    
+    .hero-button {
+        margin: 0;
+    }
+    
+    .hero-image {
+        justify-content: flex-end;
+    }
+    
+    .illustration {
+        width: 100%;
+        max-width: 24rem;
+        margin-top: 0;
+    }
+    
+    .scrum-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .scrum-title {
+        font-size: 3rem;
+        text-align: left;
+    }
+    
+    .scrum-description {
+        text-align: left;
+    }
+    
+    .scrum-button {
+        margin: 0;
+    }
+    
+    .scrum-image {
+        justify-content: flex-end;
+    }
+    
+    .diagram {
+        width: 24rem;
+        margin-top: 0;
+    }
+} 
+
+@media (max-width: 480px) {
+    .container, 
+    .nav-container {
+        padding: 0 0.25rem; /* menos espaço lateral */
+    }
+
+    /* Navbar */
+    .navbar-brand img {
+        max-height: 40px; /* logo menor */
+    }
+
+    .navbar button {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 1.1rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .hero-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+        max-width: 95%;
+        margin: 0 auto 0.8rem;
+        text-align: center;
+    }
+
+    .hero-button {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .illustration {
+        max-width: 10rem;
+        width: 100%;
+        margin: 1rem auto 0;
+    }
+
+    /* Features */
+    .features-container {
+        gap: 1rem;
+    }
+
+    .feature-item {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .feature-title {
+        font-size: 0.85rem;
+    }
+
+    /* Scrum */
+    .scrum-title {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .scrum-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+        max-width: 95%;
+        margin: 0 auto 0.8rem;
+        text-align: center;
+    }
+
+    .scrum-button {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .diagram {
+        max-width: 10rem;
+        width: 100%;
+        margin: 1rem auto 0;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 0.65rem;
+        max-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
