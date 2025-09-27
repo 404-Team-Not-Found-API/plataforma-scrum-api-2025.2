@@ -18,7 +18,7 @@
   <ul>
     {% for id, concluido in modulos.items() %}
       <li class="{{ 'concluido' if concluido else '' }}">
-        <a href="{{ url_for('modulo', modulo_id=id) }}">
+        <a href="{{ url_for('routes.modulo', modulo_id=id) }}">
           Módulo {{ id }}
         </a>
       </li>
