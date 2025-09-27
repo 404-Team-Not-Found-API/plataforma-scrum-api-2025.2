@@ -124,25 +124,43 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
+- **app/**: código-fonte principal da aplicação web desenvolvida em Flask;
+
+  - **src/**: código fonte da aplicação;
+
+    - **main.py**: arquivo principal de inicialização da aplicação Flask;
+
+    - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
+
+    - **__init__.py**: arquivo de inicialização do módulo da aplicação;
+
+    - **static/**: recursos estáticos utilizados na aplicação;
+
+      - **assets/**: imagens, PDFs e outros arquivos estáticos;
+
+      - **bootstrap-5.3.8-dist/**: arquivos do framework Bootstrap para estilização;
+
+      - **styles/**: estilos CSS personalizados;
+
+    - **templates/**: templates HTML utilizados para renderizar as páginas da aplicação;
+
+      - **conteudo.html**: template para exibição de conteúdo dos módulos;
+
+      - **index.html**: template da página inicial da aplicação;
+
+      - **modulo1.html**: template específico para o primeiro módulo do curso;
+
+      - **modulo1s2.html**: template para a segunda seção do primeiro módulo;
+
+      - **navbar.html**: template da barra de navegação;
+
+      - **navbarModulos.html**: template da barra de navegação para módulos;
+
 - **documents/**: contém todos os documentos do projeto, como especificações, processos e documentação técnica;
 
-- **projeto/**: código-fonte principal da aplicação web desenvolvida em Flask;
+  - **cliente/**: documentos relacionados ao cliente, como diagramas UML;
 
-  - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
-
-  - **static/assets/**: recursos estáticos utilizados na aplicação, como imagens e outros arquivos;
-
-  - **templates/**: templates HTML utilizados para renderizar as páginas da aplicação;
-
-    - **conteudo.html**: template para exibição de conteúdo dos módulos;
-
-    - **home.html**: template da página inicial da aplicação;
-
-    - **modulo1.html**: template específico para o primeiro módulo do curso.
-
-- **main.py**: arquivo principal de inicialização da aplicação Flask;
-
-- **requirements.txt**: arquivo contendo as dependências Python necessárias para o projeto;
+  - **processo/**: processos e documentação técnica, incluindo padrões de commit, estratégias de branches e sprints;
 
 - **README.md**: arquivo de documentação principal do projeto;
 
@@ -153,22 +171,37 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 Diagrama de estrutura das pastas: <br>
 
 ```
+├───app                 # Código-fonte principal da aplicação
+│   └───src             # Código fonte da aplicação
+│       ├───__init__.py # Inicialização do módulo
+│       ├───main.py     # Arquivo principal da aplicação
+│       ├───routes.py   # Definições das rotas da aplicação
+│       ├───static      # Arquivos estáticos
+│       │   ├───assets  # Recursos estáticos (imagens, PDFs)
+│       │   ├───bootstrap-5.3.8-dist # Framework Bootstrap
+│       │   └───styles  # Estilos CSS
+|       |
+│       └───templates   # Templates HTML
+│           ├───conteudo.html     # Template de conteúdo
+│           ├───index.html        # Página inicial
+│           ├───modulo1.html      # Primeiro módulo
+│           ├───modulo1s2.html    # Segunda seção do módulo 1
+│           ├───navbar.html       # Barra de navegação
+│           └───navbarModulos.html # Barra de navegação para módulos
+|
 ├───documents           # Documentação do projeto
 │   ├───cliente         # Documentos para o cliente
+│   │   └───uml1.pdf    # Diagrama UML
 │   └───processo        # Processos e documentação técnica
-│
-├───projeto             # Código-fonte principal da aplicação
-│   ├───routes.py       # Definições das rotas da aplicação
-│   ├───static          # Arquivos estáticos
-│   │   └───assets      # Recursos estáticos (imagens, etc.)
-│   └───templates       # Templates HTML
-│       ├───conteudo.html     # Template de conteúdo
-│       ├───home.html         # Página inicial
-│       └───modulo1.html      # Primeiro módulo
-│
-├───main.py             # Arquivo principal da aplicação
+│       ├───Desafio Academico - 1_ADS 27082025-2.pdf # Desafio acadêmico
+│       ├───dor_e_dod.md      # Definição de Pronto
+│       ├───estrategia-de-branches.md # Estratégia de branches
+│       ├───padrao-de-commit.md # Padrão de commits
+│       └───sprints            # Documentação das sprints
+│           ├───.gitkeep       # Placeholder
+│           └───sprint1.md     # Documentação da Sprint 1
+|
 ├───README.md           # Documentação do projeto
-├───requirements.txt    # Dependências Python
 └───.gitignore          # Arquivos ignorados pelo Git
 ```
 <br><br>
