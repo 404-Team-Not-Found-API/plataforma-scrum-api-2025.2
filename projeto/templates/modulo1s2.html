@@ -25,14 +25,10 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
 
- <header>
-        <div id="navbar"></div>
+{% include "navbarModulos.html" %}
 
+{% block content %}
 <script>
-  fetch("navbarModulos.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar").innerHTML = data;
 
       // Recarrega os eventos do menu depois de inserir
       const menuBtn = document.querySelector('.menu-btn');
@@ -48,7 +44,6 @@
           dropdown.classList.remove('show');
         }
       });
-    });
 </script>
 </header>
 
@@ -144,16 +139,16 @@
         <h1 class="text-2x1 font-bold mb-3">Conteúdo Complementar</h1>
         <p class="font-semibold">SCRUM: VALORES E PRINCÍPIOS</p>
         <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
-        <a href="../static/assets/Módulo 1 - Seção 2.pdf.pdf" target="_blank">
+        <a href="/static/assets/Módulo 1 - Seção 2.pdf.pdf" target="_blank">
           <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
         </a>
       </div>
 
       <!-- Navegação -->
       <div class="flex justify-between mt-8">
-        <a href="./modulo1.html" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
-        <a href="{{ url_for('concluir', modulo_id=modulo_id) }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
-      </div>
+        <a href="{{ url_for('modulo1') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
+        <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
+          </div>
 
     </section>
   </main>
@@ -164,6 +159,6 @@
             <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
         </div>
     </footer>
-
+{% endblock %}
 </body>
 </html>

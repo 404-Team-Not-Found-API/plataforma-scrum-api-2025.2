@@ -87,16 +87,18 @@
 </style>
 
 <nav class="navbar bg-body-tertiary">
-    <a class="navbar-brand"><img src="../static/assets/404.png" alt="Logo" class="img-fluid"></a>
+    <a class="navbar-brand"><img src="/static/assets/404.png" alt="Logo" class="img-fluid"></a>
      
     <div class="dropdown" id="menuDropdown">
       <button class="menu-btn">☰</button>
       <div class="dropdown-content">
-        <a href="index.html">⬅ Voltar Home</a>
-        <a href="modulo1.html">Módulo 1 - Seção 1 </a>
+        <a href="{{ url_for('homepage') }}">⬅ Voltar Home</a>
+        <a href="{{ url_for('modulo1') }}">Módulo 1 - Seção 1 </a>
           <div class="submenu">
-            <a href="modulo1s2.html">Seção 2</a>
+            <a href="{{ url_for('modulo1s2') }}">Seção 2</a>
           </div>
       </div>
     </div>
+    {% block navbar_extra %}{% endblock %}
 </nav>          
+ 

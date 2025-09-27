@@ -24,14 +24,15 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
-    <header>
-        <div id="navbar"></div>
 
+  
+{% include "navbarModulos.html" %}
+{% block content %}
 <script>
-  fetch("navbarModulos.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar").innerHTML = data;
+  //fetch("navbarModulos.html")
+  // .then(response => response.text())
+  //  .then(data => {
+   //   document.getElementById("navbar").innerHTML = data;
 
       // Recarrega os eventos do menu depois de inserir
       const menuBtn = document.querySelector('.menu-btn');
@@ -47,7 +48,7 @@
           dropdown.classList.remove('show');
         }
       });
-    });
+
 </script>
 </header>
   <main class="flex-1 px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
@@ -80,7 +81,7 @@
 
       <!-- Navegação -->
       <div class="flex justify-end mt-8" >
-        <a href="modulo1s2.html" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
+        <a href="{{ url_for('modulo1s2') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
       </div>
 
     </section>
@@ -92,7 +93,7 @@
             <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
         </div>
     </footer>
-
+{% endblock %}
 
 </body>
 </html>

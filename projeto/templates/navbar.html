@@ -1,4 +1,11 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{% block title %}My Flask App{% endblock %}</title>
+
 <style>
 .navbar {
   display: flex;       
@@ -67,11 +74,20 @@
   transform: translateY(-1px);
 }
 
+.scrum-button{
+  text-decoration: none;
+}
+
 </style>
+</head>
+<body>
 
 <nav class="navbar bg-body-tertiary">
     <a class="navbar-brand"><img src="../static/assets/404.png" alt="Logo" class="img-fluid"></a>
       <div class="navbar-buttons">
-      <button onclick="window.location.href='modulo1.html'" class="scrum-button">Comece agora</button>
+         <a href="{{ url_for('modulo1') }}" class="scrum-button">Comece agora</a>
+        {% block navbar_extra %}{% endblock %}
     </div>
-</nav>          
+</nav>     
+</body>
+</html>     

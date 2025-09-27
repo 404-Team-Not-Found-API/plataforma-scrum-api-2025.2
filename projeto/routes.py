@@ -11,10 +11,13 @@ def homepage():
 def conteudo():
     return render_template('conteudo.html') 
 
+
 @app.route('/conteudo/modulo1')
 def modulo1():
-    return render_template('modulo1.html') 
+    return render_template('modulo1.html')
+
 
 @app.route('/conteudo/modulo1/modulo1s2')
-def modulo1():
-    return render_template('modulo1s2.html') 
+def modulo1s2():
+    return render_template('modulo1s2.html')
+

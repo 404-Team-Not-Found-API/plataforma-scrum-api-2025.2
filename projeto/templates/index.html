@@ -11,10 +11,12 @@
 </head>
 <body>
 
-    <header>
-        <div id="navbar"></div>
-    </header>
+{% include "navbar.html" %}
 
+    <!--<header>
+        <div id="navbar"></div>
+    </header>-->
+{% block content %}
     <main>
         <section class="hero-section">
             <div class="container">
@@ -98,7 +100,7 @@
                             </div>
                         </div>
                         
-                        <button onclick="window.location.href='modulo1.html'" class="scrum-button">Saiba mais →</button>
+                        <a href="{{ url_for('modulo1') }}" class="scrum-button" style="text-decoration:none;">Saiba mais →</a>
                     </div>
                     
                     <div class="scrum-image">
@@ -115,10 +117,12 @@
         </div>
     </footer>
 
-    <script>
+    <!--<script>
         fetch("navbar.html")
         .then(res => res.text())
         .then(data => {document.getElementById("navbar").innerHTML = data;})
-    </script>
+    </script>-->
+    {% endblock %}
+
 </body>
 </html>
