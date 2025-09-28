@@ -124,37 +124,35 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
-- **app/**: código-fonte principal da aplicação web desenvolvida em Flask;
+- **api/**: código-fonte principal da aplicação web desenvolvida em Flask;
 
-  - **src/**: código fonte da aplicação;
+  - **main.py**: arquivo principal de inicialização da aplicação Flask;
 
-    - **main.py**: arquivo principal de inicialização da aplicação Flask;
+  - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
 
-    - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
+  - **__init__.py**: arquivo de inicialização do módulo da aplicação;
 
-    - **__init__.py**: arquivo de inicialização do módulo da aplicação;
+  - **static/**: recursos estáticos utilizados na aplicação;
 
-    - **static/**: recursos estáticos utilizados na aplicação;
+    - **assets/**: imagens, PDFs e outros arquivos estáticos;
 
-      - **assets/**: imagens, PDFs e outros arquivos estáticos;
+    - **bootstrap-5.3.8-dist/**: arquivos do framework Bootstrap para estilização;
 
-      - **bootstrap-5.3.8-dist/**: arquivos do framework Bootstrap para estilização;
+    - **styles/**: estilos CSS personalizados;
 
-      - **styles/**: estilos CSS personalizados;
+  - **templates/**: templates HTML utilizados para renderizar as páginas da aplicação;
 
-    - **templates/**: templates HTML utilizados para renderizar as páginas da aplicação;
+    - **conteudo.html**: template para exibição de conteúdo dos módulos;
 
-      - **conteudo.html**: template para exibição de conteúdo dos módulos;
+    - **index.html**: template da página inicial da aplicação;
 
-      - **index.html**: template da página inicial da aplicação;
+    - **modulo1.html**: template específico para o primeiro módulo do curso;
 
-      - **modulo1.html**: template específico para o primeiro módulo do curso;
+    - **modulo1s2.html**: template para a segunda seção do primeiro módulo;
 
-      - **modulo1s2.html**: template para a segunda seção do primeiro módulo;
+    - **navbar.html**: template da barra de navegação;
 
-      - **navbar.html**: template da barra de navegação;
-
-      - **navbarModulos.html**: template da barra de navegação para módulos;
+    - **navbarModulos.html**: template da barra de navegação para módulos;
 
 - **documents/**: contém todos os documentos do projeto, como especificações, processos e documentação técnica;
 
@@ -164,6 +162,10 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
 - **README.md**: arquivo de documentação principal do projeto;
 
+- **requirements.txt**: arquivo com as dependências Python do projeto;
+
+- **vercel.json**: arquivo de configuração para deploy no Vercel;
+
 - **.gitignore**: arquivo que define quais arquivos e pastas devem ser ignorados pelo Git.
 
 <br><br>
@@ -171,28 +173,26 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 Diagrama de estrutura das pastas: <br>
 
 ```
-├───app                 # Código-fonte principal da aplicação
-│   └───src             # Código fonte da aplicação
-│       ├───__init__.py # Inicialização do módulo
-│       ├───main.py     # Arquivo principal da aplicação
-│       ├───routes.py   # Definições das rotas da aplicação
-│       ├───static      # Arquivos estáticos
-│       │   ├───assets  # Recursos estáticos (imagens, PDFs)
-│       │   ├───bootstrap-5.3.8-dist # Framework Bootstrap
-│       │   └───styles  # Estilos CSS
-|       |
-│       └───templates   # Templates HTML
-│           ├───conteudo.html     # Template de conteúdo
-│           ├───index.html        # Página inicial
-│           ├───modulo1.html      # Primeiro módulo
-│           ├───modulo1s2.html    # Segunda seção do módulo 1
-│           ├───navbar.html       # Barra de navegação
-│           └───navbarModulos.html # Barra de navegação para módulos
+├───api                 # Código-fonte principal da aplicação
+│   ├───__init__.py    # Inicialização do módulo
+│   ├───main.py        # Arquivo principal da aplicação
+│   ├───routes.py      # Definições das rotas da aplicação
+│   ├───static         # Arquivos estáticos
+│   │   ├───assets     # Recursos estáticos (imagens, PDFs)
+│   │   ├───bootstrap-5.3.8-dist # Framework Bootstrap
+│   │   └───styles     # Estilos CSS
+│   └───templates      # Templates HTML
+│       ├───conteudo.html     # Template de conteúdo
+│       ├───index.html        # Página inicial
+│       ├───modulo1.html      # Primeiro módulo
+│       ├───modulo1s2.html    # Segunda seção do módulo 1
+│       ├───navbar.html       # Barra de navegação
+│       └───navbarModulos.html # Barra de navegação para módulos
 |
 ├───documents           # Documentação do projeto
-│   ├───cliente         # Documentos para o cliente
-│   │   └───uml1.pdf    # Diagrama UML
-│   └───processo        # Processos e documentação técnica
+│   ├───cliente        # Documentos para o cliente
+│   │   └───uml1.pdf   # Diagrama UML
+│   └───processo       # Processos e documentação técnica
 │       ├───Desafio Academico - 1_ADS 27082025-2.pdf # Desafio acadêmico
 │       ├───dor_e_dod.md      # Definição de Pronto
 │       ├───estrategia-de-branches.md # Estratégia de branches
@@ -202,7 +202,9 @@ Diagrama de estrutura das pastas: <br>
 │           └───sprint1.md     # Documentação da Sprint 1
 |
 ├───README.md           # Documentação do projeto
-└───.gitignore          # Arquivos ignorados pelo Git
+├───requirements.txt    # Dependências Python
+├───vercel.json        # Configuração Vercel
+└───.gitignore         # Arquivos ignorados pelo Git
 ```
 <br><br>
 
@@ -268,7 +270,7 @@ Este projeto está configurado para deploy automático no Vercel. Para acessar a
 **1.** Acesse a URL de produção:
 
 ```
-Em Desenvolvimento
+https://plataforma-scrum-api-2025-2.vercel.app
 ```
 
 **2.** Para fazer deploy de uma nova versão:
