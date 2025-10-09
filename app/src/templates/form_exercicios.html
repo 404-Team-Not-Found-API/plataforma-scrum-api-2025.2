@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">{{ titulo }}</h1>
+    <div class="card shadow-sm p-4">
+        <p class="lead">{{ enunciado }}</p>
+
+        <form method="POST">
+            {% for alternativa in alternativas %}
+            <div class="form-check my-2">
+                <input class="form-check-input" type="radio" name="resposta" value="{{ alternativa }}" id="alt{{ loop.index }}" required>
+                <label class="form-check-label" for="alt{{ loop.index }}">{{ alternativa }}</label>
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary mt-3">Enviar resposta</button>
+        </form>
+
+        {% if resultado %}
+        <div class="alert mt-4 {% if '✅' in resultado %}alert-success{% else %}alert-danger{% endif %}">
+            {{ resultado }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
