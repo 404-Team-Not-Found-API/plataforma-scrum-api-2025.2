@@ -29,10 +29,6 @@
 {% include "navbarModulos.html" %}
 {% block content %}
 <script>
-  //fetch("navbarModulos.html")
-  // .then(response => response.text())
-  //  .then(data => {
-   //   document.getElementById("navbar").innerHTML = data;
 
       // Recarrega os eventos do menu depois de inserir
       const menuBtn = document.querySelector('.menu-btn');
@@ -81,7 +77,7 @@
 
       <!-- Navegação -->
       <div class="flex justify-end mt-8" >
-        <a href="{{ url_for('routes.modulo1s2') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
+        <a href="{{ url_for('routes.formulario', modulo_nome='modulo1s2') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
       </div>
 
     </section>
