@@ -27,7 +27,7 @@
 
 {% include "navbarModulos.html" %}
 
-{% block content %}
+
 <script>
 
       // Recarrega os eventos do menu depois de inserir
@@ -147,18 +147,22 @@
       <!-- Navegação -->
       <div class="flex justify-between mt-8">
         <a href="{{ url_for('routes.modulo1') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
-        <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
-          </div>
+    <a href="{{ url_for('routes.mostrar_modulo', modulo_nome='modulo1') }}">
+        <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">
+            Fazer Exercício
+        </button>
+    </a>
+</div>
+
 
     </section>
   </main>
-
    <!-- Rodapé -->
   <footer class="footer">
         <div class="container">
             <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
         </div>
     </footer>
-{% endblock %}
+
 </body>
 </html>
