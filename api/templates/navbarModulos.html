@@ -93,10 +93,12 @@
       <button class="menu-btn">☰</button>
       <div class="dropdown-content">
         <a href="{{ url_for('routes.homepage') }}">⬅ Voltar Home</a>
-        <a href="{{ url_for('routes.modulo1') }}">Módulo 1 - Seção 1 </a>
+        <a href="{{ url_for('routes.modulo1') }}">Módulo 1</a>
           <div class="submenu">
+            <a href="{{ url_for('routes.modulo1') }}">Seção 1</a>
             <a href="{{ url_for('routes.modulo1s2') }}">Seção 2</a>
           </div>
+        <a href="{{ url_for('routes.modulo2') }}">Módulo 2</a>
       </div>
     </div>
     {% block navbar_extra %}{% endblock %}

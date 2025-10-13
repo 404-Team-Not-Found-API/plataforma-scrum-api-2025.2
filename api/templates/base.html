@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}404 - Curso de Scrum{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block head_extra %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+
+    {% block navbar %}
+        {% include "navbar.html" %}
+    {% endblock %}
+
+    <main class="flex-1">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer" style="background-color: #051E30; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p class="footer-text" style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem;">Copyright © 2025 | Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
+</html>

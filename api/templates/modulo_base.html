@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    {% include "navbarModulos.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
+    <section class="flex-1 space-y-8">
+        <div>
+            <!-- A estrutura abaixo pega os dados do dicionário de cada rota e passa as informações de acordo com cada um -->
+            <h1 class="text-3xl font-extrabold mb-3">{{ titulo_modulo }}</h1>
+            <!-- Não há conteúdo fixo, apenas espaços reservados, permitindo modularização -->
+            {% if numero_secao %}
+              <h2 class="text-xl font-semibold mb-3">Módulo {{ numero_modulo }} - Seção {{ numero_secao }}</h2>
+            {% else %}
+              <h2 class="text-xl font-semibold mb-3">Módulo {{ numero_modulo }}</h2>
+            {% endif %}
+            <p class="text-gray-700 leading-relaxed">
+                {{ descricao_secao }}
+            </p>
+        </div>
+
+        {% block modulo_content %}
+        {% endblock %}
+
+        <!-- Só mostra os exercícios se a condição for verdadeira -->
+        {% if mostrar_exercicios %}
+            {% include "_exercicios.html" %}
+        {% endif %}
+
+        <!-- Só mostra o conteúdo complementar se a condição for verdadeira -->
+        {% if conteudo_complementar %}
+          <div class="border-t pt-6">
+              <h3 class="text-lg font-bold mb-2">Conteúdo Complementar</h3>
+              <p class="font-semibold">{{ titulo_complementar }}</p>
+              <p class="text-gray-600 mb-4">Documento para aprofundar os estudos do módulo.</p>
+              <a href="{{ url_download_complementar }}" target="_blank">
+                <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
+              </a>
+          </div>
+        {% endif %}
+
+        <div class="flex justify-between mt-8">
+            {% if url_anterior %}
+                <a href="{{ url_anterior }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
+            {% else %}
+                <span></span> {# Mantém o botão da direita no lugar #}
+            {% endif %}
+
+            {% if url_proximo %}
+                 <a href="{{ url_proximo }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próximo →</a>
+            {% else %}
+                <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+<!-- Script do menu sanduíche -->
+<script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const dropdown = document.getElementById('menuDropdown');
+  
+    if (menuBtn && dropdown) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+  
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+    }
+  </script>
+{% endblock %}
