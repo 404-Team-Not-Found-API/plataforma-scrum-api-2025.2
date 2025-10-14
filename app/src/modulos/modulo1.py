@@ -18,7 +18,7 @@ modulo1_perguntas = [
             "Eficiência.",
             "Lucratividade."
         ],
-        "correta": 2,
+        "correta": 4,
         "explicacao": "Os três pilares mencionados são: Agilidade, Coletividade e Eficiência.Lucratividade não é um dos pilares fundamentais apresentados."
     },
     {
@@ -40,7 +40,7 @@ modulo1_perguntas = [
             "Times auto-organizados trabalhando de forma coletiva.",
             "Scrum Master define todas as tarefas de cada pessoa do time de desenvolvimento."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "A Coletividade no Scrum é baseada em times auto-organizados que trabalham de forma colaborativa."
     },
     {
@@ -51,7 +51,7 @@ modulo1_perguntas = [
             "Maximizar a produtividade e minimizar desperdícios no processo.",
             "Reduzir a qualidade para entregar mais rápido."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "Eficiência siginifica maximizar a produtividade e minimizar desperdícios no processo, mantendo a qualidade."
     },
     {
@@ -84,7 +84,7 @@ modulo1_perguntas = [
             "Produzir resultados concretos e contínuos.",
             "Trabalhar sem metas específicas."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "Entrega de Valor no Scrum significa produzir resultados concretos e contínuos que agregam valor ao cliente."
     }
 ]

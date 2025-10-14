@@ -1,113 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercícios</title>
-    <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../static/styles/form.css">
-
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios</title>
+  <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../static/styles/form.css">
+  <style>
     .footer {
-    background-color: #051E30;
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.footer-text {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.875rem;
-}
-
-</style>
+      background-color: #051E30;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .footer-text {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+  {% include "navbarModulos.html" %}
 
-  
-{% include "navbarModulos.html" %}
-<script>
-
-      // Recarrega os eventos do menu depois de inserir
-      const menuBtn = document.querySelector('.menu-btn');
-      const dropdown = document.getElementById('menuDropdown');
-
+  <script>
+    // Script do menu dropdown
+    const menuBtn = document.querySelector('.menu-btn');
+    const dropdown = document.getElementById('menuDropdown');
+    if (menuBtn && dropdown) {
       menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.classList.toggle('show');
       });
-
       document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('show');
-        }
+        if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
       });
+    }
+  </script>
 
-</script>
-</header>
   <main class="flex-1 px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
-
-    <!-- Conteúdo -->
     <section class="flex-1 space-y-8">
 
-{% block content %}
-<div class="min-h-screen flex flex-col items-center justify-center py-10 px-4 bg-gray-50 text-gray-900">
-  <div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
-    <h2 class="text-2xl font-bold mb-6 text-center">Questão {{ current_index + 1 }} de {{ total }}</h2>
+      {% block content %}
+      <div class="min-h-screen flex flex-col items-center justify-center py-10 px-4 bg-gray-50 text-gray-900">
+        <div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+          <h2 class="text-2xl font-bold mb-6 text-center">
+            Questão {{ current_index + 1 }} de {{ total }}
+          </h2>
 
-<!-- Barra de progresso -->
-<div class="mb-6">
-  <div class="progress h-4 rounded-full bg-gray-200">
-    <div class="progress-bar bg-emerald-500" role="progressbar"
-         style="width: {{ ((current_index + 1) / total * 100) | round(0) ~ '%' if total else '0%' }};"
-         aria-valuenow="{{ current_index + 1 }}" aria-valuemin="0" aria-valuemax="{{ total }}">
-    </div>
+          <!-- Barra de progresso -->
+          <div class="mb-6">
+            <div class="progress h-4 rounded-full bg-gray-200">
+              <div class="progress-bar bg-emerald-500" role="progressbar"
+                style="width: {{ ((current_index + 1) / total * 100) | round(0) ~ '%' if total else '0%' }};"
+                aria-valuenow="{{ current_index + 1 }}" aria-valuemin="0" aria-valuemax="{{ total }}">
+              </div>
+            </div>
+            <p class="text-sm text-gray-700 mt-1 text-center">
+              {{ current_index + 1 if total else 0 }} de {{ total }}
+            </p>
+          </div>
+
+  <form method="POST" class="space-y-3">
+    <p class="text-lg font-medium mb-4">{{ pergunta.pergunta }}</p>
+  {% for alt in pergunta.alternativas %}
+  <div>
+    <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer
+      {% if resposta_usuario == loop.index %} bg-emerald-50 border-emerald-400 {% endif %}">
+      <input type="radio" name="resposta" value="{{ loop.index }}"
+        class="form-radio h-5 w-5 text-emerald-500"
+        {% if resposta_usuario == loop.index %} checked {% endif %}
+        {% if feedback %} disabled {% endif %}>
+      <span>{{ alt }}</span>
+    </label>
   </div>
-  <p class="text-sm text-gray-700 mt-1 text-center">
-    {{ current_index + 1 if total else 0 }} de {{ total }}
-  </p>
-</div>
+  {% endfor %}
 
-    <form method="POST" class="space-y-3">
-      {% for alt in pergunta.alternativas %}
-      <div>
-        <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer">
-          <input type="radio" name="resposta" value="{{ loop.index }}" class="form-radio h-5 w-5 text-emerald-500">
-          <span>{{ alt }}</span>
-        </label>
-      </div>
-      {% endfor %}
-
-      {% if feedback %}
-      <div class="mt-6 p-4 rounded-lg {% if correta %}bg-emerald-100 text-emerald-800{% else %}bg-red-100 text-red-800{% endif %}">
-        <p class="font-semibold">{{ feedback }}</p>
-        <p class="text-sm mt-1">{{ explicacao }}</p>
-      </div>
-      <button type="submit" name="next"
-              class="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
-        Próxima →
-      </button>
-      {% else %}
-      <button type="submit"
-              class="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
-        Confirmar
-      </button>
-      {% endif %}
-    </form>
+  {% if feedback %}
+  <!-- Feedback -->
+  <div class="mt-6 p-4 rounded-lg {% if correta %}bg-emerald-100 text-emerald-800{% else %}bg-red-100 text-red-800{% endif %}">
+    <p class="font-semibold">{{ feedback }}</p>
+    <p class="text-sm mt-1">{{ explicacao }}</p>
   </div>
-</div>
-{% endblock %}
+  {% endif %}
+
+  <!-- Botões -->
+  <div class="flex justify-between mt-6">
+    {% if current_index > 0 %}
+    <button type="submit" name="prev"
+       class="bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200">
+      ← Anterior
+    </button>
+    {% else %}
+    <div></div>
+    {% endif %}
+
+    {% if feedback %}
+    <button type="submit" name="next"
+      class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
+      Próxima →
+    </button>
+    {% else %}
+    <button type="submit"
+      class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
+      Confirmar
+    </button>
+    {% endif %}
+  </div>
+</form>
+        </div>
+      </div>
+      {% endblock %}
     </section>
   </main>
 
   <!-- Rodapé -->
   <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
-        </div>
-    </footer>
-
+    <div class="container">
+      <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
+    </div>
+  </footer>
 </body>
 </html>
