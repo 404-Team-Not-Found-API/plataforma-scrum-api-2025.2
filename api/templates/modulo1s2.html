@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo 1- Seção 2</title>
-  <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-  <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+  <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -139,22 +139,23 @@
         <h1 class="text-2x1 font-bold mb-3">Conteúdo Complementar</h1>
         <p class="font-semibold">SCRUM: VALORES E PRINCÍPIOS</p>
         <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
-        <a href="/static/assets/Módulo 1 - Seção 2.pdf.pdf" target="_blank">
+        <a href="{{ url_for('static', filename='assets/Módulo 1 - Seção 2.pdf.pdf') }}" target="_blank">
           <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
         </a>
       </div>
 
-      <!-- Navegação -->
-      <div class="flex justify-between mt-8">
+      <!-- Seção de Exercícios Integrada -->
+      <div class="border-t pt-10 mt-10">
+        {% include "_componente_exercicio.html" %}
+      </div>
+
+      <!-- Navegação Final da Página -->
+      <div class="flex justify-between mt-12">
         <a href="{{ url_for('routes.modulo1') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
-    <a href="{{ url_for('routes.mostrar_modulo', modulo_nome='modulo1') }}">
-        <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">
-            Fazer Exercício
-        </button>
-    </a>
-</div>
-
-
+        {% if quiz_finalizado %}
+        <a href="{{ url_for('routes.conteudo') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2 rounded-full transition">Próximo Módulo →</a>
+        {% endif %}
+      </div>
     </section>
   </main>
    <!-- Rodapé -->

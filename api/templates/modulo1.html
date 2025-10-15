@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 1 - Seção 1</title>
-    <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -70,14 +70,14 @@
         <h3 class="text-lg font-bold mb-2">Conteúdo Complementar</h3>
         <p class="font-semibold">VALORES E PRINCÍPIOS DO MANIFESTO ÁGIL</p>
         <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
-       <a href="../static/assets/Módulo 1 - Seção 1.pdf" target="_blank">
+       <a href="{{ url_for('static', filename='assets/Módulo 1 - Seção 1.pdf') }}" target="_blank">
           <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
         </a>
       </div>
 
       <!-- Navegação -->
       <div class="flex justify-end mt-8" >
-        <a href="{{ url_for('routes.modulo1s2', modulo_nome='modulo1s2') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
+        <a href="{{ url_for('routes.modulo1s2', start=True) }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próxima →</a>
       </div>
 
     </section>
