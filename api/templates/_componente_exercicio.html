@@ -1,10 +1,9 @@
 {% if quiz_finalizado %}
 <!-- Seção de Resultado Final -->
-<div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-10 text-center mx-auto">
+<div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-6 sm:p-10 text-center mx-auto">
     <h2 class="text-3xl font-bold mb-6">Resultado Final</h2>
     <p class="text-xl mb-4">Você acertou <strong>{{ pontuacao }}</strong> de <strong>{{ total }}</strong> perguntas.</p>
     <div class="mt-6 flex justify-center gap-4">
-        <a href="{{ url_for('routes.modulo1s2') }}"
         <a href="{{ url_for('routes.modulo1s2', _anchor='secao-exercicios') }}"
             class="bg-gray-300 hover:bg-gray-600 text-black px-6 py-3 rounded-full font-semibold">
             Refazer Exercícios
@@ -14,7 +13,7 @@
 
 {% else %}
 <!-- Seção do Formulário de Exercício -->
-<div id="secao-exercicios" class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8 mx-auto">
+<div id="secao-exercicios" class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
     <h2 class="text-2xl font-bold mb-6 text-center">
         Questão {{ current_index + 1 }} de {{ total }}
     </h2>
@@ -55,18 +54,18 @@
         {% endif %}
 
         <!-- Botões -->
-        <div class="flex justify-between mt-6">
+        <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-4 mt-6">
             {% if current_index > 0 %}
             <button type="submit" name="prev"
-                class="bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200">
+                class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200">
                 ← Anterior
             </button>
             {% else %}
-            <div></div>
+            <div class="hidden sm:block"></div> <!-- Espaçador para alinhar à direita em telas maiores -->
             {% endif %}
 
             <button type="submit" name="{{ 'next' if feedback else 'confirm' }}"
-                class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
+                class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
                 {{ 'Próxima →' if feedback else 'Confirmar' }}
             </button>
         </div>

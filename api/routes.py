@@ -25,24 +25,6 @@ def modulo1s2():
     )
 
 
-@bp.route('/modulos/<modulo_nome>', methods=['GET'])
-def mostrar_modulo(modulo_nome):
-    modulos = {
-        "modulo1": modulo1_perguntas,
-        "modulo2": modulo2_perguntas
-    }
-    perguntas = modulos.get(modulo_nome)
-    if not perguntas:
-        return "Módulo não encontrado", 404
-
-    session['current_index'] = 0
-    session['acertos'] = 0
-    session['modulo_nome'] = modulo_nome
-    session['respostas'] = {}
-
-    return redirect(url_for('routes.exercicio', modulo_nome=modulo_nome))
-
-
 @bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
 def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None):
     if redirect_endpoint is None:
