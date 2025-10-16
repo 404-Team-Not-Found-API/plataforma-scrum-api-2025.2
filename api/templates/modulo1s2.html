@@ -25,12 +25,11 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
 
+  
 {% include "navbarModulos.html" %}
 
 
 <script>
-
-      // Recarrega os eventos do menu depois de inserir
       const menuBtn = document.querySelector('.menu-btn');
       const dropdown = document.getElementById('menuDropdown');
 
@@ -38,6 +37,17 @@
         e.stopPropagation();
         dropdown.classList.toggle('show');
       });
+      if (menuBtn && dropdown) {
+          menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('show');
+          });
+          document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+              dropdown.classList.remove('show');
+            }
+          });
+      }
 
       document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target)) {
@@ -47,13 +57,11 @@
 </script>
 </header>
 
-  <!-- Conteúdo principal -->
+
   <main class="flex-1 px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
 
-    <!-- Conteúdo -->
     <section class="flex-1 space-y-8">
 
-      <!-- Título -->
       <div>
         <h1 class="text-4xl font-extrabold mb-3">Scrum: Valores e Princípios</h1><br>
         <h2 class="text-2xl font-semibold mb-3">Módulo 1 - Seção 2</h2><br>
@@ -69,7 +77,7 @@
            2)Horizontais são utilizados na solução de desafios em qualquer área.
 
         </p>
-        <!--Pilares-->
+ 
       </div>
       <div class="border-t pt-6">        
         <h2 class="text-2xl font-bold mb-3">Os Pilares fundamentais</h2>
@@ -139,7 +147,7 @@
         <h1 class="text-2x1 font-bold mb-3">Conteúdo Complementar</h1>
         <p class="font-semibold">SCRUM: VALORES E PRINCÍPIOS</p>
         <p class="text-gray-600 mb-4">Documento para ajudar na revisão do conteúdo do módulo.</p>
-        <a href="{{ url_for('static', filename='assets/Módulo 1 - Seção 2.pdf.pdf') }}" target="_blank">
+        <a href="{{ url_for('routes.download_modulo1_secao2') }}" target="_blank">
           <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
         </a>
       </div>
@@ -153,12 +161,11 @@
       <div class="flex justify-between mt-12">
         <a href="{{ url_for('routes.modulo1') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
         {% if quiz_finalizado %}
-        <a href="{{ url_for('routes.conteudo') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2 rounded-full transition">Próximo Módulo →</a>
+        <a href="{{ url_for('routes.modulo2') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2 rounded-full transition">Próximo Módulo →</a>
         {% endif %}
       </div>
     </section>
   </main>
-   <!-- Rodapé -->
   <footer class="footer">
         <div class="container">
             <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>

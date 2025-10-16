@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Curso de Scrum</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
 </head>
 <body>
 
@@ -30,7 +29,7 @@
                         <button onclick="location.href='#scrum-section'" class="hero-button" >Saiba mais →</button>
                     </div>
                     <div class="hero-image">
-                        <img src="../static/assets/scrum1.png" alt="Scrum methodology illustration" class="illustration">
+                        <img src="{{ url_for('static', filename='assets/scrum1.png') }}" alt="Scrum methodology illustration" class="illustration">
                     </div>
                 </div>
             </div>
@@ -104,7 +103,7 @@
                     </div>
                     
                     <div class="scrum-image">
-                        <img src="../static/assets/scrum2.png" alt="Scrum methodology circular diagram" class="diagram">
+                        <img src="{{ url_for('static', filename='assets/scrum2.png') }}" alt="Scrum methodology circular diagram" class="diagram">
                     </div>
                 </div>
             </div>

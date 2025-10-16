@@ -1,70 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conteúdos</title>
-    <link rel="stylesheet" href="../static/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-  <script src="../static/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
 
-<style>
-    .footer {
-    background-color: #051E30;
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.footer-text {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.875rem;
-}
-</style>
 
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
 
-{% include "navbarModulos.html" %}
-
-<script>
-
-      // Recarrega os eventos do menu depois de inserir
-      const menuBtn = document.querySelector('.menu-btn');
-      const dropdown = document.getElementById('menuDropdown');
-
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('show');
-        }
-      });
-</script>
-</header>
-
-<main>
-  <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Conteúdos do Curso</h1>
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a href="{{ url_for('routes.formulario', modulo_nome='modulo1') }}">Módulo 1 - Papéis do Scrum</a>
-        </li>
-    </ul>
-</div>
-
-
-
-</main>
-
-
- <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
-        </div>
-    </footer>
+  <h1>Lista de Módulos</h1>
+  <ul>
+    {% for id, concluido in modulos.items() %}
+      <li class="{{ 'concluido' if concluido else '' }}">
+        <a href="{{ url_for('routes.modulo', modulo_id=id) }}">
+          Módulo {{ id }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+    <h1>Página de conteúdos</h1>
+   
 </body>
 </html>

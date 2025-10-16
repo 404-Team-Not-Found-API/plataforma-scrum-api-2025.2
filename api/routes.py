@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 
-bp = Blueprint('routes', __name__)
+bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
 
 @bp.route('/')
 def homepage():
@@ -10,23 +10,52 @@ def homepage():
 
 @bp.route('/conteudo')
 def conteudo():
-    return render_template('conteudo.html')
+       return render_template('conteudo.html') 
 
-@bp.route('/modulo1')
+
+@bp.route('/conteudo/modulo1')
 def modulo1():
     return render_template('modulo1.html')
 
-@bp.route('/modulo1s2', methods=['GET', 'POST'])
+
+@bp.route('/conteudo/modulo1/modulo1s2', methods=['GET', 'POST'])
 def modulo1s2():
     return exercicio(
         modulo_nome="modulo1",
         template_name="modulo1s2.html",
-        redirect_endpoint='routes.modulo1s2'
+        redirect_endpoint='routes.modulo1s2',
+        start_quiz=request.args.get('start', 'false').lower() == 'true'
     )
+
+@bp.route('/conteudo/modulo2', methods=['GET', 'POST'])
+def modulo2():
+    return exercicio(
+        modulo_nome="modulo2",
+        template_name="modulo2.html",
+        redirect_endpoint='routes.modulo2',
+        start_quiz=request.args.get('start', 'false').lower() == 'true'
+    )
+
+@bp.route('/download/modulo1-secao1')
+def download_modulo1_secao1():
+    return send_from_directory('static/assets', 'Módulo 1 - Seção 1.pdf', as_attachment=True)
+
+@bp.route('/download/modulo1-secao2')
+def download_modulo1_secao2():
+    return send_from_directory('static/assets', 'Módulo 1 - Seção 2.pdf', as_attachment=True)
+
+
+#@bp.route('/modulo1s2', methods=['GET', 'POST'])
+#def modulo1s2():
+    #return exercicio(
+        #modulo_nome="modulo1",
+        #template_name="modulo1s2.html",
+        #redirect_endpoint='routes.modulo1s2'
+    #)
 
 
 @bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
-def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None):
+def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, start_quiz=False):
     if redirect_endpoint is None:
         redirect_endpoint = 'routes.exercicio'
 
@@ -40,7 +69,7 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
 
     force_start = request.args.get('start', 'false').lower() == 'true'
 
-    if force_start or 'modulo_nome' not in session or session['modulo_nome'] != modulo_nome:
+    if force_start or start_quiz or 'modulo_nome' not in session or session['modulo_nome'] != modulo_nome:
         session['current_index'] = 0
         session['acertos'] = 0
         session['modulo_nome'] = modulo_nome
@@ -76,7 +105,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                     quiz_finalizado=True,
                     pontuacao=pontuacao,
                     total=total,
-                    modulo_nome=modulo_nome)
+                    modulo_nome=modulo_nome,
+                    redirect_endpoint=redirect_endpoint)
 
         elif 'confirm' in request.form:
             resposta_str = request.form.get('resposta')

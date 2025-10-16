@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 2 - Papéis do Scrum</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/modulo2.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+  <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Reseta a fonte para a seção de exercícios, usando uma fonte padrão do sistema */
+    .exercicios, .exercicios * {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <img src="{{url_for('static', filename='assets/404.png')}}" alt="Logo 404" class="logo" />
+
+    <!--BOTÃO MENU-->
+    <button class="menu-btn" id="menuToggle">&#9776;</button>
+
+    <!--MENU LATERAL-->
+    <nav class="menu-lateral" id="menuLateral">
+      <ul>
+        <li><a href="{{url_for('routes.homepage')}}">Início</a></li>
+        <li><a href="{{url_for('routes.conteudo')}}">Conteúdos</a></li>
+        <li><a href="apostila.html">Apostila</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+    <section class="modulo">
+      <h2>Módulo 2: Montando a Equipe – Os papéis e as interações</h2>
+      <p>Descubra os três papéis fundamentais do Scrum e como eles trabalham juntos para criar valor</p>
+
+ <!--BOTÕES-->
+
+      <div class="botoes">        
+        <button class="azul" onclick="abrirModal('Product Owner',`
+        <p>O <strong>Product Owner</strong> é o responsável pela visão do produto, pelo gerenciamento do backlog do produto e por garantir o valor do trabalho realizado pelo time.</p>
+        <p><strong>Principais Responsabilidades:</strong></p>
+        <ul style='text-align:left; margin-left:10%;'>
+          <li>✓ Gerenciar e priorizar o Backlog do Produto</li>
+          <li>✓ Garantir que o time entenda os itens do backlog</li>
+          <li>✓ Tomar decisões sobre o produto</li>
+          <li>✓ Aceitar ou rejeitar incrementos de trabalho</li>
+          <li>✓ Garantir que o backlog do produto seja visível, transparente e claro para todos os interessados</li>
+          </ul>
+        <p><strong>Habilidades Essenciais:</strong></p>
+          <ul style='text-align:left; margin-left:10%;'>
+          <li>✓ Visão estratégica do produto</li>
+          <li>✓ Excelente comunicação</li>
+          <li>✓ Tomada de decisões</li>
+          <li>✓ Conhecimento do negócio</li>
+          <li>✓ Habilidades de negociação</li>
+          </ul>
+          `)">
+          <img src="{{url_for('static', filename='assets/icon1.png')}}" alt="Product Owner">
+          <p>Product Owner</p>
+        </button>
+
+        <button class="roxo" onclick="abrirModal('Scrum Master',`
+        <p>O <strong>Scrum Master</strong> é o responsável por garantir que o Scrum seja entendido e aplicado, para que o time scrum esteja aderindo aos valores do scrum, às práticas e às regras e aos princípios.</p>
+        <p><strong>Principais Responsabilidades:</strong></p>
+        <ul style='text-align:left; margin-left:10%;'>
+          <li>✓Facilitar eventos do scrum</li>
+          <li>✓Orientar o time em práticas ágeis</li>
+          <li>✓Planejar implementações de scrum dentro da organização</li>
+          <li>✓Treinar o time para ser mais produtivo</li>
+          <li>✓Promover melhoria contínua</li>
+          </ul>
+          <p><strong>Habilidades Essenciais:</strong></p>
+          <ul style='text-align:left; margin-left:10%;'>
+          <li>✓Facilitação das reuniões</li>
+          <li>✓Resolução de conflitos</li>
+          <li>✓Mentor do time</li>
+          <li>✓Conhecimento profundo do scrum</li>
+          <li>✓Liderança</li>
+          </ul>
+          `)">
+          <img src="{{url_for('static', filename='assets/icon2.png')}}" alt="Scrum Master">
+          <p>Scrum Master</p>
+        </button>
+
+        <button class="amarelo" onclick="abrirModal('Time de Desenvolvimento',`
+        <p>O <strong>Time de Desenvolvimento</strong> é responsável por executar o desenvolvimento e transformar o backlog do produto em incrementos de funcionalidade, criando um sistema pronto que possa ser entregue ao cliente.</p>
+        <p><strong>Principais Responsabilidades:</strong></p>
+        <ul style='text-align:left; margin-left:10%;'>
+          <li>✓Criar incrementos de produto de alta qualidade</li>
+          <li>✓Auto-organização das tarefas</li>
+          <li>✓Estimar itens do backlog</li>
+          <li>✓Colaborar para atingir os objetivos da Sprint</li>
+          <li>✓Manter padrões técnicos elevados.</li>
+          </ul>
+          <p><strong>Habilidades Essenciais:</strong></p>
+          <ul style='text-align:left; margin-left:10%;'>
+          <li>✓Habilidades técnicas variadas -multidisciplinariedade e interdisciplinariedade</li>
+          <li>✓Trabalho em equipe</li>
+          <li>✓Auto-organização</li>
+          <li>✓Comprometimento com qualidade</li>
+          <li>✓Comunicação efetiva</li>
+          </ul>
+          `)">
+          <img src="{{url_for('static', filename='assets/icon3.png')}}" alt="Team Dev">
+          <p>Team Dev</p>
+        </button>
+      </div>
+    </section>
+
+    <!--CARD-->
+    <div id="meuModal" class="modal">
+      <div class="modal-conteudo">
+        <h2 id="modalTitulo"></h2>
+        <p id="modalTexto"></p>
+        <button class="fechar" onclick="fecharModal()">Fechar</button>
+      </div>
+    </div>
+
+
+    <!-- INTERAÇÕES-->
+    <section class="interacao-papeis">
+      <h2>Como os papéis se interagem?</h2>
+      <div class="blocos-container">
+        <div class="bloco">
+          <strong>Product Owner → Time</strong>
+          <p>Colaboram na classificação de requisitos e aceitação de entregas.</p>
+        </div>
+        
+        <div class="bloco">
+          <strong>Scrum Master → Time</strong>
+          <p>Facilita processos e remove impedimentos do caminho do time.</p>
+        </div>
+        
+        <div class="bloco">
+          <strong>Scrum Master → Product Owner</strong>
+          <p>Apoiam-se mutuamente para maximizar valor e eficiência.</p>
+        </div>
+      </div>
+    </section>
+
+    <!--EXERCICIOS-->
+    <section class="exercicios">
+      <h3>Exercícios de fixação:</h3>
+      <div class="border-t pt-10 mt-10">
+        {% include "_componente_exercicio.html" %}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright © 2025 | Todos os direitos reservados</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='styles/modulo2.js') }}"></script>
+</body>
+</html>
