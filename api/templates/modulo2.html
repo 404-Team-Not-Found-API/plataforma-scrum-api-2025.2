@@ -1,16 +1,32 @@
 {% extends "modulo_base.html" %}
 
-{% block title %}Módulo 2{% endblock %}
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
 
 {% block modulo_content %}
-    <div class="border-t pt-6">
-        <h2 class="text-2xl font-bold mb-3">Exemplo</h2>
-        <p class="text-gray-700 leading-relaxed">
-        Teste de implementação da estrutura dos cards
-        </p>
-    </div>
+    {% import "_macros.html" as macros %}
+
+    {{ macros.section_header("Os Três Papéis Fundamentais", "No Scrum, existem três papéis principais") }}
+    {{ macros.content_block("No Scrum, existem três papéis principais: Product Owner, Scrum Master e Equipe de Desenvolvimento. Cada um tem responsabilidades específicas e trabalha em conjunto para entregar valor ao cliente.") }}
+
     {% for card in cards %}
-        {% include "_content_card.html" %}
+    {{ macros.section_header(card.titulo, card.subtitulo) }}
+    {{ macros.content_block(card.texto) }}
     {% endfor %}
 
+    {{ macros.section_header("Como os papéis se interagem?", "Interações entre os papéis no Scrum") }}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg">
+            <strong>Product Owner → Time</strong>
+            <p class="text-sm text-gray-600 mt-2">Colaboram na classificação de requisitos e aceitação de entregas.</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg">
+            <strong>Scrum Master → Time</strong>
+            <p class="text-sm text-gray-600 mt-2">Facilita processos e remove impedimentos do caminho do time.</p>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg">
+            <strong>Scrum Master → Product Owner</strong>
+            <p class="text-sm text-gray-600 mt-2">Apoiam-se mutuamente para maximizar valor e eficiência.</p>
+        </div>
+    </div>
 {% endblock %}
+

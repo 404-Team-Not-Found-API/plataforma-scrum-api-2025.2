@@ -1,0 +1,349 @@
+/* ======== ESTILOS GERAIS ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f8fafb;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* ======== CABEÇALHO ======== */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d8dee9;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  height: 75px;
+}
+
+.menu-btn {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.2s ease;
+}
+
+.menu-btn.ativo {
+  color: #38a169;
+}
+
+/* ======== MENU LATERAL ======== */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  right: -220px;
+  width: 220px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-lateral ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menu-lateral ul li a {
+  text-decoration: none;
+  color: #1a202c;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.menu-lateral ul li a:hover {
+  color: #38a169;
+}
+
+.menu-lateral.ativo {
+  right: 0;
+}
+
+/* ======== CONTEÚDO PRINCIPAL ======== */
+.conteudo {
+  width: 90%;
+  max-width: 950px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.modulo h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0b2545;
+  margin-bottom: 10px;
+}
+
+.modulo p {
+  color: #5b616a;
+  margin-bottom: 35px;
+}
+/* ====== BOTÕES INTERATIVOS ====== */
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.botoes button {
+  flex: 1;
+  max-width: 200px;
+  padding: 20px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.botoes img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.botoes p {
+  margin-top: 20px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #ffffff; 
+}
+
+.botoes button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.azul { background-color: #0078d7; }
+.roxo { background-color: #6a1b9a; }
+.amarelo { background-color: #fbbf24; color: #333; }
+
+/* ====== MODAL ====== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-conteudo {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: justify;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease;
+}
+
+.modal-conteudo h2 {
+  color: #1e7145;
+  margin-bottom: 10px;
+}
+
+.fechar {
+  background-color: #e53e3e;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.fechar:hover {
+  background-color: #c53030;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+/* ======== INTERAÇÕES ======== */
+/* ----- Bloco principal ----- */
+.interacao-papeis {
+  background-color: #d7f3eb;   
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ----- Título ----- */
+.interacao-papeis h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* ----- Container dos blocos ----- */
+.blocos-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ----- Blocos individuais ----- */
+.bloco {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  flex: 1;
+  text-align: justify;
+  min-width: 250px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.bloco strong {
+  display: block;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.bloco p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+
+/* ======== QUIZ ======== */
+.exercicios {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.exercicios h3 {
+  color: #1a202c;
+  margin-bottom: 25px;
+}
+
+.quiz {
+  background-color: #edf2f7;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.quiz h4 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2d3748;
+  font-size: 1.3rem;
+}
+
+.pergunta {
+  margin-bottom: 22px;
+  font-size: 1.1rem;
+}
+
+.pergunta p {
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+label {
+  cursor: pointer;
+  display: block;
+  margin-left: 10px;
+  color: #1a202c;
+  transition: color 0.3s ease;
+}
+
+/* ======== BOTÃO ======== */
+button#verificar {
+  display: block;
+  background-color: #38a169;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  margin: 20px auto 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+button#verificar:hover {
+  background-color: #2f855a;
+  transform: scale(1.03);
+}
+
+/* ======== RODAPÉ ======== */
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #718096;
+  padding: 25px 0;
+  margin-top: 60px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+    height: 80%;    
+  }  
+
+}
+
+/* ======== RESULTADO DO QUIZ ======== */
+.resultado {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #2d3748;
+  transition: color 0.3s ease;
+}
