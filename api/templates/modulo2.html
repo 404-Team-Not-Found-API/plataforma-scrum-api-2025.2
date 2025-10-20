@@ -24,7 +24,7 @@
     <button class="menu-btn" id="menuToggle">&#9776;</button>
 
     <!--MENU LATERAL-->
-    <nav class="menu-lateral" id="menuLateral">
+    <nav class="menu-lateral" id="menuLateral">       
       <ul>
         <li><a href="{{url_for('routes.homepage')}}">Início</a></li>
         <li><a href="{{url_for('routes.conteudo')}}">Conteúdos</a></li>
@@ -143,6 +143,16 @@
       </div>
     </section>
 
+     <!-- Conteúdo complementar -->
+      <div class="border-t pt-6 text-center">
+          <h3 class="text-3xl font-bold mb-3">Conteúdo Complementar</h3>
+          <p class="font-semibold text-lg">PAPÉIS NO SCRUM E SUAS INTERAÇÕES</p>
+          <p class="text-gray-600 mb-4 text-lg">Documento para ajudar na revisão do conteúdo do módulo.</p>
+          <a href="{{ url_for('routes.download_modulo2') }}" target="_blank">
+            <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
+          </a>
+      </div>
+
     <!--EXERCICIOS-->
     <section class="exercicios">
       <h3>Exercícios de fixação:</h3>
@@ -150,6 +160,12 @@
         {% include "_componente_exercicio.html" %}
       </div>
     </section>
+
+     <!-- Navegação Final da Página -->
+      <div class="flex justify-between mt-12">
+        <a href="{{ url_for('routes.modulo1s2') }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
+        <a href="{{ url_for('routes.modulo3') }}" class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold px-5 py-2 rounded-full transition">Próximo Módulo →</a>
+      </div>
   </main>
 
   <footer>

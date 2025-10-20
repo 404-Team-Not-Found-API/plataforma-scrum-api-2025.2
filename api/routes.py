@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
+from .modulos.modulo3 import modulo3_perguntas
+
+
 
 bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
 
@@ -35,6 +38,14 @@ def modulo2():
         redirect_endpoint='routes.modulo2',
         start_quiz=request.args.get('start', 'false').lower() == 'true'
     )
+@bp.route('/conteudo/modulo3', methods=['GET', 'POST'])
+def modulo3():
+    return exercicio(
+        modulo_nome="modulo3",
+        template_name="modulo3.html",
+        redirect_endpoint='routes.modulo3',
+        start_quiz=request.args.get('start', 'false').lower() == 'true'
+    )
 
 @bp.route('/download/modulo1-secao1')
 def download_modulo1_secao1():
@@ -44,15 +55,13 @@ def download_modulo1_secao1():
 def download_modulo1_secao2():
     return send_from_directory('static/assets', 'Módulo 1 - Seção 2.pdf', as_attachment=True)
 
+@bp.route('/download/modulo2')
+def download_modulo2():
+    return send_from_directory('static/assets', 'Apostila Módulo 2.pdf', as_attachment=True)
 
-#@bp.route('/modulo1s2', methods=['GET', 'POST'])
-#def modulo1s2():
-    #return exercicio(
-        #modulo_nome="modulo1",
-        #template_name="modulo1s2.html",
-        #redirect_endpoint='routes.modulo1s2'
-    #)
-
+@bp.route('/download/modulo3')
+def download_modulo3():
+    return send_from_directory('static/assets', 'Módulo 3 Eventos do Scrum.pdf', as_attachment=True)
 
 @bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
 def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, start_quiz=False):
@@ -61,7 +70,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
 
     modulos = {
         "modulo1": modulo1_perguntas,
-        "modulo2": modulo2_perguntas
+        "modulo2": modulo2_perguntas,
+        "modulo3": modulo3_perguntas
     }
     perguntas = modulos.get(modulo_nome)
     if not perguntas:
