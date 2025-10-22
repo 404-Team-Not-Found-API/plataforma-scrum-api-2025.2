@@ -1,9 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
-from .modulos.modulo3 import modulo3_perguntas
-
-
+from .modulos.config import MODULES_CONFIG, DOWNLOADS
 
 bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
 
@@ -13,65 +11,65 @@ def homepage():
 
 @bp.route('/conteudo')
 def conteudo():
-       return render_template('conteudo.html') 
+    from .modulos.config import MODULES_CONFIG
+    return render_template('conteudo.html', MODULES_CONFIG=MODULES_CONFIG)
+
+@bp.route('/conteudo/<module_name>', methods=['GET', 'POST'])
+@bp.route('/conteudo/<module_name>/<section_name>', methods=['GET', 'POST'])
+def module_route(module_name, section_name=None):
+    if module_name not in MODULES_CONFIG:
+        return "Module not found", 404
+
+    module_config = MODULES_CONFIG[module_name]
+    section_config = module_config['sections'].get(section_name or module_name, {})
+
+    # Build template data from config
+    template_data = {
+        'titulo_modulo': section_config.get('titulo_modulo', ''),
+        'numero_modulo': section_config.get('numero_modulo', ''),
+        'numero_secao': section_config.get('numero_secao'),
+        'descricao_secao': section_config.get('descricao_secao', ''),
+        'titulo_complementar': section_config.get('titulo_complementar'),
+        'conteudo_complementar': section_config.get('conteudo_complementar', False),
+        'url_download_complementar': url_for('routes.download', key=section_config.get('url_download_key')) if section_config.get('url_download_key') else None,
+        'url_anterior': url_for(section_config.get('url_anterior'), **section_config.get('url_anterior_params', {})) if section_config.get('url_anterior') else None,
+        'url_proximo': url_for(section_config.get('url_proximo'), **section_config.get('url_proximo_params', {})) if section_config.get('url_proximo') else None,
+        'mostrar_exercicios': section_config.get('mostrar_exercicios', False),
+        'quiz_available': section_config.get('mostrar_exercicios', False),
+        'cards': section_config.get('cards', [])
+    }
+
+    template = section_config.get('template', f'{module_name}.html')
+
+    # Handle quiz if applicable
+    if module_config.get('quiz') and (request.method == 'POST' or section_config.get('mostrar_exercicios', False)):
+        return exercicio(
+            modulo_nome=module_name,
+            template_name=template,
+            redirect_endpoint='routes.module_route',
+            section_name=section_name,
+            start_quiz=False,
+            template_data=template_data
+        )
+
+    return render_template(template, **template_data)
+
+@bp.route('/download/<key>')
+def download(key):
+    if key not in DOWNLOADS:
+        return "File not found", 404
+    filename = DOWNLOADS[key]
+    return send_from_directory('static/assets', filename, as_attachment=True)
 
 
-@bp.route('/conteudo/modulo1')
-def modulo1():
-    return render_template('modulo1.html')
 
-
-@bp.route('/conteudo/modulo1/modulo1s2', methods=['GET', 'POST'])
-def modulo1s2():
-    return exercicio(
-        modulo_nome="modulo1",
-        template_name="modulo1s2.html",
-        redirect_endpoint='routes.modulo1s2',
-        start_quiz=request.args.get('start', 'false').lower() == 'true'
-    )
-
-@bp.route('/conteudo/modulo2', methods=['GET', 'POST'])
-def modulo2():
-    return exercicio(
-        modulo_nome="modulo2",
-        template_name="modulo2.html",
-        redirect_endpoint='routes.modulo2',
-        start_quiz=request.args.get('start', 'false').lower() == 'true'
-    )
-@bp.route('/conteudo/modulo3', methods=['GET', 'POST'])
-def modulo3():
-    return exercicio(
-        modulo_nome="modulo3",
-        template_name="modulo3.html",
-        redirect_endpoint='routes.modulo3',
-        start_quiz=request.args.get('start', 'false').lower() == 'true'
-    )
-
-@bp.route('/download/modulo1-secao1')
-def download_modulo1_secao1():
-    return send_from_directory('static/assets', 'Módulo 1 - Seção 1.pdf', as_attachment=True)
-
-@bp.route('/download/modulo1-secao2')
-def download_modulo1_secao2():
-    return send_from_directory('static/assets', 'Módulo 1 - Seção 2.pdf', as_attachment=True)
-
-@bp.route('/download/modulo2')
-def download_modulo2():
-    return send_from_directory('static/assets', 'Apostila Módulo 2.pdf', as_attachment=True)
-
-@bp.route('/download/modulo3')
-def download_modulo3():
-    return send_from_directory('static/assets', 'Módulo 3 Eventos do Scrum.pdf', as_attachment=True)
-
-@bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
-def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, start_quiz=False):
+def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, section_name=None, start_quiz=False, template_data=None):
     if redirect_endpoint is None:
         redirect_endpoint = 'routes.exercicio'
 
     modulos = {
         "modulo1": modulo1_perguntas,
-        "modulo2": modulo2_perguntas,
-        "modulo3": modulo3_perguntas
+        "modulo2": modulo2_perguntas
     }
     perguntas = modulos.get(modulo_nome)
     if not perguntas:
@@ -101,12 +99,12 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
         if 'prev' in request.form:
             if current_index > 0:
                 session['current_index'] = current_index - 1
-            return redirect(url_for(redirect_endpoint, modulo_nome=modulo_nome, _anchor='secao-exercicios'))
+            return redirect(url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, _anchor='secao-exercicios'))
 
         elif 'next' in request.form:
             if current_index + 1 < len(perguntas):
                 session['current_index'] = current_index + 1
-                return redirect(url_for(redirect_endpoint, modulo_nome=modulo_nome, _anchor='secao-exercicios'))
+                return redirect(url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, _anchor='secao-exercicios'))
             else:
                 pontuacao = session.get('acertos', 0)
                 session.clear()
@@ -116,7 +114,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                     pontuacao=pontuacao,
                     total=total,
                     modulo_nome=modulo_nome,
-                    redirect_endpoint=redirect_endpoint)
+                    redirect_endpoint=redirect_endpoint,
+                    **(template_data or {}))
 
         elif 'confirm' in request.form:
             resposta_str = request.form.get('resposta')
@@ -125,15 +124,15 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                     resposta = int(resposta_str)
                 except ValueError:
                     resposta = None
- 
+
                 respostas[str(current_index)] = resposta
                 session['respostas'] = respostas
- 
+
                 resposta_usuario = resposta
                 correta = (resposta == pergunta["correta"])
                 feedback = "Correto!" if correta else "Incorreto!"
                 explicacao = pergunta.get("explicacao", "Revise o conceito e tente novamente.")
- 
+
                 if correta and str(current_index) not in session.get('acertos_contados', []):
                     session['acertos'] = acertos + 1
                     session.setdefault('acertos_contados', []).append(str(current_index))
@@ -148,5 +147,7 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
         feedback=feedback,
         correta=correta,
         explicacao=explicacao,
-        resposta_usuario=resposta_usuario
+        resposta_usuario=resposta_usuario,
+        **(template_data or {})
     )
+

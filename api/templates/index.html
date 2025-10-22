@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Curso de Scrum</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
-    <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+{% extends "base.html" %}
+
+{% block title %}404 - Curso de Scrum{% endblock %}
+
+{% block head_extra %}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
-</head>
-<body>
+{% endblock %}
 
-{% include "navbar.html" %}
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
 
-    <!--<header>
-        <div id="navbar"></div>
-    </header>-->
 {% block content %}
     <main>
         <section class="hero-section">
@@ -23,7 +18,7 @@
                     <div class="hero-content">
                         <h1 class="hero-title">A agilidade na palma da sua mão</h1>
                         <p class="hero-description">
-                            Seja bem-vindo ao nosso curso sobre o Scrum! Preparado para conhecer o desenvolvimento ágil? 
+                            Seja bem-vindo ao nosso curso sobre o Scrum! Preparado para conhecer o desenvolvimento ágil?
                             Vamos juntos descobrir como o Scrum pode transformar a maneira como você trabalha!
                         </p>
                         <button onclick="location.href='#scrum-section'" class="hero-button" >Saiba mais →</button>
@@ -44,14 +39,14 @@
                         </div>
                         <h3 class="feature-title">Agilidade</h3>
                     </div>
-                    
+
                     <div class="feature-item">
                         <div class="feature-icon">
                             <div class="icon-placeholder">👥</div>
                         </div>
                         <h3 class="feature-title">Coletividade</h3>
                     </div>
-                    
+
                     <div class="feature-item">
                         <div class="feature-icon">
                             <div class="icon-placeholder">📈</div>
@@ -68,10 +63,10 @@
                     <div class="scrum-content">
                         <h2 class="scrum-title">O Scrum é uma das metodologias mais populares do mundo ágil!</h2>
                         <p class="scrum-description">
-                            É uma estrutura poderosa e leve, ideal para gerenciar o desenvolvimento 
+                            É uma estrutura poderosa e leve, ideal para gerenciar o desenvolvimento
                             de qualquer produto complexo.
                         </p>
-                        
+
                         <div class="benefits-list">
                             <div class="benefit-item">
                                 <div class="benefit-icon">
@@ -98,10 +93,10 @@
                                 <span class="benefit-text">Entrega de Valor</span>
                             </div>
                         </div>
-                        
-                        <a href="{{ url_for('routes.modulo1') }}" class="scrum-button" style="text-decoration:none;">Saiba mais →</a>
+
+                        <a href="{{ url_for('routes.module_route', module_name='modulo1') }}" class="scrum-button" style="text-decoration:none;">Saiba mais →</a>
                     </div>
-                    
+
                     <div class="scrum-image">
                         <img src="{{ url_for('static', filename='assets/scrum2.png') }}" alt="Scrum methodology circular diagram" class="diagram">
                     </div>
@@ -109,19 +104,4 @@
             </div>
         </section>
     </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">Copyright © 2025 | Todos os direitos reservados</p>
-        </div>
-    </footer>
-
-    <!--<script>
-        fetch("navbar.html")
-        .then(res => res.text())
-        .then(data => {document.getElementById("navbar").innerHTML = data;})
-    </script>-->
-    {% endblock %}
-
-</body>
-</html>
+{% endblock %}
