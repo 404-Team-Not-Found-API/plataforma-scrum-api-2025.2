@@ -1,15 +1,35 @@
-<!DOCTYPE html>
+<nav class="navbar bg-body-tertiary">
+    <a class="navbar-brand" href="{{ url_for('routes.homepage') }}">
+        <img src="{{ url_for('static', filename='assets/404.png') }}" alt="Logo" class="img-fluid">
+    </a>
+
+    <div class="dropdown" id="menuDropdown">
+      <button class="menu-btn">☰</button>
+      <div class="dropdown-content">
+        <a href="{{ url_for('routes.homepage') }}">⬅ Voltar Home</a>
+        <a href="{{ url_for('routes.conteudo') }}">Conteúdos</a>
+        <a href="{{ url_for('routes.module_route', module_name='modulo1', section_name='modulo1') }}">Módulo 1</a>
+          <div class="submenu">
+            <a href="{{ url_for('routes.module_route', module_name='modulo1', section_name='modulo1') }}">Seção 1</a>
+            <a href="{{ url_for('routes.module_route', module_name='modulo1', section_name='modulo1s2') }}">Seção 2</a>
+          </div>
+        <a href="{{ url_for('routes.module_route', module_name='modulo2', section_name='modulo2') }}">Módulo 2</a>
+      </div>
+    </div>
+    {% block navbar_extra %}{% endblock %}
+</nav>
+
 <style>
 .navbar {
-  display: flex;       
-  align-items: center;   
-  justify-content: space-between; 
-  padding: 0.5rem 1rem; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
   background-color: rgb(238, 236, 231);
 }
 
 .navbar-brand img {
-  max-height: 80px; 
+  max-height: 80px;
   width: auto;
   display: block;
 }
@@ -22,19 +42,19 @@
 
 @media (max-width: 420px) {
   .navbar {
-    padding: 0.3rem 0.5rem;   
-    gap: 0.5rem;             
+    padding: 0.3rem 0.5rem;
+    gap: 0.5rem;
   }
 
   .navbar-brand img {
-    max-height: 40px;       
+    max-height: 40px;
   }
 
 }
 .menu-btn {
       font-size: 2rem;
       background: none;
-      border: none; 
+      border: none;
       color: #051E30;
       cursor: pointer;
     }
@@ -83,22 +103,5 @@
     .dropdown.show .dropdown-content {
       display: block;
     }
-
 </style>
-
-<nav class="navbar bg-body-tertiary">
-    <a class="navbar-brand"><img src="/static/assets/404.png" alt="Logo" class="img-fluid"></a>
-     
-    <div class="dropdown" id="menuDropdown">
-      <button class="menu-btn">☰</button>
-      <div class="dropdown-content">
-        <a href="{{ url_for('routes.homepage') }}">⬅ Voltar Home</a>
-        <a href="{{ url_for('routes.modulo1') }}">Módulo 1 - Seção 1 </a>
-          <div class="submenu">
-            <a href="{{ url_for('routes.modulo1s2') }}">Seção 2</a>
-          </div>
-      </div>
-    </div>
-    {% block navbar_extra %}{% endblock %}
-</nav>          
  

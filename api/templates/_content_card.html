@@ -1,0 +1,10 @@
+<!-- Base para os cards -->
+<div class="border-t pt-6">
+    <h2>{{ card.titulo }}</h2>
+    {% if card.subtitulo %}
+        <h2>{{ card.subtitulo }}</h2>
+    {% endif %}
+    <p class="text-gray-700 leading-relaxed">
+        {{ card.texto | safe }}
+    </p>
+</div>

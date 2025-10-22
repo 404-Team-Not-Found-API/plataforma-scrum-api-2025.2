@@ -1,0 +1,79 @@
+modulo3_perguntas = [
+    {
+        "pergunta": "Qual o Time-Box (duração máxima) para uma Sprint?",
+        "alternativas": [
+            "15 dias corridos.",
+            "Quatro semanas ou menos.",
+            "Duas semanas, sem exceções.",
+            "O tempo necessário para completar o incremento."
+        ],
+        "correta": 2,
+        "explicacao": "O Scrum Guide estabelece o ciclo de tempo fixo para consistência em um mês ou menos."
+    },
+    {
+        "pergunta": "Qual o principal resultado (artefato) e o objetivo definidos ao final do evento Sprint Planning?",
+        "alternativas": [
+            "O Product Backlog revisado e a lista de Impedimentos.",
+            "A meta da Sprint e o Sprint Backlog.",
+            "O incremento Potencialmente Entregável e a Definição de Pronto (DoD).",
+            "O Plano de Ação da Retrospectiva e o status do projeto ."
+        ],
+        "correta": 2,
+        "explicacao": "O Sprint Planning define o objetivo (Meta) da Sprint e o palno detalhado (Sprint Backlog) para alcançá-lo."
+    },
+    {
+        "pergunta": "Qual o Time-Box máximo e o foco primário do evento Daily Scrum?",
+        "alternativas": [
+            "30 minutos, focado em resolver impedimentos técnicos detalhadamente.",
+            "15 minutos, focado em inspecionar o progresso para a Meta da Sprint e adaptar o plano das próximas 24 horas .",
+            "15 minutos, focado em relatar o status do trabalho para o Product Owner.",
+            "1 hora, focado em discutir a priorização dos itens do Product Backlog."
+        ],
+        "correta": 2,
+        "explicacao": "O Daily Scrum é estritamente limitado a 15 minutos e é um evento de planejamento de 24 horas para o time de desenvolvimento."
+    },
+    {
+        "pergunta": "Quem é a única pessoa com autoridade para cancelar uma Sprint?",
+        "alternativas": [
+            "O Time de Desenvolvimento, após votação unânime.",
+            "O Scrum Master, após consultar o Product Owner",
+            "O Product Owner.",
+            "Os Stakeholders Chave, após demonstração do incremento."
+        ],
+        "correta": 3,
+        "explicacao": "O Product Owner é o único responsável por maximixar o valor do produto e, portanto, o único com autoridade para cancelar uma Sprint se a Meta se tornar obsoleta."
+    },
+    {
+        "pergunta": "Qual o principal resultado do evento da Sprint Retrospective, que é implementado na próxma Sprint?",
+        "alternativas": [
+            "O incremento Potencialmente Entregável.",
+            "O Sprint Backlog, criado pelo Time de Desenvolvimento.",
+            "Um plano de melhorias acionáveis para aumentar a eficácia e a qualidade.",
+            "O Product Backlog revisado, com novas prioridades."
+        ],
+        "correta": 3,
+        "explicacao": "A Retrospectiva foca na melhoria contínua do processo do time, gerando ações para serem implementadas."
+    },
+    {
+        "pergunta": "Qual evento Scrum tem como objetivo inspecionar o incremento (o produto) e adaptar o Product Backlog (o plano de longo prazo)?",
+        "alternativas": [
+            "Daily Scrum.",
+            "Sprint Retrospective.",
+            "Sprint Planning.",
+            "Sprint Review."
+        ],
+        "correta": 4,
+        "explicacao": "O Sprint Review é o evento dedicado á demonstração e inspeção do Incremento com Stakeholders, resultando na adaptação do Product Backlog."
+    },
+    {
+        "pergunta": "Durante o Daily Scrum, quem é o único grupo dentro da equipe Scrum que é o participante ativo e responsável por planejar o trabalho das próximas 24 horas?",
+        "alternativas": [
+            "O Product Owner.",
+            "O Time de Desenvolvimento.",
+            "O Scrum Master.",
+            "O Scrum Master e o Product Owner em conjunto."
+        ],
+        "correta": 2,
+        "explicacao": "O Time de Desenvolvimento é autogerenciável e o único responsável por adaptar seu próprio plano de trabalho no Daily Scrum."
+    }
+]

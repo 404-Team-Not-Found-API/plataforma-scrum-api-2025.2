@@ -4,14 +4,14 @@
     <h2 class="text-3xl font-bold mb-6">Resultado Final</h2>
     <p class="text-xl mb-4">Você acertou <strong>{{ pontuacao }}</strong> de <strong>{{ total }}</strong> perguntas.</p>
     <div class="mt-6 flex justify-center gap-4">
-        <a href="{{ url_for(redirect_endpoint, start='true', _anchor='secao-exercicios') }}"
+        <a href="{{ url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, start='true') }}#secao-exercicios"
             class="bg-gray-300 hover:bg-gray-600 text-black px-6 py-3 rounded-full font-semibold">
             Refazer Exercícios
         </a>
     </div>
 </div>
 
-{% else %}
+{% elif pergunta %}
 <!-- Seção do Formulário de Exercício -->
 <div id="secao-exercicios" class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
     <h2 class="text-2xl font-bold mb-6 text-center">
