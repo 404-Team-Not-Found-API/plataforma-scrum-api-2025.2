@@ -42,10 +42,14 @@ MODULES_CONFIG = {
                 'titulo_modulo': 'Os Papéis e as Interações',
                 'numero_modulo': 2,
                 'descricao_secao': 'Descubra os três papéis fundamentais do Scrum e como eles trabalham juntos para criar valor',
-                'conteudo_complementar': False,
+                'conteudo_complementar': True,
+                'titulo_complementar': 'Montando a equipe: Os Papéis e as Interações',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo2',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
-                'url_proximo': None,
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo3'},
                 'mostrar_exercicios': True,
                 'cards': [
                     {
@@ -68,11 +72,32 @@ MODULES_CONFIG = {
             }
         },
         'quiz': True
+    },
+    'modulo3': {
+        'sections': {
+            'modulo3': {
+                'titulo_modulo': 'Os eventos do Scrum',
+                'numero_modulo': 3,
+                'descricao_secao': 'Conheça os cinco eventos essenciais que estruturam o framework Scrum',
+                'conteudo_complementar': True,
+                'titulo_complementar': 'Eventos do Scrum',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo3',
+                'url_anterior': 'routes.module_route',
+                'url_anterior_params': {'module_name': 'modulo2'},
+                'url_proximo': None,
+                'mostrar_exercicios': True,
+                'template': 'modulo3.html'
+            },
+        },
+        'quiz': True
     }
 }
 
 # Download mappings
 DOWNLOADS = {
-    'modulo1_secao1': 'Módulo 1 - Seção 1.pdf',
-    'modulo1_secao2': 'Módulo 1 - Seção 2.pdf'
+    'modulo1_secao1': 'modulo_1_secao_1.pdf',
+    'modulo1_secao2': 'modulo_1_secao_2.pdf',
+    'modulo2': 'modulo_2.pdf',
+    'modulo3': 'modulo_3_eventos_scrum.pdf',
 }

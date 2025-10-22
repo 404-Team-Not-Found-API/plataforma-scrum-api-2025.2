@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
+from .modulos.modulo3 import modulo3_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
 
 bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
@@ -27,7 +28,7 @@ def module_route(module_name, section_name=None):
     template_data = {
         'titulo_modulo': section_config.get('titulo_modulo', ''),
         'numero_modulo': section_config.get('numero_modulo', ''),
-        'numero_secao': section_config.get('numero_secao'),
+        'numero_secao': section_config.get('numero_secao', ''),
         'descricao_secao': section_config.get('descricao_secao', ''),
         'titulo_complementar': section_config.get('titulo_complementar'),
         'conteudo_complementar': section_config.get('conteudo_complementar', False),
@@ -71,7 +72,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
 
     modulos = {
         "modulo1": modulo1_perguntas,
-        "modulo2": modulo2_perguntas
+        "modulo2": modulo2_perguntas,
+        "modulo3": modulo3_perguntas
     }
     perguntas = modulos.get(modulo_nome)
     if not perguntas:

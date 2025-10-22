@@ -1,0 +1,13 @@
+{% extends "modulo_base.html" %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+
+    {{ macros.section_header("Título Seção") }}
+    {{ macros.content_block("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti illo facilis minima dolorem, a eligendi totam veniam repellendus atque dignissimos facere. Consequatur reprehenderit dolor corporis quasi ratione. Debitis, officiis molestiae.
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti illo facilis minima dolorem, a eligendi totam veniam repellendus atque dignissimos facere. Consequatur reprehenderit dolor corporis quasi ratione. Debitis, officiis molestiae.") }}
+
+{% endblock %}
+
