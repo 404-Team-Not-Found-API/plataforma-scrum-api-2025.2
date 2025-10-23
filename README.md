@@ -36,25 +36,25 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   🔄   |
-|  7   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   🔄   |
-|  2   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |            |   2    |   ⚙️   |
-|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |            |   2    |   ⚙️   |
-|  4   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
-|  5   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |            |   2    |   ⚙️   |
-|  6   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |            |   2    |   ⚙️   |
-|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
-|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |            |    2   |   ⚙️   |
-|  10   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
-|  11   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais para que o aluno possa baixar e usar em seus próprios projetos.   |            |   2    |   ⚙️   |
-|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
-|  13   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
-|  14   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
-|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
-|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
-|  17   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
+|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ✅   |
+|  2   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ✅   |
+|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |            |   2    |   🔄   |
+|  4   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |            |   2    |   🔄   |
+|  5   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |            |   2    |   🔄   |
+|  6   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |            |   2    |   🔄   |
+|  7   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   🔄   |
+|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   🔄   |
+|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   🔄   |
+|  10   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |            |   2    |   🔄   |
+|  11   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |            |    2   |   🔄   |
+|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   🔄   |
+|  13   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais do módulo 4 para que o aluno possa baixar e usar em seus próprios projetos.   |            |   2    |   🔄   |
+|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   3    |   ⚙️   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   3    |   ⚙️   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   3    |   ⚙️   |
+|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
 |  18   |    Baixa    | Como gerente, quero  que a pessoa em treinamento acompanhe o progresso do curso para indicar sua posição atual.   |            |   3    |   ⚙️   |
-|  19  |    Média    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
+|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
 
 ---
 <br><br>
@@ -62,7 +62,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 ## 📈 Evolução do Projeto <a id='evolucao'></a>
 
 #### 🏁 Sprint 1 (08/09 - 28/09) - Fundação da Plataforma
-- **Status**: 🔄 Em andamento
+- **Status**: ✅ Concluída
 - **Objetivo Principal**: Estabelecer a base técnica e estrutural da aplicação
 - **Principais Entregas**:
   - ✅ Configuração inicial do ambiente de desenvolvimento Flask
@@ -74,7 +74,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 <br>
 
 #### 🎯 Sprint 2 (06/10 - 26/10) - Expansão de Funcionalidades
-- **Status**: Planejada
+- **Status**: 🔄 Em andamento 
 - **Objetivo Principal**: Expandir o conteúdo através de módulos, implementar os exercícios de fixação. 
 - **Principais Entregas Planejadas**:
   - ✅ Módulos (1-4);
@@ -82,11 +82,11 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
   - ✅ Exemplos práticos de implementação
   - ✅ Modelos dos principais documentos do Scrum.
 - **Valor Agregado Esperado**: Aumento de engajamento e retenção de conhecimento. 
-- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/.gitkeep)
+- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/sprint2.md)
 <br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
-- **Status**: Planejada
+- **Status**: ⚙️ Planejada
 - **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades avançadas para aprimorar a experiência do usuário.
 - **Principais Entregas Planejadas**:
   - ✅ Módulo Final - Primeira Sprint de Treinamento;
@@ -103,7 +103,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 |     Sprint       |    Período    |     Documentação      |   Vídeo do Incremento 
 | --------------- | :-----------: | ------------------------------------------------ | ------------ |
 | 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1]()  |
-| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 2]()  |
+| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/sprint2.md) | [Incremento 2]()  |
 | 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 3]()  |
 
 <br><br>
@@ -253,12 +253,12 @@ pip install -r requirements.txt
 **5.** Execute a aplicação:
 
 ```bash
-python main.py
+flask run --debug #Para modo debug=On
 ```
 
 **6.** Acesse a aplicação no navegador:
 
-Abra o navegador e digite: `http://localhost:5000`
+Acesse o link gerado e veja a aplicação em seu navegador padrão
 
 ---
 ### Como Acessar a Aplicação na Web (Vercel)
@@ -308,8 +308,8 @@ vercel --prod
 
 - **Verificar instalação do Python:**
   ```bash
-  python --version
-  pip --version
+  python -V
+  pip -V
   ```
 <br><br>
 
@@ -369,18 +369,6 @@ vercel --prod
       <td>Developer</td>
       <td><a href="https://github.com/ViniciusAmante"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
-      <td>Wesley Henrique</td>
-      <td>Developer</td>
-      <td><a href="https://github.com/yoyowesley"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
-      <td>Willian Umehara</td>
-      <td>Developer</td>
-      <td><a href="https://github.com/willianhiroume"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/willian-umehara-ba1521188?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
   </table>
 </div>
