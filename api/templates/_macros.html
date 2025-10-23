@@ -1,91 +1,67 @@
-{% macro card(titulo, subtitulo=None, texto=None, titulo_complementar=None, conteudo_complementar=False, url_download_complementar=None, extra_classes="") %}
-<div class="border-t pt-6 {{ extra_classes }}">
-    <h3 class="text-2xl font-bold mb-3">{{ titulo }}</h3>
-    {% if subtitulo %}
-    <h4 class="text-xl font-semibold mb-2">{{ subtitulo }}</h4>
-    {% endif %}
-    {% if texto %}
-    <p class="text-lg text-gray-700 leading-relaxed {{ extra_classes }}">
-        {{ texto }}
-    </p>
-    {% endif %}
-    {% if titulo_complementar %}
-    <p class="font-semibold {{ extra_classes }}">{{ titulo_complementar }}</p>
-    {% endif %}
-    {% if conteudo_complementar and url_download_complementar %}
-    <p class="text-gray-600 mb-4 {{ extra_classes }}">Documento para aprofundar os estudos do módulo.</p>
-    <a href="{{ url_download_complementar }}" target="_blank">
-        <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
-    </a>
-    {% endif %}
-</div>
-{% endmacro %}
-
-{% macro button(text, url, classes="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition", extra_classes="") %}
-<a href="{{ url }}" class="{{ classes }}">{{ text }}</a>
-{% endmacro %}
-
-{% macro section_header(titulo, subtitulo=None, extra_classes="") %}
-<div class="border-t pt-6 {{ extra_classes }}">
-    <h2 class="text-3xl font-bold mb-3">{{ titulo }}</h2>
-    {% if subtitulo %}
-    <h2 class="text-gray-700 font-bold mb-3">{{ subtitulo }}</h2>
-    {% endif %}
-</div>
-{% endmacro %}
-
-{% macro content_block(texto, extra_classes="") %}
-<p class="text-lg text-gray-700 leading-relaxed {{ extra_classes }}">
-    {{ texto }}
-</p>
-{% endmacro %}
-
-{% macro list(items, style="list-disc list-inside", extra_classes="") %}
-<ul class="{{ style }} text-lg text-gray-700 leading-relaxed {{ extra_classes }}">
-    {% for item in items %}
-    <li>{{ item }}</li>
-    {% endfor %}
-</ul>
-{% endmacro %}
-
-{% macro grid_section(items, cols="grid-cols-1 md:grid-cols-3", extra_classes="") %}
-<div class="grid {{ cols }} gap-4 {{ extra_classes }}">
-    {% for item in items %}
-    <div class="bg-blue-50 p-4 rounded-lg">
-        <strong>{{ item.titulo }}</strong>
-        <p class="text-sm text-gray-600 mt-2">{{ item.texto }}</p>
+{% macro interactive_cards_section(cards) %}
+    <!-- Seção de Cards dos Papéis -->
+    <div class="row text-center g-5 my-4 justify-content-center">
+        {% for card in cards %}
+        <div class="col-10 col-sm-7 col-md-4 col-lg-3">
+            <div class="card h-100 role-card border-0"
+                 style="background-color: {{ card.bg_color }};"
+                 data-bs-toggle="modal" 
+                 data-bs-target="#modal-{{ loop.index0 }}">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename='assets/' + card.icon) }}" class="card-img-top mx-auto role-card-icon" alt="Ícone {{ card.titulo }}">
+                    <h5 class="card-title mt-4">{{ card.titulo }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% endmacro %}
 
-{% macro card_grid(cards) %}
-<div class="card-container grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+    <!-- Modais para cada Papel -->
     {% for card in cards %}
-    <div class="card bg-white p-6 rounded-lg shadow-lg text-center cursor-pointer"
-         data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}">
-        <h3 class="card-title text-2xl font-bold mb-2">{{ card.titulo }}</h3>
-        <h4 class="card-subtitle text-lg font-semibold text-gray-600 mb-4">{{ card.subtitulo }}</h4>
+    <div class="modal fade" id="modal-{{ loop.index0 }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index0 }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: #ebebeb ;">
+                <div class="modal-header d-flex align-items-center">
+                    <img src="{{ url_for('static', filename='assets/' + card.modal_icon) }}" class="me-3" alt="Ícone {{ card.titulo }}" style="width: 40px; height: 40px; object-fit: contain;">
+                    <h5 class="modal-title flex-grow-1 fw-bold fs-4" id="modalLabel-{{ loop.index0 }}">{{ card.titulo }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="text-muted mb-4">{{ card.subtitulo }}</h6>
+                    <ul class="list-unstyled">
+                        {% for item in card.texto %}
+                            {% if item.endswith(':') %}
+                                <li class="mb-2 mt-3"><strong>{{ item }}</strong></li>
+                            {% else %}
+                                <li class="d-flex align-items-start mb-2"><i class="bi bi-check-lg me-2" style="color: #0dcaf0;"></i><span>{{ item }}</span></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     {% endfor %}
-</div>
 {% endmacro %}
 
-{% macro modal(id, title, body_content) %}
-<div class="modal fade" id="{{ id }}" tabindex="-1" aria-labelledby="{{ id }}Label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="{{ id }}Label">{{ title }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{ body_content | safe }} {# Use safe filter if body_content contains HTML #}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
+{# Outras macros existentes... #}
+{% macro section_header(title, subtitle) %}
+    <div class="mb-6">
+        <h3 class="text-3xl font-bold">{{ title }}</h3>
+        <p class="text-lg text-gray-600">{{ subtitle }}</p>
     </div>
-  </div>
-</div>
+{% endmacro %}
+
+{% macro content_block(text) %}
+    <p class="text-lg text-gray-700 leading-relaxed mb-4">{{ text }}</p>
+{% endmacro %}
+
+{% macro list(items) %}
+    <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed space-y-2 mb-4">
+        {% for item in items %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+{% endmacro %}
+
+{% macro section_description(description) %}
+    <p class="text-lg text-gray-600">{{ description | safe }}</p>
 {% endmacro %}

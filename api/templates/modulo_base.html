@@ -18,7 +18,7 @@
               <h2 class="text-2xl font-semibold mb-3">Módulo {{ numero_modulo }}</h2>
             {% endif %}
             <p class="text-lg text-gray-700 leading-relaxed">
-                {{ descricao_secao }}
+                {{ descricao_secao | safe }}
             </p>
         </div>
 

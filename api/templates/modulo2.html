@@ -1,32 +1,79 @@
 {% extends "modulo_base.html" %}
 
+{% block head_extra %}
+<style>
+    .role-card {
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        border-radius: 1.5rem; 
+    }
+    .role-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    }
+    .role-card .card-body {
+        padding-top: 4rem; 
+    }
+    .role-card-icon {
+        width: 100px;
+        height: 100px; 
+        object-fit: contain; 
+        transition: all 0.2s ease-in-out;
+    }
+    .role-card .card-title {
+        color: #FFFFFF; 
+        font-family: 'Poppins', Tahoma, sans-serif; 
+        font-size: 1.5rem;
+        font-weight: bold; 
+    }
+
+    @media (max-width: 767.98px) {
+        .role-card .card-body {
+            padding-top: 2rem; 
+        }
+        .role-card-icon {
+            width: 70px;
+            height: 70px;
+        }
+        .role-card .card-title {
+            font-size: 1.5rem; 
+        }
+    }
+</style>
+{% endblock %}
+
 {% block title %}Módulo {{ numero_modulo }}{% endblock %}
 
 {% block modulo_content %}
     {% import "_macros.html" as macros %}
 
-    {{ macros.section_header("Os Três Papéis Fundamentais", "No Scrum, existem três papéis principais") }}
-    {{ macros.content_block("No Scrum, existem três papéis principais: Product Owner, Scrum Master e Equipe de Desenvolvimento. Cada um tem responsabilidades específicas e trabalha em conjunto para entregar valor ao cliente.") }}
-
-    {% for card in cards %}
-    {{ macros.section_header(card.titulo, card.subtitulo) }}
-    {{ macros.content_block(card.texto) }}
-    {% endfor %}
+    {{ macros.interactive_cards_section(cards) }}
 
     {{ macros.section_header("Como os papéis se interagem?", "Interações entre os papéis no Scrum") }}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-blue-50 p-4 rounded-lg">
-            <strong>Product Owner → Time</strong>
-            <p class="text-sm text-gray-600 mt-2">Colaboram na classificação de requisitos e aceitação de entregas.</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4 p-3 p-md-4" style="border-radius: 10px; border: 2px solid #6DD5B6; background: rgba(109, 213, 182, 0.40);">
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Product Owner → Time</h5>
+                    <p class="card-text text-muted fs-6">Colaboram na classificação de requisitos e aceitação de entregas.</p>
+                </div>
+            </div>
         </div>
-        <div class="bg-green-50 p-4 rounded-lg">
-            <strong>Scrum Master → Time</strong>
-            <p class="text-sm text-gray-600 mt-2">Facilita processos e remove impedimentos do caminho do time.</p>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Scrum Master → Time</h5>
+                    <p class="card-text text-muted fs-6">Facilita processos e remove impedimentos do caminho do time.</p>
+                </div>
+            </div>
         </div>
-        <div class="bg-purple-50 p-4 rounded-lg">
-            <strong>Scrum Master → Product Owner</strong>
-            <p class="text-sm text-gray-600 mt-2">Apoiam-se mutuamente para maximizar valor e eficiência.</p>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Scrum Master → Product Owner</h5>
+                    <p class="card-text text-muted fs-6">Apoiam-se mutuamente para maximizar valor e eficiência.</p>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
-

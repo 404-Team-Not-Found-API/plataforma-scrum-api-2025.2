@@ -41,11 +41,11 @@ MODULES_CONFIG = {
             'modulo2': {
                 'titulo_modulo': 'Os Papéis e as Interações',
                 'numero_modulo': 2,
-                'descricao_secao': 'Descubra os três papéis fundamentais do Scrum e como eles trabalham juntos para criar valor',
+                'descricao_secao': 'Descubra os três papéis fundamentais do Scrum e como eles trabalham juntos para criar valor.<br>Clique nos cards abaixo para descobrir mais sobre cada um:',
                 'conteudo_complementar': True,
-                'titulo_complementar': 'APOSTILA MÓDULO 2',
+                'titulo_complementar': 'PAPÉIS DO SCRUM E SUAS INTERAÇÕES',
                 'url_download_complementar': 'routes.download',
-                'url_download_key': 'modulo2_apostila',
+                'url_download_key': 'modulo2',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
                 'url_proximo': 'routes.module_route',
@@ -53,19 +53,76 @@ MODULES_CONFIG = {
                 'mostrar_exercicios': True,
                 'cards': [
                     {
+                        
+
+
                         'titulo': 'Product Owner',
-                        'subtitulo': 'O guardião da visão do produto',
-                        'texto': 'Responsável por maximizar o valor do trabalho realizado pelo time. Gerencia o backlog do produto e toma decisões estratégicas.'
+                        'subtitulo': 'O product owner é o responsável pela visão do produto, pelo gerenciamento do backlog do produto e por garantir o valor do trabalho realizado pelo time.',
+                        'texto': [
+                            
+                            'Principais Responsabilidades:',
+                            'Gerenciar e priorizar o Backlog do Produto.',
+                            'Garantir que o time entenda os itens do backlog.',
+                            'Tomar decisões sobre o produto.',
+                            'Aceitar ou rejeitar incrementos de trabalho.',
+                            'Garantir que todo o backlog do produto seja visível, transparente e claro para todos os interessados, mostrando o que o time scrum deve buscar.',
+                            'Habilidades essenciais:',
+                            'Visão estratégica do produto.',
+                            'Excelente comunicação.',
+                            'Tomada de decisões.',
+                            'Conhecimento do negócio.',
+                            'Habilidades de negociação.'
+                        ],
+                        'icon': 'File_Search.png',
+                        'modal_icon': 'File_Search_az.png',
+                        'bg_color': '#83C7E9' 
                     },
                     {
+
+
                         'titulo': 'Scrum Master',
-                        'subtitulo': 'O facilitador do processo',
-                        'texto': 'Garante que o Scrum seja aplicado corretamente, facilita eventos e remove impedimentos para o time.'
+                        'subtitulo': 'O scrum master é o responsável por garantir que o Scrum seja entendido e aplicado, para que o time scrum esteja aderindo aos valores do scrum, às práticas e às regras e aos princípios.',
+                        'texto': [
+                            'Principais Responsabilidade:',
+                            'Facilitar eventos do scrum.', 
+                            'Orientar o time em práticas ágeis.',
+                            'Planejar implementações de scrum dentro da organização.',
+                            'Treinar o time para ser mais produtivo.',
+                            'Promover melhoria contínua.',
+                            'Habilidades Essenciais:',
+                            'Facilitação das reuniões.',
+                            'Resolução de conflitos.',
+                            'Mentor do time.',
+                            'Conhecimento profundo do scrum.', 
+                            'Liderança.'
+                        ],
+                        'icon': 'User_Voice.png',
+                        'modal_icon': 'User_Voice_rx.png',
+                        'bg_color': '#7E5DA5'   
                     },
                     {
+
+
                         'titulo': 'Equipe de Desenvolvimento',
-                        'subtitulo': 'Os criadores do produto',
-                        'texto': 'Time auto-organizado responsável por transformar o backlog em incrementos funcionais de alta qualidade.'
+                        'subtitulo': 'O time de desenvolvimento é responsável por executar o desenvolvimento e transformar o backlog do produto em incrementos de funcionalidade, criando um sistema pronto que possa ser entregue ao cliente.',
+                        'texto': [
+                            'Principais Responsabilidades:',
+                            'Criar incrementos de produto de alta qualidade.',
+                            'Auto-organização das tarefas.',
+                            'Estimar itens do backlog.',
+                            'Colaborar para atingir os objetivos da Sprint.', 
+                            'Manter padrões técnicos elevados.',
+                            'Habilidades Essenciais:',
+                            'Habilidades técnicas variadas:',
+                            'multidisciplinariedade e interdisciplinariedade.',
+                            'Trabalho em equipe.',
+                            'Auto-organização.',
+                            'Comprometimento com qualidade.',
+                            'Comunicação efetiva.'
+                        ],
+                        'icon': 'Window_Terminal.png',
+                        'modal_icon': 'Vector.png',
+                        'bg_color': '#ECC252'   
                     }
                 ],
                 'template': 'modulo2.html'
@@ -98,6 +155,6 @@ MODULES_CONFIG = {
 DOWNLOADS = {
     'modulo1_secao1': 'Módulo 1 - Seção 1.pdf',
     'modulo1_secao2': 'Módulo 1 - Seção 2.pdf',
+    'modulo2':'Apostila Módulo 2.pdf',
     'modulo3_apostila': 'Módulo 3 Eventos do Scrum.pdf',
-    'modulo2_apostila': 'Apostila Módulo 2.pdf' # Assumindo que o nome do arquivo é este
 }
