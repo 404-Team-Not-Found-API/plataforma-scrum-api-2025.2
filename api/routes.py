@@ -140,8 +140,13 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                 if correta and str(current_index) not in session.get('acertos_contados', []):
                     session['acertos'] = acertos + 1
                     session.setdefault('acertos_contados', []).append(str(current_index))
+                
             else:
                 feedback = "Você precisa selecionar uma opção antes de continuar!"
+
+            
+
+    progress_percentage = int(((current_index + 1) / total * 100)) if total else 0
 
     return render_template(
         template_name,
@@ -152,6 +157,7 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
         correta=correta,
         explicacao=explicacao,
         resposta_usuario=resposta_usuario,
+        progress_percentage=progress_percentage,
         **(template_data or {})
     )
 

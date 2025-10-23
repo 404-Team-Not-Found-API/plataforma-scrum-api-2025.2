@@ -4,7 +4,7 @@
     <h2 class="text-3xl font-bold mb-6">Resultado Final</h2>
     <p class="text-xl mb-4">Você acertou <strong>{{ pontuacao }}</strong> de <strong>{{ total }}</strong> perguntas.</p>
     <div class="mt-6 flex justify-center gap-4">
-        <a href="{{ url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, start='true') }}#secao-exercicios"
+        <a href="{% if section_name %}{{ url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, start='true') }}{% else %}{{ url_for(redirect_endpoint, module_name=modulo_nome, start='true') }}{% endif %}#secao-exercicios"
             class="bg-gray-300 hover:bg-gray-600 text-black px-6 py-3 rounded-full font-semibold">
             Refazer Exercícios
         </a>
@@ -22,7 +22,7 @@
     <div class="mb-6">
         <div class="progress h-4 rounded-full bg-gray-200">
             <div class="progress-bar bg-emerald-500" role="progressbar"
-                style="width: {{ ((current_index + 1) / total * 100) | round(0) ~ '%' if total else '0%' }}"
+                style="width: {{ progress_percentage }}%"
                 aria-valuenow="{{ current_index + 1 }}" aria-valuemin="0" aria-valuemax="{{ total }}">
             </div>
         </div>
@@ -35,8 +35,7 @@
         <p class="text-lg font-medium mb-4">{{ pergunta.pergunta }}</p>
         {% for alt in pergunta.alternativas %}
         <div>
-            <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer
-      {% if resposta_usuario == loop.index %} bg-emerald-50 border-emerald-400 {% endif %}">
+            <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer{% if resposta_usuario == loop.index %} bg-emerald-50 border-emerald-400{% endif %}">
                 <input type="radio" name="resposta" value="{{ loop.index }}" class="form-radio h-5 w-5 text-emerald-500"
                     {% if resposta_usuario == loop.index %} checked {% endif %} {% if feedback %} disabled {% endif %}>
                 <span>{{ alt }}</span>
@@ -58,7 +57,7 @@
             {% if current_index > 0 %}
             <button type="submit" name="prev"
                 class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200">
-                ← Anterior
+                &larr; Anterior
             </button>
             {% else %}
             <div class="hidden sm:block"></div> <!-- Espaçador para alinhar à direita em telas maiores -->
@@ -66,7 +65,7 @@
 
             <button type="submit" name="{{ 'next' if feedback else 'confirm' }}"
                 class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
-                {{ 'Próxima →' if feedback else 'Confirmar' }}
+                {{ 'Próxima' if feedback else 'Confirmar' }}
             </button>
         </div>
     </form>

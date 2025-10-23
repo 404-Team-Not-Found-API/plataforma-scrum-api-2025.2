@@ -30,7 +30,7 @@ modulo1_perguntas = [
             "Trabalhar em planejamento."
         ],
         "correta": 2,
-        "explicacao": "A agilidade permite responder rapidamente ás mudanças e entregar valor continuamente ao cliente."
+    "explicacao": "A agilidade permite responder rapidamente às mudanças e entregar valor continuamente ao cliente."
     },
     {
         "pergunta": "Como funciona a coletividade no Scrum?",

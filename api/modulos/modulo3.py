@@ -9,7 +9,7 @@ modulo3_perguntas = [
             "Duas semanas, sem exceções.",
             "O tempo necessário para completar o Incremento."
         ],
-        "correta": 1,
+        "correta": 2,
         "explicacao": "O Scrum Guide estabelece o ciclo de tempo fixo para consistência em um mês ou menos."
     },
     {
@@ -20,7 +20,7 @@ modulo3_perguntas = [
             "O Incremento Potencialmente Entregável e a Definição de Pronto (DoD).",
             "O Plano de Ação da Retrospectiva e o status do projeto."
         ],
-        "correta": 1,
+        "correta": 2,
         "explicacao": "O Sprint Planning define o objetivo (Meta) da Sprint e o plano detalhado (Sprint Backlog) para alcançá-lo."
     },
     {
@@ -31,7 +31,7 @@ modulo3_perguntas = [
             "15 minutos, focado em relatar o status do trabalho para o Product Owner.",
             "1 hora, focado em discutir a priorização dos itens do Product Backlog."
         ],
-        "correta": 1,
+        "correta": 2,
         "explicacao": "O Daily Scrum é estritamente limitado a 15 minutos e é um evento de planejamento de 24 horas para o Time de Desenvolvimento."
     },
     {
@@ -42,7 +42,7 @@ modulo3_perguntas = [
             "O Product Owner (PO).",
             "Os Stakeholders Chave, após demonstração do incremento."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "O Product Owner é o único responsável por maximizar o valor do produto e, portanto, o único com autoridade para cancelar a Sprint se a Meta se tornar obsoleta."
     },
     {
@@ -53,7 +53,7 @@ modulo3_perguntas = [
             "Um plano de melhorias acionáveis para aumentar a eficácia e a qualidade.",
             "O Product Backlog Revisado, com novas prioridades."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "A Retrospectiva foca na melhoria contínua do processo do time, gerando ações para serem implementadas."
     },
     {
@@ -64,7 +64,7 @@ modulo3_perguntas = [
             "Sprint Planning.",
             "Sprint Review."
         ],
-        "correta": 3,
+        "correta": 4,
         "explicacao": "O Sprint Review é o evento dedicado à demonstração e inspeção do Incremento com Stakeholders, resultando na adaptação do Product Backlog."
     },
     {
@@ -75,7 +75,7 @@ modulo3_perguntas = [
             "O Scrum Master.",
             "O Scrum Master e o Product Owner em conjunto."
         ],
-        "correta": 1,
+        "correta": 2,
         "explicacao": "O Time de Desenvolvimento é autogerenciável e o único responsável por adaptar seu próprio plano de trabalho no Daily Scrum."
     },
     {
@@ -86,7 +86,7 @@ modulo3_perguntas = [
             "O Product Backlog.",
             "O Sprint Planning."
         ],
-        "correta": 1,
+        "correta": 2,
         "explicacao": "A Sprint é o ciclo de tempo fixo (Time-Box) que contém todos os outros eventos e o trabalho de desenvolvimento."
     },
     {
@@ -97,7 +97,7 @@ modulo3_perguntas = [
             "O Product Backlog, para garantir a ordem de prioridade.",
             "Indivíduos, interações, processos, ferramentas e a Definição de Pronto (DoD)."
         ],
-        "correta": 3,
+        "correta": 4,
         "explicacao": "O foco da Retrospectiva é a inspeção interna do processo de trabalho da equipe, visando aumentar a eficácia."
     },
     {
@@ -108,7 +108,7 @@ modulo3_perguntas = [
             "4 horas.",
             "8 horas."
         ],
-        "correta": 2,
+        "correta": 3,
         "explicacao": "4 horas é o limite máximo para o Sprint Review. O Planning é de 8 horas e a Retrospective é de 3 horas."
     }
 ]
