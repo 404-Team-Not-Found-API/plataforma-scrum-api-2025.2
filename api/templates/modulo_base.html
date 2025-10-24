@@ -99,23 +99,5 @@
     </section>
 </div>
 
-<script>
-    const menuBtn = document.querySelector('.menu-btn');
-    const dropdown = document.getElementById('menuDropdown');
-
-    if (menuBtn && dropdown) {
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('show');
-        }
-      });
-    }
-
-</script>
 {% block body_extra %}{% endblock %}
 {% endblock %}
