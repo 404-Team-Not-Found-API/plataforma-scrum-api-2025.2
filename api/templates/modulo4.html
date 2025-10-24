@@ -1,0 +1,13 @@
+{% extends "modulo_base.html" %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+
+
+    {{ macros.section_header("Artefatos do Scrum", "Os três artefatos oficiais do Scrum fornecem transparência e oportunidades para inspeção e adaptação. ") }}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident facere a laborum quibusdam blanditiis recusandae magnam? Aut reiciendis, recusandae quo deleniti explicabo aperiam eveniet corporis sint alias quaerat, laboriosam quod.</p>
+
+    {{ macros.interactive_cards_section(cards) }}
+{% endblock %}

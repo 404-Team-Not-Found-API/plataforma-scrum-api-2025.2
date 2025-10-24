@@ -87,7 +87,7 @@
                         {% if card_item.modal_icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
                             <img src="{{ url_for('static', filename='assets/' + card_item.modal_icon) }}" alt="" class="me-2" style="height: 24px;">
                         {% else %}
-                            <i class="{{ card_item.modal_icon }} me-2" style="color: {{ card_item.bg_color }}; font-size: 24px;"></i>
+                            <i class="{{ card_item.modal_icon }} me-2" style="font-size: 24px;"></i>
                         {% endif %}
                         {{ card_item.titulo }}
                     </h5>

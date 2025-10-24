@@ -74,7 +74,7 @@ MODULES_CONFIG = {
                         ],
                         'icon': 'File_Search.png',
                         'modal_icon': 'File_Search_az.png',
-                        'bg_color': '#83C7E9' 
+                        'bg_color': '#00AAFF' 
                     },
                     {
 
@@ -97,7 +97,7 @@ MODULES_CONFIG = {
                         ],
                         'icon': 'User_Voice.png',
                         'modal_icon': 'User_Voice_rx.png',
-                        'bg_color': '#7E5DA5'   
+                        'bg_color': '#7200F8'   
                     },
                     {
 
@@ -121,7 +121,7 @@ MODULES_CONFIG = {
                         ],
                         'icon': 'Window_Terminal.png',
                         'modal_icon': 'Vector.png',
-                        'bg_color': '#ECC252'   
+                        'bg_color': '#FF4141'   
                     }
                 ],
                 'template': 'modulo2.html'
@@ -141,7 +141,8 @@ MODULES_CONFIG = {
                 'url_download_key': 'modulo3_apostila',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo2', 'section_name': 'modulo2'},
-                'url_proximo': None,
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
                 'mostrar_exercicios': True,
                 'template': 'modulo3.html',
                 'cards': [
@@ -163,10 +164,9 @@ MODULES_CONFIG = {
                             {'text': 'Quebra e Detalhamento das Tarefas (Pelo Dev Team): Para cada item selecionado, o Time de Desenvolvimento detalha e "quebra" o trabalho em tarefas menores, identifica as estimativas de tempo ou esforço necessárias e cria o Quadro de Tarefas da Sprint (Sprint Backlog).'},
                             {'text': 'Nota: Este é o detalhamento do "Como" o trabalho será feito, transformando os itens do Backlog em passos acionáveis.'}
                          ],
-                        'icon': 'bi bi-clipboard-check',
-                        'modal_icon': 'bi bi-clipboard-check',
-                        'bg_color': '#8c52ff',
-                        'list_icon_style': 'dot'
+                        'icon': 'planning.png',
+                        'modal_icon': 'planning_rx.png',
+                        'bg_color': '#8c52ff'
                     },
                     {
                         'titulo': 'Daily Scrum',
@@ -189,10 +189,9 @@ MODULES_CONFIG = {
                             {'text':'Observação: É um momento de planejamento de 24 horas e não um relatório de status. As discussões detalhadas sobre a resolução de impedimentos ou problemas técnicos devem ser feitas imediatamente após o Daily Scrum, com quem for necessário.'}
 
                         ],
-                        'icon': 'bi bi-clock',
-                        'modal_icon': 'bi bi-clock',
-                        'bg_color': '#ff5757',
-                        'list_icon_style': 'dot'
+                        'icon': 'daily.png',
+                        'modal_icon': 'daily_color.png',
+                        'bg_color': '#ff5757'
                     },
                     {
                         'titulo': 'Sprint',
@@ -213,10 +212,9 @@ MODULES_CONFIG = {
                             {'text':'4. Adaptação Diária: Inspecionar o progresso diariamente (durante o Daily Scrum) e fazer as adaptações necessárias no plano de trabalho das próximas 24 horas.'},
                             {'text':'Observação: Uma Sprint só termina quando seu time-box (tempo fixo) expira, não quando o trabalho está finalizado. Somente o Product Owner pode cancelar uma Sprint, mas isso é raro.'}
                         ],
-                        'icon': 'bi bi-calendar-week',
-                        'modal_icon': 'bi bi-calendar-week',
-                        'bg_color': '#ff751f',
-                        'list_icon_style': 'dot'
+                        'icon': 'sprint.png',
+                        'modal_icon': 'sprint_color.png',
+                        'bg_color': '#ff751f'
                     },
                     {
                         'titulo': 'Review',
@@ -239,10 +237,9 @@ MODULES_CONFIG = {
                             {'text':'3. Projeção e Colaboração (Pelo PO e Stakeholders):'},
                             {'text':'O PO discute o status atual do Product Backlog, as prováveis datas de entrega futuras e a Equipe Scrum, junto aos stakeholders, colabora sobre o que fazer a seguir com base na revisão.'}
                         ],
-                        'icon': 'bi bi-clipboard-data',
-                        'modal_icon': 'bi bi-clipboard-data',
-                        'bg_color': '#7ed957',
-                        'list_icon_style': 'dot'
+                        'icon': 'review.png',
+                        'modal_icon': 'review_color.png',
+                        'bg_color': '#7ed957'
                     },
                     {
 
@@ -266,12 +263,28 @@ MODULES_CONFIG = {
                             {'text': 'A equipe seleciona as melhorias mais impactantes e cria um plano concreto de ações para implementá-las na próxima Sprint'}
 
                         ],
-                        'icon': 'bi bi-arrow-clockwise',
-                        'modal_icon': 'bi bi-arrow-clockwise',
-                        'bg_color': '#0081cc',
-                        'list_icon_style': 'dot'
+                        'icon': 'retrospective.png',
+                        'modal_icon': 'retrospective_color.png',
+                        'bg_color': '#0081cc'
                     }
                 ]
+            },
+        },
+        'quiz': True
+    },
+    'modulo4': {
+        'sections': {
+            'modulo4': {
+                'titulo_modulo': 'A Caixa de Ferramentas',
+                'numero_modulo': 4,
+                'descricao_secao': 'Artefatos e ferramentas práticas do Scrum',
+                'conteudo_complementar': False,
+                'url_anterior': 'routes.module_route',
+                'url_anterior_params': {'module_name': 'modulo3', 'section_name': 'modulo3'},
+                'url_proximo': None,
+                'mostrar_exercicios': True,
+                'template': 'modulo4.html',
+                'cards': []
             },
         },
         'quiz': True

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 from .modulos.modulo3 import modulo3_perguntas
+from .modulos.modulo4 import modulo4_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
 
 bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
@@ -12,9 +13,9 @@ def homepage():
 
 @bp.route('/conteudo')
 def conteudo():
-    from .modulos.config import MODULES_CONFIG
     return render_template('conteudo.html', MODULES_CONFIG=MODULES_CONFIG)
 
+@bp.route('/conteudo/<module_name>/', defaults={'section_name': None}, methods=['GET', 'POST'])
 @bp.route('/conteudo/<module_name>/<section_name>', methods=['GET', 'POST'])
 def module_route(module_name, section_name=None):
     if module_name not in MODULES_CONFIG:
@@ -23,7 +24,6 @@ def module_route(module_name, section_name=None):
     module_config = MODULES_CONFIG[module_name]
     section_config = module_config['sections'].get(section_name or module_name, {})
 
-    # Build template data from config
     template_data = {
         'titulo_modulo': section_config.get('titulo_modulo', ''),
         'numero_modulo': section_config.get('numero_modulo', ''),
@@ -36,14 +36,13 @@ def module_route(module_name, section_name=None):
         'url_proximo': url_for(section_config.get('url_proximo'), **section_config.get('url_proximo_params', {})) if section_config.get('url_proximo') else None,
         'mostrar_exercicios': section_config.get('mostrar_exercicios', False),
         'quiz_available': module_config.get('quiz', False),
-        'module_name': module_name, # Pass current module name
-        'section_name': section_name, # Pass current section name
+        'module_name': module_name, 
+        'section_name': section_name, 
         'cards': section_config.get('cards', [])
     }
 
     template = section_config.get('template', f'{module_name}.html')
 
-    # Handle quiz if applicable
     if module_config.get('quiz') and (request.method == 'POST' or section_config.get('mostrar_exercicios', False)):
         return exercicio(
             modulo_nome=module_name,
@@ -63,6 +62,7 @@ def download(key):
     filename = DOWNLOADS[key]
     return send_from_directory('static/assets', filename, as_attachment=True)
 
+
 @bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
 def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, section_name=None, start_quiz=False, template_data=None):
     if redirect_endpoint is None:
@@ -71,7 +71,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
     modulos = {
         "modulo1": modulo1_perguntas,
         "modulo2": modulo2_perguntas,
-        "modulo3": modulo3_perguntas
+        "modulo3": modulo3_perguntas,
+        "modulo4": modulo4_perguntas
     }
     perguntas = modulos.get(modulo_nome)
     if not perguntas:
