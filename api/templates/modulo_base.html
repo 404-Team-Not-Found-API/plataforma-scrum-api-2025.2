@@ -6,7 +6,7 @@
         cursor: pointer;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         border-radius: 1.5rem;
-        aspect-ratio: 5 / 6; /* Proporção de 5 de largura para 6 de altura */
+        aspect-ratio: 5 / 6; 
     }
     .role-card:hover {
         transform: translateY(-5px);
@@ -16,11 +16,11 @@
         padding-top: 6rem; 
     }
     .role-card-icon {
-        width: 80px; /* Tamanho base do ícone */
+        width: 80px; 
         height: 80px; 
         object-fit: contain; 
         transition: all 0.2s ease-in-out;
-        font-size: 60px; /* Tamanho base para ícones de fonte */
+        font-size: 60px; 
     }
     .role-card .card-title {
         color: #FFFFFF; 
@@ -34,9 +34,9 @@
             padding-top: 2rem; 
         }
         .role-card-icon {
-            width: 60px; /* Ícone menor em telas pequenas */
+            width: 60px; 
             height: 60px;
-            font-size: 50px; /* Tamanho menor para ícones de fonte */
+            font-size: 50px; 
         }
     } 
 </style>
@@ -48,15 +48,15 @@
 
 {% block content %}
 <div class="px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
-    <section class="flex-1 space-y-8 text-center">
+    <section class="flex-1 space-y-8 ">
         <div>
-            <h1 class="text-4xl font-extrabold mb-3">{{ titulo_modulo }}</h1>
+            <h1 class="text-4xl font-extrabold mb-3 text-center">{{ titulo_modulo }}</h1>
             {% if numero_secao %}
-              <h2 class="text-2xl font-semibold mb-3">Módulo {{ numero_modulo }} - Seção {{ numero_secao }}</h2>
+              <h2 class="text-2xl font-semibold mb-3 text-center">Módulo {{ numero_modulo }} - Seção {{ numero_secao }}</h2>
             {% else %}
-              <h2 class="text-2xl font-semibold mb-3">Módulo {{ numero_modulo }}</h2>
+              <h2 class="text-2xl font-semibold mb-3 text-center">Módulo {{ numero_modulo }}</h2>
             {% endif %}
-            <p class="text-lg text-gray-700 leading-relaxed">
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
                 {{ descricao_secao | safe }}
             </p>
         </div>
@@ -66,8 +66,8 @@
 
         {% if mostrar_exercicios %}
         <div class="border-t pt-6 mt-8">
-            <h3 class="text-3xl font-bold mb-4">Exercícios de Fixação</h3>
-            <p class="text-lg text-gray-700 mb-4">Teste seus conhecimentos respondendo às perguntas abaixo.</p>
+            <h3 class="text-3xl font-bold mb-4 text-center">Exercícios de Fixação</h3>
+            <p class="text-lg text-gray-700 mb-4 text-center">Teste seus conhecimentos respondendo às perguntas abaixo.</p>
             {% include "_componente_exercicio.html" %}
         </div>
         {% endif %}
