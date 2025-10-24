@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 from .modulos.modulo3 import modulo3_perguntas
+from .modulos.modulo4 import modulo4_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
 
 bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
@@ -71,7 +72,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
     modulos = {
         "modulo1": modulo1_perguntas,
         "modulo2": modulo2_perguntas,
-        "modulo3": modulo3_perguntas
+        "modulo3": modulo3_perguntas,
+        "modulo4": modulo4_perguntas
     }
     perguntas = modulos.get(modulo_nome)
     if not perguntas:

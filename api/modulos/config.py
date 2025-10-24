@@ -141,7 +141,8 @@ MODULES_CONFIG = {
                 'url_download_key': 'modulo3_apostila',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo2', 'section_name': 'modulo2'},
-                'url_proximo': None,
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
                 'mostrar_exercicios': True,
                 'template': 'modulo3.html',
                 'cards': [
@@ -272,6 +273,23 @@ MODULES_CONFIG = {
                         'list_icon_style': 'dot'
                     }
                 ]
+            },
+        },
+        'quiz': True
+    },
+    'modulo4': {
+        'sections': {
+            'modulo4': {
+                'titulo_modulo': 'A Caixa de Ferramentas',
+                'numero_modulo': 4,
+                'descricao_secao': 'Artefatos e ferramentas práticas do Scrum',
+                'conteudo_complementar': False,
+                'url_anterior': 'routes.module_route',
+                'url_anterior_params': {'module_name': 'modulo3', 'section_name': 'modulo3'},
+                'url_proximo': None,
+                'mostrar_exercicios': True,
+                'template': 'modulo4.html',
+                'cards': []
             },
         },
         'quiz': True
