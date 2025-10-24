@@ -1,26 +1,37 @@
 {% extends "modulo_base.html" %}
 
-{% block title %}Módulo 3 - Os Eventos do Scrum{% endblock %}
+{% block head_extra %}
+{{ super() }} {# Mantém os estilos do pai #}
+<style>
+    .role-card-icon {
+        font-size: 70px; 
+    }
+    @media (max-width: 767.98px) {
+        .role-card-icon {
+            font-size: 55px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
 
 {% block modulo_content %}
     {% import "_macros.html" as macros %}
 
-    {{ macros.section_header("Os Eventos do Scrum", "Conheça os cinco eventos essenciais que estruturam o framework Scrum") }}
-    {{ macros.content_block("Os eventos do Scrum são oportunidades formais para inspecionar e adaptar. Esses eventos são projetados para permitir a transparência e a inspeção regular do progresso e do trabalho, facilitando a adaptação e a melhoria contínua.") }}
+    {{ macros.section_header("Linha do tempo dos Eventos do Scrum", classes="text-[#444444]", container_classes="border-t pt-6 text-center") }}
+    <div class="my-8">
+        <img src="{{ url_for('static', filename='assets/linhadotempo_semfundo 1.png') }}" 
+             alt="Linha do tempo dos Eventos do Scrum" 
+             class="img-fluid w-full md:w-4/5 lg:w-3/4 h-auto mx-auto block rounded-lg shadow-md">
+    </div>
 
-    {{ macros.list([
-        "Sprint: Um time-box de um mês ou menos durante o qual um Incremento potencialmente utilizável, pronto para ser lançado, é criado.",
-        "Sprint Planning: Onde o Time Scrum colabora para definir o que será entregue na Sprint e como o trabalho será realizado.",
-        "Daily Scrum: Uma reunião diária de 15 minutos para o Time de Desenvolvimento inspecionar o progresso em direção à Meta da Sprint e adaptar o plano para as próximas 24 horas.",
-        "Sprint Review: Um evento informal para inspecionar o Incremento e adaptar o Product Backlog, se necessário. Stakeholders são convidados a fornecer feedback.",
-        "Sprint Retrospective: Uma oportunidade para o Time Scrum inspecionar a si mesmo e criar um plano para melhorias a serem implementadas na próxima Sprint."
-    ]) }}
+    <div class="text-center my-8">
+        <p class="text-lg text-gray-700 leading-relaxed">Clique nos cards abaixo para saber mais sobre cada evento do Scrum:</p>
+    </div>
 
-    {{ macros.section_header("O 3-5-3 do Scrum", "Uma forma simples de memorizar os componentes do Scrum") }}
-    {{ macros.content_block("Para facilitar a compreensão e memorização, o Scrum pode ser resumido como '3-5-3':") }}
-    {{ macros.list([
-        "3 Papéis: Product Owner, Scrum Master e Time de Desenvolvimento.",
-        "5 Eventos: Sprint, Sprint Planning, Daily Scrum, Sprint Review e Sprint Retrospective.",
-        "3 Artefatos: Product Backlog, Sprint Backlog e Incremento."
-    ]) }}
+    {{ macros.interactive_cards_section(cards) }}
+
+    {{ macros.content_block("") }}
+
 {% endblock %}

@@ -1,47 +1,5 @@
 {% extends "modulo_base.html" %}
 
-{% block head_extra %}
-<style>
-    .role-card {
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        border-radius: 1.5rem; 
-    }
-    .role-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
-    }
-    .role-card .card-body {
-        padding-top: 4rem; 
-    }
-    .role-card-icon {
-        width: 100px;
-        height: 100px; 
-        object-fit: contain; 
-        transition: all 0.2s ease-in-out;
-    }
-    .role-card .card-title {
-        color: #FFFFFF; 
-        font-family: 'Poppins', Tahoma, sans-serif; 
-        font-size: 1.5rem;
-        font-weight: bold; 
-    }
-
-    @media (max-width: 767.98px) {
-        .role-card .card-body {
-            padding-top: 2rem; 
-        }
-        .role-card-icon {
-            width: 70px;
-            height: 70px;
-        }
-        .role-card .card-title {
-            font-size: 1.5rem; 
-        }
-    }
-</style>
-{% endblock %}
-
 {% block title %}Módulo {{ numero_modulo }}{% endblock %}
 
 {% block modulo_content %}

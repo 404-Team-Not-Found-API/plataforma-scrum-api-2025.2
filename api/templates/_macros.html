@@ -1,40 +1,114 @@
+{% macro card(titulo, subtitulo=None, texto=None, titulo_complementar=None, conteudo_complementar=False, url_download_complementar=None) %}
+<div class="border-t pt-6">
+    <h3 class="text-xl font-bold mb-3">{{ titulo }}</h3>
+    {% if subtitulo %}
+    <h4 class="text-lg font-semibold mb-2">{{ subtitulo }}</h4>
+    {% endif %}
+    {% if texto %}
+    <p class="text-gray-700 leading-relaxed">
+        {{ texto }}
+    </p>
+    {% endif %}
+    {% if titulo_complementar %}
+    <p class="font-semibold">{{ titulo_complementar }}</p>
+    {% endif %}
+    {% if conteudo_complementar and url_download_complementar %}
+    <p class="text-gray-600 mb-4">Documento para aprofundar os estudos do módulo.</p>
+    <a href="{{ url_download_complementar }}" target="_blank">
+        <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
+    </a>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro button(text, url, classes="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition") %}
+<a href="{{ url }}" class="{{ classes }}">{{ text }}</a>
+{% endmacro %}
+
+{% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6") %}
+<div class="{{ container_classes }}">
+    <h2 class="text-2xl md:text-3xl font-bold mb-3 {{ classes }}">{{ titulo }}</h2>
+    {% if subtitulo %}
+    <h2 class="text-gray-700 font-bold mb-3">{{ subtitulo }}</h2>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro content_block(texto) %}
+<p class="text-gray-700 leading-relaxed">
+    {{ texto }}
+</p>
+{% endmacro %}
+
+{% macro list(items, style="list-disc list-inside") %}
+<ul class="{{ style }} text-gray-700 leading-relaxed">
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro grid_section(items, cols="grid-cols-1 md:grid-cols-3") %}
+<div class="grid {{ cols }} gap-4">
+    {% for item in items %}
+    <div class="bg-blue-50 p-4 rounded-lg">
+        <strong>{{ item.titulo }}</strong>
+        <p class="text-sm text-gray-600 mt-2">{{ item.texto }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
 {% macro interactive_cards_section(cards) %}
-    <!-- Seção de Cards dos Papéis -->
-    <div class="row text-center g-5 my-4 justify-content-center">
-        {% for card in cards %}
-        <div class="col-10 col-sm-7 col-md-4 col-lg-3">
-            <div class="card h-100 role-card border-0"
-                 style="background-color: {{ card.bg_color }};"
-                 data-bs-toggle="modal" 
-                 data-bs-target="#modal-{{ loop.index0 }}">
-                <div class="card-body">
-                    <img src="{{ url_for('static', filename='assets/' + card.icon) }}" class="card-img-top mx-auto role-card-icon" alt="Ícone {{ card.titulo }}">
-                    <h5 class="card-title mt-4">{{ card.titulo }}</h5>
-                </div>
+<div class="row row-cols-1 row-cols-md-3 g-5 justify-content-center">
+    {% for card_item in cards %}
+    <div class="col">
+        <div class="card role-card text-center mx-auto" style="background-color: {{ card_item.bg_color }}; cursor: pointer; transition: all 0.2s ease-in-out; max-width: 260px;"
+             data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}"
+             onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0.8rem 2rem rgba(0,0,0,0.15)';"
+             onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                {% if card_item.icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
+                    <img src="{{ url_for('static', filename='assets/' + card_item.icon) }}" alt="{{ card_item.titulo }}" class="mb-3 role-card-icon">
+                {% else %}
+                    <i class="{{ card_item.icon }} mb-3 text-white role-card-icon" style="line-height: 1;"></i>
+                {% endif %}
+                <h5 class="card-title text-white font-bold">{{ card_item.titulo }}</h5>
             </div>
         </div>
-        {% endfor %}
     </div>
 
-    <!-- Modais para cada Papel -->
-    {% for card in cards %}
-    <div class="modal fade" id="modal-{{ loop.index0 }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index0 }}" aria-hidden="true">
+    <!-- Modal for each card -->
+    <div class="modal fade" id="modal-{{ loop.index }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background-color: #ebebeb ;">
-                <div class="modal-header d-flex align-items-center">
-                    <img src="{{ url_for('static', filename='assets/' + card.modal_icon) }}" class="me-3" alt="Ícone {{ card.titulo }}" style="width: 40px; height: 40px; object-fit: contain;">
-                    <h5 class="modal-title flex-grow-1 fw-bold fs-4" id="modalLabel-{{ loop.index0 }}">{{ card.titulo }}</h5>
+            <div class="modal-content">
+                <div class="modal-header text-black">
+                    <h5 class="modal-title font-bold d-flex align-items-center" id="modalLabel-{{ loop.index }}">
+                        {% if card_item.modal_icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
+                            <img src="{{ url_for('static', filename='assets/' + card_item.modal_icon) }}" alt="" class="me-2" style="height: 24px;">
+                        {% else %}
+                            <i class="{{ card_item.modal_icon }} me-2" style="color: {{ card_item.bg_color }}; font-size: 24px;"></i>
+                        {% endif %}
+                        {{ card_item.titulo }}
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h6 class="text-muted mb-4">{{ card.subtitulo }}</h6>
-                    <ul class="list-unstyled">
-                        {% for item in card.texto %}
-                            {% if item.endswith(':') %}
-                                <li class="mb-2 mt-3"><strong>{{ item }}</strong></li>
+                    <p class="font-semibold">{{ card_item.subtitulo }}</p>
+                    <ul class="list-unstyled text-start mt-3">
+                        {% for item in card_item.texto %}
+                        <li class="d-flex align-items-start mb-2">
+                            {% if item.bold %}
+                                <span class="font-bold" style="padding-left: calc(20px + 0.5rem);">{{ item.text }}</span>
                             {% else %}
-                                <li class="d-flex align-items-start mb-2"><i class="bi bi-check-lg me-2" style="color: #0dcaf0;"></i><span>{{ item }}</span></li>
+                                {% if card_item.list_icon_style == 'dot' %}
+                                    <span class="flex-shrink-0 me-2" style="font-size: 24px; line-height: 1; color: black; margin-top: -0.2rem;">•</span>
+                                {% else %}
+                                    <i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 20px;"></i>
+                                {% endif %}
+                                <span>{{ item.text }}</span>
                             {% endif %}
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -42,26 +116,5 @@
         </div>
     </div>
     {% endfor %}
-{% endmacro %}
-
-{# Outras macros existentes... #}
-{% macro section_header(title, subtitle) %}
-    <div class="mb-6">
-        <h3 class="text-3xl font-bold">{{ title }}</h3>
-        <p class="text-lg text-gray-600">{{ subtitle }}</p>
-    </div>
-{% endmacro %}
-
-{% macro content_block(text) %}
-    <p class="text-lg text-gray-700 leading-relaxed mb-4">{{ text }}</p>
-{% endmacro %}
-
-{% macro list(items) %}
-    <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed space-y-2 mb-4">
-        {% for item in items %}<li>{{ item }}</li>{% endfor %}
-    </ul>
-{% endmacro %}
-
-{% macro section_description(description) %}
-    <p class="text-lg text-gray-600">{{ description | safe }}</p>
+</div>
 {% endmacro %}

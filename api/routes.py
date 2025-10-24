@@ -27,7 +27,7 @@ def module_route(module_name, section_name=None):
     template_data = {
         'titulo_modulo': section_config.get('titulo_modulo', ''),
         'numero_modulo': section_config.get('numero_modulo', ''),
-        'numero_secao': section_config.get('numero_secao'),
+        'numero_secao': section_config.get('numero_secao', ''),
         'descricao_secao': section_config.get('descricao_secao', ''),
         'titulo_complementar': section_config.get('titulo_complementar'),
         'conteudo_complementar': section_config.get('conteudo_complementar', False),
@@ -35,7 +35,9 @@ def module_route(module_name, section_name=None):
         'url_anterior': url_for(section_config.get('url_anterior'), **section_config.get('url_anterior_params', {})) if section_config.get('url_anterior') else None,
         'url_proximo': url_for(section_config.get('url_proximo'), **section_config.get('url_proximo_params', {})) if section_config.get('url_proximo') else None,
         'mostrar_exercicios': section_config.get('mostrar_exercicios', False),
-        'quiz_available': section_config.get('mostrar_exercicios', False),
+        'quiz_available': module_config.get('quiz', False),
+        'module_name': module_name, # Pass current module name
+        'section_name': section_name, # Pass current section name
         'cards': section_config.get('cards', [])
     }
 
@@ -75,9 +77,9 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
     if not perguntas:
         return "Módulo não encontrado", 404
 
-    force_start = request.args.get('start', 'false').lower() == 'true'
+    force_start = request.args.get('start', 'false').lower() == 'true' or start_quiz
 
-    if force_start or start_quiz or 'modulo_nome' not in session or session['modulo_nome'] != modulo_nome:
+    if force_start or session.get('modulo_nome') != modulo_nome:
         session['current_index'] = 0
         session['acertos'] = 0
         session['modulo_nome'] = modulo_nome
@@ -86,14 +88,14 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
 
     current_index = session.get('current_index', 0)
     acertos = session.get('acertos', 0)
-    respostas = session.get('respostas', {})
+    respostas_sessao = session.get('respostas', {})
     total = len(perguntas)
     pergunta = perguntas[current_index]
 
     feedback = None
     correta = False
     explicacao = ""
-    resposta_usuario = respostas.get(str(current_index))
+    resposta_usuario = respostas_sessao.get(str(current_index))
 
     if request.method == 'POST':
         if 'prev' in request.form:
@@ -125,8 +127,8 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                 except ValueError:
                     resposta = None
 
-                respostas[str(current_index)] = resposta
-                session['respostas'] = respostas
+                respostas_sessao[str(current_index)] = resposta
+                session['respostas'] = respostas_sessao
 
                 resposta_usuario = resposta
                 correta = (resposta == pergunta["correta"])
@@ -136,8 +138,13 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
                 if correta and str(current_index) not in session.get('acertos_contados', []):
                     session['acertos'] = acertos + 1
                     session.setdefault('acertos_contados', []).append(str(current_index))
+                
             else:
                 feedback = "Você precisa selecionar uma opção antes de continuar!"
+
+            
+
+    progress_percentage = int(((current_index + 1) / total * 100)) if total else 0
 
     return render_template(
         template_name,
@@ -148,6 +155,7 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoin
         correta=correta,
         explicacao=explicacao,
         resposta_usuario=resposta_usuario,
+        progress_percentage=progress_percentage,
         **(template_data or {})
     )
                                     
