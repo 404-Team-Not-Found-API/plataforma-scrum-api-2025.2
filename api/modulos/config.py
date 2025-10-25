@@ -533,5 +533,5 @@ DOWNLOADS = {
     'modulo1_secao2': 'modulo_1_secao_2.pdf',
     'modulo2': 'modulo_2.pdf',
     'modulo3_apostila': 'modulo_3_eventos_scrum.pdf',
-    'modulo4_apostila':'modulo4_Os_Artefatos.pdf'
+    'modulo4_apostila':'modulo_4_artefatos.pdf'
 }
