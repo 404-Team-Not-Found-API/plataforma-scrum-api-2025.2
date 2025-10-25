@@ -2,6 +2,7 @@
 MODULES_CONFIG = {
     'modulo1': {
         'sections': {
+            
             'modulo1': {
                 'titulo_modulo': 'Valores e Princípios: Manifesto Ágil',
                 'numero_modulo': 1,
@@ -34,10 +35,12 @@ MODULES_CONFIG = {
                 'template': 'modulo1s2.html'
             }
         },
-        'quiz': True
+        'quiz': True,
+        'primeira_secao': 'modulo1'
     },
     'modulo2': {
         'sections': {
+            
             'modulo2': {
                 'titulo_modulo': 'Os Papéis e as Interações',
                 'numero_modulo': 2,
@@ -127,10 +130,12 @@ MODULES_CONFIG = {
                 'template': 'modulo2.html'
             },
         },
-        'quiz': True
+        'quiz': True,
+        'primeira_secao': 'modulo2'
     },
     'modulo3': {
         'sections': {
+            
             'modulo3': {
                 'titulo_modulo': 'Os eventos do Scrum',
                 'numero_modulo': 3,
@@ -271,15 +276,20 @@ MODULES_CONFIG = {
                 ]
             },
         },
-        'quiz': True
+        'quiz': True,
+        'primeira_secao': 'modulo3'
     },
     'modulo4': {
         'sections': {
+            
             'modulo4': {
                 'titulo_modulo': 'A Caixa de Ferramentas',
                 'numero_modulo': 4,
                 'descricao_secao': 'Artefatos e ferramentas práticas do Scrum',
-                'conteudo_complementar': False,
+                'conteudo_complementar': True,
+                'titulo_complementar': 'Artefatos do Scrum',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo4_apostila',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo3', 'section_name': 'modulo3'},
                 'url_proximo': None,
@@ -288,7 +298,7 @@ MODULES_CONFIG = {
                 'cards': [
                     {
                         'titulo': 'Product Backlog',
-                        'subtitulo': 'Product Backlog: NÉ uma lista ordenada e emergente do que é necessário para melhorar o produto. É a única fonte de trabalho para o Time Scrum.',
+                        'subtitulo': 'Product Backlog: É uma lista ordenada e emergente do que é necessário para melhorar o produto. É a única fonte de trabalho para o Time Scrum.',
                         'texto': [
                             {'text': 'Objetivo:', 'bold': True},
                             {'text': 'Fornecer uma visão completa e priorizada do que precisa ser desenvolvido.'},
@@ -318,23 +328,25 @@ MODULES_CONFIG = {
                             {'text': 'Refine regularmente com o time: Os Developers que farão o trabalho são responsáveis por dimensionar (estimar) os itens. O Product Owner refina os itens com a colaboração dos Developers.'},
                             {'text': 'Priorize com base em valor de negócio: O Product Owner é responsável por maximizar o valor do produto resultante do trabalho do Time Scrum, geralmente feito através da ordenação (priorização) dos itens.'},
                          ],
-                        'icon': 'planning.png',
+                        'icon': 'product_backlog.png',
                         'modal_icon': 'planning_rx.png',
-                        'bg_color': '#8c52ff'
+                        'bg_color': '#8FAA13'
                     }, 
                     {
                         'titulo': 'Sprint Backlog',
-                        'subtitulo': 'O Sprint Backlog é composto por três elementos:'
-                        '(1) Meta da Sprint(o porquê)'
-                        '(2) Conjunto de itens do Product Backlog selecionados para a Sprint (o quê), e'
-                        '(3) Plano de ação para entregar o Incremento (o como).',
+                        'subtitulo': [
+                            'O Sprint Backlog é composto por três elementos:',
+                            '(1) Meta da Sprint (o porquê).',
+                            '(2) Itens do Product Backlog selecionados para a Sprint (o quê).',
+                            '(3) Plano de ação para entregar o Incremento (o como).'
+                        ],
                         'texto': [
-                            {'text': 'Compromisso: Meta da Sprint(Sprint Goal)', 'bold': True},
-                            {'text': 'O único objetivo da Sprint.'},
+                            {'text': 'Compromisso: Meta da Sprint (Sprint Goal)', 'bold': True},
+                            {'text': 'O único objetivo da Sprint'},
                             {'text': 'Fornece coerência e foco ao trabalho da Sprint.'},
                             {'text': 'A equipe se compromete a fazer o melhor para alcançar este objetivo.'},
-                            {'text': 'Componentes'
-                            'O Sprint Backlog é um plano criado pelo time de desenvolvimento no Planejamento da Sprint.', 'bold': True},
+                            {'text': 'Componentes:', 'bold': True},
+                            {'text':'O Sprint Backlog é um plano criado pelo time de desenvolvimento no Planejamento da Sprint.', 'bold': True},
                             {'text': 'Itens selecionados do Product Backlog: O "O Quê" será entregue para cumprir a Meta da Sprint.'},
                             {'text': 'Plano de ação para concluí-los: O "Como" a equipe transformará esses itens em um Incremento que atenda à Definição de Pronto (DoD).'},
                             {'text': 'Tarefas técnicas necessárias: O trabalho que emerge dos itens do Product Backlog, que os desenvolvedores identificam para si mesmos durante a Sprint.'},
@@ -350,9 +362,9 @@ MODULES_CONFIG = {
                             {'text': 'Foque na Meta da Sprint: Se o trabalho necessário mudar, a equipe colabora com o Product Owner para negociar o escopo do Sprint Backlog para não comprometer a Meta da Sprint.'},                            
                             {'text': 'Use um quadro visual (físico ou digital): A visualização do Sprint Backlog (por exemplo, em um quadro Kanban ou plataformas digitais desenvolvidas para execução desse trabalho) ajuda a maximizar a transparência e a facilitar a inspeção diária do progresso.'},                           
                          ],
-                        'icon': 'planning.png',
+                        'icon': 'sprint_backlog.png',
                         'modal_icon': 'planning_rx.png',
-                        'bg_color': '#8c52ff'
+                        'bg_color': '#EE671E'
                     },
                     {
                         'titulo': 'Incremento',
@@ -362,31 +374,39 @@ MODULES_CONFIG = {
                             {'text': 'O Compromisso para o Incremento é a Definição de Pronto (DoD).'},
                             {'text': 'A DoD é uma descrição formal do estado do Incremento quando ele atende às medidas de qualidade exigidas para o produto.'},
                             {'text': 'Quando um item do Product Backlog atende à DoD, nasce um Incremento.'},
-                            {'text': 'Benefícios', 'bold': True},
+                            {'text': 'Benefícios:', 'bold': True},
                             {'text': 'Entrega de valor contínua: Múltiplos Incrementos podem ser criados dentro de uma Sprint, permitindo a entrega de valor aos stakeholders a qualquer momento.'},
                             {'text': 'Produto sempre utilizável e potencialmente entregável: O Incremento deve estar em condição utilizável (atender à DoD), independentemente de o Product Owner decidir liberá-lo imediatamente ou não.'},
                             {'text': 'Base para Feedback (Empirismo): O Incremento é inspecionado na Revisão da Sprint, permitindo que o Time Scrum e os Stakeholders forneçam feedback sobre o produto.'},
                             {'text': 'Transparência e Qualidade: A DoD cria transparência, fornecendo um entendimento compartilhado de qual trabalho foi concluído e qual o padrão de qualidade obrigatório para o produto.'},
-                            {'text': 'Dicas Práticas', 'bold': True},
+                            {'text': 'Dicas Práticas:', 'bold': True},
                             {'text': 'Defina claramente sua Definition of Done: A DoD deve ser clara e rigorosa. Se um item do Product Backlog não atender à DoD, ele não pode ser liberado ou apresentado na Revisão da Sprint; ele retorna ao Product Backlog.'},
                             {'text': 'Garanta que seja funcional e testado: O Incremento deve funcionar em conjunto com todos os Incrementos anteriores e ter sido verificado, garantindo que a funcionalidade esteja completa e testada.'},
                             {'text': 'Mantenha qualidade técnica alta: O Incremento é um passo em direção à Meta do Produto, mas precisa atender aos padrões de qualidade definidos, sem atalhos que gerem débito técnico.'},
                             {'text': 'Priorize o lançamento de valor: Embora a liberação não seja obrigatória ao final da Sprint, o Product Owner deve procurar liberar o Incremento sempre que for benéfico para o negócio.'},
-                            {'text': 'Ferramentas Práticas', 'bold': True},
-                            {'text': 'Ferramentas complementares que ajudam times Scrum a terem mais visibilidade e controle.'},                             
+                            {'text': 'Ferramentas Práticas:', 'bold': True},
+                            {'text': 'Ferramentas complementares que ajudam times Scrum a terem mais visibilidade e controle.', 'bold': True},   
+                            {'text': 'Gráfico Burndown: Ferramenta visual que mostra o progresso da Sprint.'}                          
                          ],
-                        'icon': 'planning.png',
+                        'icon': 'incremento.png',
                         'modal_icon': 'planning_rx.png',
-                        'bg_color': '#8c52ff'
+                        'bg_color': '#D002AB'
                     },
                     {
-                        'titulo': 'Gráfico Bourdown',
+                        'tipo': 'texto',
+                        'titulo': 'Ferramentas Práticas:',
+                        'texto': [
+                            {'text': 'Além dos artefatos, existem ferramentas complementares que ajudam os times Scrum a terem mais visibilidade e controle sobre o progresso.'}
+                         ],
+                    },
+                    {
+                        'titulo': 'Gráfico Burndown',
                         'subtitulo': 'O Gráfico Burndown é a ferramenta visual que funciona como um termômetro, ele mostra a relação entre o trabalho que resta versus o tempo que resta em uma Sprint.',
                         'texto': [
-                            {'text': 'Objetivo', 'bold': True},
+                            {'text': 'Objetivo:', 'bold': True},
                             {'text': 'O propósito: Acompanhar o progresso do Time Scrum para ver se estamos no caminho certo para alcançar a Meta da Sprint (o alvo) no tempo definido.'},
                             {'text': 'A função: Identificar desvios (atrasos ou adiantamentos) do plano rapidamente, permitindo que o time faça adaptações imediatas.'},                        
-                            {'text': 'Benefícios', 'bold': True},
+                            {'text': 'Benefícios:', 'bold': True},
                             {'text': 'Visibilidade Instantânea do Progresso: Com um olhar rápido, todos sabem como a Sprint está indo. É como olhar o velocímetro do carro.'},
                             {'text': 'Identifica Problemas Cedo: Se a linha de trabalho restante parar de cair (ou subir!), isso sinaliza um problema (impedimento, dificuldade técnica, ou escopo mal-entendido) antes que seja tarde demais.'},
                             {'text': 'Facilita Transparência com Stakeholders: É uma forma simples e objetiva de mostrar aos interessados o quanto falta para a entrega, sem entrar em detalhes técnicos complexos.'},
@@ -397,15 +417,112 @@ MODULES_CONFIG = {
                             {'text': 'Discuta desvios significativos com o time: Se a linha de progresso estiver muito acima da linha ideal (o esperado), isso não é um erro; é um sinal de alerta. Use esse sinal para inspecionar e adaptar o Sprint Backlog.'},
                             {'text': 'Combine com outras métricas: O Burndown mostra o que falta. Combine-o com o Velocidade (o quanto o time entrega por Sprint) para entender melhor a capacidade futura da equipe.'},                                                          
                          ],
-                        'icon': 'planning.png',
-                        'modal_icon': 'planning_rx.png',
-                        'bg_color': '#8c52ff'
-                    }              
+                        'icon': 'burndown.png',
+                        'modal_icon': 'burndown.png',
+                        'bg_color': '#fff',
+                        'text_color': '#FF6200',
+                        'border_color': '#FF6200'
+                    },
+                    {
+                        'tipo': 'texto',
+                        'titulo': 'Tutorial de Ferramentas:',
+                        'texto': [
+                            {'text': 'Aprenda a usar as principais ferramentas digitais para implementar Scrum no seu time.'}
+                         ],
+                    },
+                    {
+                        'titulo': 'Jira',
+                        'subtitulo': 'Ferramenta completa para gerenciamento ágil de projetos, ideal para times de desenvolvimento.',
+                        'texto': [
+                            {'text': 'Passo a Passo:', 'bold': True},
+                            {'text':'1) Crie um novo projeto Scrum no Jira'},
+                            {'text':'2) Configure o quadro com as colunas: To Do, In Progress, Done'},
+                            {'text':'3) Escreva User Stories com formato: Como [usuário], eu quero [ação] para [benefício]'},
+                            {'text':'4) Adicione critérios de aceite em cada história'},
+                            {'text':'5 Estime usando Story Points'},
+                            {'text':'6) Mova os cards entre as colunas conforme o progresso'},
+                            {'text':'7) Use o Burndown Chart para acompanhar a Sprint'},
+                            {'text': 'Casos de Uso no Scrum:','bold': True}, 
+                            {'text':'Gerenciar Product Backlog e Sprint Backlog'},
+                            {'text':'Rastrear bugs e melhorias técnicas'},
+                            {'text':'Gerar relatórios de progresso automaticamente'},
+                            {'text': 'Tutorial:', 'bold': True},
+                            {'text':'Assista aos tutoriais do canal Jira para ver a ferramenta em ação:'},
+                            {'link_text': 'Vídeo 1', 'url': 'https://youtu.be/vCNafmr4Brk?si=fwjf0_XOidGY8rpb'},
+                            {'link_text': 'Vídeo 2', 'url': 'https://youtu.be/Ymf5fUkP_rE?si=I1VuT9LvT9wlpttT'},
+                            {'text':'💡 Dica: Estas ferramentas têm versões gratuitas que são perfeitas para começar. Explore os templates prontos e tutoriais oficiais disponíveis em cada plataforma.'},
+
+                        ],
+                        'icon': 'jira.png',
+                        'modal_icon': 'jira.png',
+                        'bg_color': '#fff',
+                        'text_color': '#2563EB',
+                        'border_color': '#2563EB'
+                    },
+                    {
+                        'titulo': 'Trello',
+                        'subtitulo':'',
+                        'texto': [
+                            {'text': 'Tutorial:', 'bold': True},
+                            {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
+                            {'link_text': 'Vídeo 1', 'url': 'https://youtu.be/_HpsaRL9Jug?si=DQeRsCnuDrCA4B12'},
+                            {'text': 'Guia Completo:', 'bold': True},
+                            {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
+                            {'link_text': 'Guia', 'url': 'https://trello.com/pt-BR/guide '},
+                            {'text': 'Template do Projeto:', 'bold': True},
+                            {'text': 'Acesse um template disponível na ferramenta:'},
+                            {'link_text': 'Template', 'url': 'https://trello.com/templates/project-management/modelo-de-projeto-(scrum)-iKkUEPyC'}
+
+                        ],
+                        'icon': 'trello.png',
+                        'modal_icon': 'trello.png',
+                        'bg_color': '#fff',
+                        'text_color': '#0EA5E9',
+                        'border_color': '#0EA5E9',
+                        'break_after': True
+                    },
+                    {
+                        'titulo': 'Miro',
+                        'subtitulo':'',
+                        'texto': [
+                            {'text': 'Tutorial:', 'bold': True},
+                            {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
+                            {'link_text': 'Tutorial', 'url': 'https://youtu.be/S9n8dQAG_6U?si=h9YPN3wTmYOHIey2'},
+                            {'text': 'Templates:', 'bold': True},
+                            {'text': 'Acesse os templates disponíveis na ferramenta:'},
+                            {'link_text': 'Mapa de história do usuário', 'url': 'https://miro.com/app/dashboard/?tpTemplate=f3644964-3446-4de3-bed2-0a928639cb15&isCustom=false&share_link_id=743266210609'},
+                            {'link_text': 'Product Backlog', 'url': 'hhttps://miro.com/app/dashboard/?tpTemplate=c81b811a-d5ad-4597-9646-aa8682426b15&isCustom=false&share_link_id=834743914228'},
+                            {'link_text': 'Refinamento do Backlog', 'url': 'https://miro.com/app/dashboard/?tpTemplate=3b1b88ec-a574-4d8b-922a-a5ae5dd8182a&isCustom=false&share_link_id=24244301173'},
+                            {'link_text': 'Template de Retrospective', 'url': 'https://miro.com/app/dashboard/?tpTemplate=fbdc8d0f-757a-48e6-af63-ef615509aeaa&isCustom=false&share_link_id=513200360576'},
+                        ],
+                        'icon': 'miro.png',
+                        'modal_icon': 'miro.png',
+                        'bg_color': '#fff',
+                        'text_color': '#EAB308',
+                        'border_color': '#EAB308'
+                    },
+                    {
+                        'titulo': 'Figma',
+                        'subtitulo': '',
+                        'texto': [
+                            {'text': 'Tutorial:', 'bold': True},
+                            {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
+                            {'link_text': 'Tutorial', 'url': 'https://youtu.be/bYdyNEvr7ks?si=thDsQRUFRiaSzLGC'},
+                            {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
+                            {'link_text': 'Curso', 'url': 'https://help.figma.com/hc/en-us/sections/30880632542743-Figma-Design-for-beginners'},
+                        ],
+                        'icon': 'figma.png',
+                        'modal_icon': 'figma.png',
+                        'bg_color': '#fff',
+                        'text_color': '#A259FF',
+                        'border_color': '#A259FF'
+                    }           
                                                                                  
                 ],
             },
         },
-        'quiz': True
+        'quiz': True,
+        'primeira_secao': 'modulo4'
     },
 }
 
@@ -416,4 +533,5 @@ DOWNLOADS = {
     'modulo1_secao2': 'modulo_1_secao_2.pdf',
     'modulo2': 'modulo_2.pdf',
     'modulo3_apostila': 'modulo_3_eventos_scrum.pdf',
+    'modulo4_apostila':'modulo4_Os_Artefatos.pdf'
 }

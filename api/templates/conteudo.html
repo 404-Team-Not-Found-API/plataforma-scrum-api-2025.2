@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "modulo_base.html" %}
 
 {% block navbar %}
-    {% include "navbar.html" %}
+    {% include "navbarModulos.html" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
             <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow">
                 <h2 class="text-2xl font-bold mb-2">{{ module_config['sections'][module_name]['titulo_modulo'] }}</h2>
                 <p class="text-gray-600 mb-4">{{ module_config['sections'][module_name]['descricao_secao'] }}</p>
-                <a href="{{ url_for('routes.module_route', module_name=module_name) }}"
+                <a href="{{ url_for('routes.module_route', module_name=module_name, section_name=module_name) }}"
                    class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
                     Acessar Módulo
                 </a>
