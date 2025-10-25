@@ -36,25 +36,25 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   🔄   |
-|  7   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   🔄   |
-|  2   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |            |   2    |   ⚙️   |
-|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |            |   2    |   ⚙️   |
-|  4   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
-|  5   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |            |   2    |   ⚙️   |
-|  6   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |            |   2    |   ⚙️   |
-|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |    2   |   ⚙️   |
-|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |            |    2   |   ⚙️   |
-|  10   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
-|  11   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais para que o aluno possa baixar e usar em seus próprios projetos.   |            |   2    |   ⚙️   |
-|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
-|  13   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
-|  14   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   2    |   ⚙️   |
-|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   2    |   ⚙️   |
-|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   2    |   ⚙️   |
-|  17   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
+|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ✅   |
+|  2   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ✅   |
+|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |      8      |   2    |   ✅   |
+|  4   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |      8      |   2    |   ✅   |
+|  5   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |     8       |   2    |   ✅   |
+|  6   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |      3      |   2    |   ✅   |
+|  7   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |    2   |   ✅   |
+|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |    2   |   ✅   |
+|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |   2    |   ✅   |
+|  10   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |      3      |   2    |   ✅   |
+|  11   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |       3     |    2   |   ✅   |
+|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |      3      |   2    |   ✅   |
+|  13   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais do módulo 4 para que o aluno possa baixar e usar em seus próprios projetos.   |     3       |   2    |   ✅   |
+|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   3    |   ⚙️   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   3    |   ⚙️   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   3    |   ⚙️   |
+|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
 |  18   |    Baixa    | Como gerente, quero  que a pessoa em treinamento acompanhe o progresso do curso para indicar sua posição atual.   |            |   3    |   ⚙️   |
-|  19  |    Média    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
+|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
 
 ---
 <br><br>
@@ -62,7 +62,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 ## 📈 Evolução do Projeto <a id='evolucao'></a>
 
 #### 🏁 Sprint 1 (08/09 - 28/09) - Fundação da Plataforma
-- **Status**: 🔄 Em andamento
+- **Status**: ✅ Concluída
 - **Objetivo Principal**: Estabelecer a base técnica e estrutural da aplicação
 - **Principais Entregas**:
   - ✅ Configuração inicial do ambiente de desenvolvimento Flask
@@ -74,7 +74,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 <br>
 
 #### 🎯 Sprint 2 (06/10 - 26/10) - Expansão de Funcionalidades
-- **Status**: Planejada
+- **Status**: ✅ Concluída 
 - **Objetivo Principal**: Expandir o conteúdo através de módulos, implementar os exercícios de fixação. 
 - **Principais Entregas Planejadas**:
   - ✅ Módulos (1-4);
@@ -82,11 +82,11 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
   - ✅ Exemplos práticos de implementação
   - ✅ Modelos dos principais documentos do Scrum.
 - **Valor Agregado Esperado**: Aumento de engajamento e retenção de conhecimento. 
-- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/.gitkeep)
+- **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/sprint2.md)
 <br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
-- **Status**: Planejada
+- **Status**: ⚙️ Planejada
 - **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades avançadas para aprimorar a experiência do usuário.
 - **Principais Entregas Planejadas**:
   - ✅ Módulo Final - Primeira Sprint de Treinamento;
@@ -102,8 +102,8 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 
 |     Sprint       |    Período    |     Documentação      |   Vídeo do Incremento 
 | --------------- | :-----------: | ------------------------------------------------ | ------------ |
-| 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1]()  |
-| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 2]()  |
+| 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1](https://drive.google.com/file/d/1vU7l4GPPZVuUSdK4eI9Tbe88zVvmiTzS/view?usp=sharing)  |
+| 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/sprint2.md) | [Incremento 2](https://drive.google.com/file/d/1DAv6JuerRJxr-wtz7J7lbnRc8DFPMQnB/view?usp=sharing)  |
 | 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 3]()  |
 
 <br><br>
@@ -126,7 +126,17 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
 - **api/**: código-fonte principal da aplicação web desenvolvida em Flask;
 
-  - **main.py**: arquivo principal de inicialização da aplicação Flask;
+  - **modulos/**: módulos Python contendo configurações e lógica específica de cada módulo;
+
+    - **config.py**: configurações gerais da aplicação;
+
+    - **modulo1.py**: questionário módulo 1;
+
+    - **modulo2.py**: questionário módulo 2;
+
+    - **modulo3.py**: questionário módulo 3;
+
+    - **modulo4.py**: questionário módulo 4;
 
   - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
 
@@ -142,6 +152,14 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
   - **templates/**: templates HTML utilizados para renderizar as páginas da aplicação;
 
+    - **_componente_exercicio.html**: componente para exercícios;
+
+    - **_content_card.html**: componente para cartões de conteúdo;
+
+    - **_macros.html**: macros Jinja2;
+
+    - **base.html**: template base;
+
     - **conteudo.html**: template para exibição de conteúdo dos módulos;
 
     - **index.html**: template da página inicial da aplicação;
@@ -149,6 +167,14 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
     - **modulo1.html**: template específico para o primeiro módulo do curso;
 
     - **modulo1s2.html**: template para a segunda seção do primeiro módulo;
+
+    - **modulo2.html**: template para o módulo 2;
+
+    - **modulo3.html**: template para o módulo 3;
+
+    - **modulo4.html**: template para o módulo 4;
+
+    - **modulo_base.html**: template base para módulos;
 
     - **navbar.html**: template da barra de navegação;
 
@@ -160,51 +186,127 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
   - **processo/**: processos e documentação técnica, incluindo padrões de commit, estratégias de branches e sprints;
 
+    - **sprints/**: documentação detalhada de cada sprint;
+
+    - **Desafio Academico - 1_ADS 27082025-2.pdf**: documento do desafio acadêmico;
+
+    - **dor_e_dod.md**: definição de pronto e feito;
+
+    - **estrategia-de-branches.md**: estratégia de branches;
+
+    - **padrao-de-commit.md**: padrão de commits;
+
+- **.flaskenv**: arquivo de configuração de ambiente para Flask;
+
+- **.gitignore**: arquivo que define quais arquivos e pastas devem ser ignorados pelo Git;
+
 - **README.md**: arquivo de documentação principal do projeto;
 
 - **requirements.txt**: arquivo com as dependências Python do projeto;
 
 - **vercel.json**: arquivo de configuração para deploy no Vercel;
 
-- **.gitignore**: arquivo que define quais arquivos e pastas devem ser ignorados pelo Git.
-
 <br><br>
 
 Diagrama de estrutura das pastas: <br>
 
+
 ```
-├───api                 # Código-fonte principal da aplicação
-│   ├───__init__.py    # Inicialização do módulo
-│   ├───main.py        # Arquivo principal da aplicação
-│   ├───routes.py      # Definições das rotas da aplicação
-│   ├───static         # Arquivos estáticos
-│   │   ├───assets     # Recursos estáticos (imagens, PDFs)
-│   │   ├───bootstrap-5.3.8-dist # Framework Bootstrap
-│   │   └───styles     # Estilos CSS
-│   └───templates      # Templates HTML
-│       ├───conteudo.html     # Template de conteúdo
-│       ├───index.html        # Página inicial
-│       ├───modulo1.html      # Primeiro módulo
-│       ├───modulo1s2.html    # Segunda seção do módulo 1
-│       ├───navbar.html       # Barra de navegação
-│       └───navbarModulos.html # Barra de navegação para módulos
-|
-├───documents           # Documentação do projeto
-│   ├───cliente        # Documentos para o cliente
-│   │   └───uml1.pdf   # Diagrama UML
-│   └───processo       # Processos e documentação técnica
-│       ├───Desafio Academico - 1_ADS 27082025-2.pdf # Desafio acadêmico
-│       ├───dor_e_dod.md      # Definição de Pronto
-│       ├───estrategia-de-branches.md # Estratégia de branches
-│       ├───padrao-de-commit.md # Padrão de commits
-│       └───sprints            # Documentação das sprints
-│           ├───.gitkeep       # Placeholder
-│           └───sprint1.md     # Documentação da Sprint 1
-|
-├───README.md           # Documentação do projeto
-├───requirements.txt    # Dependências Python
-├───vercel.json        # Configuração Vercel
-└───.gitignore         # Arquivos ignorados pelo Git
+├── 📁 api
+│   ├── 📁 modulos
+│   │   ├── 🐍 config.py
+│   │   ├── 🐍 modulo1.py
+│   │   ├── 🐍 modulo2.py
+│   │   ├── 🐍 modulo3.py
+│   │   └── 🐍 modulo4.py
+│   ├── 📁 static
+│   │   ├── 📁 assets
+│   │   │   ├── 🖼️ 404.png
+│   │   │   ├── 🖼️ Figma.png
+│   │   │   ├── 🖼️ File_Search.png
+│   │   │   ├── 🖼️ File_Search_az.png
+│   │   │   ├── 🖼️ Miro.png
+│   │   │   ├── 📕 Módulo 3 Eventos do Scrum.pdf
+│   │   │   ├── 📕 Uma história ilustrada sobre o manifesto ágil.pdf
+│   │   │   ├── 🖼️ User_Voice.png
+│   │   │   ├── 🖼️ User_Voice_rx.png
+│   │   │   ├── 🖼️ Vector.png
+│   │   │   ├── 🖼️ Window_Terminal.png
+│   │   │   ├── 🖼️ burndown.png
+│   │   │   ├── 🖼️ daily.png
+│   │   │   ├── 🖼️ daily_color.png
+│   │   │   ├── 🖼️ incremento.png
+│   │   │   ├── 🖼️ jira.png
+│   │   │   ├── 🖼️ linhadotempo_semfundo 1.png
+│   │   │   ├── 🖼️ logo.png
+│   │   │   ├── 📕 modulo_1_secao_1.pdf
+│   │   │   ├── 📕 modulo_1_secao_2.pdf
+│   │   │   ├── 📕 modulo_2.pdf
+│   │   │   ├── 📕 modulo_3_eventos_scrum.pdf
+│   │   │   ├── 📕 modulo_4_artefatos.pdf
+│   │   │   ├── 🖼️ planning.png
+│   │   │   ├── 🖼️ planning_rx.png
+│   │   │   ├── 🖼️ product_backlog.png
+│   │   │   ├── 🖼️ retrospective.png
+│   │   │   ├── 🖼️ retrospective_color.png
+│   │   │   ├── 🖼️ review.png
+│   │   │   ├── 🖼️ review_color.png
+│   │   │   ├── 🖼️ scrum1.png
+│   │   │   ├── 🖼️ scrum2.png
+│   │   │   ├── 🖼️ sprint.png
+│   │   │   ├── 🖼️ sprint_backlog.png
+│   │   │   ├── 🖼️ sprint_color.png
+│   │   │   └── 🖼️ trello.png
+│   │   ├── 📁 bootstrap-5.3.8-dist
+│   │   │   ├── 📁 css
+│   │   │   │   ├── 🎨 bootstrap-grid.css
+│   │   │   │   ├── 🎨 bootstrap-grid.rtl.css
+│   │   │   │   ├── 🎨 bootstrap-reboot.css
+│   │   │   │   ├── 🎨 bootstrap-reboot.rtl.css
+│   │   │   │   ├── 🎨 bootstrap-utilities.css
+│   │   │   │   ├── 🎨 bootstrap-utilities.rtl.css
+│   │   │   │   ├── 🎨 bootstrap.css
+│   │   │   │   └── 🎨 bootstrap.rtl.css
+│   │   │   └── 📁 js
+│   │   │       ├── 📄 bootstrap.esm.js
+│   │   │       └── 📄 bootstrap.js
+│   │   └── 📁 styles
+│   │       ├── 🎨 form.css
+│   │       └── 🎨 index.css
+│   ├── 📁 templates
+│   │   ├── 🌐 _componente_exercicio.html
+│   │   ├── 🌐 _content_card.html
+│   │   ├── 🌐 _macros.html
+│   │   ├── 🌐 base.html
+│   │   ├── 🌐 conteudo.html
+│   │   ├── 🌐 index.html
+│   │   ├── 🌐 modulo1.html
+│   │   ├── 🌐 modulo1s2.html
+│   │   ├── 🌐 modulo2.html
+│   │   ├── 🌐 modulo3.html
+│   │   ├── 🌐 modulo4.html
+│   │   ├── 🌐 modulo_base.html
+│   │   ├── 🌐 navbar.html
+│   │   └── 🌐 navbarModulos.html
+│   ├── 🐍 __init__.py
+│   └── 🐍 routes.py
+├── 📁 documents
+│   ├── 📁 cliente
+│   │   └── 📕 uml1.pdf
+│   └── 📁 processo
+│       ├── 📁 sprints
+│       │   ├── ⚙️ .gitkeep
+│       │   ├── 📝 sprint1.md
+│       │   └── 📝 sprint2.md
+│       ├── 📕 Desafio  Academico - 1_ADS 27082025-2.pdf
+│       ├── 📝 dor_e_dod.md
+│       ├── 📝 estrategia-de-branches.md
+│       └── 📝 padrao-de-commit.md
+├── ⚙️ .flaskenv
+├── ⚙️ .gitignore
+├── 📝 README.md
+├── 📄 requirements.txt
+└── ⚙️ vercel.json
 ```
 <br><br>
 
@@ -253,12 +355,12 @@ pip install -r requirements.txt
 **5.** Execute a aplicação:
 
 ```bash
-python main.py
+flask run
 ```
 
 **6.** Acesse a aplicação no navegador:
 
-Abra o navegador e digite: `http://localhost:5000`
+Acesse o link gerado e veja a aplicação em seu navegador padrão
 
 ---
 ### Como Acessar a Aplicação na Web (Vercel)
@@ -298,7 +400,11 @@ vercel --prod
 
 - **Executar em modo de desenvolvimento:**
   ```bash
-  python main.py
+  flask run --debug
+  ```
+- **Executar de modo visível a todos na mesma rede:**
+  ```bash
+  flask run --host=0.0.0.0
   ```
 
 - **Desativar ambiente virtual:**
@@ -308,8 +414,8 @@ vercel --prod
 
 - **Verificar instalação do Python:**
   ```bash
-  python --version
-  pip --version
+  python -V
+  pip -V
   ```
 <br><br>
 
@@ -369,18 +475,6 @@ vercel --prod
       <td>Developer</td>
       <td><a href="https://github.com/ViniciusAmante"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
-      <td>Wesley Henrique</td>
-      <td>Developer</td>
-      <td><a href="https://github.com/yoyowesley"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
-      <td>Willian Umehara</td>
-      <td>Developer</td>
-      <td><a href="https://github.com/willianhiroume"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/willian-umehara-ba1521188?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
   </table>
 </div>

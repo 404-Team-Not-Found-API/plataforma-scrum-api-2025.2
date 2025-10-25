@@ -1,4 +1,4 @@
-# Documentação - Sprint 1
+# Documentação - Sprint 2
 
 <p align="center">
       <img src="/api/static/assets/logo.png" alt="Logo do Time 404" width="200">
@@ -23,8 +23,18 @@ O desafio consiste em desenvolver uma plataforma de treinamento online sobre o f
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ⚙️   |
-|  2   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ⚙️   |
+|  3   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 2 específico sobre papéis do Scrum e suas interações para compreender as responsabilidades de cada papel do Scrum e como eles colaboram.    |      8      |   2    |   ✅   |
+|  4   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize o módulo 3 específico sobre eventos do Scrum e suas interações para compreender o propósito de cada evento do Scrum e como eles se conectam para criar um ciclo de feedback contínuo.   |      8      |   2    |   ✅   |
+|  5   |    Alta    | Como gerente, quero que a pessoa em treinamento visualize em um módulo 4 sobre as ferramentas utilizadas no dia a dia para mostrar como funciona na prática.    |     8       |   2    |   ✅   |
+|  6   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo introdutório para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.    |      3      |   2    |   ✅   |
+|  7   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 2 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |    2   |   ✅   |
+|  8   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 3 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |    2   |   ✅   |
+|  9   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 4 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      3      |   2    |   ✅   |
+|  10   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 2  para revisar e consolidar os conceitos expostos no módulo.      |      3      |   2    |   ✅   |
+|  11   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |       3     |    2   |   ✅   |
+|  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |      3      |   2    |   ✅   |
+|  13   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais do módulo 4 para que o aluno possa baixar e usar em seus próprios projetos.   |     3       |   2    |   ✅   |
+
 
 
 
