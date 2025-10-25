@@ -1,7 +1,7 @@
 {
     "builds": [
       {
-        "src": "api/main.py",
+        "src": "api/__init__.py",
         "use": "@vercel/python"
       }
     ],
