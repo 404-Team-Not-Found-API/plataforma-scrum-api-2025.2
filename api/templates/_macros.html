@@ -25,7 +25,7 @@
 <a href="{{ url }}" class="{{ classes }}">{{ text }}</a>
 {% endmacro %}
 
-{% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6") %}
+{% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6, mb-3") %}
 <div class="{{ container_classes }}">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 {{ classes }}">{{ titulo }}</h2>
     {% if subtitulo %}

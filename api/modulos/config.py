@@ -294,18 +294,6 @@ MODULES_CONFIG = {
                 'url_anterior_params': {'module_name': 'modulo3', 'section_name': 'modulo3'},
                 'url_proximo': None,
                 'mostrar_exercicios': True,
-                'conteudo_complementar_2': True,
-                'titulo_complementar_2': 'Modelos de Documentos (Templates)',
-                'botoes_complementares': [
-                    {
-                        'text': 'Template Excel',
-                        'url': 'https://fatecspgov.sharepoint.com/:x:/r/sites/404-APIADSFatec2025.2/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B6ad391cb-3e34-48ee-bcf3-5c39843f5730%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1761407125096&web=1'
-                    },
-                    {
-                        'text': 'Template Google Sheets',
-                        'url': 'https://docs.google.com/spreadsheets/d/1P38SaaCVccByZgu63f1q0NI9HKnaQNrlVrK5d6Stk_8/copy'
-                    }
-                ],
                 'template': 'modulo4.html',
                 'cards': [
                     {
@@ -545,5 +533,5 @@ DOWNLOADS = {
     'modulo1_secao2': 'modulo_1_secao_2.pdf',
     'modulo2': 'modulo_2.pdf',
     'modulo3_apostila': 'modulo_3_eventos_scrum.pdf',
-    'modulo4_apostila':'modulo4_Os_Artefatos.pdf'
+    'modulo4_apostila':'modulo_4_artefatos.pdf'
 }

@@ -6,3 +6,5 @@ def create_app():
     app.secret_key = "chave-super-secreta"
     app.register_blueprint(routes_bp)
     return app
+
+app = create_app()
