@@ -1,0 +1,37 @@
+{% extends "modulo_base.html" %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+
+    {{ macros.interactive_cards_section(cards) }}
+
+    {{ macros.section_header("Como os papéis se interagem?", "Interações entre os papéis no Scrum", container_classes="text-center") }}
+    <div class="row row-cols-1 row-cols-md-3 g-4 p-3 p-md-4" style="border-radius: 10px; border: 2px solid #6DD5B6; background: rgba(109, 213, 182, 0.40);">
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Product Owner → Time</h5>
+                    <p class="card-text text-muted fs-6">Colaboram na classificação de requisitos e aceitação de entregas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Scrum Master → Time</h5>
+                    <p class="card-text text-muted fs-6">Facilita processos e remove impedimentos do caminho do time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body">
+                    <h5 class="card-title fs-5">Scrum Master → Product Owner</h5>
+                    <p class="card-text text-muted fs-6">Apoiam-se mutuamente para maximizar valor e eficiência.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

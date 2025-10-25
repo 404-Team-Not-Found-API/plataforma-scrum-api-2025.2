@@ -1,0 +1,37 @@
+{% extends "modulo_base.html" %}
+
+{% block head_extra %}
+{{ super() }}
+<style>
+    .role-card-icon {
+        font-size: 70px; 
+    }
+    @media (max-width: 767.98px) {
+        .role-card-icon {
+            font-size: 55px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+
+    {{ macros.section_header("Linha do tempo dos Eventos do Scrum", classes="text-[#444444]", container_classes="border-t pt-6 text-center") }}
+    <div class="my-8">
+        <img src="{{ url_for('static', filename='assets/linhadotempo_semfundo 1.png') }}" 
+             alt="Linha do tempo dos Eventos do Scrum" 
+             class="img-fluid w-full md:w-4/5 lg:w-3/4 h-auto mx-auto block rounded-lg shadow-md">
+    </div>
+
+    <div class="text-center my-8">
+        <p class="text-lg text-gray-700 leading-relaxed">Clique nos cards abaixo para saber mais sobre cada evento do Scrum:</p>
+    </div>
+
+    {{ macros.interactive_cards_section(cards) }}
+
+    {{ macros.content_block("") }}
+
+{% endblock %}

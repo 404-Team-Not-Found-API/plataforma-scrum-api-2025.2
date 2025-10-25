@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<style>
+    .role-card {
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        border-radius: 1.5rem;
+        aspect-ratio: 5 / 6; 
+    }
+    .role-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    }
+    .role-card .card-body {
+        padding-top: 6rem; 
+    }
+    .role-card-icon {
+        width: 80px; 
+        height: 80px; 
+        object-fit: contain; 
+        transition: all 0.2s ease-in-out;
+        font-size: 60px; 
+    }
+    .role-card .card-title {
+        color: #FFFFFF; 
+        font-family: 'Poppins', Tahoma, sans-serif; 
+        font-size: 1.5rem;
+        font-weight: bold; 
+    }
+
+    @media (max-width: 767.98px) {
+        .role-card .card-body {
+            padding-top: 2rem; 
+        }
+        .role-card-icon {
+            width: 60px; 
+            height: 60px;
+            font-size: 50px; 
+        }
+    } 
+</style>
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbarModulos.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
+    <section class="flex-1 space-y-8 ">
+        <div>
+            <h1 class="text-4xl font-extrabold mb-3 text-center">{{ titulo_modulo }}</h1>
+            {% if numero_secao %}
+              <h2 class="text-2xl font-semibold mb-3 text-center">Módulo {{ numero_modulo }} - Seção {{ numero_secao }}</h2>
+            {% else %}
+              <h2 class="text-2xl font-semibold mb-3 text-center">Módulo {{ numero_modulo }}</h2>
+            {% endif %}
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+                {{ descricao_secao | safe }}
+            </p>
+        </div>
+
+        {% block modulo_content %}
+        {% endblock %}
+
+        {% if mostrar_exercicios %}
+        <div class="border-t pt-6 mt-8">
+            <h3 class="text-3xl font-bold mb-4 text-center">Exercícios de Fixação</h3>
+            <p class="text-lg text-gray-700 mb-4 text-center">Teste seus conhecimentos respondendo às perguntas abaixo.</p>
+            {% include "_componente_exercicio.html" %}
+        </div>
+        {% endif %}
+
+        {% if conteudo_complementar %}
+          <div class="border-t pt-6">
+              <h3 class="text-2xl font-bold mb-2">Conteúdo Complementar</h3>
+              <p class="text-lg font-semibold">{{ titulo_complementar }}</p>
+              <p class="text-lg text-gray-600 mb-4">Documento para aprofundar os estudos do módulo.</p>
+              <a href="{{ url_download_complementar }}" target="_blank">
+                <button class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Baixar arquivo</button>
+              </a>
+          </div>
+        {% endif %}
+
+        <div class="flex justify-between mt-8">
+            {% if url_anterior %}
+                <a href="{{ url_anterior }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">← Anterior</a>
+            {% else %}
+                <span></span>
+            {% endif %}
+
+            {% if url_proximo %}
+                 <a href="{{ url_proximo }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próximo →</a>
+            {% else %}
+                <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+{% block body_extra %}{% endblock %}
+{% endblock %}

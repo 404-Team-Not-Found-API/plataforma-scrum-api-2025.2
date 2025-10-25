@@ -1,0 +1,78 @@
+{% extends "modulo_base.html" %}
+
+{% block head_extra %}
+{{ super() }}
+<style>
+    .role-card-icon {
+        font-size: 70px; 
+    }
+    @media (max-width: 767.98px) {
+        .role-card-icon {
+            font-size: 55px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+
+
+    {{ macros.section_header("Artefatos do Scrum:", "Os três artefatos oficiais do Scrum fornecem transparência e oportunidades para inspeção e adaptação. ") }}
+    <p class="text-gray-800 leading-relaxed text-xl mb-6">Os artefatos do Scrum simbolizam trabalho ou valor. Eles são feitos para aumentar a clareza das informações mais importantes. Dessa forma, todos que fazem a inspeção têm a mesma base para se adaptar.</p>
+
+    {{ macros.interactive_cards_section(cards) }}
+    
+      {{ macros.section_header("Dicas Práticas para Usar os Artefatos:", container_classes="text-center") }}
+    <div class="row row-cols-1 row-cols-md-2 g-4 p-4 p-md-5" style="border-radius: 10px; border: 6px solid #6DD5B6; background: rgba(109, 213, 182, 0.40);">
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-check-circle me-2" style="color: #0dcaf0; font-size: 1.5rem;"></i>
+                        <h5 class="card-title fs-5 mb-0">Mantenha Simples</h5>
+                    </div>
+                    <p class="card-text text-muted fs-6">Use ferramentas e formatos que o time entenda facilmente. Complexidade excessiva atrapalha.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-check-circle me-2" style="color: #0dcaf0; font-size: 1.5rem;"></i>
+                        <h5 class="card-title fs-5 mb-0">Transparência Total</h5>
+                    </div>
+                    <p class="card-text text-muted fs-6">Todos os artefatos devem estar visíveis para o time e para os stakeholders a qualquer momento.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-check-circle me-2" style="color: #0dcaf0; font-size: 1.5rem;"></i>
+                        <h5 class="card-title fs-5 mb-0">Atualize Constantemente</h5>
+                    </div>
+                    <p class="card-text text-muted fs-6">Artefatos desatualizados perdem valor. Mantenha-os sempre refletindo a realidade atual.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100" style="background-color: #F2F2F2;">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-check-circle me-2" style="color: #0dcaf0; font-size: 1.5rem;"></i>
+                        <h5 class="card-title fs-5 mb-0">Use como Guia</h5>
+                    </div>
+                    <p class="card-text text-muted fs-6">Os artefatos existem para ajudar, não para burocratizar. Adapte-os ás suas necessidades.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ macros.section_header("Modelos para o Scrum", "Documento com diversos modelos práticos para ajudar a equipe no dia a dia do Scrum") }}
++   {{ macros.button("Acessar Modelos", "https://docs.google.com/spreadsheets/d/1imaYU1bC0mOCi1H_tt2tzssKV2QCFt84-KdXGvVVQeI/edit?usp=sharing") }}
+{% endblock %}
