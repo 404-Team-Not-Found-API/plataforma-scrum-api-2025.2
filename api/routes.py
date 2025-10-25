@@ -5,7 +5,7 @@ from .modulos.modulo3 import modulo3_perguntas
 from .modulos.modulo4 import modulo4_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
 
-bp = Blueprint('routes', __name__, static_folder='static', static_url_path='/static')
+bp = Blueprint('routes', __name__)
 
 @bp.route('/')
 def homepage():
