@@ -32,12 +32,15 @@ def module_route(module_name, section_name=None):
         'titulo_complementar': section_config.get('titulo_complementar'),
         'conteudo_complementar': section_config.get('conteudo_complementar', False),
         'url_download_complementar': url_for('routes.download', key=section_config.get('url_download_key')) if section_config.get('url_download_key') else None,
+        'conteudo_complementar_2': section_config.get('conteudo_complementar_2', False),
+        'titulo_complementar_2': section_config.get('titulo_complementar_2'),
+        'botoes_complementares': section_config.get('botoes_complementares', []),
         'url_anterior': url_for(section_config.get('url_anterior'), **section_config.get('url_anterior_params', {})) if section_config.get('url_anterior') else None,
         'url_proximo': url_for(section_config.get('url_proximo'), **section_config.get('url_proximo_params', {})) if section_config.get('url_proximo') else None,
         'mostrar_exercicios': section_config.get('mostrar_exercicios', False),
         'quiz_available': module_config.get('quiz', False),
-        'module_name': module_name, 
-        'section_name': section_name, 
+        'module_name': module_name,
+        'section_name': section_name,
         'cards': section_config.get('cards', [])
     }
 
