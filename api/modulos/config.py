@@ -329,7 +329,7 @@ MODULES_CONFIG = {
                             {'text': 'Priorize com base em valor de negócio: O Product Owner é responsável por maximizar o valor do produto resultante do trabalho do Time Scrum, geralmente feito através da ordenação (priorização) dos itens.'},
                          ],
                         'icon': 'product_backlog.png',
-                        'modal_icon': 'planning_rx.png',
+                        'modal_icon': 'backlog_color.png',
                         'bg_color': '#8FAA13'
                     }, 
                     {
@@ -363,7 +363,7 @@ MODULES_CONFIG = {
                             {'text': 'Use um quadro visual (físico ou digital): A visualização do Sprint Backlog (por exemplo, em um quadro Kanban ou plataformas digitais desenvolvidas para execução desse trabalho) ajuda a maximizar a transparência e a facilitar a inspeção diária do progresso.'},                           
                          ],
                         'icon': 'sprint_backlog.png',
-                        'modal_icon': 'planning_rx.png',
+                        'modal_icon': 'sprint_backlog_color.png',
                         'bg_color': '#EE671E'
                     },
                     {
@@ -389,7 +389,7 @@ MODULES_CONFIG = {
                             {'text': 'Gráfico Burndown: Ferramenta visual que mostra o progresso da Sprint.'}                          
                          ],
                         'icon': 'incremento.png',
-                        'modal_icon': 'planning_rx.png',
+                        'modal_icon': 'incremento_color.png',
                         'bg_color': '#D002AB'
                     },
                     {
@@ -523,8 +523,8 @@ MODULES_CONFIG = {
                             {'link_text': 'Refinamento do Backlog', 'url': 'https://miro.com/app/dashboard/?tpTemplate=3b1b88ec-a574-4d8b-922a-a5ae5dd8182a&isCustom=false&share_link_id=24244301173'},
                             {'link_text': 'Template de Retrospective', 'url': 'https://miro.com/app/dashboard/?tpTemplate=fbdc8d0f-757a-48e6-af63-ef615509aeaa&isCustom=false&share_link_id=513200360576'},
                         ],
-                        'icon': 'miro.png',
-                        'modal_icon': 'miro.png',
+                        'icon': 'Miro.png',
+                        'modal_icon': 'Miro.png',
                         'bg_color': '#fff',
                         'text_color': '#EAB308',
                         'border_color': '#EAB308'
@@ -533,7 +533,7 @@ MODULES_CONFIG = {
                         'titulo': 'Figma',
                         'subtitulo': 'Ferramenta de design colaborativo para criar protótipos que atendem a Definition of Ready.',
                         'texto': [
-                            {'text':'Passo a passo:'},
+                            {'text':'Passo a passo:', 'bold': True},
                             {'text':'1) Crie um novo projeto para o produto/feature'},
                             {'text':'2) Desenhe wireframes para as User Stories'},
                             {'text':'3) Transforme wireframes em protótipos clicáveis'},
@@ -552,8 +552,8 @@ MODULES_CONFIG = {
                             {'text': 'Assista ao tutoriais para ver a ferramenta em ação:'},
                             {'link_text': 'Curso', 'url': 'https://help.figma.com/hc/en-us/sections/30880632542743-Figma-Design-for-beginners'},
                         ],
-                        'icon': 'figma.png',
-                        'modal_icon': 'figma.png',
+                        'icon': 'Figma.png',
+                        'modal_icon': 'Figma.png',
                         'bg_color': '#fff',
                         'text_color': '#A259FF',
                         'border_color': '#A259FF'

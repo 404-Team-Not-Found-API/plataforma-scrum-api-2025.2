@@ -3,8 +3,7 @@
         <img src="{{ url_for('static', filename='assets/404.png') }}" alt="Logo" class="img-fluid">
     </a>
     <div class="navbar-buttons">
-        <a href="{{ url_for('routes.conteudo') }}" class="nav-button">Conteúdos</a>
-          <a href="{{ url_for('routes.module_route', module_name='modulo1', section_name='modulo1') }}" class="nav-button">Comece agora</a>
+          <a href="{{ url_for('routes.conteudo') }}" class="nav-button">Comece agora</a>
         {% block navbar_extra %}{% endblock %}
     </div>
 </nav>
