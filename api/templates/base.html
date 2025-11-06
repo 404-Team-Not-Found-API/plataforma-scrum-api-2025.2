@@ -28,7 +28,7 @@
         </div>
     </footer>
 
-{% block body_scripts %}
+    {% block body_scripts %}
     <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
 
     <script>
@@ -50,5 +50,19 @@
         }
     </script>
 {% endblock %}
+
+<!-- Início do widget Vlibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+  <!-- Fim do widget Vlibras -->
+
 </body>
 </html>
