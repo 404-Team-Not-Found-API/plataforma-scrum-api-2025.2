@@ -1,9 +1,17 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory
+from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory, jsonify
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 from .modulos.modulo3 import modulo3_perguntas
 from .modulos.modulo4 import modulo4_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
+
+# Mapeamento centralizado de módulos para as perguntas
+perguntas_modulos = {
+    'modulo1': modulo1_perguntas,
+    'modulo2': modulo2_perguntas,
+    'modulo3': modulo3_perguntas,
+    'modulo4': modulo4_perguntas,
+}
 
 bp = Blueprint('routes', __name__)
 
@@ -15,8 +23,10 @@ def homepage():
 def conteudo():
     return render_template('conteudo.html', MODULES_CONFIG=MODULES_CONFIG)
 
-@bp.route('/conteudo/<module_name>/', defaults={'section_name': None}, methods=['GET', 'POST'])
-@bp.route('/conteudo/<module_name>/<section_name>', methods=['GET', 'POST'])
+# A rota de conteúdo agora só aceita 'GET'.
+# A lógica de 'POST' foi movida para uma API dedicada para evitar recarregamentos de página.
+@bp.route('/conteudo/<module_name>/', defaults={'section_name': None}, methods=['GET'])
+@bp.route('/conteudo/<module_name>/<section_name>', methods=['GET'])
 def module_route(module_name, section_name=None):
     if module_name not in MODULES_CONFIG:
         return "Module not found", 404
@@ -43,7 +53,9 @@ def module_route(module_name, section_name=None):
 
     template = section_config.get('template', f'{module_name}.html')
 
-    if module_config.get('quiz') and (request.method == 'POST' or section_config.get('mostrar_exercicios', False)):
+    # ALTERAÇÃO AJAX: A condição foi simplificada. Se a seção deve mostrar exercícios,
+    # a função 'exercicio' é chamada para renderizar o estado inicial do quiz.
+    if module_config.get('quiz') and section_config.get('mostrar_exercicios', False):
         return exercicio(
             modulo_nome=module_name,
             template_name=template,
@@ -63,100 +75,75 @@ def download(key):
     return send_from_directory('static/assets', filename, as_attachment=True)
 
 
-@bp.route('/exercicio/<modulo_nome>', methods=['GET', 'POST'])
-def exercicio(modulo_nome, template_name="form_exercicio.html", redirect_endpoint=None, section_name=None, start_quiz=False, template_data=None):
-    if redirect_endpoint is None:
-        redirect_endpoint = 'routes.exercicio'
+# NOVA ROTA: Esta é a nova rota de API.
+# Ela recebe a resposta do usuário via JSON, processa a lógica de verificação e pontuação,
+# e retorna um JSON com o feedback e os dados da próxima pergunta (ou o resultado final).
+# Isso permite que o frontend se atualize sem recarregar a página.
+@bp.route('/verificar-resposta/<module_name>', methods=['POST'])
+def verificar_resposta(module_name):
+    data = request.get_json()
+    question_index = int(data['question_index'])
+    user_answer = int(data['answer'])
 
-    modulos = {
-        "modulo1": modulo1_perguntas,
-        "modulo2": modulo2_perguntas,
-        "modulo3": modulo3_perguntas,
-        "modulo4": modulo4_perguntas
+    perguntas = perguntas_modulos.get(module_name)
+    if not perguntas:
+        return jsonify({'error': 'Módulo não encontrado'}), 404
+
+    total_questions = len(perguntas)
+    pergunta_atual = perguntas[question_index]
+    is_correct = user_answer == pergunta_atual['correta']
+
+    # Inicia o score na sessão se não existir
+    if 'score' not in session:
+        session['score'] = 0
+    
+    
+    if is_correct:
+        session['score'] += 1
+
+    next_question_index = question_index + 1
+    response_data = {
+        'correct': is_correct,
+        'correct_answer': pergunta_atual['correta'],
+        'explanation': pergunta_atual.get('explicacao', 'Explicação não disponível.'),
+        'next_question': None,
+        'next_question_index': None,
+        'total_questions': total_questions # Adicionado para o frontend
     }
-    perguntas = modulos.get(modulo_nome)
+
+    if next_question_index < len(perguntas):
+        # Se houver uma próxima pergunta, envia seus dados
+        response_data['next_question'] = perguntas[next_question_index]
+        response_data['next_question_index'] = next_question_index
+    else:
+        # Se for a última pergunta, finaliza e envia o score
+        response_data['score'] = session.pop('score', 0)
+        response_data['total'] = total_questions
+
+    return jsonify(response_data)
+
+
+# A função 'exercicio' agora só lida com requisições 'GET'.
+# Sua única responsabilidade é carregar a primeira pergunta do quiz e limpar a pontuação da sessão anterior, preparando para a interação via JavaScript.
+@bp.route('/exercicio/<modulo_nome>', methods=['GET'])
+def exercicio(modulo_nome, template_name="form_exercicio.html", section_name=None, template_data=None, **kwargs):
+    perguntas = perguntas_modulos.get(modulo_nome)
     if not perguntas:
         return "Módulo não encontrado", 404
 
-    force_start = request.args.get('start', 'false').lower() == 'true' or start_quiz
+    # Limpa o score da sessão anterior para garantir um novo começo a cada vez que o quiz é carregado.
+    session.pop('score', None)
 
-    if force_start or session.get('modulo_nome') != modulo_nome:
-        session['current_index'] = 0
-        session['acertos'] = 0
-        session['modulo_nome'] = modulo_nome
-        session['respostas'] = {}
-        session['acertos_contados'] = []
-
-    current_index = session.get('current_index', 0)
-    acertos = session.get('acertos', 0)
-    respostas_sessao = session.get('respostas', {})
+    # A lógica agora sempre começa da primeira pergunta
+    current_index = 0
     total = len(perguntas)
     pergunta = perguntas[current_index]
-
-    feedback = None
-    correta = False
-    explicacao = ""
-    resposta_usuario = respostas_sessao.get(str(current_index))
-
-    if request.method == 'POST':
-        if 'prev' in request.form:
-            if current_index > 0:
-                session['current_index'] = current_index - 1
-            return redirect(url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, _anchor='secao-exercicios'))
-
-        elif 'next' in request.form:
-            if current_index + 1 < len(perguntas):
-                session['current_index'] = current_index + 1
-                return redirect(url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, _anchor='secao-exercicios'))
-            else:
-                pontuacao = session.get('acertos', 0)
-                session.clear()
-                return render_template(
-                    template_name,
-                    quiz_finalizado=True,
-                    pontuacao=pontuacao,
-                    total=total,
-                    modulo_nome=modulo_nome,
-                    redirect_endpoint=redirect_endpoint,
-                    **(template_data or {}))
-
-        elif 'confirm' in request.form:
-            resposta_str = request.form.get('resposta')
-            if resposta_str:
-                try:
-                    resposta = int(resposta_str)
-                except ValueError:
-                    resposta = None
-
-                respostas_sessao[str(current_index)] = resposta
-                session['respostas'] = respostas_sessao
-
-                resposta_usuario = resposta
-                correta = (resposta == pergunta["correta"])
-                feedback = "Correto!" if correta else "Incorreto!"
-                explicacao = pergunta.get("explicacao", "Revise o conceito e tente novamente.")
-
-                if correta and str(current_index) not in session.get('acertos_contados', []):
-                    session['acertos'] = acertos + 1
-                    session.setdefault('acertos_contados', []).append(str(current_index))
-                
-            else:
-                feedback = "Você precisa selecionar uma opção antes de continuar!"
-
-            
-
-    progress_percentage = int(((current_index + 1) / total * 100)) if total else 0
-
+    
     return render_template(
         template_name,
         pergunta=pergunta,
         current_index=current_index,
         total=total,
-        feedback=feedback,
-        correta=correta,
-        explicacao=explicacao,
-        resposta_usuario=resposta_usuario,
-        progress_percentage=progress_percentage,
         **(template_data or {})
     )
                                     

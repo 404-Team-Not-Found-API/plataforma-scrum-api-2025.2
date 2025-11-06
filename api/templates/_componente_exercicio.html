@@ -1,73 +1,63 @@
-{% if quiz_finalizado %}
-<!-- Seção de Resultado Final -->
-<div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-6 sm:p-10 text-center mx-auto">
-    <h2 class="text-3xl font-bold mb-6">Resultado Final</h2>
-    <p class="text-xl mb-4">Você acertou <strong>{{ pontuacao }}</strong> de <strong>{{ total }}</strong> perguntas.</p>
-    <div class="mt-6 flex justify-center gap-4">
-        <a href="{% if section_name %}{{ url_for(redirect_endpoint, module_name=modulo_nome, section_name=section_name, start='true') }}{% else %}{{ url_for(redirect_endpoint, module_name=modulo_nome, start='true') }}{% endif %}#secao-exercicios"
-            class="bg-gray-300 hover:bg-gray-600 text-black px-6 py-3 rounded-full font-semibold">
-            Refazer Exercícios
-        </a>
-    </div>
-</div>
-
-{% elif pergunta %}
 <!-- Seção do Formulário de Exercício -->
-<div id="secao-exercicios" class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">
+<div id="secao-exercicios" class="exercise-component w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
+    <!-- ALTERAÇÃO AJAX: Adicionado um ID para que o JS possa atualizar o contador de questões. -->
+    <h2 class="text-2xl font-bold mb-6 text-center" id="question-counter">
         Questão {{ current_index + 1 }} de {{ total }}
     </h2>
 
-    <!-- Barra de progresso -->
+    <!-- A barra de progresso agora tem um ID para ser atualizada dinamicamente pelo JS. -->
     <div class="mb-6">
-        <div class="progress h-4 rounded-full bg-gray-200">
-            <div class="progress-bar bg-emerald-500" role="progressbar"
-                style="width: {{ progress_percentage }}%"
-                aria-valuenow="{{ current_index + 1 }}" aria-valuemin="0" aria-valuemax="{{ total }}">
-            </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div id="progress-bar" class="bg-emerald-500 h-2.5 rounded-full" style="width: {{ ((current_index + 1) / total) * 100 }}%"></div>
         </div>
-        <p class="text-sm text-gray-700 mt-1 text-center">
-            {{ current_index + 1 if total else 0 }} de {{ total }}
-        </p>
     </div>
 
-    <form method="POST" class="space-y-3">
-        <p class="text-lg font-medium mb-4">{{ pergunta.pergunta }}</p>
-        {% for alt in pergunta.alternativas %}
-        <div>
-            <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer{% if resposta_usuario == loop.index %} bg-emerald-50 border-emerald-400{% endif %}">
-                <input type="radio" name="resposta" value="{{ loop.index }}" class="form-radio h-5 w-5 text-emerald-500"
-                    {% if resposta_usuario == loop.index %} checked {% endif %} {% if feedback %} disabled {% endif %}>
-                <span>{{ alt }}</span>
-            </label>
-        </div>
-        {% endfor %}
+    <!--O formulário agora tem um ID para ser interceptado pelo JS.
+         'onsubmit="return false;"' é uma camada extra de segurança para prevenir o recarregamento da página. -->
+    <form id="quiz-form" class="space-y-3" onsubmit="return false;">
+        <!-- Campos ocultos para enviar dados necessários -->
+        <input type="hidden" name="module_name" value="{{ module_name }}">
+        <input type="hidden" name="question_index" id="question_index" value="{{ current_index }}">
+        <!-- Campo para armazenar o total de questões, facilitando o acesso pelo JS. -->
+        <input type="hidden" id="total_questions" value="{{ total }}">
 
-        {% if feedback %}
-        <!-- Feedback -->
-        <div
-            class="mt-6 p-4 rounded-lg {% if correta %}bg-emerald-100 text-emerald-800{% else %}bg-red-100 text-red-800{% endif %}">
-            <p class="font-semibold">{{ feedback }}</p>
-            <p class="text-sm mt-1">{{ explicacao }}</p>
+        <!-- O título da pergunta tem um ID para ser atualizado pelo JS. -->
+        <p class="text-lg font-medium mb-4" id="question-title">{{ pergunta.pergunta }}</p>
+        
+        <!-- O container das alternativas tem uma classe para que o JS possa limpar e preencher com novas opções. -->
+        <div class="alternatives-container space-y-3">
+            {% for alt in pergunta.alternativas %}
+            <div>
+                <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer">
+                    <input type="radio" name="answer" value="{{ loop.index }}" class="form-radio h-5 w-5 text-emerald-500" required>
+                    <span>{{ alt }}</span>
+                </label>
+            </div>
+            {% endfor %}
         </div>
-        {% endif %}
 
-        <!-- Botões -->
+        <!-- Caixa de feedback unificada, inicialmente oculta.
+             O JS irá preenchê-la com o status (Certo/Errado) e a explicação. -->
+        <div id="feedback-box" class="mt-6 p-4 rounded-lg d-none">
+            <p id="feedback-text" class="font-semibold"></p>
+            <p id="feedback-explanation" class="text-sm mt-1"></p>
+        </div>
+
+        <!-- Os botões agora são do tipo 'button' e têm IDs.
+             Isso permite que o JS adicione 'event listeners' a cada um, controlando
+             a lógica de confirmação e navegação sem submeter o formulário. -->
         <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-4 mt-6">
-            {% if current_index > 0 %}
-            <button type="submit" name="prev"
-                class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200">
+            <button id="prev-btn" type="button" class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200 d-none">
                 &larr; Anterior
             </button>
-            {% else %}
-            <div class="hidden sm:block"></div>
-            {% endif %}
+            
+            <button id="confirm-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
+                Confirmar
+            </button>
 
-            <button type="submit" name="{{ 'next' if feedback else 'confirm' }}"
-                class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
-                {{ 'Próxima' if feedback else 'Confirmar' }}
+            <button id="next-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full d-none">
+                Próxima &rarr;
             </button>
         </div>
     </form>
 </div>
-{% endif %}

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="{{ url_for('static', filename='bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 
     {% block head_extra %}{% endblock %}
 </head>
@@ -29,23 +28,27 @@
         </div>
     </footer>
 
-<script>
-    // Script para o dropdown do navbar (menu mobile)
-    const menuBtn = document.querySelector('.menu-btn');
-    const dropdown = document.getElementById('menuDropdown');
+{% block body_scripts %}
+    <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
 
-    if (menuBtn && dropdown) {
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Impede que o clique se propague para o document
-        dropdown.classList.toggle('show');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('show');
+    <script>
+        // Script para o dropdown do navbar (menu mobile)
+        const menuBtn = document.querySelector('.menu-btn');
+        const dropdown = document.getElementById('menuDropdown');
+    
+        if (menuBtn && dropdown) {
+          menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impede que o clique se propague para o document
+            dropdown.classList.toggle('show');
+          });
+    
+          document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+              dropdown.classList.remove('show');
+            }
+          });
         }
-      });
-    }
-</script>
+    </script>
+{% endblock %}
 </body>
 </html>
