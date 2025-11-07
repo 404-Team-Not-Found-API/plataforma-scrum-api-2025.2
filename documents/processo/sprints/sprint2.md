@@ -13,7 +13,7 @@
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status da Sprint: Em andamento ⚙️
+> Status da Sprint: ✅ Concluída
 
 ## 🏅 Desafio <a id="desafio"></a>
 

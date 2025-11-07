@@ -13,7 +13,7 @@
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status da Sprint: Em andamento ⚙️
+> Status da Sprint: ✅ Concluída
 
 ## 🏅 Desafio <a id="desafio"></a>
 
@@ -23,8 +23,8 @@ O desafio consiste em desenvolver uma plataforma de treinamento online sobre o f
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ⚙️   |
-|  2   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ⚙️   |
+|  1   |    Alta    | Como gerente, quero acessar a plataforma e consultar um resumo sucinto acerca da framework para obter uma prévia do conteúdo a ser abordado ao longo do curso.    |      20      |   1    |   ✅   |
+|  2   |    Alta    | Como gerente, quero que a pessoa em treinamento acesse o módulo introdutório e receba orientações sobre os princípios da metodologia para saber como proceder durante o processo.    |      15      |   1    |   ✅   |
 
 
 
