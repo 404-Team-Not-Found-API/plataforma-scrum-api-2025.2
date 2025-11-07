@@ -49,12 +49,12 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 |  11   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |       3     |    2   |   ✅   |
 |  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |      3      |   2    |   ✅   |
 |  13   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais do módulo 4 para que o aluno possa baixar e usar em seus próprios projetos.   |     3       |   2    |   ✅   |
-|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |            |   3    |   ⚙️   |
-|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios de fixação sobre o módulo 5 para compreender os conceitos expostos no módulo e ao concluir cada questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |            |   3    |   ⚙️   |
-|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |            |   3    |   ⚙️   |
-|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |            |   3    |   ⚙️   |
-|  18   |    Baixa    | Como gerente, quero  que a pessoa em treinamento acompanhe o progresso do curso para indicar sua posição atual.   |            |   3    |   ⚙️   |
-|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento receba sugestões acerca de quais papéis se alinham ao seu perfil profissional para aprimoramento profissional.   |            |   3    |   ⚙️   |
+|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |       13     |   3    |   🔄   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios sobre soft skills para compreender os conceitos expostos no módulo e ao concluir o questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      5     |   3    |   🔄   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |      5     |   3    |   🔄   |
+|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |     13      |   3    |   🔄   |
+|  18   |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha uma página de conclusão do curso, indicando que ela está apta à aplicar a metodologia Scrum no ambiente de trabalho.   |     5     |   3    |   🔄   |
+|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha acesso à recursos de acessibilidade em libras para que ela possa assimilar o conteúdo independentemente de qualquer deficiência auditiva.   |      5     |   3    |   🔄   |
 
 ---
 <br><br>
@@ -65,10 +65,10 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 - **Status**: ✅ Concluída
 - **Objetivo Principal**: Estabelecer a base técnica e estrutural da aplicação
 - **Principais Entregas**:
-  - ✅ Configuração inicial do ambiente de desenvolvimento Flask
-  - ✅ Estrutura básica de rotas e templates
-  - ✅ Implementação da página inicial e módulo introdutório
-  - ✅ Documentação técnica inicial
+  - ✅ Configuração inicial do ambiente de desenvolvimento Flask;
+  - ✅ Estrutura básica de rotas e templates;
+  - ✅ Implementação da página inicial e módulo introdutório;
+  - ✅ Documentação técnica inicial.
 - **Valor Agregado**: Plataforma funcional com conteúdo introdutório acessível
 - **Documentação Detalhada**: [Sprint 1 Docs](./documents/processo/sprints/sprint1.md)
 <br>
@@ -79,23 +79,23 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 - **Principais Entregas Planejadas**:
   - ✅ Módulos (1-4);
   - ✅ Questionários interativos de cada módulo com feedback;
-  - ✅ Exemplos práticos de implementação
+  - ✅ Exemplos práticos de implementação;
   - ✅ Modelos dos principais documentos do Scrum.
 - **Valor Agregado Esperado**: Aumento de engajamento e retenção de conhecimento. 
 - **Documentação Detalhada**: [Sprint 2 Docs](./documents/processo/sprints/sprint2.md)
 <br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
-- **Status**: ⚙️ Planejada
-- **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades avançadas para aprimorar a experiência do usuário.
+- **Status**: 🔄 Em andamento
+- **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades para aprimorar a experiência do usuário.
 - **Principais Entregas Planejadas**:
-  - ✅ Módulo Final - Primeira Sprint de Treinamento;
-  - ✅ Sistema de acompanhamento de progresso;
-  - ✅ Sugestão de papéis que se alinham ao perfil da pessoa em treinamento;
-  - ✅ Melhorias na interface e experiência
-  - ✅ Documentação final e manuais
-- **Valor Agregado Esperado**: Um produto finalizado, com recursos que personalizam a experiência de aprendizado, oferecem um caminho claro de desenvolvimento de carreira e garantem uma alta usabilidade.
-- **Documentação Detalhada**: [Sprint 3 Docs](./documents/processo/sprints/.gitkeep)
+  - ✅ Módulo 5 - Exemplos práticos de implementação do scrum;
+  - ✅ Módulo Final - Simulação de Primeira Sprint de Treinamento;
+  - ✅ Sistema de acompanhamento de progresso no módulo final;
+  - ✅ Melhorias na interface e experiência;
+  - ✅ Documentação final e manuais.
+- **Valor Agregado Esperado**: Um produto finalizado, com recursos que personalizam a experiência de aprendizado, oferecem um caminho claro para o estudo e garantem uma alta usabilidade.
+- **Documentação Detalhada**: [Sprint 3 Docs](./documents/processo/sprints/sprint3.md)
 <br><br><br>
 
 ## 📅 Cronograma de Sprints <a id="sprint"></a>
@@ -104,7 +104,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 | --------------- | :-----------: | ------------------------------------------------ | ------------ |
 | 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1](https://drive.google.com/file/d/1vU7l4GPPZVuUSdK4eI9Tbe88zVvmiTzS/view?usp=sharing)  |
 | 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/sprint2.md) | [Incremento 2](https://drive.google.com/file/d/1DAv6JuerRJxr-wtz7J7lbnRc8DFPMQnB/view?usp=sharing)  |
-| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/.gitkeep) | [Incremento 3]()  |
+| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/sprint3.md) | [Incremento 3]()  |
 
 <br><br>
 ## 💻 Tecnologias <a id="tecnologias"></a>
@@ -147,6 +147,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
     - **assets/**: imagens, PDFs e outros arquivos estáticos;
 
     - **bootstrap-5.3.8-dist/**: arquivos do framework Bootstrap para estilização;
+
+    - **js/**: scripts JavaScript personalizados;
 
     - **styles/**: estilos CSS personalizados;
 
@@ -221,55 +223,13 @@ Diagrama de estrutura das pastas: <br>
 │   │   └── 🐍 modulo4.py
 │   ├── 📁 static
 │   │   ├── 📁 assets
-│   │   │   ├── 🖼️ 404.png
-│   │   │   ├── 🖼️ Figma.png
-│   │   │   ├── 🖼️ File_Search.png
-│   │   │   ├── 🖼️ File_Search_az.png
-│   │   │   ├── 🖼️ Miro.png
-│   │   │   ├── 📕 Módulo 3 Eventos do Scrum.pdf
-│   │   │   ├── 📕 Uma história ilustrada sobre o manifesto ágil.pdf
-│   │   │   ├── 🖼️ User_Voice.png
-│   │   │   ├── 🖼️ User_Voice_rx.png
-│   │   │   ├── 🖼️ Vector.png
-│   │   │   ├── 🖼️ Window_Terminal.png
-│   │   │   ├── 🖼️ burndown.png
-│   │   │   ├── 🖼️ daily.png
-│   │   │   ├── 🖼️ daily_color.png
-│   │   │   ├── 🖼️ incremento.png
-│   │   │   ├── 🖼️ jira.png
-│   │   │   ├── 🖼️ linhadotempo_semfundo 1.png
-│   │   │   ├── 🖼️ logo.png
-│   │   │   ├── 📕 modulo_1_secao_1.pdf
-│   │   │   ├── 📕 modulo_1_secao_2.pdf
-│   │   │   ├── 📕 modulo_2.pdf
-│   │   │   ├── 📕 modulo_3_eventos_scrum.pdf
-│   │   │   ├── 📕 modulo_4_artefatos.pdf
-│   │   │   ├── 🖼️ planning.png
-│   │   │   ├── 🖼️ planning_rx.png
-│   │   │   ├── 🖼️ product_backlog.png
-│   │   │   ├── 🖼️ retrospective.png
-│   │   │   ├── 🖼️ retrospective_color.png
-│   │   │   ├── 🖼️ review.png
-│   │   │   ├── 🖼️ review_color.png
-│   │   │   ├── 🖼️ scrum1.png
-│   │   │   ├── 🖼️ scrum2.png
-│   │   │   ├── 🖼️ sprint.png
-│   │   │   ├── 🖼️ sprint_backlog.png
-│   │   │   ├── 🖼️ sprint_color.png
-│   │   │   └── 🖼️ trello.png
 │   │   ├── 📁 bootstrap-5.3.8-dist
 │   │   │   ├── 📁 css
-│   │   │   │   ├── 🎨 bootstrap-grid.css
-│   │   │   │   ├── 🎨 bootstrap-grid.rtl.css
-│   │   │   │   ├── 🎨 bootstrap-reboot.css
-│   │   │   │   ├── 🎨 bootstrap-reboot.rtl.css
-│   │   │   │   ├── 🎨 bootstrap-utilities.css
-│   │   │   │   ├── 🎨 bootstrap-utilities.rtl.css
-│   │   │   │   ├── 🎨 bootstrap.css
-│   │   │   │   └── 🎨 bootstrap.rtl.css
 │   │   │   └── 📁 js
 │   │   │       ├── 📄 bootstrap.esm.js
 │   │   │       └── 📄 bootstrap.js
+│   │   ├── 📁 js
+│   │   │   └── 📄 quiz.js
 │   │   └── 📁 styles
 │   │       ├── 🎨 form.css
 │   │       └── 🎨 index.css
@@ -292,12 +252,13 @@ Diagrama de estrutura das pastas: <br>
 │   └── 🐍 routes.py
 ├── 📁 documents
 │   ├── 📁 cliente
+│   │   ├── 📕 manual_de_instalacao.pdf
 │   │   └── 📕 uml1.pdf
 │   └── 📁 processo
 │       ├── 📁 sprints
-│       │   ├── ⚙️ .gitkeep
 │       │   ├── 📝 sprint1.md
-│       │   └── 📝 sprint2.md
+│       │   ├── 📝 sprint2.md
+│       │   └── 📝 sprint3.md
 │       ├── 📕 Desafio  Academico - 1_ADS 27082025-2.pdf
 │       ├── 📝 dor_e_dod.md
 │       ├── 📝 estrategia-de-branches.md
@@ -319,16 +280,17 @@ Diagrama de estrutura das pastas: <br>
 - [Python](https://www.python.org/downloads/) (versão 3.8 ou superior)
 - [pip](https://pip.pypa.io/en/stable/installation/) (gerenciador de pacotes do Python)
 - [Git](https://git-scm.com/downloads) (para clonar o repositório)
+- [VsCode](https://code.visualstudio.com/download) (ou outro editor de código de sua preferência)
 <br><br>
 
 **1.** Clone o repositório do projeto:
 
 ```bash
-git clone https://github.com/404-team-not-found/plataforma.git
-cd plataforma
+git clone https://github.com/404-Team-Not-Found-API/plataforma-scrum-api-2025.2.git
+cd plataforma-scrum-api-2025.2
 ```
 
-**2.** Crie um ambiente virtual Python (recomendado):
+**2.** Crie um ambiente virtual Python:
 
 ```bash
 python -m venv .venv
@@ -431,7 +393,7 @@ vercel --prod
 >
 > Manual de Usuário: [Manual](/documents/cliente/)
 >
-> Manual de instalação: [Checklist](/documents/cliente/)
+> Manual de instalação: [Manual](/documents/cliente/manual_de_instalacao.pdf)
 
 <br><br>
 
@@ -462,7 +424,7 @@ vercel --prod
       <td>André Alves</td>
       <td>Developer</td>
       <td><a href="https://github.com/alvesad"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/alvesad"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Kamille Fernandes</td>
@@ -471,10 +433,16 @@ vercel --prod
       <td><a href="https://www.linkedin.com/in/kamille-f-da-silva-122a10284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
+      <td>Manuela Oliveira</td>
+      <td>Developer</td>
+      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+    </tr>
+    <tr>
       <td>Vinícius Henrique</td>
       <td>Developer</td>
       <td><a href="https://github.com/ViniciusAmante"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/vinicius-oliveira-amante?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
   </table>
 </div>
