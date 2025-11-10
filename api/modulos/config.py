@@ -292,7 +292,8 @@ MODULES_CONFIG = {
                 'url_download_key': 'modulo4_apostila',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo3', 'section_name': 'modulo3'},
-                'url_proximo': None,
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo6', 'section_name': 'modulo6'},
                 'mostrar_exercicios': True,
                 'template': 'modulo4.html',
                 'cards': [
@@ -565,8 +566,24 @@ MODULES_CONFIG = {
         'quiz': True,
         'primeira_secao': 'modulo4'
     },
+    'modulo6': {
+        'sections': {
+            'modulo6': {
+                'titulo_modulo': 'Módulo 6: Simulação Prática',
+                'numero_modulo': 6,
+                'descricao_secao': 'Aplique seus conhecimentos preenchendo o formulário de planejamento de uma Sprint. Ao final, gere um relatório em PDF com as suas respostas.',
+                'conteudo_complementar': False,
+                'url_anterior': 'routes.module_route',
+                'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
+                'url_proximo': None,
+                'mostrar_exercicios': False,
+                'template': 'modulo6.html'
+            }
+        },
+        'quiz': False,
+        'primeira_secao': 'modulo6'
+    },
 }
-
 
 # Download mappings
 DOWNLOADS = {

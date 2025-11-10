@@ -29,22 +29,24 @@
     </footer>
 
     {% block body_scripts %}
-    <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+    <!-- Biblioteca para gerar PDF, necessária para o Módulo 6 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    {# Os scripts específicos como quiz.js e modulo6.js serão carregados nos templates filhos #}
 
     <script>
-        // Script para o dropdown do navbar (menu mobile)
-        const menuBtn = document.querySelector('.menu-btn');
-        const dropdown = document.getElementById('menuDropdown');
-    
-        if (menuBtn && dropdown) {
-          menuBtn.addEventListener('click', (e) => {
+        // Script para o dropdown do navbar (menu mobile) - apenas para páginas que usam navbar.html
+        const menuBtnBase = document.querySelector('.menu-btn');
+        const dropdownBase = document.getElementById('menuDropdown');
+
+        if (menuBtnBase && dropdownBase) {
+          menuBtnBase.addEventListener('click', (e) => {
             e.stopPropagation(); // Impede que o clique se propague para o document
-            dropdown.classList.toggle('show');
+            dropdownBase.classList.toggle('show');
           });
-    
+
           document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-              dropdown.classList.remove('show');
+            if (!dropdownBase.contains(e.target)) {
+              dropdownBase.classList.remove('show');
             }
           });
         }

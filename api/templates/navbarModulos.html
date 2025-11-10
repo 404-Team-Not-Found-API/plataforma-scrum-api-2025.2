@@ -3,9 +3,9 @@
         <img src="{{ url_for('static', filename='assets/404.png') }}" alt="Logo" class="img-fluid">
     </a>
 
-    <div class="dropdown" id="menuDropdown">
-      <button class="menu-btn">☰</button>
-      <div class="dropdown-content">
+    <div class="dropdown" id="menuDropdownModulos">
+      <button class="menu-btn-modulos">☰</button>
+      <div class="dropdown-content-modulos">
         <a href="{{ url_for('routes.homepage') }}">⬅ Voltar Home</a>
         <a href="{{ url_for('routes.conteudo') }}">Conteúdos</a>
         <a href="{{ url_for('routes.module_route', module_name='modulo1', section_name='modulo1') }}">Módulo 1</a>
@@ -53,7 +53,7 @@
   }
 
 }
-.menu-btn {
+.menu-btn-modulos {
       font-size: 2rem;
       background: none;
       border: none;
@@ -66,7 +66,7 @@
       display: inline-block;
     }
 
-    .dropdown-content {
+    .dropdown-content-modulos {
       font-family: 'Poppins', sans-serif;
       display: none;
       position: absolute;
@@ -79,7 +79,7 @@
       z-index: 1;
     }
 
-    .dropdown-content a {
+    .dropdown-content-modulos a {
       display: block;
       padding: 12px 16px;
       text-decoration: none;
@@ -87,7 +87,7 @@
       font-weight: bold;
     }
 
-    .dropdown-content a:hover {
+    .dropdown-content-modulos a:hover {
       background-color:  hsl(180, 45%, 55%);
       color: #fff;
     }
@@ -102,8 +102,27 @@
       color: #fff !important;
     }
 
-    .dropdown.show .dropdown-content {
+    .dropdown.show .dropdown-content-modulos {
       display: block;
     }
 </style>
+
+<script>
+    // Script para o dropdown do navbar dos módulos
+    const menuBtnModulos = document.querySelector('.menu-btn-modulos');
+    const dropdownModulos = document.getElementById('menuDropdownModulos');
+
+    if (menuBtnModulos && dropdownModulos) {
+      menuBtnModulos.addEventListener('click', (e) => {
+        e.stopPropagation(); // Impede que o clique se propague para o document
+        dropdownModulos.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdownModulos.contains(e.target)) {
+          dropdownModulos.classList.remove('show');
+        }
+      });
+    }
+</script>
  
