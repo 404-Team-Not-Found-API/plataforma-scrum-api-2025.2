@@ -11,24 +11,31 @@ function gerarPDFConsolidado() {
     // 3. Cria um elemento temporário visível na viewport para garantir que o html2canvas possa capturá-lo.
     const tempContainer = document.createElement('div');
     tempContainer.innerHTML = reportHTML;
-    tempContainer.style.position = 'fixed';
-    tempContainer.style.top = '0';
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.top = '-10000px';
     tempContainer.style.left = '0';
     tempContainer.style.width = '800px';
-    tempContainer.style.minHeight = '600px';
     tempContainer.style.backgroundColor = 'white';
-    tempContainer.style.zIndex = '9999';
+    tempContainer.style.zIndex = '-9999';
     tempContainer.style.fontFamily = 'Arial, sans-serif';
     tempContainer.style.color = '#333';
     tempContainer.style.padding = '20px';
     tempContainer.style.boxSizing = 'border-box';
-    tempContainer.style.overflow = 'hidden';
+    tempContainer.style.visibility = 'hidden';
 
-    // Adiciona ao body para que seja renderizado na viewport
+    // Adiciona ao body para que seja renderizado
     document.body.appendChild(tempContainer);
 
     // 4. Usa múltiplos setTimeout para garantir renderização completa
     setTimeout(() => {
+        // Calcula a altura real do conteúdo
+        const contentHeight = tempContainer.scrollHeight;
+        console.log('Altura calculada do conteúdo:', contentHeight);
+
+        // Ajusta a altura do container
+        tempContainer.style.height = contentHeight + 'px';
+        tempContainer.style.minHeight = contentHeight + 'px';
+
         // Força reflow para garantir que o elemento foi renderizado
         tempContainer.offsetHeight;
 
@@ -44,22 +51,27 @@ function gerarPDFConsolidado() {
                     useCORS: true,
                     backgroundColor: '#ffffff',
                     width: 800,
-                    height: tempContainer.scrollHeight,
+                    height: contentHeight,
+                    scrollX: 0,
+                    scrollY: 0,
                     windowWidth: 800,
-                    windowHeight: tempContainer.scrollHeight
+                    windowHeight: contentHeight,
+                    x: 0,
+                    y: 0
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
             // 5. Gera o PDF e remove o elemento temporário
             html2pdf().set(pdfOptions).from(tempContainer).save().then(() => {
+                console.log('PDF gerado com sucesso');
                 document.body.removeChild(tempContainer);
             }).catch(error => {
                 console.error('Erro ao gerar PDF:', error);
                 document.body.removeChild(tempContainer);
             });
-        }, 500);
-    }, 1000);
+        }, 1000);
+    }, 1500);
 }
 
 /**
