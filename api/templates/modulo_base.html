@@ -48,7 +48,7 @@
 
 {% block content %}
 <div class="px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
-    <section class="flex-1 space-y-8 ">
+    <section id="main-content-area" class="flex-1 space-y-8 ">
         <div>
             <h1 class="text-4xl font-extrabold mb-3 text-center">{{ titulo_modulo }}</h1>
             {% if numero_secao %}
@@ -99,7 +99,4 @@
     </section>
 </div>
 
-{% block body_scripts %}{{ super() }}{% endblock %}
 {% endblock %}
-
-

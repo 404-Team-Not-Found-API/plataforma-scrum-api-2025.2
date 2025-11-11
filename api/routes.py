@@ -1,9 +1,13 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory, jsonify
+from flask import Blueprint, render_template, request, session, redirect, url_for, send_from_directory, jsonify, Response
 from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 from .modulos.modulo3 import modulo3_perguntas
 from .modulos.modulo4 import modulo4_perguntas
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
+import os
+import requests
+import time
+
 
 # Mapeamento centralizado de módulos para as perguntas
 perguntas_modulos = {
@@ -74,6 +78,70 @@ def download(key):
     filename = DOWNLOADS[key]
     return send_from_directory('static/assets', filename, as_attachment=True)
 
+@bp.route('/gerar-relatorio-pdf-modulo6', methods=['POST'])
+def gerar_relatorio_modulo6():
+    # 1. Obter chaves da API a partir das variáveis de ambiente
+    public_key = os.environ.get('ILOVEPDF_PUBLIC_KEY')
+    secret_key = os.environ.get('ILOVEPDF_SECRET_KEY')
+
+    # 2. Autenticar e obter token de acesso
+    auth_response = requests.post('https://api.ilovepdf.com/v1/auth', data={'public_key': public_key, 'secret_key': secret_key})
+    if auth_response.status_code != 200:
+        return jsonify({'error': 'Falha na autenticação com a API iLovePDF'}), 500
+    token = auth_response.json()['token']
+    headers = {'Authorization': f'Bearer {token}'}
+
+    # 3. Iniciar a tarefa 'htmlpdf'
+    start_response = requests.get('https://api.ilovepdf.com/v1/start/htmlpdf', headers=headers)
+    if start_response.status_code != 200:
+        return jsonify({'error': 'Falha ao iniciar a tarefa na API iLovePDF'}), 500
+    task_data = start_response.json()
+    task_id = task_data['task']
+    server_url = f"https://{task_data['server']}"
+
+    # 4. Preparar o HTML para upload
+    form_data = request.get_json()
+    from datetime import datetime
+    html_content = render_template('relatorio_modulo6.html',
+                                   meta_sprint=form_data.get('meta_sprint', ''),
+                                   backlog_itens=form_data.get('backlog_itens', ''),
+                                   riscos=form_data.get('riscos', ''),
+                                   data_atual=datetime.now().strftime('%d/%m/%Y'))
+
+    # 5. Enviar o HTML para a API
+    files = {'file': ('report.html', html_content, 'text/html')}
+    upload_response = requests.post(f'{server_url}/v1/upload', headers=headers, data={'task': task_id}, files=files)
+    if upload_response.status_code != 200:
+        return jsonify({'error': 'Falha no upload do HTML para a API iLovePDF'}), 500
+    server_filename = upload_response.json()['server_filename']
+
+    # 6. Processar o arquivo (converter HTML para PDF)
+    process_payload = {
+        'task': task_id,
+        'tool': 'htmlpdf',
+        'files': [{'server_filename': server_filename, 'filename': 'relatorio.html'}]
+    }
+    process_response = requests.post(f'{server_url}/v1/process', headers=headers, json=process_payload)
+    if process_response.status_code != 200:
+        return jsonify({'error': 'Falha no processamento do arquivo na API iLovePDF'}), 500
+
+    # 7. Baixar o PDF resultante
+    download_url = f'{server_url}/v1/download/{task_id}'
+    
+    # Loop para aguardar o processamento (opcional, mas recomendado)
+    for _ in range(10): # Tenta por até 10 segundos
+        download_response = requests.get(download_url, headers=headers, stream=True)
+        if download_response.status_code == 200:
+            break
+        time.sleep(1)
+    else:
+        return jsonify({'error': 'Tempo de processamento excedido na API iLovePDF'}), 500
+
+    # 8. Enviar o PDF para o usuário
+    return Response(download_response.content,
+                    mimetype='application/pdf',
+                    headers={'Content-Disposition': 'attachment;filename=relatorio_planejamento_sprint.pdf'})
+
 
 # NOVA ROTA: Esta é a nova rota de API.
 # Ela recebe a resposta do usuário via JSON, processa a lógica de verificação e pontuação,
@@ -138,7 +206,7 @@ def exercicio(modulo_nome, template_name="form_exercicio.html", section_name=Non
     current_index = 0
     total = len(perguntas)
     pergunta = perguntas[current_index]
-    
+
     return render_template(
         template_name,
         pergunta=pergunta,

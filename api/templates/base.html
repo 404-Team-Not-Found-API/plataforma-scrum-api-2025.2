@@ -35,18 +35,18 @@
 
     <script>
         // Script para o dropdown do navbar (menu mobile) - apenas para páginas que usam navbar.html
-        const menuBtnBase = document.querySelector('.menu-btn');
-        const dropdownBase = document.getElementById('menuDropdown');
+        const menuBtn = document.querySelector('.menu-btn');
+        const dropdown = document.getElementById('menuDropdown');
 
-        if (menuBtnBase && dropdownBase) {
-          menuBtnBase.addEventListener('click', (e) => {
+        if (menuBtn && dropdown) {
+          menuBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Impede que o clique se propague para o document
-            dropdownBase.classList.toggle('show');
+            dropdown.classList.toggle('show');
           });
 
           document.addEventListener('click', (e) => {
-            if (!dropdownBase.contains(e.target)) {
-              dropdownBase.classList.remove('show');
+            if (!dropdown.contains(e.target)) {
+              dropdown.classList.remove('show');
             }
           });
         }
