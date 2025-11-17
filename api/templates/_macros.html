@@ -135,7 +135,7 @@
                                 {% if card_item.modal_icon and card_item.modal_icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
                                     <img src="{{ url_for('static', filename='assets/' + card_item.modal_icon) }}" alt="" class="me-2" style="height: 24px;">
                                 {% elif card_item.modal_icon %}
-                                    <i class="{{ card_item.modal_icon }} me-2" style="font-size: 24px;"></i>
+                                    <i class="{{ card_item.modal_icon }} me-2" style="font-size: 24px; {% if card_item.modal_icon_color %}color: {{ card_item.modal_icon_color }};{% endif %}"></i>
                                 {% endif %}
                                 {{ card_item.titulo }}
                             </h5>
@@ -155,11 +155,41 @@
                                 <li class="d-flex align-items-start mb-2">
                                     {% if item.link_text and item.url %}
                                         <i class="bi bi-youtube flex-shrink-0 me-2" style="color: #FF0000; margin-top: 0.15rem; font-size: 20px;"></i>
-                                        <a href="{{ item.url }}" target="_blank" class="text-primary hover:underline">{{ item.link_text }}</a>
+                                        <a href="{{ item.url }}" target="_blank" class="text-primary hover:underline">{{ item.link_text }}</a>                                    
                                     {% elif item.bold %}
                                         <span class="font-bold mt-3 mb-1 d-block" style="padding-left: 0;">{{ item.text }}</span>
-                                    {% else %}<i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 20px;"></i><span>{{ item.text }}</span>{% endif %}
+                                    {% elif item.text %}
+                                        <i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 20px;"></i><span>{{ item.text }}</span>
+                                    {% endif %}
                                 </li>
+                                {% if item.soft_skills %}
+                                <li class="w-100">
+                                    <div class="card bg-light mt-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title fw-bold d-flex align-items-center"><i class="bi bi-people me-2" style="color: #0dcaf0;"></i>Soft Skills em Destaque</h6>
+                                            <ul class="list-unstyled mb-0">
+                                                {% for skill in item.soft_skills %}
+                                                <li class="d-flex align-items-start"><i class="bi bi-check-circle me-2 mt-1" style="color: #0dcaf0; font-size: 14px;"></i><span>{{ skill }}</span></li>                                                
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% if item.refletir %}                                
+                                <li class="w-100">
+                                    <div class="card bg-light mt-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title fw-bold d-flex align-items-center"><i class="bi bi-lightbulb me-2" style="color: #ffc107;"></i>Para refletir</h6>
+                                            <ul class="list-unstyled mb-0">
+                                                {% for reflexao in item.refletir %}
+                                                <li class="d-flex align-items-start"><i class="bi bi-check-circle me-2 mt-1" style="color: #ffc107; font-size: 14px;"></i><span>{{ reflexao }}</span></li>                                                
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>

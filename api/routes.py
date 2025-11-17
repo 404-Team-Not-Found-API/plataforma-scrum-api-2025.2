@@ -3,10 +3,8 @@ from .modulos.modulo1 import modulo1_perguntas
 from .modulos.modulo2 import modulo2_perguntas
 from .modulos.modulo3 import modulo3_perguntas
 from .modulos.modulo4 import modulo4_perguntas
+from .modulos.modulo5 import modulo5_perguntas, verificar_respostas_modulo5
 from .modulos.config import MODULES_CONFIG, DOWNLOADS
-import os
-import requests
-import time
 
 
 # Mapeamento centralizado de módulos para as perguntas
@@ -15,6 +13,7 @@ perguntas_modulos = {
     'modulo2': modulo2_perguntas,
     'modulo3': modulo3_perguntas,
     'modulo4': modulo4_perguntas,
+    'modulo5': modulo5_perguntas, 
 }
 
 bp = Blueprint('routes', __name__)
@@ -60,14 +59,18 @@ def module_route(module_name, section_name=None):
     # ALTERAÇÃO AJAX: A condição foi simplificada. Se a seção deve mostrar exercícios,
     # a função 'exercicio' é chamada para renderizar o estado inicial do quiz.
     if module_config.get('quiz') and section_config.get('mostrar_exercicios', False):
-        return exercicio(
-            modulo_nome=module_name,
-            template_name=template,
-            redirect_endpoint='routes.module_route',
-            section_name=section_name,
-            start_quiz=False,
-            template_data=template_data
-        )
+        # Lógica para separar o quiz do Módulo 5 dos demais
+        if module_name == 'modulo5':
+            return exercicio_modulo5(template_data=template_data)
+        else:
+            # Prepara os dados do quiz para os módulos 1-4 e os passa para o template do módulo
+            perguntas = perguntas_modulos.get(module_name)
+            if perguntas:
+                session.pop('score', None)  # Limpa o score anterior
+                template_data['perguntas'] = perguntas
+                template_data['pergunta'] = perguntas[0]
+                template_data['current_index'] = 0
+                template_data['total'] = len(perguntas)
 
     return render_template(template, **template_data)
 
@@ -77,70 +80,6 @@ def download(key):
         return "File not found", 404
     filename = DOWNLOADS[key]
     return send_from_directory('static/assets', filename, as_attachment=True)
-
-@bp.route('/gerar-relatorio-pdf-modulo6', methods=['POST'])
-def gerar_relatorio_modulo6():
-    # 1. Obter chaves da API a partir das variáveis de ambiente
-    public_key = os.environ.get('ILOVEPDF_PUBLIC_KEY')
-    secret_key = os.environ.get('ILOVEPDF_SECRET_KEY')
-
-    # 2. Autenticar e obter token de acesso
-    auth_response = requests.post('https://api.ilovepdf.com/v1/auth', data={'public_key': public_key, 'secret_key': secret_key})
-    if auth_response.status_code != 200:
-        return jsonify({'error': 'Falha na autenticação com a API iLovePDF'}), 500
-    token = auth_response.json()['token']
-    headers = {'Authorization': f'Bearer {token}'}
-
-    # 3. Iniciar a tarefa 'htmlpdf'
-    start_response = requests.get('https://api.ilovepdf.com/v1/start/htmlpdf', headers=headers)
-    if start_response.status_code != 200:
-        return jsonify({'error': 'Falha ao iniciar a tarefa na API iLovePDF'}), 500
-    task_data = start_response.json()
-    task_id = task_data['task']
-    server_url = f"https://{task_data['server']}"
-
-    # 4. Preparar o HTML para upload
-    form_data = request.get_json()
-    from datetime import datetime
-    html_content = render_template('relatorio_modulo6.html',
-                                   meta_sprint=form_data.get('meta_sprint', ''),
-                                   backlog_itens=form_data.get('backlog_itens', ''),
-                                   riscos=form_data.get('riscos', ''),
-                                   data_atual=datetime.now().strftime('%d/%m/%Y'))
-
-    # 5. Enviar o HTML para a API
-    files = {'file': ('report.html', html_content, 'text/html')}
-    upload_response = requests.post(f'{server_url}/v1/upload', headers=headers, data={'task': task_id}, files=files)
-    if upload_response.status_code != 200:
-        return jsonify({'error': 'Falha no upload do HTML para a API iLovePDF'}), 500
-    server_filename = upload_response.json()['server_filename']
-
-    # 6. Processar o arquivo (converter HTML para PDF)
-    process_payload = {
-        'task': task_id,
-        'tool': 'htmlpdf',
-        'files': [{'server_filename': server_filename, 'filename': 'relatorio.html'}]
-    }
-    process_response = requests.post(f'{server_url}/v1/process', headers=headers, json=process_payload)
-    if process_response.status_code != 200:
-        return jsonify({'error': 'Falha no processamento do arquivo na API iLovePDF'}), 500
-
-    # 7. Baixar o PDF resultante
-    download_url = f'{server_url}/v1/download/{task_id}'
-    
-    # Loop para aguardar o processamento (opcional, mas recomendado)
-    for _ in range(10): # Tenta por até 10 segundos
-        download_response = requests.get(download_url, headers=headers, stream=True)
-        if download_response.status_code == 200:
-            break
-        time.sleep(1)
-    else:
-        return jsonify({'error': 'Tempo de processamento excedido na API iLovePDF'}), 500
-
-    # 8. Enviar o PDF para o usuário
-    return Response(download_response.content,
-                    mimetype='application/pdf',
-                    headers={'Content-Disposition': 'attachment;filename=relatorio_planejamento_sprint.pdf'})
 
 
 # NOVA ROTA: Esta é a nova rota de API.
@@ -173,7 +112,7 @@ def verificar_resposta(module_name):
     response_data = {
         'correct': is_correct,
         'correct_answer': pergunta_atual['correta'],
-        'explanation': pergunta_atual.get('explicacao', 'Explicação não disponível.'),
+        'explanation': pergunta_atual.get('explicacao', ''),
         'next_question': None,
         'next_question_index': None,
         'total_questions': total_questions # Adicionado para o frontend
@@ -190,28 +129,24 @@ def verificar_resposta(module_name):
 
     return jsonify(response_data)
 
+                                    
+@bp.route('/exercicio/modulo5', methods=['GET', 'POST'])
+def exercicio_modulo5(template_data=None):
+    if template_data is None:
+        template_data = MODULES_CONFIG['modulo5']['sections']['modulo5']
+        template_data['module_name'] = 'modulo5'
+        template_data['section_name'] = 'modulo5'
 
-# A função 'exercicio' agora só lida com requisições 'GET'.
-# Sua única responsabilidade é carregar a primeira pergunta do quiz e limpar a pontuação da sessão anterior, preparando para a interação via JavaScript.
-@bp.route('/exercicio/<modulo_nome>', methods=['GET'])
-def exercicio(modulo_nome, template_name="form_exercicio.html", section_name=None, template_data=None, **kwargs):
-    perguntas = perguntas_modulos.get(modulo_nome)
-    if not perguntas:
-        return "Módulo não encontrado", 404
+    resultado = None
+    if request.method == 'POST':
+        respostas = request.form.to_dict()
+        resultado = verificar_respostas_modulo5(respostas)
 
-    # Limpa o score da sessão anterior para garantir um novo começo a cada vez que o quiz é carregado.
-    session.pop('score', None)
-
-    # A lógica agora sempre começa da primeira pergunta
-    current_index = 0
-    total = len(perguntas)
-    pergunta = perguntas[current_index]
-
+    # Renderiza o template do Módulo 5, passando as perguntas e o resultado
     return render_template(
-        template_name,
-        pergunta=pergunta,
-        current_index=current_index,
-        total=total,
-        **(template_data or {})
+        'modulo5.html',
+        perguntas=modulo5_perguntas,
+        resultado=resultado,
+        **template_data
     )
                                     

@@ -1,20 +1,19 @@
 // Este script transforma o questionário em uma aplicação dinâmica
 // Ele intercepta as ações do usuário, comunica-se com o backend via AJAX, e atualiza apenas a seção do quiz, sem recarregar a página.
 
+// Armazena os dados da próxima questão recebidos da API para evitar chamadas desnecessárias.
+let nextQuestionData = null;
+
 document.addEventListener('DOMContentLoaded', function () {
     // Adiciona 'event listeners' aos botões de controle do quiz assim que a página carrega.
     const confirmBtn = document.getElementById('confirm-btn');
     const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
 
     if (confirmBtn) {
         confirmBtn.addEventListener('click', handleConfirm); // Lida com a verificação da resposta.
     }
     if (nextBtn) {
         nextBtn.addEventListener('click', handleNext); // Carrega a próxima questão.
-    }
-    if (prevBtn) {
-        prevBtn.addEventListener('click', handlePrev); // Carrega a questão anterior.
     }
 });
 
@@ -49,6 +48,9 @@ function handleConfirm() {
         confirmBtn.disabled = false;
         confirmBtn.textContent = 'Confirmar';
 
+        // Armazena os dados da próxima questão para uso posterior.
+        nextQuestionData = data;
+
         // Se a resposta da API indica que não há próxima questão, finaliza o quiz.
         if (data.next_question === null) { // Esta foi a última questão
             displayFinalScore(data.score, data.total);
@@ -67,43 +69,13 @@ function handleConfirm() {
 }
 
 // Funções para lidar com a navegação.
+// A lógica agora é mais simples: se os dados da próxima questão existem, atualiza a tela.
 function handleNext() {
-    let currentIndex = parseInt(document.getElementById('question_index').value);
-    fetchQuestion(currentIndex + 1);
-}
-
-function handlePrev() {
-    let currentIndex = parseInt(document.getElementById('question_index').value);
-    fetchQuestion(currentIndex - 1);
-}
-
-// Função para buscar os dados de uma pergunta específica no backend.
-function fetchQuestion(indexToLoad) { // indexToLoad é o índice da questão que queremos exibir
-    const moduleName = document.querySelector('input[name="module_name"]').value;
-    
-    // Para obter os dados da questão N, pedimos ao backend a "próxima" questão após a N-1.
-    const indexToSendToBackend = indexToLoad > 0 ? indexToLoad - 1 : -1;
-
-    fetch(`/verificar-resposta/${moduleName}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question_index: indexToSendToBackend, answer: -1 }), // Envia uma resposta dummy.
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Se o backend retornou a questão esperada, atualiza a interface.
-        if (data.next_question && data.next_question_index === indexToLoad) {
-            updateQuestion(data.next_question, data.next_question_index, data.total_questions);
-            toggleButtons(false); // Mostra "Confirmar" e esconde os botões de navegação.
-        } else {
-            console.error("Falha ao buscar dados da questão para o índice:", indexToLoad, data);
-            alert("Erro ao carregar a questão.");
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao buscar a questão:', error);
-        alert("Erro de rede ao carregar a questão.");
-    });
+    if (nextQuestionData && nextQuestionData.next_question) {
+        updateQuestion(nextQuestionData.next_question, nextQuestionData.next_question_index, nextQuestionData.total_questions);
+        toggleButtons(false); // Mostra "Confirmar" e esconde os botões de navegação.
+        nextQuestionData = null; // Limpa os dados após o uso.
+    }
 }
 
 // Função para exibir o feedback (Certo/Errado) e a explicação.
@@ -164,7 +136,6 @@ function updateQuestion(nextQuestion, nextIndex, total) {
 function toggleButtons(showNav) {
     const confirmBtn = document.getElementById('confirm-btn');
     const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
     const currentIndex = parseInt(document.getElementById('question_index').value);
     const totalQuestions = parseInt(document.getElementById('total_questions').value);
 
@@ -176,17 +147,9 @@ function toggleButtons(showNav) {
         } else {
             nextBtn.classList.add('d-none');
         }
-
-        if (currentIndex > 0) {
-            prevBtn.classList.remove('d-none');
-        } else {
-            prevBtn.classList.add('d-none');
-        }
-
     } else { // Se for para mostrar o botão de confirmar (ao carregar uma nova questão).
         confirmBtn.classList.remove('d-none');
         nextBtn.classList.add('d-none');
-        prevBtn.classList.add('d-none');
     }
 }
 

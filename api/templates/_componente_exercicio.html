@@ -1,3 +1,42 @@
+{% if module_name == 'modulo5' %}
+<!-- Seção do Formulário de Diagnóstico para o Módulo 5 -->
+<div id="secao-exercicios" class="exercise-component w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-center">Diagnóstico de Soft Skills</h2>
+    
+    <form id="diagnostic-quiz-form" action="{{ url_for('routes.exercicio_modulo5') }}" method="POST" class="space-y-6">
+        {% for pergunta in perguntas %}
+            <div class="question-block mb-5">
+                <p class="text-lg font-medium mb-3">{{ loop.index }}. {{ pergunta.pergunta }}</p>
+                <div class="alternatives-container space-y-2">
+                    {% for alt in pergunta.alternativas %}
+                    <div>
+                        <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="question_{{ pergunta.id }}" value="{{ alt.id }}" class="form-radio h-5 w-5 text-emerald-500" required>
+                            <span>{{ alt.text }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="flex justify-center mt-6">
+            <button type="submit" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-full font-bold text-lg">
+                Ver Meu Resultado
+            </button>
+        </div>
+    </form>
+
+    {% if resultado and resultado.tipo == 'diagnostico' %}
+        <div id="feedback-section" class="mt-6 p-6 rounded-lg text-center" style="background-color: #e0f2fe;">
+            <h3 class="text-2xl font-bold mb-3">Seu Resultado do Diagnóstico</h3>
+            <p class="text-gray-800 mb-2 text-lg">{{ resultado.feedback_geral | safe }}</p>
+            <p class="text-gray-600">{{ resultado.feedback_detalhado }}</p>
+        </div>
+    {% endif %}
+</div>
+
+{% else %}
 <!-- Seção do Formulário de Exercício -->
 <div id="secao-exercicios" class="exercise-component w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
     <!-- ALTERAÇÃO AJAX: Adicionado um ID para que o JS possa atualizar o contador de questões. -->
@@ -46,18 +85,14 @@
         <!-- Os botões agora são do tipo 'button' e têm IDs.
              Isso permite que o JS adicione 'event listeners' a cada um, controlando
              a lógica de confirmação e navegação sem submeter o formulário. -->
-        <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-4 mt-6">
-            <button id="prev-btn" type="button" class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200 d-none">
-                &larr; Anterior
-            </button>
-            
+        <div class="flex flex-col sm:flex-row sm:justify-center items-center gap-4 mt-6">
             <button id="confirm-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
                 Confirmar
             </button>
-
             <button id="next-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full d-none">
                 Próxima &rarr;
             </button>
         </div>
     </form>
 </div>
+{% endif %}
