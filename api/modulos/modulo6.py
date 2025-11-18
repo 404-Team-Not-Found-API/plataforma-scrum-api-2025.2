@@ -16,11 +16,11 @@ def get_modulo6():
                 "numero_modulo": 6,
                 "descricao_secao": "Vamos colocar a mão na massa. Defina a visão, crie o backlog e gere seu documento.",
                 'url_anterior': 'routes.module_route',
-                'url_anterior_params': {'module_name': 'modulo2', 'section_name': 'modulo2'},
+                'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
+                'conteudo_complementar': False,
+                'mostrar_exercicios': False,
                 "template": "modulo6.html",
-                # Aqui inserimos a estrutura específica da simulação que o modulo6.html espera
-                "intro": "Bem-vindo à sua primeira Sprint! Aqui você vai aplicar os conceitos de Visão, Backlog e Planejamento.",
-                "fases": [
+                "cards": [
                     {
                         "id": "visao",
                         "titulo": "1. Defina a Visão do Produto",
@@ -43,9 +43,10 @@ def get_modulo6():
                             "Quebre grandes tarefas em menores."
                         ],
                         "campos": [
-                            {"id": "item_1", "label": "Item de Alta Prioridade", "tipo": "input", "placeholder": "Funcionalidade principal..."},
+                            {"id": "back_item_1", "label": "Item de Alta Prioridade", "tipo": "input", "placeholder": "Funcionalidade principal..."},
                             {"id": "estimativa_1", "label": "Estimativa", "tipo": "input", "placeholder": "Ex: 3 dias"},
-                            {"id": "item_2", "label": "Item de Média Prioridade", "tipo": "input", "placeholder": "Funcionalidade secundária..."}
+                            {"id": "back_item_2", "label": "Item de Média Prioridade", "tipo": "input", "placeholder": "Funcionalidade secundária..."},
+                            {"id": "back_item_3", "label": "Item de Baixa Prioridade", "tipo": "input", "placeholder": "Funcionalidade secundária..."}
                         ]
                     }
                 ]

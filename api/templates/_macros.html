@@ -86,6 +86,53 @@
 </div>
 {% endmacro %}
 
+{% macro render_fase_simulacao(fase) %}
+<div class="card mb-5 shadow-sm border-0">
+    <div class="card-header text-white" style="background-color: #0d6efd;">
+        <h4 class="my-1"><i class="bi bi-clipboard-data me-2"></i>{{ fase.titulo }}</h4>
+    </div>
+    <div class="card-body bg-light">
+        
+        {% if fase.dicas %}
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <i class="bi bi-lightbulb-fill fs-4 me-3"></i>
+            <div>
+                <strong>Dicas Importantes:</strong>
+                <ul class="mb-0 ps-3" style="font-size: 0.9rem;">
+                    {% for dica in fase.dicas %}
+                    <li>{{ dica }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="fase-form">
+            {% for campo in fase.campos %}
+            <div class="mb-3">
+                <label for="{{ campo.id }}" class="form-label fw-bold text-dark">{{ campo.label }}</label>
+                
+                {% if campo.tipo == 'textarea' %}
+                    <textarea 
+                        id="{{ campo.id }}" 
+                        class="form-control save-local" 
+                        rows="3" 
+                        placeholder="{{ campo.placeholder }}"></textarea>
+                {% else %}
+                    <input 
+                        type="text" 
+                        id="{{ campo.id }}" 
+                        class="form-control save-local" 
+                        placeholder="{{ campo.placeholder }}">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endmacro %}
+
 {% macro interactive_cards_section(cards) %}
 <div class="row g-5 justify-content-center">
     {% for card_item in cards %}

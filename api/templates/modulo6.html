@@ -1,7 +1,164 @@
-{% extends "modulo_base.html" %}
+{% extends 'modulo_base.html' %}
 
-{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+{% from '_macros.html' import render_fase_simulacao %}
 
-{% block modulo_content %}
-    <p>Módulo 6</p>
+{% block title %}{{ titulo_modulo }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary">{{ titulo_modulo }}</h1>
+        <p class="lead text-secondary">{{ descricao_secao }}</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8" id="area-de-simulacao">
+            
+            {% if cards %}
+                {% for fase in cards %}
+                    {{ render_fase_simulacao(fase) }}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-danger">
+                    Erro: Nenhum dado encontrado.
+                </div>
+            {% endif %}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                <button onclick="limparDados()" class="btn btn-outline-danger px-4">
+                    <i class="bi bi-trash"></i> Reiniciar
+                </button>
+                <button onclick="gerarPDF()" class="btn btn-success btn-lg px-5 shadow">
+                    <i class="bi bi-file-earmark-pdf-fill"></i> Baixar PDF
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="pdf-template" style="display:none; width: 100%; font-family: Helvetica, Arial, sans-serif; color: #333; background: #fff; padding: 20px;">
+    <div style="text-align: center; border-bottom: 3px solid #0056b3; padding-bottom: 15px; margin-bottom: 30px;">
+        <h2 style="color: #0056b3; margin: 0; text-transform: uppercase; letter-spacing: 1px;">Projeto Scrum Simulado</h2>
+        <p style="color: #666; font-size: 12px; margin-top: 5px;">Gerado pela Plataforma de Treinamento</p>
+    </div>
+    
+    <div id="pdf-content-dinamico"></div>
+
+    <div style="margin-top: 40px; padding-top: 10px; border-top: 1px solid #eee; font-size: 10px; text-align: center; color: #999;">
+        Documento gerado em <span id="data-pdf"></span>.
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+    // 1. Lógica do LocalStorage (Salvamento Automático)
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputs = document.querySelectorAll('.save-local');
+
+        inputs.forEach(input => {
+            // Carregar
+            const saved = localStorage.getItem('sprint_' + input.id);
+            if (saved) input.value = saved;
+
+            // Salvar ao digitar
+            input.addEventListener('input', () => {
+                localStorage.setItem('sprint_' + input.id, input.value);
+            });
+        });
+    });
+
+    // 2. Lógica de Limpeza
+    function limparDados() {
+        if(confirm("Tem certeza? Isso apagará todo o seu progresso.")) {
+            const inputs = document.querySelectorAll('.save-local');
+            inputs.forEach(input => {
+                localStorage.removeItem('sprint_' + input.id);
+                input.value = '';
+            });
+        }
+    }
+
+    // // 3. Lógica de Geração do PDF (Corrigida)
+    // function gerarPDF() {
+    //     // Prepara o container
+    //     const container = document.getElementById('pdf-content-dinamico');
+    //     container.innerHTML = ''; 
+    //     document.getElementById('data-pdf').innerText = new Date().toLocaleDateString('pt-BR');
+
+    //     // Seleciona os Cards da tela
+    //     // A classe .card vem da macro render_fase_simulacao
+    //     const cardsNaTela = document.querySelectorAll('#area-de-simulacao .card'); 
+        
+    //     if (cardsNaTela.length === 0) {
+    //         alert("Erro: Não encontrei os formulários para gerar o PDF.");
+    //         return;
+    //     }
+
+    //     // Itera sobre cada card para extrair dados
+    //     cardsNaTela.forEach(card => {
+    //         // Tenta achar o título dentro do card-header
+    //         const headerElement = card.querySelector('.card-header h4');
+    //         const titulo = headerElement ? headerElement.innerText.trim() : 'Seção Sem Título';
+
+    //         // Cria o bloco HTML para o PDF
+    //         let htmlSecao = `
+    //             <div style="margin-bottom: 25px;">
+    //                 <div style="background-color: #f4f4f4; color: #0056b3; padding: 8px 12px; font-weight: bold; font-size: 14px; border-left: 4px solid #0056b3; margin-bottom: 10px;">
+    //                     ${titulo}
+    //                 </div>
+    //                 <div style="padding-left: 5px;">
+    //         `;
+            
+    //         // Pega todos os inputs dentro deste card específico
+    //         const inputs = card.querySelectorAll('.save-local');
+            
+    //         inputs.forEach(inp => {
+    //             // O Label é o irmão anterior do input no HTML da macro
+    //             const labelEl = inp.previousElementSibling; 
+    //             const label = labelEl ? labelEl.innerText : 'Campo';
+    //             const valor = inp.value.trim();
+
+    //             // Só adiciona se tiver valor ou mostra placeholder
+    //             const valorDisplay = valor ? valor : "<span style='color:#ccc; font-style:italic;'>Não preenchido</span>";
+                
+    //             // Estilo de "Pergunta e Resposta" para o PDF
+    //             htmlSecao += `
+    //                 <div style="margin-bottom: 10px;">
+    //                     <div style="font-size: 11px; color: #666; text-transform: uppercase; font-weight: bold;">${label}</div>
+    //                     <div style="font-size: 13px; color: #000; margin-top: 2px; white-space: pre-wrap;">${valorDisplay}</div>
+    //                 </div>
+    //             `;
+    //         });
+
+    //         htmlSecao += `</div></div>`; // Fecha divs
+    //         container.innerHTML += htmlSecao;
+    //     });
+
+    //     // Configurações da lib html2pdf
+    //     const element = document.getElementById('pdf-template');
+        
+    //     // Mostra temporariamente para gerar a "foto"
+    //     element.style.display = 'block';
+
+    //     const opt = {
+    //         margin:       10,
+    //         filename:     'Meu_Projeto_Scrum.pdf',
+    //         image:        { type: 'jpeg', quality: 0.98 },
+    //         html2canvas:  { scale: 2, useCORS: true },
+    //         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    //     };
+
+    //     // Gera e depois esconde
+    //     html2pdf().set(opt).from(element).save().then(() => {
+    //         element.style.display = 'none';
+    //     }).catch(err => {
+    //         console.error(err);
+    //         alert("Erro ao gerar PDF. Verifique o console.");
+    //         element.style.display = 'none';
+    //     });
+    // }
+</script>
 {% endblock %}
