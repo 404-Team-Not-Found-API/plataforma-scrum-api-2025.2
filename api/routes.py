@@ -32,7 +32,9 @@ def module_route(module_name, section_name=None):
         return "Module not found", 404
 
     module_config = MODULES_CONFIG[module_name]
-    section_config = module_config['sections'].get(section_name or module_name, {})
+    # Garante que pega a seção correta ou a padrão
+    section_key = section_name if section_name else module_config.get('primeira_secao', module_name)
+    section_config = module_config['sections'].get(section_key, {})
 
     template_data = {
         'titulo_modulo': section_config.get('titulo_modulo', ''),
@@ -48,7 +50,9 @@ def module_route(module_name, section_name=None):
         'quiz_available': module_config.get('quiz', False),
         'module_name': module_name,
         'section_name': section_name,
-        'cards': section_config.get('cards', [])
+        'cards': section_config.get('cards', []),
+        # --- CORREÇÃO AQUI: Adicionamos 'conteudo' para o template acessar tudo ---
+        'conteudo': module_config
     }
 
     template = section_config.get('template', f'{module_name}.html')

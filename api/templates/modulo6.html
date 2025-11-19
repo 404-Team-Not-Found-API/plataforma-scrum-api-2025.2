@@ -1,164 +1,85 @@
 {% extends 'modulo_base.html' %}
+<!-- {% from '_macros.html' import render_fase_simulacao %} -->
+{% block title %}Módulo {{ conteudo.sections.modulo6.titulo_modulo }}{% endblock %}
 
-{% from '_macros.html' import render_fase_simulacao %}
+{% block modulo_content %}
+    {% from '_macros.html' import render_fase_simulacao %}
 
-{% block title %}{{ titulo_modulo }}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/simulacao.css') }}">
 
-{% block content %}
-<div class="container py-5">
-    
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold text-primary">{{ titulo_modulo }}</h1>
-        <p class="lead text-secondary">{{ descricao_secao }}</p>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-lg-8" id="area-de-simulacao">
-            
-            {% if cards %}
-                {% for fase in cards %}
-                    {{ render_fase_simulacao(fase) }}
-                {% endfor %}
-            {% else %}
-                <div class="alert alert-danger">
-                    Erro: Nenhum dado encontrado.
+    <div class="container py-5">
+        
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-4">
+                <div class="card bg-light border-0 shadow-sm">
+                    <div class="card-body py-2">
+                        <div class="d-flex justify-content-between small text-uppercase fw-bold text-muted mb-1">
+                            <span>Progresso</span>
+                            <span id="texto-progresso">0/6</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div id="barra-progresso" class="progress-bar bg-success" style="width: 0%"></div>
+                        </div>
+                    </div>
                 </div>
-            {% endif %}
+            </div>
+        </div>
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
-                <button onclick="limparDados()" class="btn btn-outline-danger px-4">
-                    <i class="bi bi-trash"></i> Reiniciar
-                </button>
-                <button onclick="gerarPDF()" class="btn btn-success btn-lg px-5 shadow">
-                    <i class="bi bi-file-earmark-pdf-fill"></i> Baixar PDF
+        <div id="area-sorteio" class="text-center py-5">
+            
+            <div id="intro-sorteio">
+                <div class="mb-4">
+                    <i class="bi bi-shuffle display-4 text-primary"></i>
+                </div>
+                <h3 class="fw-bold">Vamos definir seu Projeto</h3>
+                <p class="text-muted mb-4">Clique abaixo para descobrir qual será seu desafio nesta Sprint.</p>
+                <button id="btn-sortear" class="btn btn-primary btn-lg px-5 rounded-pill">
+                    Sortear Projeto
                 </button>
             </div>
 
+            <div id="resultado-sorteio" class="d-none animate__animated animate__fadeIn">
+                <div class="card border-primary mx-auto mb-4 shadow-sm" style="max-width: 600px;">
+                    <div class="card-body p-4">
+                        <h6 class="text-primary text-uppercase fw-bold mb-2">Seu Projeto é:</h6>
+                        <h2 class="fw-bold mb-3" id="projeto-titulo">...</h2>
+                        <p class="lead fs-6 text-muted" id="projeto-desc">...</p>
+                    </div>
+                </div>
+                <button id="btn-iniciar" class="btn btn-success btn-lg px-5">
+                    Iniciar Sprint Agora <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
         </div>
+
+        <div id="area-fases" class="d-none">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    {% for fase in conteudo.sections.modulo6.cards %}
+                        {{ render_fase_simulacao(fase) }}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn btn-outline-dark">
+                    <i class="bi bi-file-pdf"></i> Gerar Relatório PDF
+                </button>
+            </div>
+        </div>
+
     </div>
-</div>
 
-<div id="pdf-template" style="display:none; width: 100%; font-family: Helvetica, Arial, sans-serif; color: #333; background: #fff; padding: 20px;">
-    <div style="text-align: center; border-bottom: 3px solid #0056b3; padding-bottom: 15px; margin-bottom: 30px;">
-        <h2 style="color: #0056b3; margin: 0; text-transform: uppercase; letter-spacing: 1px;">Projeto Scrum Simulado</h2>
-        <p style="color: #666; font-size: 12px; margin-top: 5px;">Gerado pela Plataforma de Treinamento</p>
-    </div>
-    
-    <div id="pdf-content-dinamico"></div>
+    <script src="{{ url_for('static', filename='js/simulacao.js') }}"></script>
 
-    <div style="margin-top: 40px; padding-top: 10px; border-top: 1px solid #eee; font-size: 10px; text-align: center; color: #999;">
-        Documento gerado em <span id="data-pdf"></span>.
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-<script>
-    // 1. Lógica do LocalStorage (Salvamento Automático)
-    document.addEventListener('DOMContentLoaded', () => {
-        const inputs = document.querySelectorAll('.save-local');
-
-        inputs.forEach(input => {
-            // Carregar
-            const saved = localStorage.getItem('sprint_' + input.id);
-            if (saved) input.value = saved;
-
-            // Salvar ao digitar
-            input.addEventListener('input', () => {
-                localStorage.setItem('sprint_' + input.id, input.value);
-            });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Passa os dados do Python para o JS de forma limpa
+            const dadosProjetos = {{ conteudo.sections.modulo6.projetos_simulados | tojson }};
+            
+            // Inicia a simulação
+            Simulacao.init(dadosProjetos);
         });
-    });
+    </script>
 
-    // 2. Lógica de Limpeza
-    function limparDados() {
-        if(confirm("Tem certeza? Isso apagará todo o seu progresso.")) {
-            const inputs = document.querySelectorAll('.save-local');
-            inputs.forEach(input => {
-                localStorage.removeItem('sprint_' + input.id);
-                input.value = '';
-            });
-        }
-    }
-
-    // // 3. Lógica de Geração do PDF (Corrigida)
-    // function gerarPDF() {
-    //     // Prepara o container
-    //     const container = document.getElementById('pdf-content-dinamico');
-    //     container.innerHTML = ''; 
-    //     document.getElementById('data-pdf').innerText = new Date().toLocaleDateString('pt-BR');
-
-    //     // Seleciona os Cards da tela
-    //     // A classe .card vem da macro render_fase_simulacao
-    //     const cardsNaTela = document.querySelectorAll('#area-de-simulacao .card'); 
-        
-    //     if (cardsNaTela.length === 0) {
-    //         alert("Erro: Não encontrei os formulários para gerar o PDF.");
-    //         return;
-    //     }
-
-    //     // Itera sobre cada card para extrair dados
-    //     cardsNaTela.forEach(card => {
-    //         // Tenta achar o título dentro do card-header
-    //         const headerElement = card.querySelector('.card-header h4');
-    //         const titulo = headerElement ? headerElement.innerText.trim() : 'Seção Sem Título';
-
-    //         // Cria o bloco HTML para o PDF
-    //         let htmlSecao = `
-    //             <div style="margin-bottom: 25px;">
-    //                 <div style="background-color: #f4f4f4; color: #0056b3; padding: 8px 12px; font-weight: bold; font-size: 14px; border-left: 4px solid #0056b3; margin-bottom: 10px;">
-    //                     ${titulo}
-    //                 </div>
-    //                 <div style="padding-left: 5px;">
-    //         `;
-            
-    //         // Pega todos os inputs dentro deste card específico
-    //         const inputs = card.querySelectorAll('.save-local');
-            
-    //         inputs.forEach(inp => {
-    //             // O Label é o irmão anterior do input no HTML da macro
-    //             const labelEl = inp.previousElementSibling; 
-    //             const label = labelEl ? labelEl.innerText : 'Campo';
-    //             const valor = inp.value.trim();
-
-    //             // Só adiciona se tiver valor ou mostra placeholder
-    //             const valorDisplay = valor ? valor : "<span style='color:#ccc; font-style:italic;'>Não preenchido</span>";
-                
-    //             // Estilo de "Pergunta e Resposta" para o PDF
-    //             htmlSecao += `
-    //                 <div style="margin-bottom: 10px;">
-    //                     <div style="font-size: 11px; color: #666; text-transform: uppercase; font-weight: bold;">${label}</div>
-    //                     <div style="font-size: 13px; color: #000; margin-top: 2px; white-space: pre-wrap;">${valorDisplay}</div>
-    //                 </div>
-    //             `;
-    //         });
-
-    //         htmlSecao += `</div></div>`; // Fecha divs
-    //         container.innerHTML += htmlSecao;
-    //     });
-
-    //     // Configurações da lib html2pdf
-    //     const element = document.getElementById('pdf-template');
-        
-    //     // Mostra temporariamente para gerar a "foto"
-    //     element.style.display = 'block';
-
-    //     const opt = {
-    //         margin:       10,
-    //         filename:     'Meu_Projeto_Scrum.pdf',
-    //         image:        { type: 'jpeg', quality: 0.98 },
-    //         html2canvas:  { scale: 2, useCORS: true },
-    //         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    //     };
-
-    //     // Gera e depois esconde
-    //     html2pdf().set(opt).from(element).save().then(() => {
-    //         element.style.display = 'none';
-    //     }).catch(err => {
-    //         console.error(err);
-    //         alert("Erro ao gerar PDF. Verifique o console.");
-    //         element.style.display = 'none';
-    //     });
-    // }
-</script>
 {% endblock %}
