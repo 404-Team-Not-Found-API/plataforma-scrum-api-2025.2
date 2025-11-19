@@ -573,6 +573,9 @@ MODULES_CONFIG = {
                 'numero_modulo': 5,
                 'descricao_secao': 'Descobrindo como habilidades humanas trasformam equipes ágeis',
                 'conteudo_complementar': True,
+                'titulo_complementar': 'Soft Skills e Scrum na Prática',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo5_apostila',
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
                 'url_proximo': {'module_name': 'modulo6', 'section_name': 'modulo6'},
@@ -771,5 +774,6 @@ DOWNLOADS = {
     'modulo1_secao2': 'modulo_1_secao_2.pdf',
     'modulo2': 'modulo_2.pdf',
     'modulo3_apostila': 'modulo_3_eventos_scrum.pdf',
-    'modulo4_apostila':'modulo_4_artefatos.pdf'
+    'modulo4_apostila':'modulo_4_artefatos.pdf',
+    'modulo5_apostila':'Apostila_modulo5.pdf'
 }

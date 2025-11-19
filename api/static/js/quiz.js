@@ -8,12 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Adiciona 'event listeners' aos botões de controle do quiz assim que a página carrega.
     const confirmBtn = document.getElementById('confirm-btn');
     const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
 
     if (confirmBtn) {
         confirmBtn.addEventListener('click', handleConfirm); // Lida com a verificação da resposta.
     }
     if (nextBtn) {
         nextBtn.addEventListener('click', handleNext); // Carrega a próxima questão.
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', handlePrev); // Volta para a questão anterior.
     }
 });
 
@@ -51,17 +55,29 @@ function handleConfirm() {
         // Armazena os dados da próxima questão para uso posterior.
         nextQuestionData = data;
 
-        // Se a resposta da API indica que não há próxima questão, finaliza o quiz.
-        if (data.next_question === null) { // Esta foi a última questão
-            displayFinalScore(data.score, data.total);
+        if (moduleName === 'modulo5') {
+            // Para o módulo 5, não há feedback, avança diretamente
+            if (data.resultado) {
+                // Última pergunta, mostra o resultado do diagnóstico
+                displayDiagnosticResult(data.resultado);
+            } else {
+                // Avança para a próxima pergunta
+                handleNext();
+            }
         } else {
-            displayFeedback(data); // Mostra o feedback de Certo/Errado.
-            toggleButtons(true); // Esconde "Confirmar" e mostra "Próxima"/"Anterior".
+            // Lógica para outros módulos
+            // Se a resposta da API indica que não há próxima questão, finaliza o quiz.
+            if (data.next_question === null) { // Esta foi a última questão
+                displayFinalScore(data.score, data.total);
+            } else {
+                displayFeedback(data); // Mostra o feedback de Certo/Errado.
+                toggleButtons(true); // Esconde "Confirmar" e mostra "Próxima"/"Anterior".
+            }
         }
     })
     .catch(error => {
         console.error('Erro ao verificar a resposta:', error);
-        alert("Erro ao verificar a resposta. Tente novamente.");
+        // Removido o alert para não mostrar a mensagem de erro
         document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = false);
         confirmBtn.disabled = false;
         confirmBtn.textContent = 'Confirmar';
@@ -75,6 +91,43 @@ function handleNext() {
         updateQuestion(nextQuestionData.next_question, nextQuestionData.next_question_index, nextQuestionData.total_questions);
         toggleButtons(false); // Mostra "Confirmar" e esconde os botões de navegação.
         nextQuestionData = null; // Limpa os dados após o uso.
+    }
+}
+
+// Função para lidar com a navegação para a questão anterior.
+function handlePrev() {
+    const currentIndex = parseInt(document.getElementById('question_index').value);
+    const totalQuestions = parseInt(document.getElementById('total_questions').value);
+    const moduleName = document.getElementById('quiz-form').elements['module_name'].value;
+
+    if (currentIndex > 0) {
+        const prevIndex = currentIndex - 1;
+
+        // Para módulos 1-4, precisamos buscar a pergunta anterior do backend
+        if (moduleName !== 'modulo5') {
+            fetch(`/verificar-resposta/${moduleName}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question_index: prevIndex, answer: null, action: 'prev' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.prev_question) {
+                    updateQuestion(data.prev_question, data.prev_question_index, data.total_questions);
+                    toggleButtons(false); // Mostra "Confirmar" e esconde os botões de navegação.
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao carregar a questão anterior:', error);
+            });
+        } else {
+            // Para módulo 5, as perguntas estão no frontend, então podemos navegar diretamente
+            if (window.modulo5Questions && window.modulo5Questions[prevIndex]) {
+                const prevQuestion = window.modulo5Questions[prevIndex];
+                updateQuestion(prevQuestion, prevIndex, totalQuestions);
+                toggleButtons(false); // Mostra "Confirmar" e esconde os botões de navegação.
+            }
+        }
     }
 }
 
@@ -113,18 +166,30 @@ function updateQuestion(nextQuestion, nextIndex, total) {
     const alternativesContainer = document.querySelector('.alternatives-container');
     alternativesContainer.innerHTML = '';
 
+    const moduleName = document.getElementById('quiz-form').elements['module_name'].value;
+
     nextQuestion.alternativas.forEach((alt, index) => {
+        let value, text;
+        if (moduleName === 'modulo5') {
+            // Para módulo 5, alt é um objeto {id, text}
+            value = alt.id;
+            text = alt.text;
+        } else {
+            // Para outros módulos, alt é uma string
+            value = index + 1;
+            text = alt;
+        }
         const alternativeHTML = `
             <div>
                 <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer">
-                    <input type="radio" name="answer" value="${index + 1}" class="form-radio h-5 w-5 text-emerald-500" required>
-                    <span>${alt}</span>
+                    <input type="radio" name="answer" value="${value}" class="form-radio h-5 w-5 text-emerald-500" required>
+                    <span>${text}</span>
                 </label>
             </div>
         `;
         alternativesContainer.insertAdjacentHTML('beforeend', alternativeHTML);
     });
-    
+
     // Garante que os inputs de resposta estejam habilitados para a nova questão.
     document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = false);
 
@@ -132,24 +197,39 @@ function updateQuestion(nextQuestion, nextIndex, total) {
     document.getElementById('feedback-box').classList.add('d-none');
 }
 
-// Função para gerenciar a visibilidade dos botões 
+// Função para gerenciar a visibilidade dos botões
 function toggleButtons(showNav) {
     const confirmBtn = document.getElementById('confirm-btn');
     const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
     const currentIndex = parseInt(document.getElementById('question_index').value);
     const totalQuestions = parseInt(document.getElementById('total_questions').value);
+    const moduleName = document.getElementById('quiz-form').elements['module_name'].value;
 
     if (showNav) { // Se for para mostrar os botões de navegação (após confirmar).
         confirmBtn.classList.add('d-none');
-        
+
         if (currentIndex + 1 < totalQuestions) {
             nextBtn.classList.remove('d-none');
         } else {
             nextBtn.classList.add('d-none');
         }
+
+        // Mostra o botão anterior apenas se não for a primeira questão e não for módulo 5
+        if (currentIndex > 0 && moduleName !== 'modulo5') {
+            prevBtn.classList.remove('d-none');
+        } else {
+            prevBtn.classList.add('d-none');
+        }
     } else { // Se for para mostrar o botão de confirmar (ao carregar uma nova questão).
         confirmBtn.classList.remove('d-none');
         nextBtn.classList.add('d-none');
+        // Mostra o botão anterior apenas se não for a primeira questão
+        if (currentIndex > 0) {
+            prevBtn.classList.remove('d-none');
+        } else {
+            prevBtn.classList.add('d-none');
+        }
     }
 }
 
@@ -165,4 +245,19 @@ function displayFinalScore(score, total) {
             </a>
         </div>
     `;
+}
+
+// Função para exibir o resultado do diagnóstico do módulo 5
+function displayDiagnosticResult(resultado) {
+    const resultSection = document.getElementById('result-section');
+    const resultFeedback = document.getElementById('result-feedback');
+    const resultDetails = document.getElementById('result-details');
+
+    resultFeedback.textContent = resultado.feedback_geral;
+    resultDetails.textContent = resultado.feedback_detalhado;
+
+    resultSection.classList.remove('d-none');
+
+    // Esconde o formulário do quiz
+    document.getElementById('quiz-form').style.display = 'none';
 }

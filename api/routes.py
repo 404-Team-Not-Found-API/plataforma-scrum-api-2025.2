@@ -91,44 +91,87 @@ def download(key):
 def verificar_resposta(module_name):
     data = request.get_json()
     question_index = int(data['question_index'])
-    user_answer = int(data['answer'])
+    user_answer = data.get('answer')  # For modulo5, it's string like 'a', for others int
+    action = data.get('action', 'check')  # Default to 'check', can be 'prev'
 
     perguntas = perguntas_modulos.get(module_name)
     if not perguntas:
         return jsonify({'error': 'Módulo não encontrado'}), 404
 
     total_questions = len(perguntas)
-    pergunta_atual = perguntas[question_index]
-    is_correct = user_answer == pergunta_atual['correta']
 
-    # Inicia o score na sessão se não existir
-    if 'score' not in session:
-        session['score'] = 0
-    
-    
-    if is_correct:
-        session['score'] += 1
+    if action == 'prev':
+        # Handle going back to previous question
+        prev_index = question_index
+        if prev_index >= 0 and prev_index < len(perguntas):
+            response_data = {
+                'prev_question': perguntas[prev_index],
+                'prev_question_index': prev_index,
+                'total_questions': total_questions
+            }
+            return jsonify(response_data)
+        else:
+            return jsonify({'error': 'Invalid question index'}), 400
 
-    next_question_index = question_index + 1
-    response_data = {
-        'correct': is_correct,
-        'correct_answer': pergunta_atual['correta'],
-        'explanation': pergunta_atual.get('explicacao', ''),
-        'next_question': None,
-        'next_question_index': None,
-        'total_questions': total_questions # Adicionado para o frontend
-    }
+    if module_name == 'modulo5':
+        # For modulo5, store answers in session
+        if 'modulo5_answers' not in session:
+            session['modulo5_answers'] = {}
+        session['modulo5_answers'][f'question_{perguntas[question_index]["id"]}'] = user_answer
+        session.modified = True
 
-    if next_question_index < len(perguntas):
-        # Se houver uma próxima pergunta, envia seus dados
-        response_data['next_question'] = perguntas[next_question_index]
-        response_data['next_question_index'] = next_question_index
+        next_question_index = question_index + 1
+        response_data = {
+            'next_question': None,
+            'next_question_index': None,
+            'total_questions': total_questions
+        }
+
+        if next_question_index < len(perguntas):
+            # Se houver uma próxima pergunta, envia seus dados
+            response_data['next_question'] = perguntas[next_question_index]
+            response_data['next_question_index'] = next_question_index
+        else:
+            # Se for a última pergunta, compute the diagnostic result
+            respostas = session.pop('modulo5_answers', {})
+            resultado = verificar_respostas_modulo5(respostas)
+            response_data['resultado'] = resultado
+
+        return jsonify(response_data)
     else:
-        # Se for a última pergunta, finaliza e envia o score
-        response_data['score'] = session.pop('score', 0)
-        response_data['total'] = total_questions
+        # Original logic for other modules
+        user_answer = int(user_answer)
+        pergunta_atual = perguntas[question_index]
+        is_correct = user_answer == pergunta_atual['correta']
 
-    return jsonify(response_data)
+        # Inicia o score na sessão se não existir
+        if 'score' not in session:
+            session['score'] = 0
+
+
+        if is_correct:
+            session['score'] += 1
+
+        next_question_index = question_index + 1
+        response_data = {
+            'correct': is_correct,
+            'correct_answer': pergunta_atual['correta'],
+            'explanation': pergunta_atual.get('explicacao', ''),
+            'next_question': None,
+            'next_question_index': None,
+            'total_questions': total_questions # Adicionado para o frontend
+        }
+
+        if next_question_index < len(perguntas):
+            # Se houver uma próxima pergunta, envia seus dados
+            response_data['next_question'] = perguntas[next_question_index]
+            response_data['next_question_index'] = next_question_index
+        else:
+            # Se for a última pergunta, finaliza e envia o score
+            response_data['score'] = session.pop('score', 0)
+            response_data['total'] = total_questions
+
+        return jsonify(response_data)
 
                                     
 @bp.route('/exercicio/modulo5', methods=['GET', 'POST'])
