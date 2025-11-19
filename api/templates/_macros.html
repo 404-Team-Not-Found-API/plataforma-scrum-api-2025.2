@@ -128,7 +128,7 @@
 
             <!-- Modal for each card -->
             <div class="modal fade" id="modal-{{ loop.index }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header text-black" style="border-bottom: 2px solid #dee2e6;">
                             <h5 class="modal-title font-bold d-flex align-items-center" id="modalLabel-{{ loop.index }}">
@@ -141,7 +141,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body p-3 p-md-4">
                             {# Verifica se o subtitulo é uma lista para renderizar em parágrafos #}
                             {% if card_item.subtitulo is iterable and not card_item.subtitulo is string %}
                                 {% for line in card_item.subtitulo %}
@@ -150,7 +150,7 @@
                             {% else %}
                                 <p class="font-semibold text-lg">{{ card_item.subtitulo }}</p>
                             {% endif %}
-                            <ul class="list-unstyled text-start mt-3 text-lg">
+                            <ul class="list-unstyled text-start mt-3">
                                 {% for item in card_item.texto %}
                                 <li class="d-flex align-items-start mb-2">
                                     {% if item.link_text and item.url %}
@@ -159,7 +159,7 @@
                                     {% elif item.bold %}
                                         <span class="font-bold mt-3 mb-1 d-block" style="padding-left: 0;">{{ item.text }}</span>
                                     {% elif item.text %}
-                                        <i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 20px;"></i><span>{{ item.text }}</span>
+                                        <i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 18px;"></i><span class="fs-6">{{ item.text }}</span>
                                     {% endif %}
                                 </li>
                                 {% if item.soft_skills %}
