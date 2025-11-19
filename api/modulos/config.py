@@ -569,7 +569,7 @@ MODULES_CONFIG = {
     'modulo5': {
         'sections': {
             'modulo5': {
-                'titulo_modulo': 'Módulo 5: Scrum e Soft Skills em ação',
+                'titulo_modulo': 'Scrum e Soft Skills em ação',
                 'numero_modulo': 5,
                 'descricao_secao': 'Descobrindo como habilidades humanas trasformam equipes ágeis',
                 'conteudo_complementar': True,
@@ -749,7 +749,7 @@ MODULES_CONFIG = {
     'modulo6': {
         'sections': {
             'modulo6': {
-                'titulo_modulo': 'Módulo 6: Simulação Prática',
+                'titulo_modulo': 'Simulação Prática',
                 'numero_modulo': 6,
                 'descricao_secao': 'Aplique seus conhecimentos preenchendo o formulário de planejamento de uma Sprint. Ao final, gere um relatório em PDF com as suas respostas.',
                 'conteudo_complementar': False,

@@ -71,6 +71,7 @@ def module_route(module_name, section_name=None):
                 template_data['pergunta'] = perguntas[0]
                 template_data['current_index'] = 0
                 template_data['total'] = len(perguntas)
+                template_data['total_questions'] = len(perguntas)
 
     return render_template(template, **template_data)
 

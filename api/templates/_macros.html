@@ -105,7 +105,7 @@
         {% else %}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card role-card text-center mx-auto" 
-                     style="background-color: {{ card_item.bg_color }}; cursor: pointer; transition: all 0.2s ease-in-out; max-width: 260px; {% if card_item.border_color %}border: 6px solid {{ card_item.border_color }};{% endif %}"
+                     style="background-color: {{card_item.bg_color}}; cursor: pointer; transition: all 0.2s ease-in-out; max-width: 260px; {% if card_item.border_color %}border: 6px solid {{ card_item.border_color }};{% endif %}"
                      data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}"
                      onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0.8rem 2rem rgba(0,0,0,0.15)';"
                      onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
