@@ -12,8 +12,15 @@ def get_modulo6():
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
                 'url_proximo': None,
-                # 'url_proximo_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
-                
+                "info_simulacao": {
+                    "titulo": "Como Funciona Este Projeto Simulado?",
+                    "descricao": "Você vai executar uma Sprint real de 1 semana no projeto sorteado. Este módulo te guiará passo a passo por todas as fases do Scrum.",
+                    "cards_info": [
+                        {"icone": "bi-calendar-event", "titulo": "Duração", "texto": "1 Semana (Sprint)"},
+                        {"icone": "bi-people", "titulo": "Participantes", "texto": "Você (pode convidar outros)"},
+                        {"icone": "bi-bullseye", "titulo": "Objetivo", "texto": "Vivenciar Scrum na prática"}
+                    ]
+                },
                 # Lista de Projetos para Sorteio
                 "projetos_simulados": [
                     {
@@ -64,6 +71,7 @@ def get_modulo6():
                             {"id": "publico_alvo", "label": "Para quem? (Público-alvo) *", "tipo": "textarea", "placeholder": "Quem são os usuários?"},
                             {"id": "problema", "label": "Qual a necessidade? *", "tipo": "textarea", "placeholder": "Qual dor o produto resolve?"},
                             {"id": "solucao", "label": "O que é o produto? *", "tipo": "input", "placeholder": "Ex: App Mobile, Plataforma Web..."},
+                            {"id": "diferencial", "label": "Diferencial *", "tipo": "textarea", "placeholder": "Por que é único?"},
                             {"id": "objetivo", "label": "Objetivo de Longo Prazo *", "tipo": "textarea", "placeholder": "Qual o impacto esperado?"}
                         ]
                     },
@@ -77,9 +85,10 @@ def get_modulo6():
                         "tipo_conteudo": "lista_dinamica",
                         "dicas": ["Priorize por valor.", "Quebre tarefas grandes."],
                         "item_schema": [
-                            {"id": "titulo", "label": "Título do Item", "tipo": "input", "width": "40%"},
-                            {"id": "estimativa", "label": "Estimativa", "tipo": "input", "width": "20%", "placeholder": "Ex: 3 dias"},
-                            {"id": "prioridade", "label": "Prioridade", "tipo": "select", "options": ["Alta", "Média", "Baixa"], "width": "20%"}
+                            {"id": "titulo", "label": "Título do Item", "tipo": "input", "width": "50%"},
+                            {"id": "estimativa", "label": "Esforço Estimado", "tipo": "input", "width": "50%", "placeholder": "Ex: 3 dias"},
+                            {"id": "descricao", "label": "Descrição", "tipo": "textarea", "width": "100%", "placeholder": "Detalhes da história..."},
+                            {"id": "aceitacao", "label": "Critérios de Aceitação", "tipo": "textarea", "width": "100%", "placeholder": "Deve fazer X, Y e Z..."},
                         ]
                     },
                     # ETAPA 3: PLANNING
@@ -93,6 +102,9 @@ def get_modulo6():
                         "origem_dados": "product_backlog",
                         "dicas": ["Meta clara e alcançável.", "Não se comprometa demais."],
                         "campos_fixos": [
+                            # Campos de data adicionados para consistência com o PDF
+                            {"id": "data_inicio", "label": "Início da Sprint", "tipo": "date"},
+                            {"id": "data_fim", "label": "Fim da Sprint", "tipo": "date"},
                             {"id": "meta_sprint", "label": "Meta da Sprint (Sprint Goal) *", "tipo": "textarea", "placeholder": "Objetivo principal..."}
                         ]
                     },
@@ -130,6 +142,16 @@ def get_modulo6():
                                 {"id": "dia5_fez", "label": "O que fiz ontem?", "tipo": "input"},
                                 {"id": "dia5_fara", "label": "O que farei hoje?", "tipo": "input"},
                                 {"id": "dia5_impedimento", "label": "Há impedimentos?", "tipo": "input"}
+                            ]},
+                            {"titulo_grupo": "Dia 6", "campos": [
+                                {"id": "dia6_fez", "label": "O que fiz ontem?", "tipo": "input"},
+                                {"id": "dia6_fara", "label": "O que farei hoje?", "tipo": "input"},
+                                {"id": "dia6_impedimento", "label": "Há impedimentos?", "tipo": "input"}
+                            ]},
+                            {"titulo_grupo": "Dia 7", "campos": [
+                                {"id": "dia7_fez", "label": "O que fiz ontem?", "tipo": "input"},
+                                {"id": "dia7_fara", "label": "O que farei hoje?", "tipo": "input"},
+                                {"id": "dia7_impedimento", "label": "Há impedimentos?", "tipo": "input"}
                             ]}
                         ]
                     },
@@ -143,7 +165,8 @@ def get_modulo6():
                         "tipo_conteudo": "formulario_fixo",
                         "campos": [
                             {"id": "entregaveis", "label": "O que foi entregue?", "tipo": "textarea"},
-                            {"id": "feedback", "label": "Feedback recebido", "tipo": "textarea"}
+                            {"id": "feedback", "label": "Feedback recebido", "tipo": "textarea"},
+                            {"id": "nao_entregue", "label": "O que não foi concluído e por quê?", "tipo": "textarea"}
                         ]
                     },
                     # ETAPA 6: RETROSPECTIVA

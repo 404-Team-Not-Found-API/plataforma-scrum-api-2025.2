@@ -9,13 +9,14 @@
 
     <div class="container py-5">
         
-        <div class="row mb-4 align-items-center">
+        <div class="row mb-5 align-items-center">
             <div class="col-md-4">
                 <div class="card bg-light border-0 shadow-sm">
-                    <div class="card-body py-2">
-                        <div class="d-flex justify-content-between small text-uppercase fw-bold text-muted mb-1">
-                            <span>Progresso</span>
-                            <span id="texto-progresso">0/6</span>
+                    <div class="card-body py-2 text-center">
+                        <h6 class="text-uppercase text-muted small fw-bold mb-2">Seu Progresso</h6>
+                        <div class="mb-2">
+                            <span class="h4 fw-bold text-success" id="contador-progresso">0</span> 
+                            <span class="text-muted">de 6 etapas concluídas</span>
                         </div>
                         <div class="progress" style="height: 8px;">
                             <div id="barra-progresso" class="progress-bar bg-success" style="width: 0%"></div>
@@ -25,20 +26,35 @@
             </div>
         </div>
 
-        <div id="area-sorteio" class="text-center py-5">
-            
-            <div id="intro-sorteio">
-                <div class="mb-4">
-                    <i class="bi bi-shuffle display-4 text-primary"></i>
+        <div id="area-sorteio" class="py-5">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold">Sorteio do Projeto Simulado</h3>
+                <p class="text-muted">Antes de começar, vamos sortear um projeto! Você trabalhará com ele durante a Sprint.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                {% for projeto in conteudo.sections.modulo6.projetos_simulados %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 card-projeto-opcao" id="proj-card-{{ projeto.id }}">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title fw-bold text-primary">{{ projeto.nome }}</h5>
+                                <i class="bi bi-square text-muted icon-check"></i> 
+                            </div>
+                            <p class="card-text small text-muted">{{ projeto.descricao }}</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="fw-bold">Vamos definir seu Projeto</h3>
-                <p class="text-muted mb-4">Clique abaixo para descobrir qual será seu desafio nesta Sprint.</p>
+                {% endfor %}
+            </div>
+            
+            <div id="intro-sorteio" class="text-center">
                 <button id="btn-sortear" class="btn btn-primary btn-lg px-5 rounded-pill">
                     Sortear Projeto
                 </button>
             </div>
 
-            <div id="resultado-sorteio" class="d-none animate__animated animate__fadeIn">
+            <div id="resultado-sorteio" class="d-none animate__animated animate__fadeIn text-center">
                 <div class="card border-primary mx-auto mb-4 shadow-sm" style="max-width: 600px;">
                     <div class="card-body p-4">
                         <h6 class="text-primary text-uppercase fw-bold mb-2">Seu Projeto é:</h6>
@@ -53,6 +69,36 @@
         </div>
 
         <div id="area-fases" class="d-none">
+
+            <div class="card border-primary mb-5 shadow-sm bg-white">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-5 border-end">
+                            <small class="text-uppercase text-muted fw-bold">Seu Projeto:</small>
+                            <h3 class="fw-bold text-primary mt-1" id="projeto-titulo-ativo">...</h3>
+                            <p class="text-muted" id="projeto-desc-ativo">...</p>
+                        </div>
+                        
+                        <div class="col-md-7 ps-md-4">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-play-circle me-2"></i>{{ conteudo.sections.modulo6.info_simulacao.titulo }}</h5>
+                            <p class="small text-muted">{{ conteudo.sections.modulo6.info_simulacao.descricao }}</p>
+                            
+                            <div class="row g-3 mt-2">
+                                {% for item in conteudo.sections.modulo6.info_simulacao.cards_info %}
+                                <div class="col-4 text-center">
+                                    <div class="p-2 bg-light rounded">
+                                        <i class="bi {{ item.icone }} fs-4 text-secondary"></i>
+                                        <div class="small fw-bold mt-1">{{ item.titulo }}</div>
+                                        <div class="text-muted" style="font-size: 0.75rem;">{{ item.texto }}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     {% for fase in conteudo.sections.modulo6.cards %}
@@ -62,7 +108,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn btn-outline-dark">
+                <button onclick="Simulacao.gerarPDF()" class="btn btn-outline-dark">
                     <i class="bi bi-file-pdf"></i> Gerar Relatório PDF
                 </button>
             </div>
@@ -70,14 +116,86 @@
 
     </div>
 
+    <!-- Seção para a geração do PDF -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <div id="template-pdf" style="display: none;">
+        <div class="pdf-container">
+            
+            <div class="pdf-header">
+                <h1 style="margin: 0; font-size: 24px; color: #0d6efd;">Relatório de Sprint Simulada</h1>
+                <p style="margin: 5px 0 0; color: #666;">Plataforma de Treinamento Scrum</p>
+                <div style="font-size: 12px; margin-top: 10px; color: #999;">
+                    Gerado em: <span class="pdf-data"></span>
+                </div>
+            </div>
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">1. Definição do Projeto</div>
+                
+                <div class="pdf-label">Projeto Selecionado</div>
+                <div class="pdf-value pdf-projeto-nome">---</div>
+    
+                <div class="pdf-label">Objetivo / Visão</div>
+                <div class="pdf-value pdf-field" data-pdf-field="objetivo">---</div>
+    
+                <div class="pdf-label">Público Alvo</div>
+                <div class="pdf-value pdf-field" data-pdf-field="publico_alvo">---</div>
+                
+                <div class="pdf-label">Necessidade (Problema)</div>
+                <div class="pdf-value pdf-field" data-pdf-field="problema">---</div>
+                
+                <div class="pdf-label">Solução</div>
+                <div class="pdf-value pdf-field" data-pdf-field="solucao">---</div>
+            </div>
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">2. Product Backlog</div>
+                <ul class="pdf-lista-backlog" style="padding-left: 20px;">
+                    <li>Nenhum item registrado.</li>
+                </ul>
+            </div>
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">3. Sprint Planning</div>
+                
+                <div class="pdf-label">Meta da Sprint (Sprint Goal)</div>
+                <div class="pdf-value pdf-field" data-pdf-field="meta_sprint">---</div>
+                
+                <div class="pdf-label">Período</div>
+                <div style="font-size: 14px; margin-bottom: 5px;">
+                    De <span class="pdf-field fw-bold" data-pdf-field="data_inicio">--/--</span> 
+                    até <span class="pdf-field fw-bold" data-pdf-field="data_fim">--/--</span>
+                </div>
+    
+                <div class="pdf-label">Itens Selecionados para a Sprint</div>
+                <ul class="pdf-lista-planning" style="padding-left: 20px;">
+                    <li>Nenhum item selecionado.</li>
+                </ul>
+            </div>
+            
+            <div class="pdf-section">
+                <div class="pdf-section-title">4. Execução e Revisão</div>
+                
+                <div class="pdf-label">Review: Entregáveis</div>
+                <div class="pdf-value pdf-field" data-pdf-field="entregaveis">---</div>
+    
+                <div class="pdf-label">Retrospectiva: Ações de Melhoria</div>
+                <div class="pdf-value pdf-field" data-pdf-field="acoes">---</div>
+            </div>
+    
+            <div style="text-align: center; font-size: 10px; color: #aaa; margin-top: 50px; border-top: 1px solid #eee; padding-top: 10px;">
+                Este documento é uma simulação acadêmica.
+            </div>
+        </div>
+    </div>
+
     <script src="{{ url_for('static', filename='js/simulacao.js') }}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Passa os dados do Python para o JS de forma limpa
             const dadosProjetos = {{ conteudo.sections.modulo6.projetos_simulados | tojson }};
-            
-            // Inicia a simulação
             Simulacao.init(dadosProjetos);
         });
     </script>
