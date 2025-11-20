@@ -1,3 +1,6 @@
+# api/modulos/modulo1.py
+
+# Mantemos a lista de perguntas aqui para compatibilidade com routes.py
 modulo1_perguntas = [
     {
         "pergunta": "O que é SCRUM?",
@@ -88,3 +91,42 @@ modulo1_perguntas = [
         "explicacao": "Entrega de Valor no Scrum significa produzir resultados concretos e contínuos que agregam valor ao cliente."
     }
 ]
+
+def get_modulo1():
+    return {
+        'sections': {
+            'modulo1': {
+                'titulo_modulo': 'Valores e Princípios: Manifesto Ágil',
+                'numero_modulo': 1,
+                'numero_secao': 1,
+                'descricao_secao': 'Nada melhor do que aprender sobre o surgimento do "Manifesto Ágil" e seus princípios do que com uma história ilustrada, não é mesmo? Se após a leitura da história você ainda quiser um documento contendo todo o conteúdo desse módulo no formato padrão, fique tranquilo, é só baixar o PDF anexado ao final da página.',
+                'titulo_complementar': 'VALORES E PRINCÍPIOS DO MANIFESTO ÁGIL',
+                'conteudo_complementar': True,
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo1_secao1',
+                'url_anterior': None,
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
+                'mostrar_exercicios': False,
+                'template': 'modulo1.html'
+            },
+            'modulo1s2': {
+                'titulo_modulo': 'Scrum: Valores e Princípios',
+                'numero_modulo': 1,
+                'numero_secao': 2,
+                'descricao_secao': 'Trata-se de um framework para desenvolver e manter produtos complexos. Além de ser utilizado no campo do desenvolvimento, pode ser aplicado em outras áreas, devido à sua natureza interativa e incremental.',
+                'conteudo_complementar': True,
+                'titulo_complementar': 'SCRUM: VALORES E PRINCÍPIOS',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo1_secao2',
+                'url_anterior': 'routes.module_route',
+                'url_proximo': 'routes.module_route',  # Próximo módulo quando concluído
+                'url_anterior_params': {'module_name': 'modulo1', 'section_name': 'modulo1'},
+                'url_proximo_params': {'module_name': 'modulo2', 'section_name': 'modulo2'},
+                'mostrar_exercicios': True,
+                'template': 'modulo1s2.html'
+            }
+        },
+        'quiz': True,
+        'primeira_secao': 'modulo1'
+    }

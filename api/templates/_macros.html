@@ -200,3 +200,100 @@
     {% endfor %}
 </div>
 {% endmacro %}
+
+
+{% macro render_fase_simulacao(fase) %}
+
+<div class="card mb-3 card-fase shadow-sm border-start-0" data-fase-id="{{ fase.id }}" data-bs-toggle="modal" data-bs-target="#modal-{{ fase.id }}">
+    <div class="card-body d-flex align-items-center p-4">
+        <div class="me-4">
+            <i class="bi bi-circle text-muted status-icon"></i>
+        </div>
+        <div class="flex-grow-1">
+            <h5 class="fw-bold mb-1 text-dark">{{ fase.titulo }}</h5>
+            <p class="text-muted small mb-0">{{ fase.subtitulo }}</p>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Abrir</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-{{ fase.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold text-primary">{{ fase.titulo }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <div class="modal-body pt-4">
+                {% if fase.dicas %}
+                <div class="alert alert-light border mb-4">
+                    <small class="fw-bold text-muted"><i class="bi bi-info-circle me-1"></i> Dicas:</small>
+                    <ul class="mb-0 small text-muted ps-3 mt-1">
+                        {% for dica in fase.dicas %}<li>{{ dica }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if fase.tipo_conteudo == 'formulario_fixo' %}
+                    <form>
+                        {% for campo in fase.campos %}
+                            {% if campo.titulo_grupo %}
+                                <h6 class="fw-bold mt-3 mb-2 text-secondary">{{ campo.titulo_grupo }}</h6>
+                                {% for sub in campo.campos %}
+                                    {{ _render_input(sub) }}
+                                {% endfor %}
+                            {% else %}
+                                {{ _render_input(campo) }}
+                            {% endif %}
+                        {% endfor %}
+                    </form>
+
+                {% elif fase.tipo_conteudo == 'lista_dinamica' %}
+                    <div class="lista-dinamica-container" data-schema='{{ fase.item_schema | tojson }}'>
+                        <div class="lista-items-wrapper mb-3">
+                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed">
+                                <small>Nenhum item adicionado ainda.</small>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary btn-add-backlog w-100">
+                            <i class="bi bi-plus-lg"></i> Adicionar Item
+                        </button>
+                    </div>
+
+                {% elif fase.tipo_conteudo == 'selecao_origem' %}
+                    <form>
+                        {% for campo in fase.campos_fixos %}
+                            {{ _render_input(campo) }}
+                        {% endfor %}
+                        <hr class="my-4">
+                        <h6 class="fw-bold mb-2">Itens Selecionados do Backlog:</h6>
+                        <div class="selecao-origem-wrapper border rounded p-2">
+                            </div>
+                    </form>
+                {% endif %}
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-link text-muted text-decoration-none" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary px-4 btn-concluir" data-fase-id="{{ fase.id }}">
+                    Salvar e Concluir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro _render_input(campo) %}
+<div class="mb-3">
+    <label class="form-label fw-bold small text-dark">{{ campo.label }}</label>
+    {% if campo.tipo == 'textarea' %}
+        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder }}"></textarea>
+    {% else %}
+        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder }}">
+    {% endif %}
+</div>
+{% endmacro %}
