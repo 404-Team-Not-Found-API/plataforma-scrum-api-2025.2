@@ -48,7 +48,7 @@
         font-size: 0.8rem;
         color: #6c757d; /* Cor de texto secundário do Bootstrap */
     }
-    .card:hover {
+    #papeis:hover {
         background-color: #add8e6 !important;
     }
     
@@ -134,7 +134,7 @@
     </div>
 
      <div class="col-12 text-center">
-                <h2 class="fs-3 fs-md-2 fw-bold mb-3">🌍 Casos Reais: Scrum e Soft Skills em Ação</h2>
+                <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Casos Reais: Scrum e Soft Skills em Ação</h2>
             </div>
             <div class="col-12 text-center">
                 <p class="fs-6 mb-4">Cada caso segue o formato: Contexto → Aplicação do Scrum → Desafios → Resultados → Soft Skills em Destaque</p>
@@ -143,7 +143,7 @@
     {{ macros.interactive_cards_section(cards) }}
 
     <div class="col-12 text-center">
-        <h2 class="fs-3 fs-md-2 fw-bold mb-3">🔍 Padrões de Sucesso nos Casos</h2>
+        <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Padrões de Sucesso nos Casos</h2>
     </div>
        
         <div class="p-4 p-md-5" style="border-radius: 10px; border: 3px solid #F2F2F2; background-color: #FFF;">
@@ -226,7 +226,7 @@
         <div class="p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="fs-3 fs-md-2 fw-bold mb-3">🚀 Integração Ágil + Humana</h2>
+                <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Integração Ágil + Humana</h2>
             </div>
             <div class="col-12 text-center">
                 <p class="fs-6 mb-4">"Scrum é sobre pessoas colaborando para entregar valor. O domínio das ferramentas técnicas é importante, mas o verdadeiro diferencial está nas soft skills que sustentam a agilidade."</p>
@@ -236,7 +236,7 @@
             <div class="card-body p-4">
             <div class="col-md-6">
             <div class="d-flex align-items-center mb-2">
-                <h5 class="card-title fs-5 mb-0 fw-bold">📊 As 6 Competências da Equipe Ágil </h5>
+                <h5 class="card-title fs-5 mb-0 fw-bold"> As 6 Competências da Equipe Ágil </h5>
             </div>
             </div>
                 <div class="row">
@@ -306,7 +306,7 @@
 
     <!-- Mini Desafio Prático -->
     <div class="col-12 text-center mt-5">
-        <h2 class="fs-3 fs-md-2 fw-bold mb-3">🎯 Mini Desafio Prático</h2>
+        <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Mini Desafio Prático</h2>
     </div>
 
     <div id="role-selection" class="p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
@@ -318,7 +318,7 @@
         </div>
         <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-                <div class="card h-100 text-center" style="background-color: #fff; cursor: pointer; border: 4px solid #6dd5b670;" onclick="selectRole('scrumMaster')">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer; border: 4px solid #6dd5b670;" onclick="selectRole('scrumMaster')">
                     <div class="card-body d-flex flex-column align-items-center">
                         <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #007bff, #0056b3);">
                             <i class="bi bi-people-fill text-white" style="font-size: 2rem;"></i>
@@ -329,7 +329,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 text-center" style="background-color: #fff; cursor: pointer;border: 4px solid #6dd5b670; " onclick="selectRole('developer')">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer;border: 4px solid #6dd5b670; " onclick="selectRole('developer')">
                     <div class="card-body d-flex flex-column align-items-center">
                         <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #28a745, #1e7e34);">
                             <i class="bi bi-code-slash text-white" style="font-size: 2rem;"></i>
@@ -340,7 +340,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 text-center" style="background-color: #fff; cursor: pointer;  border: 4px solid #6dd5b670;" onclick="selectRole('productOwner')">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer;  border: 4px solid #6dd5b670;" onclick="selectRole('productOwner')">
                     <div class="card-body d-flex flex-column align-items-center">
                         <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #a426ca, #6f0879);">
                             <i class="bi bi-bullseye text-white" style="font-size: 2rem;"></i>
@@ -369,7 +369,6 @@
                         <div class="card-body" style="min-height: 400px;">
                             <h5 class="card-title fw-bold mb-3 text-center" id="challenge-question"></h5>
                             <div id="challenge-options" class="mt-4">
-                                <!-- Options will be dynamically inserted here -->
                             </div>
                             <div class="text-center mt-4">
                                 <button class="btn btn-success" id="submit-challenge" onclick="submitChallenge()" disabled>Enviar Resposta</button>
@@ -402,7 +401,7 @@
             </div>
         </div>
     </div>
-     {{ macros.section_header("Avaliação de Soft Skills", "Documento com modelo para fazer a avaliação das Soft Skills do equipe ") }}
+     {{ macros.section_header("Avaliação de Soft Skills", "Documento com modelo para fazer a avaliação das Soft Skills da equipe ") }}
     {{ macros.button("Acessar Modelos", "https://fatecspgov.sharepoint.com/:x:/r/sites/404-APIADSFatec2025.2/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B78dc847e-099c-4a94-90bc-8874050e9dec%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1763548731316&web=1") }}
 
 {% endblock %}
