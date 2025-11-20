@@ -1,49 +1,85 @@
-{% extends "modulo_base.html" %}
-{% block title %}Módulo {{ numero_modulo }}{% endblock %}
-
-
-{% block body_scripts %}
-    {{ super() }} {# Mantém os scripts do pai (base.html), como o html2pdf #}
-    <script src="{{ url_for('static', filename='js/modulo6.js') }}"></script>
-{% endblock %}
+{% extends 'modulo_base.html' %}
+<!-- {% from '_macros.html' import render_fase_simulacao %} -->
+{% block title %}Módulo {{ conteudo.sections.modulo6.titulo_modulo }}{% endblock %}
 
 {% block modulo_content %}
- {% import "_macros.html" as macros %}
+    {% from '_macros.html' import render_fase_simulacao %}
 
-<div class="space-y-8">
-    <form id="formSprintPlanning" class="bg-white p-6 rounded-lg shadow-md border border-gray-200 space-y-4">
-        <h3 class="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">Formulário de Planejamento da Sprint</h3>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/simulacao.css') }}">
 
-        <div class="campo-formulario">
-            <label for="sprint_goal" class="block text-lg font-semibold text-gray-700 mb-1">1. Qual é a Meta da Sprint?</label>
-            <p class="text-sm text-gray-500 mb-2">Descreva em uma frase o principal objetivo que o time se compromete a alcançar nesta Sprint.</p>
-            <input type="text" id="sprint_goal" name="meta_da_sprint" placeholder="Ex: Implementar o login seguro com autenticação de dois fatores."
-                   class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+    <div class="container py-5">
+        
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-4">
+                <div class="card bg-light border-0 shadow-sm">
+                    <div class="card-body py-2">
+                        <div class="d-flex justify-content-between small text-uppercase fw-bold text-muted mb-1">
+                            <span>Progresso</span>
+                            <span id="texto-progresso">0/6</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div id="barra-progresso" class="progress-bar bg-success" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="campo-formulario">
-            <label for="sprint_backlog" class="block text-lg font-semibold text-gray-700 mb-1">2. Itens do Backlog Selecionados</label>
-            <p class="text-sm text-gray-500 mb-2">Liste os principais itens do Product Backlog que serão trabalhados para atingir a meta.</p>
-            <textarea id="sprint_backlog" name="itens_do_backlog" rows="4" placeholder="- User Story 1: Cadastro de usuário&#10;- User Story 2: Tela de perfil&#10;- Bug Fix: Corrigir erro no checkout"
-                      class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
+        <div id="area-sorteio" class="text-center py-5">
+            
+            <div id="intro-sorteio">
+                <div class="mb-4">
+                    <i class="bi bi-shuffle display-4 text-primary"></i>
+                </div>
+                <h3 class="fw-bold">Vamos definir seu Projeto</h3>
+                <p class="text-muted mb-4">Clique abaixo para descobrir qual será seu desafio nesta Sprint.</p>
+                <button id="btn-sortear" class="btn btn-primary btn-lg px-5 rounded-pill">
+                    Sortear Projeto
+                </button>
+            </div>
+
+            <div id="resultado-sorteio" class="d-none animate__animated animate__fadeIn">
+                <div class="card border-primary mx-auto mb-4 shadow-sm" style="max-width: 600px;">
+                    <div class="card-body p-4">
+                        <h6 class="text-primary text-uppercase fw-bold mb-2">Seu Projeto é:</h6>
+                        <h2 class="fw-bold mb-3" id="projeto-titulo">...</h2>
+                        <p class="lead fs-6 text-muted" id="projeto-desc">...</p>
+                    </div>
+                </div>
+                <button id="btn-iniciar" class="btn btn-success btn-lg px-5">
+                    Iniciar Sprint Agora <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="campo-formulario">
-            <label for="riscos_identificados" class="block text-lg font-semibold text-gray-700 mb-1">3. Riscos e Impedimentos Potenciais</label>
-            <p class="text-sm text-gray-500 mb-2">Quais são os possíveis obstáculos que podem impactar o sucesso da Sprint?</p>
-            <textarea id="riscos_identificados" name="riscos_e_impedimentos" rows="3" placeholder="- Dependência da API de pagamentos que ainda não está pronta.&#10;- Um membro do time estará de férias por 3 dias."
-                      class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
-        </div>
-    </form>
+        <div id="area-fases" class="d-none">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    {% for fase in conteudo.sections.modulo6.cards %}
+                        {{ render_fase_simulacao(fase) }}
+                    {% endfor %}
+                </div>
+            </div>
 
-    <!-- Botão para gerar o PDF -->
-    <div class="text-center mt-8">
-        <button onclick="gerarPDFConsolidado()"
-                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
-            Gerar Relatório da Sprint
-        </button>
+            <div class="text-center mt-5">
+                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn btn-outline-dark">
+                    <i class="bi bi-file-pdf"></i> Gerar Relatório PDF
+                </button>
+            </div>
+        </div>
+
     </div>
-</div>
 
+    <script src="{{ url_for('static', filename='js/simulacao.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Passa os dados do Python para o JS de forma limpa
+            const dadosProjetos = {{ conteudo.sections.modulo6.projetos_simulados | tojson }};
+            
+            // Inicia a simulação
+            Simulacao.init(dadosProjetos);
+        });
+    </script>
 
 {% endblock %}

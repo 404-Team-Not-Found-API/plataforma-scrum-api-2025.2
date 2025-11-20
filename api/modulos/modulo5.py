@@ -104,3 +104,187 @@ def verificar_respostas_modulo5(respostas):
         'feedback_geral': feedback_geral,
         'feedback_detalhado': feedback_detalhado
     }
+
+def get_modulo5():
+    return{
+        'sections': {
+            'modulo5': {
+                'titulo_modulo': 'Scrum e Soft Skills em ação',
+                'numero_modulo': 5,
+                'descricao_secao': 'Descobrindo como habilidades humanas trasformam equipes ágeis',
+                'conteudo_complementar': True,
+                'titulo_complementar': 'Soft Skills e Scrum na Prática',
+                'url_download_complementar': 'routes.download',
+                'url_download_key': 'modulo5_apostila',
+                'url_anterior': 'routes.module_route',
+                'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
+                'url_proximo': 'routes.module_route',
+                'url_proximo_params': {'module_name': 'modulo6', 'section_name': 'modulo6'},
+                'mostrar_exercicios': True,
+                'template': 'modulo5.html',
+                'cards': [
+                    {
+                        'titulo': 'Spotify',
+                        'subtitulo': 'Tecnologia / Streaming de Música',
+                        'texto': [
+                            {'text': 'Contexto:', 'bold': True},
+                            {'text': 'Com mais de 500 desenvolvedores distribuídos em diversos países, o Spotify enfrentava o desafio de manter a inovação e a velocidade de entrega sem perder a coordenação entre times.'},
+                            {'text': 'Aplicação do Scrum:', 'bold': True},
+                            {'text': 'Criaram o Spotify Model com Squads (times Scrum autônomos), Tribes (conjuntos de squads), Chapters (grupos de especialidade) e Guilds (comunidades de prática).'},
+                            {'text': 'Cada Squad funciona como um mini-startup ágil com Product Owner e autonomia para decisões.'},
+                            {'text': 'Desafios enfrentados:', 'bold': True},
+                            {'text': 'Coordenar centenas de desenvolvedores sem criar burocracia'},
+                            {'text': 'Manter alinhamento entre times autônomos'},
+                            {'text': 'Evitar duplicação de esforços e retrabalho'},
+                            {'text': 'Cultivar cultura de inovação em larga escala'},
+                            {'text': 'Resultados Obtidos:', 'bold': True},
+                            {'text': 'Autonomia dos times aumentou significativamente'},
+                            {'text': 'Velocidade de entrega de features dobrou'},
+                            {'text': 'Inovação contínua com experimentação rápida'},
+                            {'text': 'Cultura colaborativa entre times diferentes'},
+                            {
+                                'soft_skills': [
+                                    'Comunicação: Essencial para coordenação entre squads e tribes',
+                                    'Colaboração: Chapters e Guilds promovem compartilhamento de conhecimento',
+                                    'Adaptabilidade: Times ajustam processos conforme necessidade',
+                                    'Autonomia e Responsabilidade: Squads tomam decisões próprias'
+                                ],
+
+                                'refletir': [
+                                    'Como a comunicação entre times autônomos poderia funcionar na sua organização?',
+                                    'Quais soft skills você precisaria desenvolver para trabalhar em um modelo como este?',
+                                    'Como você equilibraria autonomia com alinhamento organizacional?'
+                                ]
+                            }
+                            
+                         ],
+                        'icon': 'bi bi-spotify',
+                        'modal_icon': 'bi bi-spotify',
+                        'bg_color': "#1ED760",
+                        'modal_icon_color': '#1DB954'
+                    }, 
+                    {
+                        'titulo': 'Ifood',
+                        'subtitulo': 'FoodTech / Delivery',
+                        'texto': [
+                            {'text': 'Contexto:', 'bold': True},
+                            {'text': 'Em um mercado extremamente competitivo e dinâmico, o iFood precisava escalar rapidamente sua plataforma enquanto mantinha alta qualidade e respondia a mudanças constantes do mercado.'},
+                            {'text': 'Aplicação do Scrum:', 'bold': True},
+                            {'text': 'Implementaram Scrum com times multifuncionais (devs, designers, analistas), sprints de 2 semanas, e entregas contínuas.'},
+                            {'text': 'Forte foco em feedback de usuários através de testes A/B e análise de dados em cada sprint.'},
+                            {'text': 'Desafios enfrentados:', 'bold': True},
+                            {'text': 'Escalar sem perder qualidade do código e da experiência'},
+                            {'text': 'Responder rapidamente a mudanças de mercado e concorrência'},
+                            {'text': 'Coordenar múltiplos times trabalhando no mesmo produto'},
+                            {'text': 'Manter motivação em ambiente de alta pressão'},
+                            {'text': 'Resultados Obtidos:', 'bold': True},
+                            {'text': 'Redução de 40% no time-to-market'},
+                            {'text': 'Qualidade de código melhorou com práticas ágeis'},
+                            {'text': 'Capacidade de responder a mudanças em dias, não meses'},
+                            {'text': 'Satisfação de clientes aumentou consistentemente'},
+                            {
+                                'soft_skills': [
+                                    'Adaptabilidade: Responder rapidamente a mudanças de mercado',
+                                    'Resiliência: Manter produtividade sob pressão',
+                                    'Colaboração: Times multifuncionais trabalhando juntos',
+                                    'Foco no Cliente: Empatia para entender necessidades dos usuários'
+                                ],
+
+                                'refletir': [
+                                    'Como sua equipe lida com mudanças frequentes de prioridade?',
+                                    'Que soft skills ajudariam você a trabalhar melhor sob pressão?',
+                                    'Como você promoveria feedback constante dos usuários no seu contexto?'
+                                ]
+                            }
+                            
+                         ],
+                        'icon': 'bi bi-cart',
+                        'modal_icon': 'bi bi-cart',
+                        'bg_color': "#EA1D2C",
+                        'modal_icon_color': '#EA1D2C'
+                    }, 
+                    {
+                        'titulo': 'Hospital Albert Einstein',
+                        'subtitulo': 'Saúde',
+                        'texto': [
+                            {'text': 'Contexto:', 'bold': True},
+                            {'text': 'Um dos maiores hospitais da América Latina precisava modernizar seus sistemas de TI críticos sem comprometer a segurança dos pacientes ou interromper operações vitais.'},
+                            {'text': 'Aplicação do Scrum:', 'bold': True},
+                            {'text': 'Scrum foi aplicado com sprints cuidadosamente planejadas, validação constante com equipes médicas (stakeholders), e entregas incrementais em ambientes de homologação antes de produção.'},
+                            {'text': ' Cerimônias adaptadas para incluir profissionais de saúde.'},
+                            {'text': 'Desafios enfrentados:', 'bold': True},
+                            {'text': 'Trabalhar em ambiente altamente regulado e crítico'},
+                            {'text': 'Engajar stakeholders médicos ocupados nas cerimônias'},
+                            {'text': 'Garantir zero downtime em sistemas vitais'},
+                            {'text': 'Equilibrar inovação com segurança e compliance'},
+                            {'text': 'Resultados Obtidos:', 'bold': True},
+                            {'text': 'Sistemas implantados sem interrupção de serviços'},
+                            {'text': 'Adoção pelos médicos 3x mais rápida'},
+                            {'text': 'Feedback contínuo melhorou usabilidade drasticamente'},
+                            {'text': 'Projetos entregues 30% mais rápido'},
+                            {
+                                'soft_skills': [
+                                    'Empatia: Entender pressões e necessidades dos profissionais de saúde',
+                                    'Comunicação: Traduzir termos técnicos para stakeholders médicos',
+                                    'Responsabilidade: Consciência do impacto em vidas humanas',
+                                    'Escuta Ativa: Capturar feedback de usuários não-técnicos'
+                                ],
+
+                                'refletir': [
+                                    'Como você adaptaria o Scrum para um ambiente altamente regulado?',
+                                    'Quais habilidades de comunicação são essenciais ao trabalhar com stakeholders não-técnicos?',
+                                    'Como equilibrar velocidade ágil com segurança crítica?'
+                                ]
+                            }
+                            
+                         ],
+                        'icon': 'bi bi-heart',
+                        'modal_icon': 'bi bi-heart',
+                        'bg_color': "#0078D4",
+                        'modal_icon_color': '#0078D4'
+                    }, 
+                    {
+                        'titulo': 'Banco Digital',
+                        'subtitulo': 'Fintech / Serviços Financeiros',
+                        'texto': [
+                            {'text': 'Contexto:', 'bold': True},
+                            {'text': 'Uma fintech nascida digital competindo contra bancos tradicionais, usando agilidade como principal diferencial competitivo desde o primeiro dia.'},
+                            {'text': 'Aplicação do Scrum:', 'bold': True},
+                            {'text': 'Scrum como DNA organizacional - todos os times (produto, marketing, operações, tecnologia) trabalham com práticas ágeis. Sprints sincronizadas, reviews compartilhadas entre áreas, e cultura de experimentação rápida.'},
+                            {'text': 'Desafios enfrentados:', 'bold': True},
+                            {'text': 'Estabelecer cultura ágil desde o início'},
+                            {'text': 'Estender Scrum além de TI para toda empresa'},
+                            {'text': 'Manter qualidade em ritmo acelerado de lançamentos'},
+                            {'text': 'Competir com incumbentes usando agilidade'},
+                            {'text': 'Resultados Obtidos:', 'bold': True},
+                            {'text': 'Lançamento de novos produtos em semanas'},
+                            {'text': 'Taxa de bugs em produção reduziu 60%'},
+                            {'text': 'NPS aumentou consistentemente trimestre a trimestre'},
+                            {'text': 'Time-to-market 10x mais rápido que concorrentes'},
+                            {
+                                'soft_skills': [
+                                    'Mentalidade de Crescimento: Experimentação e aprendizado constante',
+                                    'Colaboração Cross-funcional: Times de diferentes áreas trabalhando juntos',
+                                    'Pensamento Crítico: Análise rápida de dados para decisões',
+                                    'Comunicação: Alinhamento constante entre múltiplas áreas'
+                                ],
+
+                                'refletir': [
+                                    'Como você promoveria práticas ágeis fora da área de tecnologia?',
+                                    'Que soft skills são necessárias para experimentação rápida e segura?',
+                                    'Como criar uma cultura de aprendizado a partir de falhas?'
+                                ]
+                            }
+                            
+                         ],
+                        'icon': 'bi bi-bank',
+                        'modal_icon': 'bi bi-bank',
+                        'bg_color': "#9C1BD8",
+                        'modal_icon_color': '#9C1BD8'
+                    }, 
+                ]
+            }
+        },
+        'quiz': True,
+        'primeira_secao': 'modulo5'
+    }
