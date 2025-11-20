@@ -1,0 +1,169 @@
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container para centralizar o conteúdo */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Estilização da Seção do Cabeçalho (Fundo Azul) */
+.header-section {
+  background-color: #051e30; /* Azul Escuro */
+  color: white;
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.icone-graduacao {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  color: #f4f4f9;
+}
+.icone-logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto 5px auto;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.header-section p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Seção Sobre o Projeto */
+.about-section {
+  padding-bottom: 50px;
+}
+
+.about-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icone {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.about-content p {
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Seção da Equipe */
+.team-section {
+  background-color: #f4f4f9; /* Fundo cinza claro */
+  padding-bottom: 60px;
+}
+
+.section-title,
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  padding-top: 5px;
+  color: #051e30;
+}
+
+.team-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap; /* Para ser responsivo em telas menores */
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  text-align: center;
+  flex: 1 1 250px; /* Flexível, mas com largura mínima de 250px */
+}
+
+.card-np {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1a237e; /* Azul do cabeçalho */
+  margin-bottom: 10px;
+}
+
+.perfil-foto {
+  width: 150px; /* Tamanho maior para foto de perfil */
+  height: 150px;
+  border-radius: 70%; /* Transforma a imagem em um círculo */
+  object-fit: cover; /* Garante que a imagem preencha o círculo sem distorção */
+  margin-bottom: 40px;
+  filter: grayscale(100%);
+}
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: #051e30;
+}
+
+.card-role {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.card-links a {
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.card-links a:hover {
+  color: #1a237e;
+}
+
+/* Seção Call-to-Action (CTA) */
+.cta-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.cta-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.cta-section p {
+  margin-bottom: 20px;
+}
+
+/* Ajustes de Responsividade */
+@media (max-width: 650px) {
+  .team-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+}
