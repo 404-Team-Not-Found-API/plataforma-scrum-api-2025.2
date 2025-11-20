@@ -1,3 +1,69 @@
+{% if module_name == 'modulo5' %}
+<!-- Seção do Quiz de Diagnóstico para o Módulo 5 -->
+<div id="secao-exercicios" class="exercise-component w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
+    <h1 class="text-3xl font-bold mb-4 text-center">Quiz Diagnóstico: Descubra sua Soft Skill Principal</h1>
+    <p class="text-lg text-center mb-6">Escolha a alternativa que melhor representa como você normalmente age em cada situação:</p>
+    <h2 class="text-2xl font-bold mb-6 text-center" id="question-counter">Questão 1 de {{ perguntas|length }}</h2>
+
+    <!-- Barra de progresso para o módulo 5 -->
+    <div class="mb-6">
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div id="progress-bar" class="bg-emerald-500 h-2.5 rounded-full" style="width: 10%"></div>
+        </div>
+    </div>
+
+    <form id="quiz-form" class="space-y-3" onsubmit="return false;">
+        <!-- Campos ocultos para enviar dados necessários -->
+        <input type="hidden" name="module_name" value="{{ module_name }}">
+        <input type="hidden" name="question_index" id="question_index" value="0">
+        <!-- Campo para armazenar o total de questões, facilitando o acesso pelo JS. -->
+        <input type="hidden" id="total_questions" value="{{ perguntas|length }}">
+
+        <!-- O título da pergunta tem um ID para ser atualizado pelo JS. -->
+        <p class="text-lg font-medium mb-4" id="question-title">{{ perguntas[0].pergunta }}</p>
+
+        <!-- O container das alternativas tem uma classe para que o JS possa limpar e preencher com novas opções. -->
+        <div class="alternatives-container space-y-3">
+            {% for alt in perguntas[0].alternativas %}
+            <div>
+                <label class="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-100 cursor-pointer">
+                    <input type="radio" name="answer" value="{{ alt.id }}" class="form-radio h-5 w-5 text-emerald-500" required>
+                    <span>{{ alt.text }}</span>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Os botões agora são do tipo 'button' e têm IDs.
+             Isso permite que o JS adicione 'event listeners' a cada um, controlando
+             a lógica de confirmação e navegação sem submeter o formulário. -->
+        <div class="flex flex-col sm:flex-row sm:justify-center items-center gap-4 mt-6">
+            <button id="prev-btn" type="button" class="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded-full d-none">
+                &larr; Anterior
+            </button>
+            <button id="confirm-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
+                Confirmar
+            </button>
+            <button id="next-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full d-none">
+                Próxima &rarr;
+            </button>
+        </div>
+    </form>
+
+    <!-- Área para exibir o resultado final do diagnóstico -->
+    <div id="result-section" class="mt-6 p-6 rounded-lg d-none" style="background-color: #e0f2fe;">
+        <h3 class="text-2xl font-bold mb-3">Seu Resultado do Diagnóstico</h3>
+        <p class="text-gray-800 mb-2 text-lg" id="result-feedback"></p>
+        <p class="text-gray-600" id="result-details"></p>
+    </div>
+</div>
+
+<script>
+    // Armazenar as perguntas do módulo 5 para navegação
+    window.modulo5Questions = {{ perguntas|tojson }};
+</script>
+
+{% else %}
 <!-- Seção do Formulário de Exercício -->
 <div id="secao-exercicios" class="exercise-component w-full max-w-3xl bg-white shadow-xl rounded-2xl p-4 sm:p-8 mx-auto">
     <!-- ALTERAÇÃO AJAX: Adicionado um ID para que o JS possa atualizar o contador de questões. -->
@@ -46,18 +112,17 @@
         <!-- Os botões agora são do tipo 'button' e têm IDs.
              Isso permite que o JS adicione 'event listeners' a cada um, controlando
              a lógica de confirmação e navegação sem submeter o formulário. -->
-        <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-4 mt-6">
-            <button id="prev-btn" type="button" class="w-full sm:w-auto bg-white text-black border border-gray-200 px-5 py-2 rounded-full hover:bg-gray-200 d-none">
+        <div class="flex flex-col sm:flex-row sm:justify-center items-center gap-4 mt-6">
+            <button id="prev-btn" type="button" class="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded-full d-none">
                 &larr; Anterior
             </button>
-            
             <button id="confirm-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full">
                 Confirmar
             </button>
-
             <button id="next-btn" type="button" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full d-none">
                 Próxima &rarr;
             </button>
         </div>
     </form>
 </div>
+{% endif %}

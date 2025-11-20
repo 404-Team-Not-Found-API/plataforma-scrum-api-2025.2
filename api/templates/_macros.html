@@ -105,7 +105,7 @@
         {% else %}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card role-card text-center mx-auto" 
-                     style="background-color: {{ card_item.bg_color }}; cursor: pointer; transition: all 0.2s ease-in-out; max-width: 260px; {% if card_item.border_color %}border: 6px solid {{ card_item.border_color }};{% endif %}"
+                     style="background-color: {{card_item.bg_color}}; cursor: pointer; transition: all 0.2s ease-in-out; max-width: 260px; {% if card_item.border_color %}border: 6px solid {{ card_item.border_color }};{% endif %}"
                      data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}"
                      onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0.8rem 2rem rgba(0,0,0,0.15)';"
                      onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
@@ -128,20 +128,20 @@
 
             <!-- Modal for each card -->
             <div class="modal fade" id="modal-{{ loop.index }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header text-black" style="border-bottom: 2px solid #dee2e6;">
                             <h5 class="modal-title font-bold d-flex align-items-center" id="modalLabel-{{ loop.index }}">
                                 {% if card_item.modal_icon and card_item.modal_icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
                                     <img src="{{ url_for('static', filename='assets/' + card_item.modal_icon) }}" alt="" class="me-2" style="height: 24px;">
                                 {% elif card_item.modal_icon %}
-                                    <i class="{{ card_item.modal_icon }} me-2" style="font-size: 24px;"></i>
+                                    <i class="{{ card_item.modal_icon }} me-2" style="font-size: 24px; {% if card_item.modal_icon_color %}color: {{ card_item.modal_icon_color }};{% endif %}"></i>
                                 {% endif %}
                                 {{ card_item.titulo }}
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body p-3 p-md-4">
                             {# Verifica se o subtitulo é uma lista para renderizar em parágrafos #}
                             {% if card_item.subtitulo is iterable and not card_item.subtitulo is string %}
                                 {% for line in card_item.subtitulo %}
@@ -150,16 +150,46 @@
                             {% else %}
                                 <p class="font-semibold text-lg">{{ card_item.subtitulo }}</p>
                             {% endif %}
-                            <ul class="list-unstyled text-start mt-3 text-lg">
+                            <ul class="list-unstyled text-start mt-3">
                                 {% for item in card_item.texto %}
                                 <li class="d-flex align-items-start mb-2">
                                     {% if item.link_text and item.url %}
                                         <i class="bi bi-youtube flex-shrink-0 me-2" style="color: #FF0000; margin-top: 0.15rem; font-size: 20px;"></i>
-                                        <a href="{{ item.url }}" target="_blank" class="text-primary hover:underline">{{ item.link_text }}</a>
+                                        <a href="{{ item.url }}" target="_blank" class="text-primary hover:underline">{{ item.link_text }}</a>                                    
                                     {% elif item.bold %}
                                         <span class="font-bold mt-3 mb-1 d-block" style="padding-left: 0;">{{ item.text }}</span>
-                                    {% else %}<i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 20px;"></i><span>{{ item.text }}</span>{% endif %}
+                                    {% elif item.text %}
+                                        <i class="bi bi-check-lg flex-shrink-0 me-2" style="color: #0dcaf0; margin-top: 0.15rem; font-size: 18px;"></i><span class="fs-6">{{ item.text }}</span>
+                                    {% endif %}
                                 </li>
+                                {% if item.soft_skills %}
+                                <li class="w-100">
+                                    <div class="card bg-light mt-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title fw-bold d-flex align-items-center"><i class="bi bi-people me-2" style="color: #0dcaf0;"></i>Soft Skills em Destaque</h6>
+                                            <ul class="list-unstyled mb-0">
+                                                {% for skill in item.soft_skills %}
+                                                <li class="d-flex align-items-start"><i class="bi bi-check-circle me-2 mt-1" style="color: #0dcaf0; font-size: 14px;"></i><span>{{ skill }}</span></li>                                                
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% if item.refletir %}                                
+                                <li class="w-100">
+                                    <div class="card bg-light mt-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title fw-bold d-flex align-items-center"><i class="bi bi-lightbulb me-2" style="color: #ffc107;"></i>Para refletir</h6>
+                                            <ul class="list-unstyled mb-0">
+                                                {% for reflexao in item.refletir %}
+                                                <li class="d-flex align-items-start"><i class="bi bi-check-circle me-2 mt-1" style="color: #ffc107; font-size: 14px;"></i><span>{{ reflexao }}</span></li>                                                
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -168,5 +198,102 @@
             </div>
         {% endif %}
     {% endfor %}
+</div>
+{% endmacro %}
+
+
+{% macro render_fase_simulacao(fase) %}
+
+<div class="card mb-3 card-fase shadow-sm border-start-0" data-fase-id="{{ fase.id }}" data-bs-toggle="modal" data-bs-target="#modal-{{ fase.id }}">
+    <div class="card-body d-flex align-items-center p-4">
+        <div class="me-4">
+            <i class="bi bi-circle text-muted status-icon"></i>
+        </div>
+        <div class="flex-grow-1">
+            <h5 class="fw-bold mb-1 text-dark">{{ fase.titulo }}</h5>
+            <p class="text-muted small mb-0">{{ fase.subtitulo }}</p>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Abrir</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-{{ fase.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold text-primary">{{ fase.titulo }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <div class="modal-body pt-4">
+                {% if fase.dicas %}
+                <div class="alert alert-light border mb-4">
+                    <small class="fw-bold text-muted"><i class="bi bi-info-circle me-1"></i> Dicas:</small>
+                    <ul class="mb-0 small text-muted ps-3 mt-1">
+                        {% for dica in fase.dicas %}<li>{{ dica }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if fase.tipo_conteudo == 'formulario_fixo' %}
+                    <form>
+                        {% for campo in fase.campos %}
+                            {% if campo.titulo_grupo %}
+                                <h6 class="fw-bold mt-3 mb-2 text-secondary">{{ campo.titulo_grupo }}</h6>
+                                {% for sub in campo.campos %}
+                                    {{ _render_input(sub) }}
+                                {% endfor %}
+                            {% else %}
+                                {{ _render_input(campo) }}
+                            {% endif %}
+                        {% endfor %}
+                    </form>
+
+                {% elif fase.tipo_conteudo == 'lista_dinamica' %}
+                    <div class="lista-dinamica-container" data-schema='{{ fase.item_schema | tojson }}'>
+                        <div class="lista-items-wrapper mb-3">
+                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed">
+                                <small>Nenhum item adicionado ainda.</small>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary btn-add-backlog w-100">
+                            <i class="bi bi-plus-lg"></i> Adicionar Item
+                        </button>
+                    </div>
+
+                {% elif fase.tipo_conteudo == 'selecao_origem' %}
+                    <form>
+                        {% for campo in fase.campos_fixos %}
+                            {{ _render_input(campo) }}
+                        {% endfor %}
+                        <hr class="my-4">
+                        <h6 class="fw-bold mb-2">Itens Selecionados do Backlog:</h6>
+                        <div class="selecao-origem-wrapper border rounded p-2">
+                            </div>
+                    </form>
+                {% endif %}
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-link text-muted text-decoration-none" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary px-4 btn-concluir" data-fase-id="{{ fase.id }}">
+                    Salvar e Concluir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro _render_input(campo) %}
+<div class="mb-3">
+    <label class="form-label fw-bold small text-dark">{{ campo.label }}</label>
+    {% if campo.tipo == 'textarea' %}
+        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder }}"></textarea>
+    {% else %}
+        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder }}">
+    {% endif %}
 </div>
 {% endmacro %}

@@ -2,6 +2,11 @@
 
 {% block title %}Módulo 1 - Seção 2{% endblock %}
 
+{% block body_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
+
 {% block modulo_content %}
     {% import "_macros.html" as macros %}
 

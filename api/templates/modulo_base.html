@@ -48,7 +48,7 @@
 
 {% block content %}
 <div class="px-8 md:px-20 py-12 flex flex-col md:flex-row gap-10">
-    <section class="flex-1 space-y-8 ">
+    <section id="main-content-area" class="flex-1 space-y-8 ">
         <div>
             <h1 class="text-4xl font-extrabold mb-3 text-center">{{ titulo_modulo }}</h1>
             {% if numero_secao %}
@@ -66,8 +66,10 @@
 
         {% if mostrar_exercicios %}
         <div class="border-t pt-6 mt-8">
+            {% if numero_modulo != 5 %}
             <h3 class="text-3xl font-bold mb-4 text-center">Exercícios de Fixação</h3>
             <p class="text-lg text-gray-700 mb-4 text-center">Teste seus conhecimentos respondendo às perguntas abaixo.</p>
+            {% endif %}
             {% include "_componente_exercicio.html" %}
         </div>
         {% endif %}
@@ -99,5 +101,4 @@
     </section>
 </div>
 
-{% block body_scripts %}{{ super() }}{% endblock %}
 {% endblock %}

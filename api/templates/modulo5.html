@@ -1,0 +1,407 @@
+{% extends "modulo_base.html" %}
+
+{% block head_extra %}
+{{ super() }}
+<style>
+    .role-card-icon {
+        font-size: 70px;
+    }
+    @media (max-width: 767.98px) {
+        .role-card-icon {
+            font-size: 55px;
+        }
+    }
+    .challenge-option {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+    }
+    .challenge-option:hover {
+        border-color: #0df0d2;
+        background-color: #e9ecef;
+    }
+    .challenge-option.selected {
+        border-color: #0df0d2;
+        background-color: rgba(13, 240, 210, 0.1);
+    }
+    .challenge-option input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+    }
+    .challenge-option label {
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+    }
+    .challenge-subtitle-container {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 8px;
+        margin-top: 10px;
+    }
+    .challenge-subtitle-list {
+        list-style-type: none;
+        padding-left: 0;
+        font-size: 0.8rem;
+        color: #6c757d; /* Cor de texto secundário do Bootstrap */
+    }
+    #papeis:hover {
+        background-color: #add8e6 !important;
+    }
+    
+</style>
+{% endblock %}
+
+{% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block body_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
+
+{% block modulo_content %}
+    {% import "_macros.html" as macros %}
+    
+    <div class="p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
+        <div class="row">
+            <div class="col-12 text-center text-md-start">
+                <h2 class="fs-3 fs-md-2 fw-bold mb-3"><i class="bi bi-people"></i> Scrum é Humano, Não Apenas Técnico:</h2>
+            </div>
+            <div class="col-12 text-center text-md-start">
+                <p class="fs-6 mb-4">O Scrum é muito mais do que cerimônias, artefatos e papéis. No coração de toda transformação ágil bem-sucedida estão as soft skills - as habilidades humanas que permitem que os times colaborem, se adaptem e entreguem valor real.</p>
+            </div>
+        </div>
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.7);">
+            <div class="card-body p-4">
+            <div class="col-md-6">
+            <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-bullseye me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                <h5 class="card-title fs-5 mb-0 fw-bold">Soft Skills Essenciais em Times Ágeis </h5>
+            </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Comunicação Eficaz</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Expressar ideias claramente e ouvir ativamente</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Colaboração</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Trabalhar bem em equipe e buscar objetivos comuns</p>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Adaptabilidade</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Ajustar-se rapidamente a mudanças e novos contextos</p>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Empatia</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Compreender e considerar as perspectivas dos outros</p>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Resolução de Conflitos</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Lidar construtivamente com divergências</p>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle me-2" style="color: #0df0d2; font-size: 1.5rem;"></i>
+                            <h5 class="card-title fs-5 mb-0">Pensamento Crítico</h5>
+                        </div>
+                        <p class="card-text text-muted fs-6 ps-4">Analisar situações e tomar decisões fundamentadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="col-12 text-start mt-4">
+                <p class="fs-6 mb-4">Neste módulo, você verá como essas habilidades aparecem em casos reais de sucesso e terá oportunidade de refletir sobre como desenvolvê-las no seu contexto.</p>
+            </div>
+    </div>
+
+     <div class="col-12 text-center">
+                <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Casos Reais: Scrum e Soft Skills em Ação</h2>
+            </div>
+            <div class="col-12 text-center">
+                <p class="fs-6 mb-4">Cada caso segue o formato: Contexto → Aplicação do Scrum → Desafios → Resultados → Soft Skills em Destaque</p>
+            </div>
+            
+    {{ macros.interactive_cards_section(cards) }}
+
+    <div class="col-12 text-center">
+        <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Padrões de Sucesso nos Casos</h2>
+    </div>
+       
+        <div class="p-4 p-md-5" style="border-radius: 10px; border: 3px solid #F2F2F2; background-color: #FFF;">
+             <div class="row">
+            <div class="col-12 text-start">
+                <h2 class="fs-3 fw-bold mb-3">O que todos esses casos têm em comum?</h2>
+            </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0">Comprometimento da Liderança</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Em todos os casos, a liderança apoiou e investiu na transformação ágil</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0"> Times Empoderados</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Autonomia para tomar decisões e experimentar foi fundamental</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0">Foco no Cliente</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Feedback constante dos usuários guiou as decisões do produto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0">Melhoria Contínua</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Retrospectivas levaram a mudanças reais nos processos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0">Adaptação ao Contexto</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Scrum foi adaptado à realidade de cada organização</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0" style="background-color: rgba(242, 242, 242, 0.95);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-check-square-fill me-2" style="color: #0bda61; font-size: 1.5rem;"></i>
+                                    <h5 class="card-title fs-5 mb-0">Transparência Radical</h5>
+                                </div>
+                                <p class="card-text text-muted fs-6 ps-4">Problemas foram expostos e resolvidos rapidamente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Integração Ágil + Humana</h2>
+            </div>
+            <div class="col-12 text-center">
+                <p class="fs-6 mb-4">"Scrum é sobre pessoas colaborando para entregar valor. O domínio das ferramentas técnicas é importante, mas o verdadeiro diferencial está nas soft skills que sustentam a agilidade."</p>
+            </div>
+        </div>
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.7);">
+            <div class="card-body p-4">
+            <div class="col-md-6">
+            <div class="d-flex align-items-center mb-2">
+                <h5 class="card-title fs-5 mb-0 fw-bold"> As 6 Competências da Equipe Ágil </h5>
+            </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">1</span>
+                            <h5 class="card-title fs-5 mb-0">Comunicação Eficaz</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">2</span>
+                            <h5 class="card-title fs-5 mb-0">Colaboração</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">3</span>
+                            <h5 class="card-title fs-5 mb-0">Adaptabilidade</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">4</span>
+                            <h5 class="card-title fs-5 mb-0">Empatia</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">5</span>
+                            <h5 class="card-title fs-5 mb-0">Resolução de Conflitos</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 24px; height: 24px; background-color: #0df0d2; color: #051E30; font-weight: bold;">6</span>
+                            <h5 class="card-title fs-5 mb-0">Pensamento Crítico</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 p-md-5 mt-5" style="border-radius: 10px; border: 2px solid #73e79670; background: rgba(9, 247, 69, 0.2);">
+            <div class="col-12">
+                <p class="fs-6 mb-4"><i class="bi bi-lightbulb" style="color: #246e3a93;"></i> Continue Desenvolvendo suas Soft Skills</p>
+            </div>
+            <div class="col-12">
+                <p class="fs-6 mb-4">✓ Busque feedback regular sobre suas habilidades interpessoais</p>
+            <div class="col-12">
+                <p class="fs-6 mb-4">✓ Pratique escuta ativa nas cerimônias do Scrum</p>
+            </div>
+            <div class="col-12">
+                <p class="fs-6 mb-4">✓ Observe como membros experientes do time demonstram essas competências</p>
+            </div>
+            <div class="col-12">
+                <p class="fs-6 mb-4">✓ Reflita sobre suas interações após cada sprint</p>
+            </div>
+            <div class="col-12">
+                <p class="fs-6 mb-4">✓ Considere mentoria ou coaching para áreas de desenvolvimento</p>
+            </div>
+        </div>
+    </div>
+            <div class="col-12 text-start mt-4">
+                <p class="fs-6 mb-4">Ao combinar o framework Scrum com soft skills bem desenvolvidas, você estará preparado para liderar ou participar de times ágeis de alta performance.</p>
+            </div>
+    </div>
+
+    <!-- Mini Desafio Prático -->
+    <div class="col-12 text-center mt-5">
+        <h2 class="fs-3 fs-md-2 fw-bold mb-3"> Mini Desafio Prático</h2>
+    </div>
+
+    <div id="role-selection" class="p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="fs-3 fw-bold mb-3">Escolha seu Papel no Time Scrum</h2>
+                <p class="fs-6 mb-4">Selecione um papel para enfrentar um desafio específico dessa função.</p>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer; border: 4px solid #6dd5b670;" onclick="selectRole('scrumMaster')">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #007bff, #0056b3);">
+                            <i class="bi bi-people-fill text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Scrum Master</h5>
+                        <p class="card-text fs-6">Facilite, remova impedimentos e cuide do time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer;border: 4px solid #6dd5b670; " onclick="selectRole('developer')">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #28a745, #1e7e34);">
+                            <i class="bi bi-code-slash text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Desenvolvedor(a)</h5>
+                        <p class="card-text fs-6">Implemente, colabore e entregue incrementos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="papeis" class="card h-100 text-center" style="background-color: #fff; cursor: pointer;  border: 4px solid #6dd5b670;" onclick="selectRole('productOwner')">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #a426ca, #6f0879);">
+                            <i class="bi bi-bullseye text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Product Owner</h5>
+                        <p class="card-text fs-6">Priorize, defina visão e maximize valor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="challenge-section" class="d-none">
+        <div class="p-4 p-md-5 mt-4" style="border-radius: 10px; border: 4px solid #6dd5b670; background: rgba(109, 213, 182, 0.20);">
+            <div class="row">
+                <div class="col-12 text-center text-md-start">
+                    <button class="btn btn-outline-primary mb-3" onclick="backToRoleSelection()">← Voltar para escolha de papéis</button>
+                    <h2 class="fs-4 fs-md-3 fw-bold mb-3 text-center" id="challenge-title"></h2>
+                    <p class="fs-6 mb-4 text-center" id="challenge-description"></p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card border-0 h-100" style="width: calc(100% - 2rem); margin: 0 auto;">
+                        <div class="card-body" style="min-height: 400px;">
+                            <h5 class="card-title fw-bold mb-3 text-center" id="challenge-question"></h5>
+                            <div id="challenge-options" class="mt-4">
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-success" id="submit-challenge" onclick="submitChallenge()" disabled>Enviar Resposta</button>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="feedback-section" class="d-none">
+        <div class="p-4 p-md-5 mt-4" style="border-radius: 10px; border: 4px solid #17a2b8; background: rgba(23, 162, 184, 0.1);">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card border-0" style="background-color: rgba(255, 255, 255, 0.9);">
+                        <div class="card-body">
+                            <h3 class="text-center mb-4"><i class="bi bi-chat-quote"></i> Feedback sobre sua escolha</h3>
+                            <p class="mb-3" id="feedback-text"></p>
+                            <div class="bg-light p-3 rounded mb-3">
+                                <p class="fw-bold mb-2">Resultado esperado:</p>
+                                <p id="feedback-outcome"></p>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-outline-primary" onclick="backToRoleSelection()">← Voltar para escolha de papéis</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     {{ macros.section_header("Avaliação de Soft Skills", "Documento com modelo para fazer a avaliação das Soft Skills da equipe ") }}
+    {{ macros.button("Acessar Modelos", "https://fatecspgov.sharepoint.com/:x:/r/sites/404-APIADSFatec2025.2/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B78dc847e-099c-4a94-90bc-8874050e9dec%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1763548731316&web=1") }}
+
+{% endblock %}

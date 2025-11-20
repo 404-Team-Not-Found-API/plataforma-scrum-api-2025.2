@@ -4,7 +4,7 @@
 {{ super() }}
 <style>
     .role-card-icon {
-        font-size: 70px; 
+        font-size: 70px;
     }
     @media (max-width: 767.98px) {
         .role-card-icon {
@@ -15,6 +15,11 @@
 {% endblock %}
 
 {% block title %}Módulo {{ numero_modulo }}{% endblock %}
+
+{% block body_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
 
 {% block modulo_content %}
     {% import "_macros.html" as macros %}
