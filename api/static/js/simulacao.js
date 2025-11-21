@@ -85,7 +85,8 @@ const Simulacao = {
 
     exibirProjetoSorteado: function(projeto) {
         document.getElementById('projeto-titulo').innerText = projeto.nome;
-        document.getElementById('projeto-desc').innerText = projeto.descricao;
+        document.getElementById('projeto-desc').innerText = projeto.texto;
+        document.getElementById('projeto-icone').className = projeto.icone + ' fs-1';
         
         // Alterna visibilidade das áreas
         document.getElementById('intro-sorteio').classList.add('d-none');
@@ -93,8 +94,12 @@ const Simulacao = {
     },
 
     mostrarFases: function() {
-        document.getElementById('area-sorteio').classList.add('d-none');
+        // document.getElementById('area-sorteio').classList.add('d-none'); // Linha removida para manter a área de sorteio visível
         document.getElementById('area-fases').classList.remove('d-none');
+        document.getElementById('funcionamento').classList.remove('d-none');
+
+        // Esconde o botão "Iniciar Sprint" para evitar cliques repetidos
+        document.getElementById('btn-iniciar').classList.add('d-none');
     },
 
     // --- LÓGICA DE PERSISTÊNCIA E UI ---
