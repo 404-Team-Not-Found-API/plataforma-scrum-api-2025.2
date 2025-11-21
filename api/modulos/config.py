@@ -3,7 +3,7 @@ from .modulo2 import get_modulo2
 from .modulo3 import get_modulo3
 from .modulo4 import get_modulo4
 from .modulo5 import get_modulo5
-from .modulo6 import get_modulo6
+# from .modulo6 import get_modulo6
 from .sobre_equipe import get_sobre_equipe
 
 
@@ -13,7 +13,7 @@ MODULES_CONFIG = {
     'modulo3': get_modulo3(),
     'modulo4': get_modulo4(),
     'modulo5': get_modulo5(),
-    'modulo6': get_modulo6(),
+    # 'modulo6': get_modulo6(),
     'sobre-equipe': get_sobre_equipe(),
 }
 
