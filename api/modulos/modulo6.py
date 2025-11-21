@@ -113,46 +113,16 @@ def get_modulo6():
                         "id": "daily_scrum",
                         "step_index": 4,
                         "titulo": "4. Daily Scrum",
-                        "subtitulo": "Simule o acompanhamento diário.",
+                        "subtitulo": "Simule o acompanhamento diário (7 Dias).",
                         "modo_exibicao": "modal",
                         "tipo_conteudo": "formulario_fixo",
                         "dicas": ["Seja breve (15 min).", "Foque em impedimentos."],
                         "campos": [
-                            {"titulo_grupo": "Dia 1", "campos": [
-                                {"id": "dia1_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia1_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia1_imp", "label": "Impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 2", "campos": [
-                                {"id": "dia2_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia2_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia2_imp", "label": "Impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 3", "campos": [
-                                {"id": "dia3_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia3_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia3_impedimento", "label": "Há impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 4", "campos": [
-                                {"id": "dia4_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia4_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia4_impedimento", "label": "Há impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 5", "campos": [
-                                {"id": "dia5_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia5_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia5_impedimento", "label": "Há impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 6", "campos": [
-                                {"id": "dia6_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia6_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia6_impedimento", "label": "Há impedimentos?", "tipo": "input"}
-                            ]},
-                            {"titulo_grupo": "Dia 7", "campos": [
-                                {"id": "dia7_fez", "label": "O que fiz ontem?", "tipo": "input"},
-                                {"id": "dia7_fara", "label": "O que farei hoje?", "tipo": "input"},
-                                {"id": "dia7_impedimento", "label": "Há impedimentos?", "tipo": "input"}
-                            ]}
+                            {"titulo_grupo": f"Dia {i}", "campos": [
+                                {"id": f"dia{i}_fez", "label": "O que fiz ontem?", "tipo": "input"},
+                                {"id": f"dia{i}_fara", "label": "O que farei hoje?", "tipo": "input"},
+                                {"id": f"dia{i}_imp", "label": "Impedimentos?", "tipo": "input"}
+                            ]} for i in range(1, 8) ## List comprehension. Simples é melhor do que complexo!
                         ]
                     },
                     # ETAPA 5: REVIEW

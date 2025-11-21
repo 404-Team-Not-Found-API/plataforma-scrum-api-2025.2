@@ -1,75 +1,116 @@
 /**
  * api/static/js/simulacao.js
- * Lógica completa do Módulo 6: Simulação Scrum
+ * Lógica completa do Módulo 6
  */
 
 const Simulacao = {
-    // Configurações e Estado
     prefixo: 'sprint_',
     totalEtapas: 6,
-    projetos: [], // Será preenchido pelo HTML
+    projetos: [],
 
     init: function(listaProjetos) {
         this.projetos = listaProjetos;
-        
-        // 1. Verificar se já existe projeto sorteado
         this.verificarEstadoInicial();
-
-        // 2. Configurar ouvintes de eventos globais
         this.configurarEventos();
-
-        // 3. Restaurar dados salvos nos formulários
         this.restaurarDadosFixos();
         this.restaurarBacklog();
-        
-        // 4. Atualizar visual (progresso e status)
         this.atualizarInterface();
     },
 
     configurarEventos: function() {
-        // Botão de Sorteio
+        // Navegação
         const btnSortear = document.getElementById('btn-sortear');
         if(btnSortear) btnSortear.addEventListener('click', () => this.realizarSorteio());
 
-        // Botão Iniciar Sprint
         const btnIniciar = document.getElementById('btn-iniciar');
         if(btnIniciar) btnIniciar.addEventListener('click', () => this.mostrarFases());
 
-        // Salvamento Automático de Inputs Fixos (Evento 'input' é mais seguro que 'change')
+        // Salvamento de Inputs
         document.querySelectorAll('.save-target').forEach(input => {
             input.addEventListener('input', (e) => {
-                const chave = this.prefixo + 'campo_' + e.target.id;
-                localStorage.setItem(chave, e.target.value);
+                localStorage.setItem(this.prefixo + 'campo_' + e.target.id, e.target.value);
             });
         });
 
-        // Botões de Concluir Etapa
+        // Conclusão de Etapas
         document.querySelectorAll('.btn-concluir').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const faseId = e.currentTarget.dataset.faseId;
-                this.marcarEtapaConcluida(faseId);
+                this.marcarEtapaConcluida(e.currentTarget.dataset.faseId);
             });
         });
 
-        // Botão Adicionar Item no Backlog
+        // Backlog
         document.querySelectorAll('.btn-add-backlog').forEach(btn => {
             btn.addEventListener('click', (e) => this.adicionarItemBacklog(e));
         });
 
-        // Atualizar Lista do Planning quando o modal abrir
+        // Modais Específicos (Planning e Review)
         const modalPlanning = document.getElementById('modal-sprint_planning');
         if(modalPlanning) {
             modalPlanning.addEventListener('show.bs.modal', () => this.atualizarPlanning());
         }
+
+        // NOVO: Listener para carregar itens na Review
+        const modalReview = document.getElementById('modal-sprint_review');
+        if(modalReview) {
+            modalReview.addEventListener('show.bs.modal', () => this.atualizarReview());
+        }
     },
 
-    // --- LÓGICA DE SORTEIO ---
+    // --- SORTEIO E NAVEGAÇÃO ---
     realizarSorteio: function() {
-        const index = Math.floor(Math.random() * this.projetos.length);
-        const projeto = this.projetos[index];
-        
-        localStorage.setItem(this.prefixo + 'projeto_id', projeto.id);
-        this.exibirProjetoSorteado(projeto);
+        const btn = document.getElementById('btn-sortear');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Sorteando...';
+
+        setTimeout(() => {
+            const index = Math.floor(Math.random() * this.projetos.length);
+            const projeto = this.projetos[index];
+            
+            localStorage.setItem(this.prefixo + 'projeto_id', projeto.id);
+            this.exibirProjetoSorteado(projeto);
+            
+            // CORREÇÃO: Mostrar botão de continuar
+            btn.classList.add('d-none');
+            document.getElementById('btn-continuar-wrapper').classList.remove('d-none');
+            
+            // Rola suavemente para o botão
+            document.getElementById('btn-continuar-wrapper').scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
+    },
+
+    exibirProjetoSorteado: function(projeto) {
+        // Header da área de fases
+        const titulo = document.getElementById('projeto-titulo-ativo');
+        const desc = document.getElementById('projeto-desc-ativo');
+        if(titulo) titulo.innerText = projeto.nome;
+        if(desc) desc.innerText = projeto.descricao;
+
+        // Visual do Grid
+        document.querySelectorAll('.card-projeto-opcao').forEach(card => {
+            card.classList.remove('border-primary', 'bg-light');
+            const icon = card.querySelector('.icon-check');
+            if(icon) {
+                icon.classList.remove('bi-check-square-fill', 'text-primary');
+                icon.classList.add('bi-square');
+            }
+        });
+
+        const cardSorteado = document.getElementById('proj-card-' + projeto.id);
+        if(cardSorteado) {
+            cardSorteado.classList.add('border-primary', 'bg-light');
+            const icon = cardSorteado.querySelector('.icon-check');
+            if(icon) {
+                icon.classList.remove('bi-square', 'text-muted');
+                icon.classList.add('bi-check-square-fill', 'text-primary');
+            }
+        }
+    },
+
+    mostrarFases: function() {
+        document.getElementById('area-sorteio').classList.add('d-none');
+        document.getElementById('area-fases').classList.remove('d-none');
+        window.scrollTo(0, 0);
     },
 
     verificarEstadoInicial: function() {
@@ -78,41 +119,12 @@ const Simulacao = {
             const projeto = this.projetos.find(p => p.id == pid);
             if (projeto) {
                 this.exibirProjetoSorteado(projeto);
-                this.mostrarFases(); // Se já tem projeto, vai direto pras fases
+                this.mostrarFases();
             }
         }
     },
 
-    exibirProjetoSorteado: function(projeto) {
-        // Preenche o cabeçalho da área de fases
-        const tituloAtivo = document.getElementById('projeto-titulo-ativo');
-        const descAtiva = document.getElementById('projeto-desc-ativo');
-        
-        if(tituloAtivo) tituloAtivo.innerText = projeto.nome;
-        if(descAtiva) descAtiva.innerText = projeto.descricao;
-        
-        // Feedback visual no Grid de Sorteio (Opcional, mas elegante)
-        document.querySelectorAll('.card-projeto-opcao').forEach(card => {
-            card.classList.remove('border-primary', 'bg-light');
-            card.querySelector('.icon-check').classList.remove('bi-check-square-fill', 'text-primary');
-            card.querySelector('.icon-check').classList.add('bi-square');
-        });
-
-        const cardSorteado = document.getElementById('proj-card-' + projeto.id);
-        if(cardSorteado) {
-            cardSorteado.classList.add('border-primary', 'bg-light');
-            const icon = cardSorteado.querySelector('.icon-check');
-            icon.classList.remove('bi-square', 'text-muted');
-            icon.classList.add('bi-check-square-fill', 'text-primary');
-        }
-    },
-
-    mostrarFases: function() {
-        document.getElementById('area-sorteio').classList.add('d-none');
-        document.getElementById('area-fases').classList.remove('d-none');
-    },
-
-    // --- LÓGICA DE PERSISTÊNCIA E UI ---
+    // --- PERSISTÊNCIA ---
     restaurarDadosFixos: function() {
         document.querySelectorAll('.save-target').forEach(input => {
             const valor = localStorage.getItem(this.prefixo + 'campo_' + input.id);
@@ -121,92 +133,78 @@ const Simulacao = {
     },
 
     marcarEtapaConcluida: function(faseId) {
-        // Salva status
         localStorage.setItem(this.prefixo + 'status_' + faseId, 'concluido');
-        
-        // Fecha modal
         const modalEl = document.getElementById('modal-' + faseId);
         const modal = bootstrap.Modal.getInstance(modalEl);
         modal.hide();
-
-        // Atualiza UI
         this.atualizarInterface();
     },
 
     atualizarInterface: function() {
         let concluidos = 0;
-
-        // Verifica cada card de fase
         document.querySelectorAll('.card-fase').forEach(card => {
-            const faseId = card.dataset.faseId; // Pega do data-attribute, mais seguro
+            const faseId = card.dataset.faseId;
             const status = localStorage.getItem(this.prefixo + 'status_' + faseId);
-
             const icon = card.querySelector('.status-icon');
             
             if (status === 'concluido') {
                 concluidos++;
-                card.classList.add('border-concluido');
+                card.classList.add('border-success'); // Visual mais sutil
                 icon.classList.remove('bi-circle', 'text-muted');
-                icon.classList.add('bi-check-circle-fill', 'text-concluido');
-            } else {
-                card.classList.remove('border-concluido');
-                icon.classList.add('bi-circle', 'text-muted');
-                icon.classList.remove('bi-check-circle-fill', 'text-concluido');
+                icon.classList.add('bi-check-circle-fill', 'text-success');
             }
         });
 
-        // Atualiza Barra de Progresso
         const pct = (concluidos / this.totalEtapas) * 100;
         document.getElementById('barra-progresso').style.width = `${pct}%`;
-        document.getElementById('texto-progresso').innerText = `${concluidos}/${this.totalEtapas}`;
+        document.getElementById('contador-progresso').innerText = concluidos;
     },
 
-    // --- LÓGICA DO BACKLOG DINÂMICO ---
+    // --- BACKLOG & PLANNING ---
     adicionarItemBacklog: function(e, dadosItem = null) {
         const container = e.target ? e.target.closest('.lista-dinamica-container') : document.querySelector('.lista-dinamica-container');
         const wrapper = container.querySelector('.lista-items-wrapper');
-        const schema = JSON.parse(container.dataset.schema); // Schema vem do HTML
+        const schema = JSON.parse(container.dataset.schema);
         
-        // Remove mensagem de vazio
         const emptyMsg = container.querySelector('.empty-state');
         if(emptyMsg) emptyMsg.classList.add('d-none');
 
-        // Cria Linha
         const idUnico = dadosItem ? dadosItem.id : 'item_' + Date.now();
         const div = document.createElement('div');
         div.className = 'card p-3 mb-2 shadow-sm backlog-item position-relative';
         div.dataset.id = idUnico;
 
-        let htmlCampos = '<div class="row g-2">';
+        let html = '<div class="row g-2">';
         schema.forEach(campo => {
             const valor = dadosItem ? dadosItem[campo.id] : '';
-            htmlCampos += `
+            // Placeholder adicionado aqui
+            const placeholder = campo.placeholder || ''; 
+            
+            html += `
                 <div class="col" style="min-width: ${campo.width}">
                     <label class="form-label small fw-bold text-muted">${campo.label}</label>
                     <input type="${campo.tipo === 'select' ? 'text' : campo.tipo}" 
                            class="form-control form-control-sm backlog-input" 
                            data-campo="${campo.id}" 
                            value="${valor}"
+                           placeholder="${placeholder}" 
                            ${campo.tipo === 'select' ? 'list="opts-'+campo.id+'"' : ''}>
                     ${campo.tipo === 'select' ? `<datalist id="opts-${campo.id}">${campo.options.map(o=>`<option value="${o}">`).join('')}</datalist>` : ''}
                 </div>
             `;
         });
-        htmlCampos += '</div><button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-remove-item"></button>';
+        html += '</div><button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-remove-item"></button>';
         
-        div.innerHTML = htmlCampos;
+        div.innerHTML = html;
         wrapper.appendChild(div);
 
-        // Eventos da nova linha
         div.querySelector('.btn-remove-item').addEventListener('click', () => {
             div.remove();
             this.salvarBacklog();
         });
-        div.querySelectorAll('input').forEach(inp => {
-            inp.addEventListener('input', () => this.salvarBacklog());
-        });
+        div.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => this.salvarBacklog()));
 
-        if(!dadosItem) this.salvarBacklog(); // Salva logo ao criar se for novo
+        if(!dadosItem) this.salvarBacklog();
     },
 
     salvarBacklog: function() {
@@ -219,71 +217,81 @@ const Simulacao = {
             itens.push(item);
         });
         localStorage.setItem(this.prefixo + 'backlog_data', JSON.stringify(itens));
-        this.atualizarPlanning(); // Sincroniza em tempo real
     },
 
     restaurarBacklog: function() {
         const dados = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
         const btnAdd = document.querySelector('.btn-add-backlog');
-        
         if (dados.length > 0 && btnAdd) {
             dados.forEach(item => this.adicionarItemBacklog({ target: btnAdd }, item));
         }
     },
 
-    // --- LÓGICA DO PLANNING (CHECKBOXES) ---
     atualizarPlanning: function() {
         const wrapper = document.querySelector('.selecao-origem-wrapper');
         if(!wrapper) return;
 
-        const itensBacklog = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
-        const selecionados = JSON.parse(localStorage.getItem(this.prefixo + 'planning_selected') || '[]');
+        const itens = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
+        const sel = JSON.parse(localStorage.getItem(this.prefixo + 'planning_selected') || '[]');
 
-        if(itensBacklog.length === 0) {
+        if(itens.length === 0) {
             wrapper.innerHTML = '<div class="text-muted p-3 text-center">Nenhum item no Backlog.</div>';
             return;
         }
 
         let html = '<div class="list-group">';
-        itensBacklog.forEach(item => {
-            const isChecked = selecionados.includes(item.id) ? 'checked' : '';
-            // Tenta pegar o primeiro campo como título (geralmente 'titulo')
-            const titulo = Object.values(item)[1] || 'Item sem nome'; 
-            
+        itens.forEach(item => {
+            const checked = sel.includes(item.id) ? 'checked' : '';
             html += `
                 <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0 chk-planning" type="checkbox" value="${item.id}" ${isChecked}>
-                    <span>${titulo}</span>
+                    <input class="form-check-input flex-shrink-0 chk-planning" type="checkbox" value="${item.id}" ${checked}>
+                    <span>${item.titulo || 'Item sem nome'} <small class="text-muted">(${item.estimativa || '-'})</small></span>
                 </label>
             `;
         });
         html += '</div>';
         wrapper.innerHTML = html;
 
-        // Listener dos checkboxes
         wrapper.querySelectorAll('.chk-planning').forEach(chk => {
             chk.addEventListener('change', () => {
-                const novosSelecionados = Array.from(wrapper.querySelectorAll('.chk-planning:checked')).map(c => c.value);
-                localStorage.setItem(this.prefixo + 'planning_selected', JSON.stringify(novosSelecionados));
+                const novos = Array.from(wrapper.querySelectorAll('.chk-planning:checked')).map(c => c.value);
+                localStorage.setItem(this.prefixo + 'planning_selected', JSON.stringify(novos));
             });
         });
     },
 
-    // Lógica de Geração de PDF
-    gerarPDF: function() {
-        // 1. PREPARAÇÃO: Salvar posição de rolagem atual e ir para o topo
-        const scrollAtual = window.scrollY;
-        window.scrollTo(0, 0); // Garante que a "câmera" pegue o início do documento
+    // --- NOVO: ATUALIZAR REVIEW COM ITENS SELECIONADOS ---
+    atualizarReview: function() {
+        const container = document.getElementById('review-itens-selecionados');
+        if(!container) return;
 
-        // 2. CLONAGEM: Cria cópia do template
+        const backlog = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
+        const selecionadosIds = JSON.parse(localStorage.getItem(this.prefixo + 'planning_selected') || '[]');
+        const itensSprint = backlog.filter(i => selecionadosIds.includes(i.id));
+
+        if(itensSprint.length === 0) {
+            container.innerHTML = '<div class="text-muted small fst-italic">Nenhum item foi selecionado no Planning.</div>';
+            return;
+        }
+
+        let html = '<ul class="list-group list-group-flush mb-3 border rounded">';
+        itensSprint.forEach(item => {
+            html += `<li class="list-group-item bg-light small"><i class="bi bi-check2-square me-2"></i>${item.titulo || 'Sem título'}</li>`;
+        });
+        html += '</ul>';
+        container.innerHTML = html;
+    },
+
+    // --- GERAÇÃO DE PDF COMPLETA ---
+    gerarPDF: function() {
+        const scrollAtual = window.scrollY;
+        window.scrollTo(0, 0);
+
         const template = document.getElementById('template-pdf');
         const clone = template.cloneNode(true);
         
-        // Configura o clone
-        clone.id = 'pdf-render-temp'; 
+        clone.id = 'pdf-render-temp';
         clone.style.display = 'block';
-        // Não usamos mais position: absolute/left: -9999px para evitar bugs de renderização.
-        // Vamos colocar ele SOBRE o conteúdo atual com fundo branco, depois removemos.
         clone.style.position = 'absolute';
         clone.style.top = '0';
         clone.style.left = '0';
@@ -292,88 +300,73 @@ const Simulacao = {
         
         document.body.appendChild(clone);
 
-        // 3. PREENCHIMENTO (Dados Gerais)
+        // 1. Cabeçalho
         clone.querySelector('.pdf-data').innerText = new Date().toLocaleDateString('pt-BR');
-        
         const pid = localStorage.getItem(this.prefixo + 'projeto_id');
-        const projeto = this.projetos.find(p => p.id == pid);
-        if (projeto) clone.querySelector('.pdf-projeto-nome').innerText = projeto.nome;
+        const proj = this.projetos.find(p => p.id == pid);
+        if(proj) clone.querySelector('.pdf-projeto-nome').innerText = proj.nome;
 
-        // Preenchimento de campos fixos via data-attribute
+        // 2. Campos Fixos (Automático via data-pdf-field)
+        // Isso cobre: Visão, Meta, Datas do Planning, Campos do Daily, Review e Retro
         clone.querySelectorAll('.pdf-field').forEach(el => {
-            const fieldId = el.dataset.pdfField;
-            const valor = localStorage.getItem(this.prefixo + 'campo_' + fieldId);
-            if (valor) el.innerText = valor;
+            const val = localStorage.getItem(this.prefixo + 'campo_' + el.dataset.pdfField);
+            if(val) el.innerText = val;
         });
 
-        // 4. PREENCHIMENTO DO BACKLOG (Com novos campos!)
-        const backlogData = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
+        // 3. Listas (Backlog e Planning)
+        const backlog = JSON.parse(localStorage.getItem(this.prefixo + 'backlog_data') || '[]');
+        const selIds = JSON.parse(localStorage.getItem(this.prefixo + 'planning_selected') || '[]');
+        
+        // Render Backlog
         const ulBacklog = clone.querySelector('.pdf-lista-backlog');
         ulBacklog.innerHTML = '';
-
-        if (backlogData.length === 0) {
-            ulBacklog.innerHTML = '<li style="color:#999">Nenhum item no backlog.</li>';
-        } else {
-            backlogData.forEach(item => {
+        if(backlog.length === 0) ulBacklog.innerHTML = '<li>Vazio</li>';
+        else {
+            backlog.forEach(i => {
+                let txt = `<strong>[${i.prioridade||'-'}]</strong> ${i.titulo||'Item'}`;
+                if(i.estimativa) txt += ` <em>(${i.estimativa})</em>`;
+                if(i.descricao) txt += `<br><span style="font-size:11px; color:#555; display:block; margin-top:2px;">${i.descricao}</span>`;
+                if(i.aceitacao) txt += `<span style="font-size:11px; color:#888; display:block;">Critérios: ${i.aceitacao}</span>`;
+                
                 const li = document.createElement('li');
-                li.style.marginBottom = '10px';
+                li.innerHTML = txt;
+                li.style.marginBottom = '10px'; // Aumentei o espaçamento
                 li.style.borderBottom = '1px solid #eee';
                 li.style.paddingBottom = '5px';
-
-                // Monta o HTML do item com Descrição e Critérios (se existirem)
-                const prio = item.prioridade ? `<span style="font-weight:bold; color:#0d6efd">[${item.prioridade}]</span> ` : '';
-                const titulo = `<strong>${item.titulo || 'Item sem título'}</strong>`;
-                const est = item.estimativa ? ` <small>(${item.estimativa})</small>` : '';
-                
-                let htmlItem = `<div>${prio}${titulo}${est}</div>`;
-                
-                // Adiciona Descrição se houver
-                if (item.descricao) {
-                    htmlItem += `<div style="font-size:12px; color:#666; margin-top:2px;"><em>Desc: ${item.descricao}</em></div>`;
-                }
-                // Adiciona Critérios se houver
-                if (item.aceitacao) {
-                    htmlItem += `<div style="font-size:12px; color:#666;"><em>Aceite: ${item.aceitacao}</em></div>`;
-                }
-
-                li.innerHTML = htmlItem;
                 ulBacklog.appendChild(li);
             });
         }
 
-        // 5. PREENCHIMENTO DO PLANNING
-        const selecionados = JSON.parse(localStorage.getItem(this.prefixo + 'planning_selected') || '[]');
+        // Render Planning List
         const ulPlanning = clone.querySelector('.pdf-lista-planning');
         ulPlanning.innerHTML = '';
-
-        if (selecionados.length === 0) {
-            ulPlanning.innerHTML = '<li style="color:#999">Nenhum item selecionado.</li>';
-        } else {
-            const itensSprint = backlogData.filter(item => selecionados.includes(item.id));
-            itensSprint.forEach(item => {
+        const itensSprint = backlog.filter(i => selIds.includes(i.id));
+        if(itensSprint.length === 0) ulPlanning.innerHTML = '<li>Vazio</li>';
+        else {
+            itensSprint.forEach(i => {
                 const li = document.createElement('li');
-                li.innerText = item.titulo || 'Item sem título';
+                li.innerText = i.titulo;
                 ulPlanning.appendChild(li);
             });
         }
 
-        // 6. GERAÇÃO
+        // Geração
         const content = clone.querySelector('.pdf-container');
         const opt = {
-            margin:       10,
-            filename:     `Sprint_Report_${Date.now()}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true, scrollY: 0 }, // Força scrollY 0
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            margin: 10,
+            filename: `Sprint_Scrum_${Date.now()}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(content).save()
             .then(() => {
                 document.body.removeChild(clone);
-                window.scrollTo(0, scrollAtual); // Devolve usuário à posição original
+                window.scrollTo(0, scrollAtual);
             })
             .catch(err => {
-                console.error("Erro PDF:", err);
+                console.error(err);
                 if(document.body.contains(clone)) document.body.removeChild(clone);
                 window.scrollTo(0, scrollAtual);
             });

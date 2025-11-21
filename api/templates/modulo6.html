@@ -48,27 +48,21 @@
                 {% endfor %}
             </div>
             
-            <div id="intro-sorteio" class="text-center">
-                <button id="btn-sortear" class="btn btn-primary btn-lg px-5 rounded-pill">
-                    Sortear Projeto
+            <div class="text-center position-relative" style="height: 80px;">
+                <button id="btn-sortear" class="btn btn-primary btn-lg px-5 rounded-pill shadow">
+                    <i class="bi bi-shuffle me-2"></i> Sortear Meu Projeto
                 </button>
-            </div>
-
-            <div id="resultado-sorteio" class="d-none animate__animated animate__fadeIn text-center">
-                <div class="card border-primary mx-auto mb-4 shadow-sm" style="max-width: 600px;">
-                    <div class="card-body p-4">
-                        <h6 class="text-primary text-uppercase fw-bold mb-2">Seu Projeto é:</h6>
-                        <h2 class="fw-bold mb-3" id="projeto-titulo">...</h2>
-                        <p class="lead fs-6 text-muted" id="projeto-desc">...</p>
-                    </div>
+                
+                <div id="btn-continuar-wrapper" class="d-none fade-in">
+                    <p class="text-success fw-bold mb-2"><i class="bi bi-check-lg"></i> Projeto Definido!</p>
+                    <button id="btn-iniciar" class="btn btn-success btn-lg px-5">
+                        Iniciar Sprint <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
                 </div>
-                <button id="btn-iniciar" class="btn btn-success btn-lg px-5">
-                    Iniciar Sprint Agora <i class="bi bi-arrow-right"></i>
-                </button>
             </div>
         </div>
 
-        <div id="area-fases" class="d-none">
+        <div id="area-fases" class="d-none fade-in">
 
             <div class="card border-primary mb-5 shadow-sm bg-white">
                 <div class="card-body p-4">
@@ -100,7 +94,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     {% for fase in conteudo.sections.modulo6.cards %}
                         {{ render_fase_simulacao(fase) }}
                     {% endfor %}
@@ -133,60 +127,52 @@
     
             <div class="pdf-section">
                 <div class="pdf-section-title">1. Definição do Projeto</div>
-                
-                <div class="pdf-label">Projeto Selecionado</div>
-                <div class="pdf-value pdf-projeto-nome">---</div>
-    
-                <div class="pdf-label">Objetivo / Visão</div>
-                <div class="pdf-value pdf-field" data-pdf-field="objetivo">---</div>
-    
-                <div class="pdf-label">Público Alvo</div>
-                <div class="pdf-value pdf-field" data-pdf-field="publico_alvo">---</div>
-                
-                <div class="pdf-label">Necessidade (Problema)</div>
-                <div class="pdf-value pdf-field" data-pdf-field="problema">---</div>
-                
-                <div class="pdf-label">Solução</div>
-                <div class="pdf-value pdf-field" data-pdf-field="solucao">---</div>
+                <div class="pdf-label">Projeto</div><div class="pdf-value pdf-projeto-nome">---</div>
+                <div class="pdf-label">Objetivo</div><div class="pdf-value pdf-field" data-pdf-field="objetivo">---</div>
+                <div class="pdf-label">Público</div><div class="pdf-value pdf-field" data-pdf-field="publico_alvo">---</div>
+                <div class="pdf-label">Problema</div><div class="pdf-value pdf-field" data-pdf-field="problema">---</div>
+                <div class="pdf-label">Solução</div><div class="pdf-value pdf-field" data-pdf-field="solucao">---</div>
             </div>
     
             <div class="pdf-section">
-                <div class="pdf-section-title">2. Product Backlog</div>
-                <ul class="pdf-lista-backlog" style="padding-left: 20px;">
-                    <li>Nenhum item registrado.</li>
-                </ul>
-            </div>
-    
-            <div class="pdf-section">
-                <div class="pdf-section-title">3. Sprint Planning</div>
-                
-                <div class="pdf-label">Meta da Sprint (Sprint Goal)</div>
-                <div class="pdf-value pdf-field" data-pdf-field="meta_sprint">---</div>
-                
+                <div class="pdf-section-title">2. Backlog e Planejamento</div>
+                <div class="pdf-label">Meta da Sprint</div><div class="pdf-value pdf-field" data-pdf-field="meta_sprint">---</div>
                 <div class="pdf-label">Período</div>
-                <div style="font-size: 14px; margin-bottom: 5px;">
-                    De <span class="pdf-field fw-bold" data-pdf-field="data_inicio">--/--</span> 
-                    até <span class="pdf-field fw-bold" data-pdf-field="data_fim">--/--</span>
-                </div>
+                <div>De <span class="pdf-field" data-pdf-field="data_inicio"></span> até <span class="pdf-field" data-pdf-field="data_fim"></span></div>
+                <div class="pdf-label mt-3">Itens do Product Backlog</div>
+                <ul class="pdf-lista-backlog"></ul>
+                <div class="pdf-label mt-3">Itens Selecionados (Sprint Backlog)</div>
+                <ul class="pdf-lista-planning"></ul>
+            </div>
     
-                <div class="pdf-label">Itens Selecionados para a Sprint</div>
-                <ul class="pdf-lista-planning" style="padding-left: 20px;">
-                    <li>Nenhum item selecionado.</li>
-                </ul>
+            <div class="pdf-section">
+                <div class="pdf-section-title">3. Acompanhamento (Daily Scrum)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    {% for i in range(1, 8) %}
+                    <div style="background: #f9f9f9; padding: 8px; border-radius: 4px; page-break-inside: avoid;">
+                        <strong style="color:#0d6efd; font-size:12px;">DIA {{ i }}</strong>
+                        <div style="font-size: 10px; margin-top: 4px;">
+                            <strong>Fez:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_fez">-</span><br>
+                            <strong>Fará:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_fara">-</span><br>
+                            <strong>Imp:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_imp">-</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
             
             <div class="pdf-section">
-                <div class="pdf-section-title">4. Execução e Revisão</div>
-                
-                <div class="pdf-label">Review: Entregáveis</div>
-                <div class="pdf-value pdf-field" data-pdf-field="entregaveis">---</div>
-    
-                <div class="pdf-label">Retrospectiva: Ações de Melhoria</div>
-                <div class="pdf-value pdf-field" data-pdf-field="acoes">---</div>
+                <div class="pdf-section-title">4. Review e Retrospectiva</div>
+                <div class="pdf-label">Entregáveis</div><div class="pdf-value pdf-field" data-pdf-field="entregaveis">---</div>
+                <div class="pdf-label">Feedbacks</div><div class="pdf-value pdf-field" data-pdf-field="feedback">---</div>
+                <div class="pdf-label">O que não foi concluído</div> <div class="pdf-value pdf-field" data-pdf-field="nao_entregue">---</div>
+                <div class="pdf-label">Pontos Positivos</div><div class="pdf-value pdf-field" data-pdf-field="positivo">---</div>
+                <div class="pdf-label">Melhorias</div><div class="pdf-value pdf-field" data-pdf-field="melhorar">---</div>
+                <div class="pdf-label">Ações Próxima Sprint</div><div class="pdf-value pdf-field" data-pdf-field="acoes">---</div>
             </div>
     
             <div style="text-align: center; font-size: 10px; color: #aaa; margin-top: 50px; border-top: 1px solid #eee; padding-top: 10px;">
-                Este documento é uma simulação acadêmica.
+                Este documento é uma simulação de um projeto.
             </div>
         </div>
     </div>

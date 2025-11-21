@@ -201,20 +201,23 @@
                 {% if fase.dicas %}
                 <div class="alert alert-light border mb-4">
                     <small class="fw-bold text-muted"><i class="bi bi-info-circle me-1"></i> Dicas:</small>
-                    <ul class="mb-0 small text-muted ps-3 mt-1">
-                        {% for dica in fase.dicas %}<li>{{ dica }}</li>{% endfor %}
-                    </ul>
+                    <ul class="mb-0 small text-muted ps-3 mt-1">{% for d in fase.dicas %}<li>{{ d }}</li>{% endfor %}</ul>
                 </div>
                 {% endif %}
 
                 {% if fase.tipo_conteudo == 'formulario_fixo' %}
+                    
+                    {% if fase.id == 'sprint_review' %}
+                        <div class="mb-4">
+                            <label class="fw-bold small text-muted mb-2">O que foi planejado (Sprint Backlog):</label>
+                            <div id="review-itens-selecionados"></div> </div>
+                    {% endif %}
+
                     <form>
                         {% for campo in fase.campos %}
                             {% if campo.titulo_grupo %}
-                                <h6 class="fw-bold mt-3 mb-2 text-secondary">{{ campo.titulo_grupo }}</h6>
-                                {% for sub in campo.campos %}
-                                    {{ _render_input(sub) }}
-                                {% endfor %}
+                                <h6 class="fw-bold mt-4 mb-2 text-secondary border-bottom pb-1">{{ campo.titulo_grupo }}</h6>
+                                {% for sub in campo.campos %}{{ _render_input(sub) }}{% endfor %}
                             {% else %}
                                 {{ _render_input(campo) }}
                             {% endif %}
@@ -224,24 +227,17 @@
                 {% elif fase.tipo_conteudo == 'lista_dinamica' %}
                     <div class="lista-dinamica-container" data-schema='{{ fase.item_schema | tojson }}'>
                         <div class="lista-items-wrapper mb-3">
-                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed">
-                                <small>Nenhum item adicionado ainda.</small>
-                            </div>
+                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed"><small>Nenhum item.</small></div>
                         </div>
-                        <button type="button" class="btn btn-sm btn-primary btn-add-backlog w-100">
-                            <i class="bi bi-plus-lg"></i> Adicionar Item
-                        </button>
+                        <button type="button" class="btn btn-sm btn-primary btn-add-backlog w-100"><i class="bi bi-plus-lg"></i> Adicionar Item</button>
                     </div>
 
                 {% elif fase.tipo_conteudo == 'selecao_origem' %}
                     <form>
-                        {% for campo in fase.campos_fixos %}
-                            {{ _render_input(campo) }}
-                        {% endfor %}
+                        {% for campo in fase.campos_fixos %}{{ _render_input(campo) }}{% endfor %}
                         <hr class="my-4">
-                        <h6 class="fw-bold mb-2">Itens Selecionados do Backlog:</h6>
-                        <div class="selecao-origem-wrapper border rounded p-2">
-                            </div>
+                        <h6 class="fw-bold mb-2">Selecione para a Sprint:</h6>
+                        <div class="selecao-origem-wrapper border rounded p-2"></div>
                     </form>
                 {% endif %}
             </div>
@@ -261,9 +257,11 @@
 <div class="mb-3">
     <label class="form-label fw-bold small text-dark">{{ campo.label }}</label>
     {% if campo.tipo == 'textarea' %}
-        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder }}"></textarea>
+        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder or '' }}"></textarea>
+    {% elif campo.tipo == 'date' %}
+        <input type="date" id="{{ campo.id }}" class="form-control save-target">
     {% else %}
-        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder }}">
+        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder or '' }}">
     {% endif %}
 </div>
 {% endmacro %}
