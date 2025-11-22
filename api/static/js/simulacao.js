@@ -167,22 +167,27 @@ const Simulacao = {
         div.className = 'card p-3 mb-2 shadow-sm backlog-item position-relative';
         div.dataset.id = idUnico;
 
-        let htmlCampos = '<div class="row g-2">';
+        let htmlCampos = '';
         schema.forEach(campo => {
             const valor = dadosItem ? dadosItem[campo.id] : '';
+            let inputHtml;
+            if (campo.tipo === 'textarea') {
+                inputHtml = `<textarea class="form-control form-control-sm backlog-input" data-campo="${campo.id}" placeholder="${campo.placeholder || ''}">${valor}</textarea>`;
+            } else if (campo.tipo === 'select') {
+                inputHtml = `<input type="text" class="form-control form-control-sm backlog-input" data-campo="${campo.id}" value="${valor}" placeholder="${campo.placeholder || ''}" list="opts-${campo.id}">
+                             <datalist id="opts-${campo.id}">${campo.options.map(o=>`<option value="${o}">`).join('')}</datalist>`;
+            } else {
+                inputHtml = `<input type="${campo.tipo}" class="form-control form-control-sm backlog-input" data-campo="${campo.id}" value="${valor}" placeholder="${campo.placeholder || ''}">`;
+            }
+
             htmlCampos += `
-                <div class="col" style="min-width: ${campo.width}">
+                <div class="mb-3">
                     <label class="form-label small fw-bold text-muted">${campo.label}</label>
-                    <input type="${campo.tipo === 'select' ? 'text' : campo.tipo}" 
-                           class="form-control form-control-sm backlog-input" 
-                           data-campo="${campo.id}" 
-                           value="${valor}"
-                           ${campo.tipo === 'select' ? 'list="opts-'+campo.id+'"' : ''}>
-                    ${campo.tipo === 'select' ? `<datalist id="opts-${campo.id}">${campo.options.map(o=>`<option value="${o}">`).join('')}</datalist>` : ''}
+                    ${inputHtml}
                 </div>
             `;
         });
-        htmlCampos += '</div><button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-remove-item"></button>';
+        htmlCampos += '<button type="button" class="btn-close position-absolute top-0 end-0 m-2 btn-remove-item"></button>';
         
         div.innerHTML = htmlCampos;
         wrapper.appendChild(div);

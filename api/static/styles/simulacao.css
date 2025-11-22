@@ -38,3 +38,15 @@
 .text-concluido {
     color: #198754 !important;
 }
+
+.btn-preencher-template:hover {
+    background-color: #0d6efd !important;
+    color: #fff !important; 
+}
+
+.btn-concluir:hover {
+    background-color: #0d6efd !important;
+    color: #fff !important; 
+}
+
+

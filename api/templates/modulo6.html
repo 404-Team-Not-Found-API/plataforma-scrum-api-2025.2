@@ -14,7 +14,7 @@
             <div id="intro-sorteio" class="card p-4 p-md-5" style="border-radius: 10px; border: 4px solid #6DD5B6; background: #F2F2F2;;">
                 <div class="d-flex align-items-center justify-content-start mb-4 gap-3">
                     <img src="{{url_for('static', filename='assets/sorteio.png')}}" alt="Ícone de sorteio" style="height: 40px;">
-                    <h3 class="fw-bold fs-2 mb-0">Sorteio de Projeto Simulado</h3>
+                    <h3 class="fw-bold fs-4 fs-md-2 mb-0">Sorteio de Projeto Simulado</h3>
                 </div>
                 <div class="row g-4 mb-4">
                     {% for projeto in conteudo.sections.modulo6.projetos_simulados %}
@@ -41,10 +41,10 @@
                     <div class="card-body p-4">
                         <h6 class="text-uppercase fw-bold mb-3" style="color:#083350;">Seu Projeto é:</h6>
                         <div class="d-flex align-items-center justify-content-start gap-3 mb-3">
-                            <i id="projeto-icone" class="fs-1 text-primary"></i>
-                            <h1 class="fw-bold fs-4 mb-0" id="projeto-titulo">...</h1>
+                            <i id="projeto-icone" class="fs-2 fs-md-1 text-primary"></i>
+                            <h1 class="fw-bold fs-5 fs-md-4 mb-0" id="projeto-titulo">...</h1>
                         </div>
-                        <h2 class="fs-6 fw-bold text-muted text-start mb-3" id="projeto-desc">...</h2>
+                        <h2 class="fs-6 fw-bold text-muted text-start mb-3" id="projeto-desc" style="line-height: 1.5;">...</h2>
                         <h3 class="fs-6 text-start">→Use este projeto como base para preencher todos os templates das etapas abaixo. No final, você poderá gerar um PDF com suas respostas e um gabarito completo</h3>
                     </div>
                 </div>
@@ -56,21 +56,21 @@
 
         <div id="funcionamento" class="card mx-auto mb-4 shadow-sm pt-3 pb-5 px-4 d-none" style="background: #F2F2F2; border: 2px solid #6DD5B6;">
                 <h1 class="fw-bold text-center fs-4 mb-3">Como Funciona Este Projeto Simulado?</h1>
-                <h2 class="fs-6 fw-bold text-muted text-center">Você vai executar uma Sprint real de 1 semana no projeto sorteado. Este módulo te guiará passo a passo por todas as fases do Scrum.</h2>
-            <div class="d-flex justify-content-center gap-24 mt-4 px-6">
-                <div class="card align-items-center justify-content-center flex-shrink-1" style="background: #F2F2F2; max-width: 10rem; width: 30%; aspect-ratio: 1 / 1; border-radius: 15px;">
+                <h2 class="fs-6 fw-bold text-muted text-center px-md-5">Você vai executar uma Sprint real de 1 semana no projeto sorteado. Este módulo te guiará passo a passo por todas as fases do Scrum.</h2>
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4 mt-4">
+                <div class="card align-items-center justify-content-center" style="background: #F2F2F2; width: 10rem; height: 10rem; border-radius: 15px;">
                     <img src="{{url_for('static', filename='assets/duracao.png')}}">
                     <div class="card-body d-flex align-items-center justify-content-center">
                         <span class="fs-6 fw-bold text-center">Duração:1 Semana (Sprint)</span>
                     </div>
                 </div>
-                <div class="card align-items-center justify-content-center flex-shrink-1" style="background: #F2F2F2; max-width: 10rem; width: 30%; aspect-ratio: 1 / 1; border-radius: 15px;">
+                <div class="card align-items-center justify-content-center" style="background: #F2F2F2; width: 10rem; height: 10rem; border-radius: 15px;">
                     <img src="{{url_for('static', filename='assets/participacao.png')}}">
                     <div class="card-body d-flex align-items-center justify-content-center">
                         <span class="fs-6 fw-bold text-center">Você pode participar com outros</span>
                     </div>
                 </div>
-                <div class="card align-items-center justify-content-center flex-shrink-1" style="background: #F2F2F2; max-width: 10rem; width: 30%; aspect-ratio: 1 / 1; border-radius: 15px;">
+                <div class="card align-items-center justify-content-center" style="background: #F2F2F2; width: 10rem; height: 10rem; border-radius: 15px;">
                     <img src="{{url_for('static', filename='assets/gps.png')}}">
                     <div class="card-body d-flex align-items-center justify-content-center">
                         <span class="fs-6 fw-bold text-center">Objetivo: Vivenciar na prática</span>
@@ -98,8 +98,6 @@
             </div>
         </div>
 
-        
-
         <div id="area-fases" class="d-none mt-5">
 
             <div class="row justify-content-center">
@@ -111,7 +109,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn btn-outline-dark">
+                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn fw-bold fs-5 px-4 btn-concluir" style="background-color: #6DD5B6; color:#000; border-radius:15px;">
                     <i class="bi bi-file-pdf"></i> Gerar Relatório PDF
                 </button>
             </div>
