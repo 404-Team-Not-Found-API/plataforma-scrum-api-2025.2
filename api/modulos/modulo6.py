@@ -1,18 +1,16 @@
 def get_modulo6():
-    """
-    Retorna a configuração completa para a Simulação da Sprint.
-    """
-    return {
-        "sections": {
-            "modulo6": {
-                "titulo_modulo": "Módulo Final: Sua Primeira Sprint",
-                "numero_modulo": 6,
-                "descricao_secao": "Projeto simulado para você praticar e vivenciar o Scrum na prática.",
-                "template": "modulo6.html",
-                'url_anterior': 'routes.module_route',
-                'url_anterior_params': {'module_name': 'modulo5', 'section_name': 'modulo5'},
-                'url_proximo': None,
-                # 'url_proximo_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
+#     """     Retorna a configuração completa para a Simulação da Sprint.#     """
+     return {
+         "sections": {
+             "modulo6": {
+                 "titulo_modulo": "Módulo Final: Sua Primeira Sprint",
+                 "numero_modulo": 6,
+                 "descricao_secao": "Projeto simulado para você praticar e vivenciar o Scrum na prática.",
+                 "template": "modulo6.html",
+                 'url_anterior': 'routes.module_route',
+                 'url_anterior_params': {'module_name': 'modulo5', 'section_name': 'modulo5'},
+                 'url_proximo': None,
+                 'url_proximo_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
                 
                 # Lista de Projetos para Sorteio
                 "projetos_simulados": [
