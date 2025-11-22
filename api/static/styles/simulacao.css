@@ -50,3 +50,48 @@
 }
 
 
+/* Estilos Específicos para o Relatório PDF */
+.pdf-container {
+    background-color: white !important;
+    color: #333 !important;
+    font-family: 'Helvetica', 'Arial', sans-serif !important;
+    padding: 40px !important;
+    width: 750px !important; /* Largura fixa próxima a A4 */
+    margin: 0 auto;
+}
+
+.pdf-header {
+    border-bottom: 3px solid #0d6efd;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.pdf-section {
+    margin-bottom: 25px;
+    page-break-inside: avoid; /* Evita quebrar seção no meio da página */
+}
+
+.pdf-section-title {
+    background-color: #f8f9fa;
+    border-left: 5px solid #0d6efd;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+.pdf-label {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.pdf-value {
+    font-size: 14px;
+    margin-bottom: 5px;
+    white-space: pre-wrap; /* Mantém quebras de linha do textarea */
+}

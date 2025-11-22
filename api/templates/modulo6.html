@@ -48,10 +48,7 @@
                         <h3 class="fs-6 text-start">→Use este projeto como base para preencher todos os templates das etapas abaixo. No final, você poderá gerar um PDF com suas respostas e um gabarito completo</h3>
                     </div>
                 </div>
-                <button id="btn-iniciar" class="btn btn-success btn-lg px-5">
-                    Iniciar Sprint Agora <i class="bi bi-arrow-right"></i>
-                </button>
-            </div> 
+            </div>
         </div>
 
         <div id="funcionamento" class="card mx-auto mb-4 shadow-sm pt-3 pb-5 px-4 d-none" style="background: #F2F2F2; border: 2px solid #6DD5B6;">
@@ -100,31 +97,100 @@
 
         <div id="area-fases" class="d-none mt-5">
 
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    {% for fase in conteudo.sections.modulo6.cards %}
-                        {{ render_fase_simulacao(fase) }}
-                    {% endfor %}
-                </div>
+        <div class="row justify-content-center">
+        {% for fase in conteudo.sections.modulo6.cards %}
+            <div class="col-12 mb-3">
+                {{ render_fase_simulacao(fase, loop.index) }}
             </div>
+        {% endfor %}
+        </div>
 
             <div class="text-center mt-5">
-                <button onclick="alert('Funcionalidade de PDF em breve!')" class="btn fw-bold fs-5 px-4 btn-concluir" style="background-color: #6DD5B6; color:#000; border-radius:15px;">
+                <button onclick="Simulacao.gerarPDF()" class="btn fw-bold fs-5 px-4 btn-concluir" style="background-color: #6DD5B6; color:#000; border-radius:15px;">
                     <i class="bi bi-file-pdf"></i> Gerar Relatório PDF
                 </button>
+                <a href="{{ url_for('static', filename='assets/Gabarito_Projeto.pdf') }}" target="_blank" class="btn fw-bold fs-5 px-4 btn-acessar-gabarito ms-3" style="background-color: #6DD5B6; color:#000; border-radius:15px;">
+                    <i class="bi bi-journal-text"></i> Acessar Gabarito
+                </a>
             </div>
         </div>
 
+    </div>
+
+
+    <!-- Seção para a geração do PDF -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <div id="template-pdf" style="display: none;">
+        <div class="pdf-container">
+            
+            <div class="pdf-header">
+                <h1 style="margin: 0; font-size: 24px; color: #0d6efd;">Relatório de Sprint Simulada</h1>
+                <p style="margin: 5px 0 0; color: #666;">Plataforma de Treinamento Scrum</p>
+                <div style="font-size: 12px; margin-top: 10px; color: #999;">
+                    Gerado em: <span class="pdf-data"></span>
+                </div>
+            </div>
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">1. Definição do Projeto</div>
+                <div class="pdf-label">Projeto</div><div class="pdf-value pdf-projeto-nome">---</div>
+                <div class="pdf-label">Objetivo</div><div class="pdf-value pdf-field" data-pdf-field="objetivo">---</div>
+                <div class="pdf-label">Público</div><div class="pdf-value pdf-field" data-pdf-field="publico_alvo">---</div>
+                <div class="pdf-label">Problema</div><div class="pdf-value pdf-field" data-pdf-field="problema">---</div>
+                <div class="pdf-label">Solução</div><div class="pdf-value pdf-field" data-pdf-field="solucao">---</div>
+            </div>
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">2. Backlog e Planejamento</div>
+                <div class="pdf-label">Meta da Sprint</div><div class="pdf-value pdf-field" data-pdf-field="meta_sprint">---</div>
+                <div class="pdf-label">Período</div>
+                <div>De <span class="pdf-field" data-pdf-field="data-inicio">---</span> até <span class="pdf-field" data-pdf-field="data-fim">---</span></div>
+                <div class="pdf-label mt-3">Itens do Product Backlog</div>
+                <ul class="pdf-lista-backlog"></ul>
+                <div class="pdf-label mt-3">Itens Selecionados (Sprint Backlog)</div>
+                <ul class="pdf-lista-planning"></ul>
+            </div>
+
+    
+            <div class="pdf-section">
+                <div class="pdf-section-title">3. Acompanhamento (Daily Scrum)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    {% for i in range(1, 8) %}
+                    <div style="background: #f9f9f9; padding: 8px; border-radius: 4px; page-break-inside: avoid;">
+                        <strong style="color:#0d6efd; font-size:12px;">DIA {{ i }}</strong>
+                        <div style="font-size: 10px; margin-top: 4px;">
+                            <strong>Fez:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_fez">-</span><br>
+                            <strong>Fará:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_fara">-</span><br>
+                            <strong>Imp:</strong> <span class="pdf-field" data-pdf-field="dia{{ i }}_imp">-</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="pdf-section">
+                <div class="pdf-section-title">4. Review e Retrospectiva</div>
+                <div class="pdf-label">Entregáveis</div><div class="pdf-value pdf-field" data-pdf-field="entregaveis">---</div>
+                <div class="pdf-label">Feedbacks</div><div class="pdf-value pdf-field" data-pdf-field="feedback">---</div>
+                <div class="pdf-label">O que não foi concluído</div> <div class="pdf-value pdf-field" data-pdf-field="nao_entregue">---</div>
+                <div class="pdf-label">Pontos Positivos</div><div class="pdf-value pdf-field" data-pdf-field="positivo">---</div>
+                <div class="pdf-label">Melhorias</div><div class="pdf-value pdf-field" data-pdf-field="melhorar">---</div>
+                <div class="pdf-label">Ações Próxima Sprint</div><div class="pdf-value pdf-field" data-pdf-field="acoes">---</div>
+            </div>
+    
+            <div style="text-align: center; font-size: 10px; color: #aaa; margin-top: 50px; border-top: 1px solid #eee; padding-top: 10px;">
+                Este documento é uma simulação de um projeto.
+            </div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/simulacao.js') }}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Passa os dados do Python para o JS de forma limpa
             const dadosProjetos = {{ conteudo.sections.modulo6.projetos_simulados | tojson }};
-            
-            // Inicia a simulação
             Simulacao.init(dadosProjetos);
         });
     </script>

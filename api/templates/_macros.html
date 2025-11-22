@@ -25,7 +25,7 @@
 <a href="{{ url }}" class="{{ classes }}">{{ text }}</a>
 {% endmacro %}
 
-{% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6, mb-3") %}
+{% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6 mb-3") %}
 <div class="{{ container_classes }}">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 {{ classes }}">{{ titulo }}</h2>
     {% if subtitulo %}
@@ -202,9 +202,9 @@
 {% endmacro %}
 
 
-{% macro render_fase_simulacao(fase) %}
+{% macro render_fase_simulacao(fase, index) %}
 
-<div class="card mb-3 card-fase shadow-sm border-start-0" data-fase-id="{{ fase.id }}" data-bs-toggle="modal" data-bs-target="#modal-{{ fase.id }}">
+<div class="card mb-3 card-fase shadow-sm border-start-0" data-fase-id="{{ fase.id }}" data-index="{{ index }}" data-bs-toggle="modal" data-bs-target="#modal-{{ fase.id }}">
     <div class="card-body p-4" style="background-color: rgba(242, 242, 242, 0.95); border: 2px solid #6DD5B6;">
         <div class="d-flex align-items-center">
             <div class="me-4">
@@ -241,26 +241,39 @@
                 </div>
                 {% endif %}
 
-                {% if fase.tipo_conteudo == 'formulario_fixo' %}
-                    <form>
-                        {% for campo in fase.campos %}
-                            {% if campo.titulo_grupo %}
-                                <h6 class="fw-bold mt-3 mb-2">{{ campo.titulo_grupo }}</h6>
-                                {% for sub in campo.campos %}
-                                    {{ _render_input(sub) }}
-                                {% endfor %}
-                            {% else %}
-                                {{ _render_input(campo) }}
-                            {% endif %}
-                        {% endfor %}
-                    </form>
+{% if fase.tipo_conteudo == 'formulario_fixo' %}
 
-                {% elif fase.tipo_conteudo == 'lista_dinamica' %}
+    {% if fase.id == 'sprint_review' %}
+        <div class="mb-4">
+            <label class="fw-bold small text-muted mb-2">O que foi planejado (Sprint Backlog):</label>
+            <div id="review-itens-selecionados"></div> </div>
+    {% endif %}
+
+            {% if fase.id == 'daily_scrum' %}
+                <form>
+                    {% for campo in fase.campos %}
+                        {{ _render_input(campo) }}
+                    {% endfor %}
+                </form>
+            {% else %}
+                <form>
+                    {% for campo in fase.campos %}
+                        {% if campo.titulo_grupo %}
+                            <h6 class="fw-bold mt-3 mb-2">{{ campo.titulo_grupo }}</h6>
+                            {% for sub in campo.campos %}
+                                {{ _render_input(sub) }}
+                            {% endfor %}
+                        {% else %}
+                            {{ _render_input(campo) }}
+                        {% endif %}
+                    {% endfor %}
+                </form>
+            {% endif %}
+
+{% elif fase.tipo_conteudo == 'lista_dinamica' %}
                     <div class="lista-dinamica-container" data-schema='{{ fase.item_schema | tojson }}'>
                         <div class="lista-items-wrapper mb-3">
-                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed">
-                                <small>Nenhum item adicionado ainda.</small>
-                            </div>
+                            <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed"><small>Nenhum item.</small></div>
                         </div>
                         <button type="button" class="btn btn-sm btn-add-backlog fw-bold w-100" style="background-color: #6DD5B6; color:#000;">
                             <i class="bi bi-plus-lg"></i> Adicionar Item
@@ -269,13 +282,10 @@
 
                 {% elif fase.tipo_conteudo == 'selecao_origem' %}
                     <form>
-                        {% for campo in fase.campos_fixos %}
-                            {{ _render_input(campo) }}
-                        {% endfor %}
+                        {% for campo in fase.campos_fixos %}{{ _render_input(campo) }}{% endfor %}
                         <hr class="my-4">
-                        <h6 class="fw-bold mb-2">Itens Selecionados do Backlog:</h6>
-                        <div class="selecao-origem-wrapper border rounded p-2">
-                            </div>
+                        <h6 class="fw-bold mb-2">Selecione para a Sprint:</h6>
+                        <div class="selecao-origem-wrapper border rounded p-2"></div>
                     </form>
                 {% endif %}
             </div>
@@ -299,9 +309,11 @@
     </label>
 
     {% if campo.tipo == 'textarea' %}
-        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder }}"></textarea>
+        <textarea id="{{ campo.id }}" class="form-control save-target" rows="3" placeholder="{{ campo.placeholder or '' }}"></textarea>
+    {% elif campo.tipo == 'date' %}
+        <input type="date" id="{{ campo.id }}" class="form-control save-target">
     {% else %}
-        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder }}">
+        <input type="{{ campo.tipo }}" id="{{ campo.id }}" class="form-control save-target" placeholder="{{ campo.placeholder or '' }}">
     {% endif %}
 </div>
 {% endmacro %}
