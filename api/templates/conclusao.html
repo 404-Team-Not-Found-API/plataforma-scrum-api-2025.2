@@ -1,0 +1,74 @@
+{% extends "modulo_base.html" %}
+
+{% block title %}Conclusão{% endblock %}
+
+{% block content %}
+<div id="secao-gradiente" class="relative w-full text-white text-center py-20 min-h-screen">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-3">Parabéns!<br>Você <span style="color:#6DD5B6;">concluiu</span> o curso sobre Scrum!</h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-8">
+        Agora você está preparado para aplicar corretamente a metodologia ágil no seu ambiente de trabalho, deixando os processos mais eficientes e colaborativos         </p>
+    </div>
+    <img src="{{url_for('static', filename='assets/Rocket.png')}}" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/5 md:w-1/5 md:left-0 md:translate-x-0">
+    <div class="absolute bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:bottom-48 md:left-1/4">
+        <i class="bi bi-star display-6" style="color: rgba(255, 255, 255, 0.7);"></i>
+        <div class="flex gap-16">
+            <i class="bi bi-star display-6" style="color: rgba(255, 255, 255, 0.7);"></i>
+            <i class="bi bi-star display-6" style="color: rgba(255, 255, 255, 0.7);"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Nova Seção Branca -->
+<div class="w-full bg-white min-h-screen py-20">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-dark">Alguns recursos para que você <br> possa continuar aprendendo:</h2>
+    </div>
+    <div class="cards container mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="card p-6 rounded-lg shadow-lg flex flex-col" style="border: 2px solid #6DD5B6; background-color: rgba(242, 242, 242, 0.95);">
+            <h2 class="title fw-bold px-2 mb-3">📖 Scrum Guide (Oficial)</h2>
+            <h3 class="text-lg text-gray-700">O guia oficial e definitivo do Scrum - leitura essencial</h3>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg flex flex-col" style="border: 2px solid #6DD5B6; background-color: rgba(242, 242, 242, 0.95);">
+            <h2 class="title fw-bold px-2 mb-3">🎓 Certificações</h2>
+            <h3 class="text-lg text-gray-700">PSM I (Scrum.org) ou CSM (Scrum Alliance) são bons próximos passos</h3>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg flex flex-col" style="border: 2px solid #6DD5B6; background-color: rgba(242, 242, 242, 0.95);">
+            <h2 class="title fw-bold px-2 mb-3">👥 Comunidades</h2>
+            <h3 class="text-lg text-gray-700">Junte-se a grupos de Scrum no LinkedIn, Discord e meetups locais</h3>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg flex flex-col" style="border: 2px solid #6DD5B6; background-color: rgba(242, 242, 242, 0.95);">
+            <h2 class="title fw-bold px-2 mb-3">📘 Material Complementar</h2>
+            <h3 class="text-lg text-gray-700">Baixe nossas apostilas de conteúdo complementar para referência futura</h3>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_scripts %}
+    {{ super() if super }} {# Mantém scripts do pai, se houver #}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar-principal');
+
+            if (navbar) {
+                // 1. Remove a classe de fundo padrão do Bootstrap
+                navbar.classList.remove('bg-body-tertiary');
+
+                // 2. Torna o navbar transparente para que o fundo do body apareça
+                navbar.style.background = 'transparent';
+
+                // 3. Altera a cor do ícone do menu para branco
+                const menuIcon = navbar.querySelector('.menu-btn-modulos');
+                if (menuIcon) {
+                    menuIcon.style.color = '#FFFFFF';
+                }
+            }
+
+            // 4. Aplica o gradiente de "spotlight" ao corpo da página
+            document.body.style.backgroundColor = '#0F5F96'; // Cor de fundo base
+            document.body.style.backgroundImage = 'radial-gradient(ellipse at center 30%, #051E30 0%, transparent 70%)';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        });
+    </script>
+{% endblock %}

@@ -119,7 +119,7 @@ def get_modulo5():
                 'url_anterior': 'routes.module_route',
                 'url_anterior_params': {'module_name': 'modulo4', 'section_name': 'modulo4'},
                 'url_proximo': 'routes.module_route',
-                'url_proximo_params': {'module_name': 'sobre-equipe', 'section_name': 'sobre-equipe'},
+                'url_proximo_params': {'module_name': 'modulo6', 'section_name': 'modulo6'},
                 'mostrar_exercicios': True,
                 'template': 'modulo5.html',
                 'cards': [

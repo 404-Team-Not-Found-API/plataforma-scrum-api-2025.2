@@ -16,6 +16,7 @@ perguntas_modulos = {
     'modulo4': modulo4_perguntas,
     'modulo5': modulo5_perguntas, 
     'sobre-equipe': [],
+    'conclusao': [],
 }
 
 bp = Blueprint('routes', __name__)
@@ -27,6 +28,10 @@ def homepage():
 @bp.route('/conteudo')
 def conteudo():
     return render_template('conteudo.html', MODULES_CONFIG=MODULES_CONFIG)
+
+@bp.route('/conclusao')
+def conclusao():
+    return render_template('conclusao.html')
 
 # A rota de conteúdo agora só aceita 'GET'.
 # A lógica de 'POST' foi movida para uma API dedicada para evitar recarregamentos de página.
@@ -51,6 +56,7 @@ def module_route(module_name, section_name=None):
         'url_download_complementar': url_for('routes.download', key=section_config.get('url_download_key')) if section_config.get('url_download_key') else None,
         'url_anterior': url_for(section_config.get('url_anterior'), **section_config.get('url_anterior_params', {})) if section_config.get('url_anterior') else None,
         'url_proximo': url_for(section_config.get('url_proximo'), **section_config.get('url_proximo_params', {})) if section_config.get('url_proximo') else None,
+        'texto_proximo': section_config.get('texto_proximo', 'Próximo →'),
         'mostrar_exercicios': section_config.get('mostrar_exercicios', False),
         'quiz_available': module_config.get('quiz', False),
         'module_name': module_name,

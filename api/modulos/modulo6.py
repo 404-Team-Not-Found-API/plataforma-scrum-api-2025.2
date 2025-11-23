@@ -9,9 +9,8 @@ def get_modulo6():
                  "template": "modulo6.html",
                  'url_anterior': 'routes.module_route',
                  'url_anterior_params': {'module_name': 'modulo5', 'section_name': 'modulo5'},
-                 'url_proximo': None,
-                 'url_proximo_params': {'module_name': 'modulo1', 'section_name': 'modulo1s2'},
-                
+                 'url_proximo': 'routes.conclusao',
+                 'texto_proximo': 'Concluir',
                 # Lista de Projetos para Sorteio
                 "projetos_simulados": [
                     {

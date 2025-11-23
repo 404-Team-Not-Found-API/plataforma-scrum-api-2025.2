@@ -93,7 +93,7 @@
             {% endif %}
 
             {% if url_proximo %}
-                 <a href="{{ url_proximo }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Próximo →</a>
+                 <a href="{{ url_proximo }}" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">{{ texto_proximo }}</a>
             {% else %}
                 <a href="#" class="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold px-5 py-2 rounded-full transition">Concluir</a>
             {% endif %}
@@ -101,4 +101,7 @@
     </section>
 </div>
 
+{% endblock %}
+
+{% block body_scripts %}
 {% endblock %}

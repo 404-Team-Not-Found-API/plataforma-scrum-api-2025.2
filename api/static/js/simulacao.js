@@ -86,12 +86,17 @@ const Simulacao = {
         // Alterna visibilidade das áreas
         document.getElementById('intro-sorteio').classList.add('d-none');
         document.getElementById('resultado-sorteio').classList.remove('d-none');
+
+        // Mostra a navegação de módulos (Anterior/Concluir)
+        const nav = document.getElementById('navegacao-modulos');
+        if (nav) nav.style.display = 'flex';
     },
 
     mostrarFases: function() {
         // document.getElementById('area-sorteio').classList.add('d-none'); // Linha removida para manter a área de sorteio visível
         document.getElementById('area-fases').classList.remove('d-none');
         document.getElementById('funcionamento').classList.remove('d-none');
+
     },
 
     // --- LÓGICA DE PERSISTÊNCIA E UI ---
