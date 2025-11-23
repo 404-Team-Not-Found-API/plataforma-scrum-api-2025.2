@@ -27,9 +27,9 @@
 
 {% macro section_header(titulo, subtitulo=None, classes="text-gray-900", container_classes="border-t pt-6 mb-3") %}
 <div class="{{ container_classes }}">
-    <h2 class="text-3xl md:text-4xl font-bold mb-3 {{ classes }}">{{ titulo }}</h2>
+    <h2 class="text-2xl md:text-2xl font-bold mb-3 {{ classes }}">{{ titulo }}</h2>
     {% if subtitulo %}
-    <p class="text-gray-800 leading-relaxed text-xl md:text-2xl font-semibold">{{ subtitulo }}</p>
+    <p class="text-gray-800 leading-relaxed text-xl md:text-xl font-semibold">{{ subtitulo }}</p>
     {% endif %}
 </div>
 {% endmacro %}
@@ -91,7 +91,7 @@
     {% for card_item in cards %}
         {% if card_item.tipo == 'texto' %}
             <div class="col-12 my-5">
-                <h3 class="text-3xl font-bold mb-3 text-gray-800">{{ card_item.titulo }}</h3>
+                <h3 class="text-2xl font-bold mb-3 text-gray-800">{{ card_item.titulo }}</h3>
                 {% for p in card_item.texto %}
                     <p class="text-gray-800 leading-relaxed text-lg md:text-xl">
                         {% if p.bold %}
@@ -128,9 +128,9 @@
 
             <!-- Modal for each card -->
             <div class="modal fade" id="modal-{{ loop.index }}" tabindex="-1" aria-labelledby="modalLabel-{{ loop.index }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header text-black" style="border-bottom: 2px solid #dee2e6;">
+                <div class="modal-dialog modal-dialog-centered modal-lg-sm-down" style="height: auto; display: flex; flex-direction: column;">
+                    <div class="modal-content" style="max-height: 90vh; overflow: hidden;">
+                        <div class="modal-header text-black" style="border-bottom: 2px solid #dee2e6">
                             <h5 class="modal-title font-bold d-flex align-items-center" id="modalLabel-{{ loop.index }}">
                                 {% if card_item.modal_icon and card_item.modal_icon.endswith(('.png', '.jpg', '.jpeg', '.svg')) %}
                                     <img src="{{ url_for('static', filename='assets/' + card_item.modal_icon) }}" alt="" class="me-2" style="height: 24px;">
@@ -141,7 +141,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body p-3 p-md-4">
+                        <div class="modal-body" style="overflow-y: auto; max-height: 80vh;">
                             {# Verifica se o subtitulo é uma lista para renderizar em parágrafos #}
                             {% if card_item.subtitulo is iterable and not card_item.subtitulo is string %}
                                 {% for line in card_item.subtitulo %}
