@@ -13,7 +13,7 @@
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status da Sprint: Em andamento ⚙️
+> Status da Sprint: ✅ Concluída
 
 ## 🏅 Desafio <a id="desafio"></a>
 
@@ -23,12 +23,12 @@ O desafio consiste em desenvolver uma plataforma de treinamento online sobre o f
 
 | Rank | Prioridade | User Story | Story Points | Sprint | Status |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :------------------: | :----: |
-|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |       13     |   3    |   🔄   |
-|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios sobre soft skills para compreender os conceitos expostos no módulo e ao concluir o questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      5     |   3    |   🔄   |
-|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |      5     |   3    |   🔄   |
-|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |     13      |   3    |   🔄   |
-|  18   |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha uma página de conclusão do curso, indicando que ela está apta à aplicar a metodologia Scrum no ambiente de trabalho.   |     5     |   3    |   🔄   |
-|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha acesso à recursos de acessibilidade em libras para que ela possa assimilar o conteúdo independentemente de qualquer deficiência auditiva.   |      5     |   3    |   🔄   |
+|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |       13     |   3    |   ✅   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios sobre soft skills para compreender os conceitos expostos no módulo e ao concluir o questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      5     |   3    |   ✅   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |      5     |   3    |   ✅   |
+|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |     13      |   3    |   ✅   |
+|  18   |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha uma página de conclusão do curso, indicando que ela está apta à aplicar a metodologia Scrum no ambiente de trabalho.   |     5     |   3    |   ✅   |
+|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha acesso à recursos de acessibilidade em libras para que ela possa assimilar o conteúdo independentemente de qualquer deficiência auditiva.   |      5     |   3    |   ✅   |
 
 
 

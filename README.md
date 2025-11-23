@@ -16,11 +16,9 @@
   <a href ="#equipe"> Equipe</a> |
 </p>
 
-> Status do Projeto: Em andamento  🔄
->
-<!-- > Relatório de Testes: [PDF](docs/cliente/relatorio_avaliacoes.pdf) 📊
->
-> Video do Projeto:  [Youtube](https://youtu.be/IndOPnzHyrQ) 📽️ -->
+<br>
+Status do Projeto: ✅ Concluído
+<br>
 
 ## 🏅 Desafio <a id="desafio"></a>
 
@@ -49,12 +47,12 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 |  11   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 3  para revisar e consolidar os conceitos expostos no módulo.    |       3     |    2   |   ✅   |
 |  12   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 4  para revisar e consolidar os conceitos expostos no módulo.    |      3      |   2    |   ✅   |
 |  13   |    Média    | Como gerente, quero que a pessoa em treinamento receba modelos dos documentos principais do módulo 4 para que o aluno possa baixar e usar em seus próprios projetos.   |     3       |   2    |   ✅   |
-|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |       13     |   3    |   🔄   |
-|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios sobre soft skills para compreender os conceitos expostos no módulo e ao concluir o questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      5     |   3    |   🔄   |
-|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |      5     |   3    |   🔄   |
-|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |     13      |   3    |   🔄   |
-|  18   |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha uma página de conclusão do curso, indicando que ela está apta à aplicar a metodologia Scrum no ambiente de trabalho.   |     5     |   3    |   🔄   |
-|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha acesso à recursos de acessibilidade em libras para que ela possa assimilar o conteúdo independentemente de qualquer deficiência auditiva.   |      5     |   3    |   🔄   |
+|  14   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo 5 específico sobre exemplos práticos da implementação da metodologia para mostrar como funciona na prática.    |       13     |   3    |   ✅   |
+|  15   |    Média    | Como gerente, quero que a pessoa em treinamento faça exercícios sobre soft skills para compreender os conceitos expostos no módulo e ao concluir o questionário, evidenciar os erros e explicá-los para um retorno imediato e eficaz.   |      5     |   3    |   ✅   |
+|  16   |    Média    | Como gerente, quero que a pessoa em treinamento faça download de um documento em PDF como apostila com o conteúdo o módulo 5  para revisar e consolidar os conceitos expostos no módulo.    |      5     |   3    |   ✅   |
+|  17   |    Média    | Como gerente, quero que a pessoa em treinamento visualize o módulo final e esse seja uma simulação da sua primeira sprint para  aplicar todo o conhecimento adquirido em um projeto simulado do início ao fim do planejamento.   |     13      |   3    |   ✅   |
+|  18   |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha uma página de conclusão do curso, indicando que ela está apta à aplicar a metodologia Scrum no ambiente de trabalho.   |     5     |   3    |   ✅   |
+|  19  |    Baixa    | Como gerente, quero que a pessoa em treinamento tenha acesso à recursos de acessibilidade em libras para que ela possa assimilar o conteúdo independentemente de qualquer deficiência auditiva.   |      5     |   3    |   ✅   |
 
 ---
 <br><br>
@@ -86,7 +84,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 <br>
 
 #### 🎯 Sprint 3 (03/11 - 23/11) - Finalização e Certificação
-- **Status**: 🔄 Em andamento
+- **Status**: ✅ Concluída
 - **Objetivo Principal**: Concluir o desenvolvimento do produto e implementar funcionalidades para aprimorar a experiência do usuário.
 - **Principais Entregas Planejadas**:
   - ✅ Módulo 5 - Exemplos práticos de implementação do scrum;
@@ -104,7 +102,7 @@ A plataforma permite que pessoas em treinamento, nas mais diversas ocupações d
 | --------------- | :-----------: | ------------------------------------------------ | ------------ |
 | 🔖 **SPRINT 1** | 08/09 - 28/09 | [Sprint 1 Docs](./documents/processo/sprints/sprint1.md) |  [Incremento 1](https://drive.google.com/file/d/1vU7l4GPPZVuUSdK4eI9Tbe88zVvmiTzS/view?usp=sharing)  |
 | 🔖 **SPRINT 2** | 06/10 - 26/10 | [Sprint 2 Docs](./documents/processo/sprints/sprint2.md) | [Incremento 2](https://drive.google.com/file/d/1DAv6JuerRJxr-wtz7J7lbnRc8DFPMQnB/view?usp=sharing)  |
-| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/sprint3.md) | [Incremento 3]()  |
+| 🔖 **SPRINT 3** | 03/11 - 23/11 | [Sprint 3 Docs](./documents/processo/sprints/sprint3.md) | [Incremento 3](https://drive.google.com/file/d/1-sZ9nBFeinqPdekRaCypsHjzIB87lRtW/view?usp=sharing)  |
 
 <br><br>
 ## 💻 Tecnologias <a id="tecnologias"></a>
@@ -130,13 +128,19 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
     - **config.py**: configurações gerais da aplicação;
 
-    - **modulo1.py**: questionário módulo 1;
+    - **modulo1.py**: lógica módulo 1;
 
-    - **modulo2.py**: questionário módulo 2;
+    - **modulo2.py**: lógica módulo 2;
 
-    - **modulo3.py**: questionário módulo 3;
+    - **modulo3.py**: lógica módulo 3;
 
-    - **modulo4.py**: questionário módulo 4;
+    - **modulo4.py**: lógica módulo 4;
+
+    - **modulo5.py**: lógica módulo 5;
+
+    - **modulo6.py**: lógica módulo 6;
+
+    - **sobre_equipe.py**: lógica da rota página sobre;
 
   - **routes.py**: arquivo responsável pelas rotas da aplicação e lógica de controle;
 
@@ -164,6 +168,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
 
     - **conteudo.html**: template para exibição de conteúdo dos módulos;
 
+    - **conclusao.html**: template da página de conclusão de curso;
+
     - **index.html**: template da página inicial da aplicação;
 
     - **modulo1.html**: template específico para o primeiro módulo do curso;
@@ -175,6 +181,10 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:<br>
     - **modulo3.html**: template para o módulo 3;
 
     - **modulo4.html**: template para o módulo 4;
+
+    - **modulo5.html**: template para o módulo 5;
+    
+    - **modulo6.html**: template para o módulo 6;
 
     - **modulo_base.html**: template base para módulos;
 
@@ -220,24 +230,24 @@ Diagrama de estrutura das pastas: <br>
 │   │   ├── 🐍 modulo1.py
 │   │   ├── 🐍 modulo2.py
 │   │   ├── 🐍 modulo3.py
-│   │   └── 🐍 modulo4.py
+│   │   ├── 🐍 modulo4.py
+│   │   ├── 🐍 modulo5.py
+│   │   ├── 🐍 modulo6.py
+│   │   └── 🐍 sobre_equipe.py
 │   ├── 📁 static
 │   │   ├── 📁 assets
+│   │   │   ├── 📁 icones
 │   │   ├── 📁 bootstrap-5.3.8-dist
 │   │   │   ├── 📁 css
 │   │   │   └── 📁 js
-│   │   │       ├── 📄 bootstrap.esm.js
-│   │   │       └── 📄 bootstrap.js
 │   │   ├── 📁 js
-│   │   │   └── 📄 quiz.js
 │   │   └── 📁 styles
-│   │       ├── 🎨 form.css
-│   │       └── 🎨 index.css
 │   ├── 📁 templates
 │   │   ├── 🌐 _componente_exercicio.html
 │   │   ├── 🌐 _content_card.html
 │   │   ├── 🌐 _macros.html
 │   │   ├── 🌐 base.html
+│   │   ├── 🌐 conclusao.html
 │   │   ├── 🌐 conteudo.html
 │   │   ├── 🌐 index.html
 │   │   ├── 🌐 modulo1.html
@@ -245,9 +255,12 @@ Diagrama de estrutura das pastas: <br>
 │   │   ├── 🌐 modulo2.html
 │   │   ├── 🌐 modulo3.html
 │   │   ├── 🌐 modulo4.html
+│   │   ├── 🌐 modulo5.html
+│   │   ├── 🌐 modulo6.html
 │   │   ├── 🌐 modulo_base.html
 │   │   ├── 🌐 navbar.html
-│   │   └── 🌐 navbarModulos.html
+│   │   ├── 🌐 navbarModulos.html
+│   │   └── 🌐 sobre-equipe.html
 │   ├── 🐍 __init__.py
 │   └── 🐍 routes.py
 ├── 📁 documents
@@ -256,9 +269,6 @@ Diagrama de estrutura das pastas: <br>
 │   │   └── 📕 uml1.pdf
 │   └── 📁 processo
 │       ├── 📁 sprints
-│       │   ├── 📝 sprint1.md
-│       │   ├── 📝 sprint2.md
-│       │   └── 📝 sprint3.md
 │       ├── 📕 Desafio  Academico - 1_ADS 27082025-2.pdf
 │       ├── 📝 dor_e_dod.md
 │       ├── 📝 estrategia-de-branches.md
@@ -324,32 +334,6 @@ flask run
 
 Acesse o link gerado e veja a aplicação em seu navegador padrão
 
----
-### Como Acessar a Aplicação na Web (Vercel)
-
-⭐️ **Deploy Automático**
-
-Este projeto está configurado para deploy automático no Vercel. Para acessar a versão web da aplicação:
-
-**1.** Acesse a URL de produção:
-
-```
-https://plataforma-scrum-api-2025-2.vercel.app
-```
-
-**2.** Para fazer deploy de uma nova versão:
-
-```bash
-# Instale o Vercel CLI (se não tiver instalado)
-npm install -g vercel
-
-# Deploy
-vercel --prod
-```
-
-**3.** O deploy será realizado automaticamente e a aplicação estará disponível na URL acima.
-
----
 <br>
 
 ### 🔧 Comandos Úteis para Desenvolvimento
