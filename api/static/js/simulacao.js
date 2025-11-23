@@ -316,7 +316,7 @@ const Simulacao = {
         if(backlog.length === 0) ulBacklog.innerHTML = '<li>Vazio</li>';
         else {
             backlog.forEach(i => {
-                let txt = `<strong>[${i.prioridade||'-'}]</strong> ${i.titulo||'Item'}`;
+                let txt = `<strong>[${i.titulo||'Item'}]</strong>`;
                 if(i.estimativa) txt += ` <em>(${i.estimativa})</em>`;
                 if(i.descricao) txt += `<br><span style="font-size:11px; color:#555; display:block; margin-top:2px;">${i.descricao}</span>`;
                 if(i.aceitacao) txt += `<span style="font-size:11px; color:#888; display:block;">Critérios: ${i.aceitacao}</span>`;

@@ -241,21 +241,14 @@
                 </div>
                 {% endif %}
 
-{% if fase.tipo_conteudo == 'formulario_fixo' %}
+            {% if fase.tipo_conteudo == 'formulario_fixo' %}
 
-    {% if fase.id == 'sprint_review' %}
-        <div class="mb-4">
-            <label class="fw-bold small text-muted mb-2">O que foi planejado (Sprint Backlog):</label>
-            <div id="review-itens-selecionados"></div> </div>
-    {% endif %}
-
-            {% if fase.id == 'daily_scrum' %}
-                <form>
-                    {% for campo in fase.campos %}
-                        {{ _render_input(campo) }}
-                    {% endfor %}
-                </form>
-            {% else %}
+                {% if fase.id == 'sprint_review' %}
+                    <div class="mb-4">
+                        <label class="fw-bold small text-muted mb-2">O que foi planejado (Sprint Backlog):</label>
+                        <div id="review-itens-selecionados"></div> </div>
+                {% endif %}
+            
                 <form>
                     {% for campo in fase.campos %}
                         {% if campo.titulo_grupo %}
@@ -268,9 +261,9 @@
                         {% endif %}
                     {% endfor %}
                 </form>
-            {% endif %}
+            
+            {% elif fase.tipo_conteudo == 'lista_dinamica' %}
 
-{% elif fase.tipo_conteudo == 'lista_dinamica' %}
                     <div class="lista-dinamica-container" data-schema='{{ fase.item_schema | tojson }}'>
                         <div class="lista-items-wrapper mb-3">
                             <div class="empty-state text-center text-muted py-3 bg-light rounded border border-dashed"><small>Nenhum item.</small></div>
@@ -280,14 +273,14 @@
                         </button>
                     </div>
 
-                {% elif fase.tipo_conteudo == 'selecao_origem' %}
+            {% elif fase.tipo_conteudo == 'selecao_origem' %}
                     <form>
                         {% for campo in fase.campos_fixos %}{{ _render_input(campo) }}{% endfor %}
                         <hr class="my-4">
                         <h6 class="fw-bold mb-2">Selecione para a Sprint:</h6>
                         <div class="selecao-origem-wrapper border rounded p-2"></div>
                     </form>
-                {% endif %}
+            {% endif %}
             </div>
 
             <div class="modal-footer border-0">
